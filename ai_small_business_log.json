@@ -46,5 +46,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-14.html",
     "search_query": "\"small business owner\" AI automation revenue",
     "selection_reason": "候補0は、実在企業名ではなく調査記事ですが、検索結果説明だけで「47%の小規模事業者が収益増、平均21%増」という収益に直結する定量成果が確認でき、他候補よりも成果の具体性が高いです。小規模事業者向けのAI活用として一般論ではなくROIに踏み込んでおり、今回の条件で最も価値が高い候補です。過去紹介事例との実質的重複もありません。"
+  },
+  {
+    "date": "2026-08-15",
+    "date_display": "2026.08.15",
+    "company_name": "記事から確認できません",
+    "headline": "SBE Councilの調査にみる、AI導入で収益増を報告した小規模事業者の事例",
+    "title": "Small Businesses See 66% Revenue Growth with AI ...",
+    "url": "https://www.linkedin.com/posts/troydean_66-of-small-businesses-using-ai-report-increased-activity-7487790860059873280-u8TC",
+    "article_filename": "2026-08-15.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-15.html",
+    "search_query": "\"small business\" AI success story revenue",
+    "selection_reason": "検索結果の説明に『66% Revenue Growth with AI』とあり、少なくとも収益増加という成果が明示されています。加えて『small business employers』とあり小規模事業者に関する話題で、AI活用と収益成果が結びついた候補として最も価値が高いです。ほかの候補は一般論や製品紹介、OpenAI自体の業績であり、実在のスモールビジネス事例としての具体性が弱いです。"
   }
 ]
