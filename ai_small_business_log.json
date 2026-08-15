@@ -58,5 +58,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-15.html",
     "search_query": "\"small business\" AI success story revenue",
     "selection_reason": "検索結果の説明に『66% Revenue Growth with AI』とあり、少なくとも収益増加という成果が明示されています。加えて『small business employers』とあり小規模事業者に関する話題で、AI活用と収益成果が結びついた候補として最も価値が高いです。ほかの候補は一般論や製品紹介、OpenAI自体の業績であり、実在のスモールビジネス事例としての具体性が弱いです。"
+  },
+  {
+    "date": "2026-08-16",
+    "date_display": "2026.08.16",
+    "company_name": "記事から確認できません",
+    "headline": "AIツールで7桁売上に到達したソロ起業家の事例｜Infin8Contentの投稿から",
+    "title": "Solo Entrepreneur Hits 7-Figure Revenue with AI Tools",
+    "url": "https://www.linkedin.com/posts/infin8content_soloentrepreneur-aitools-revenue-activity-7479705492487843840-JmA4",
+    "article_filename": "2026-08-16.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-16.html",
+    "search_query": "\"entrepreneur\" AI business revenue",
+    "selection_reason": "検索結果だけで見ると、候補10は『Solo Entrepreneur Hits 7-Figure Revenue with AI Tools』というタイトルで、個人事業レベルの小規模事業者がAI活用により7桁売上を達成したと明示されており、収益につながる成果が最も直接的に確認できます。実在性もLinkedIn投稿として確認でき、業種を問わない条件にも合致します。単なるAI導入説明ではなく、売上成果が前面に出ている点で他候補より価値が高いです。"
   }
 ]
