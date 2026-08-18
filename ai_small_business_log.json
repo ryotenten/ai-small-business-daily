@@ -94,5 +94,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-18.html",
     "search_query": "\"small company\" AI revenue case study",
     "selection_reason": "候補1は、検索結果説明の中で「small company just launched an AI recipe app」とあり、実在の事業者による具体的なAI活用が示されています。売上成長への言及もタイトルにあり、単なるAI紹介より収益につながる文脈が見えます。ほかの候補は、掲示板・一般論・教育資料・事例集の断片で、実在事業者の具体的な成果が読み取りにくいため、今回の条件では候補1が最も価値が高いです。"
+  },
+  {
+    "date": "2026-08-19",
+    "date_display": "2026.08.19",
+    "company_name": "記事から確認できません",
+    "headline": "ソロ起業家はAIで何を補っているのか：Founder Reportsの統計から見る小規模事業の活用実態",
+    "title": "Solopreneur Statistics (2026): Income, Success Rates, & ...",
+    "url": "https://founderreports.com/solopreneur-statistics/",
+    "article_filename": "2026-08-19.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-19.html",
+    "search_query": "solopreneur AI business revenue",
+    "selection_reason": "検索結果だけで判断すると、他の候補はAI活用の一般論・製品紹介・SNS投稿で、実在する小規模事業者の具体的な収益成果が見えません。候補0は『Solopreneur Statistics』としてソロプレナー実態を扱い、検索結果説明内に『29.8 million solopreneurs』『$1.7 trillion in revenue』と収益規模が明示されており、AI時代の個人事業・小規模事業の文脈に最も近いです。個別事例ではないものの、今回の候補群の中ではスモールビジネスのAI活用を語る根拠として最も使いやすいです。"
   }
 ]
