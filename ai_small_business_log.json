@@ -106,5 +106,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-19.html",
     "search_query": "solopreneur AI business revenue",
     "selection_reason": "検索結果だけで判断すると、他の候補はAI活用の一般論・製品紹介・SNS投稿で、実在する小規模事業者の具体的な収益成果が見えません。候補0は『Solopreneur Statistics』としてソロプレナー実態を扱い、検索結果説明内に『29.8 million solopreneurs』『$1.7 trillion in revenue』と収益規模が明示されており、AI時代の個人事業・小規模事業の文脈に最も近いです。個別事例ではないものの、今回の候補群の中ではスモールビジネスのAI活用を語る根拠として最も使いやすいです。"
+  },
+  {
+    "date": "2026-08-20",
+    "date_display": "2026.08.20",
+    "company_name": "記事から確認できません",
+    "headline": "ChatGPTの収益性が話題になった事例：Reddit投稿から見るAIサービスのビジネス論点",
+    "title": "If chatgpt costs $700000 to run per DAY, how do they not ...",
+    "url": "https://www.reddit.com/r/ChatGPT/comments/1c5ri5o/if_chatgpt_costs_700000_to_run_per_day_how_do/",
+    "article_filename": "2026-08-20.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-20.html",
+    "search_query": "\"small business\" ChatGPT revenue",
+    "selection_reason": "候補0はReddit上の議論で、実在事業者のスモールビジネス事例ではなく、AI活用内容や収益成果も確認できません。ほかの候補はOpenAIや各種解説記事で、個別の小規模事業者がAIを使って売上・利益に結びつけた実例ではありません。与えられた検索結果だけでは、今回の条件に最も合うスモールビジネス事例は見当たりません。"
   }
 ]
