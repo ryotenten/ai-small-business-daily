@@ -118,5 +118,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-20.html",
     "search_query": "\"small business\" ChatGPT revenue",
     "selection_reason": "候補0はReddit上の議論で、実在事業者のスモールビジネス事例ではなく、AI活用内容や収益成果も確認できません。ほかの候補はOpenAIや各種解説記事で、個別の小規模事業者がAIを使って売上・利益に結びつけた実例ではありません。与えられた検索結果だけでは、今回の条件に最も合うスモールビジネス事例は見当たりません。"
+  },
+  {
+    "date": "2026-08-21",
+    "date_display": "2026.08.21",
+    "company_name": "reMarkable",
+    "headline": "Salesforce調査にみる、AIで成長をめざすSMBの事例：reMarkableの顧客対応拡張",
+    "title": "New Research Reveals SMBs with AI Adoption See ...",
+    "url": "https://www.salesforce.com/news/stories/smbs-ai-trends-2025/",
+    "article_filename": "2026-08-21.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-21.html",
+    "search_query": "\"small business\" AI success story revenue",
+    "selection_reason": "候補8は『New Research Reveals SMBs with AI Adoption See ...』で、検索結果上すでにSMB（小規模〜中規模事業者）を対象にしたAI活用と成果の話題であり、業種横断の事例集・顧客事例への導線も示されています。単なるAI導入の一般論よりも、SMBの収益向上や成長に結びつく文脈があり、今回の候補の中ではスモールビジネス事例として最も適合度が高いです。"
   }
 ]
