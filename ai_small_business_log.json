@@ -130,5 +130,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-21.html",
     "search_query": "\"small business\" AI success story revenue",
     "selection_reason": "候補8は『New Research Reveals SMBs with AI Adoption See ...』で、検索結果上すでにSMB（小規模〜中規模事業者）を対象にしたAI活用と成果の話題であり、業種横断の事例集・顧客事例への導線も示されています。単なるAI導入の一般論よりも、SMBの収益向上や成長に結びつく文脈があり、今回の候補の中ではスモールビジネス事例として最も適合度が高いです。"
+  },
+  {
+    "date": "2026-08-22",
+    "date_display": "2026.08.22",
+    "company_name": "記事から確認できません",
+    "headline": "AI自動化を販売した個人事業の事例：Reddit投稿から見る小規模向けAI活用",
+    "title": "I made $75K selling AI automations to clients. Here's what I' ...",
+    "url": "https://www.reddit.com/r/AI_Agents/comments/1u5dpkd/i_made_75k_selling_ai_automations_to_clients/",
+    "article_filename": "2026-08-22.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-22.html",
+    "search_query": "\"small business owner\" AI automation revenue",
+    "selection_reason": "候補4は、実在の個人事業・小規模事業者によるAI活用の収益事例として最も直接的です。検索結果の説明から、本人がAIオートメーションをクライアント向けに販売して75Kドルを売上げたことが読み取れ、単なるAI紹介記事ではなく、AI活用がそのまま受注・売上に結びついた具体例です。候補0/1/5/8などは一般論や解説色が強く、収益実績が明確ではありません。"
   }
 ]
