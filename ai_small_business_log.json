@@ -154,5 +154,17 @@
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-23.html",
     "search_query": "\"small business\" AI increased sales",
     "selection_reason": "検索結果だけを見ると、候補0はInvestopedia記事で直接の個別事例ではありませんが、説明文に『Small Business and Entrepreneurship Councilの2023年調査』を根拠に、AI活用が『better sales and revenue growth』につながると明記されています。実在事業者の特定事例ではない点は弱いものの、今回の候補群の中では収益への結びつきが最も明確で、かつ小規模事業者向けのAI活用として一般化された実務的示唆があるため、最も価値の高い候補として選びます。他候補は一般論・導入案内・小規模事業者の実例性が弱く、収益成果の確認も薄いです。"
+  },
+  {
+    "date": "2026-08-24",
+    "date_display": "2026.08.24",
+    "company_name": "記事から確認できません",
+    "headline": "U.S.小規模事業者に広がる生成AI活用――米国商工会議所調査にみる成長と効率化の事例",
+    "title": "AI Adoption Fuels Small Business Growth and Optimism",
+    "url": "https://lexingtoninstitute.org/ai-adoption-fuels-small-business-growth-and-optimism/",
+    "article_filename": "2026-08-24.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-24.html",
+    "search_query": "\"small business\" \"generative AI\" revenue",
+    "selection_reason": "検索結果だけで判断すると、候補3『AI Adoption Fuels Small Business Growth and Optimism』が最も事例性と小規模事業者らしさに近いです。説明文に『2025年に58%の小規模事業者が生成AIを利用』とあり、スモールビジネス当事者の利用実態を示しています。ほかの候補はOpenAIやSalesforceなど大企業向けの一般論・製品紹介・統計記事が中心で、実在する小規模事業者の具体的な活用成果（売上増、受注増、コスト削減など）が読み取れません。厳密には単一事業者の成功事例ではありませんが、与えられた候補の中ではスモールビジネスに最も近い根拠があります。"
   }
 ]
