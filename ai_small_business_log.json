@@ -176,5 +176,27 @@
       "applicability": 13,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-08-25",
+    "date_display": "2026.08.25",
+    "company_name": "記事から確認できません（Zapierの解説記事）",
+    "headline": "Google Sheetsを自動化するAIワークフロー集：入力→AI処理→シート反映→通知までの実践例",
+    "title": "How to automate Google Sheets",
+    "url": "https://zapier.com/blog/automate-google-sheets/",
+    "article_filename": "2026-08-25.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-25.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、Gmail・Google Sheets・Slack・Docs・n8n など具体的な入力→AI処理→出力の流れが見え、本文を読むと再現可能なワークフローが出てきそうな候補です。0はn8n×Gmail/Sheets/Slack/AI分類で実務自動化の匂いが強いです。2はGmail→AI→Google Sheets とワークフローが明示されており、本文で抽出・分類・記録の具体例が期待できます。5はGmail/Docs/Sheets/OpenAI/n8n の組み合わせが見え、少人数でも真似しやすい可能性があります。1はZapier記事で比較寄りですが、Gmail→Spreadsheet保存など実務フローの具体例があり、Google Sheets中心の再現例が拾える余地があります。4はGoogle Workspace Studioで添付保存＋Sheets記録のような業務フローが示されており、実務応用の具体例を確認できる可能性があります。",
+    "adoption_score": 84,
+    "workflow_signature": "各種業務データやメール→AIで抽出・要約・分類→Google Sheetsに記録し通知/別ツールへ連携",
+    "evaluation_reason": "本文から、Google Sheetsを起点にした複数の実運用ワークフローが具体的に確認できる。入力はGmail、Calendly、Google Driveのファイル、フォーム、広告リード、Webhook、Shopify/Eventbriteなどで、AIは主に非構造データの抽出、回答内容の要点化、傾向分析、分類を担い、出力はSheetsへの行追加、Slack/メール/SMS通知、Asana/Todoist/Notionへのタスク化という流れが明確。個人や中小企業でもZapierや一般的なAPI・連携ツールで再現しやすく、営業リード管理、問い合わせ整理、文書抽出、在庫・イベント管理、メール保管など横展開もしやすい。定量効果はないが、実装手順と使い方が十分具体的で、広告記事寄りではあるもののワークフローの実在性は高い。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 23,
+      "usefulness": 19,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
