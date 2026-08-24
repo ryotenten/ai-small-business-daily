@@ -35,6 +35,7 @@ RESULTS_PER_SEARCH = 10
 MAX_CANDIDATES = 20
 PAST_LOG_LIMIT = 100
 MAX_SOURCE_CHARS = 18000
+MIN_ADOPTION_SCORE = 70
 
 REQUEST_HEADERS = {
     "User-Agent": (
@@ -49,19 +50,23 @@ REQUEST_HEADERS = {
 # ============================================================
 
 SEARCH_QUERIES = [
-    '"small business" AI revenue case study',
-    '"small business" AI increased sales',
-    '"small business" "generative AI" revenue',
-    '"small business owner" AI automation revenue',
-    '"AI-powered" small business revenue',
-    'solopreneur AI business revenue',
-    '"small company" AI revenue case study',
-    '"small business" ChatGPT revenue',
-    '"small business" AI profit case study',
-    '"entrepreneur" AI business revenue',
-    '"small business" AI sales growth',
-    '"small business" AI success story revenue',
+    '"AI workflow" automation "how I"',
+    '"I automated" ChatGPT workflow',
+    '"I built" AI automation workflow',
+    '"how I use ChatGPT" automate work',
+    '"OpenAI API" workflow automation case study',
+    '"AI automation" Gmail spreadsheet workflow',
+    '"AI workflow" Excel automation',
+    '"AI workflow" small business operations',
+    'solopreneur AI workflow automation',
+    '"AI agent" practical workflow business',
+    'site:reddit.com AI workflow automation work',
+    'site:github.com AI automation workflow OpenAI',
+    'site:news.ycombinator.com AI automation workflow',
+    'site:qiita.com AI OpenAI 自動化 業務',
+    'site:zenn.dev AI OpenAI 自動化 業務',
 ]
+
 
 
 # ============================================================
@@ -70,6 +75,18 @@ SEARCH_QUERIES = [
 
 class SelectedCase(BaseModel):
     selected_id: int
+    reason: str
+
+
+class CaseEvaluation(BaseModel):
+    adopt: bool
+    total_score: int
+    specificity_score: int
+    reproducibility_score: int
+    usefulness_score: int
+    novelty_score: int
+    reliability_score: int
+    workflow_signature: str
     reason: str
 
 
@@ -216,19 +233,19 @@ def search_serpapi(query):
     return results
 
 
-REVENUE_KEYWORDS = [
-    "revenue", "sales", "profit", "profitable", "income",
-    "earn", "earned", "earning", "growth", "customers",
-    "orders", "conversion", "roi", "saved", "savings",
-    "cost reduction", "$", "%"
+WORKFLOW_KEYWORDS = [
+    "workflow", "automate", "automation", "integrate", "integration",
+    "api", "python", "zapier", "make.com", "n8n", "gmail", "slack",
+    "notion", "spreadsheet", "excel", "google sheets", "extract",
+    "classify", "summarize", "agent", "pipeline", "process", "saved time"
 ]
 
 
-def revenue_score(candidate):
+def workflow_score(candidate):
     text = (
         candidate.get("title", "") + " " + candidate.get("snippet", "")
     ).lower()
-    return sum(1 for word in REVENUE_KEYWORDS if word in text)
+    return sum(1 for word in WORKFLOW_KEYWORDS if word in text)
 
 
 def get_candidates(log):
@@ -264,11 +281,11 @@ def get_candidates(log):
             continue
 
         seen.add(normalized)
-        item["revenue_score"] = revenue_score(item)
+        item["workflow_score"] = workflow_score(item)
         unique_results.append(item)
 
     unique_results.sort(
-        key=lambda x: x["revenue_score"],
+        key=lambda x: x["workflow_score"],
         reverse=True,
     )
 
@@ -290,34 +307,43 @@ def select_case(candidates, log):
 タイトル: {item['title']}
 URL: {item['url']}
 検索結果の説明: {item['snippet']}
-収益関連スコア: {item['revenue_score']}"""
+ワークフロー関連スコア: {item['workflow_score']}"""
         for i, item in enumerate(candidates)
     )
 
     past_text = "\n".join(
-        f"- {item.get('company_name', '')} / {item.get('title', '')}"
+        f"- {item.get('headline', item.get('title', ''))} / "
+        f"ワークフロー: {item.get('workflow_signature', '記録なし')}"
         for item in log[-PAST_LOG_LIMIT:]
     ) or "まだありません。"
 
     prompt = f"""
-以下のSerpAPI検索結果から、
-「AIを活用したスモールビジネスの事例」として
-最も価値の高い候補を1件選んでください。
+以下のSerpAPI検索結果から、本文を詳しく確認する価値が最も高い候補を1件だけ選んでください。
 
-条件:
-- 業種は問わない
-- 実在する事業者
-- 個人事業も可
-- 従業員1～100名程度の規模を優先
-- 売上、利益、受注、顧客獲得、コスト削減など、
-  収益につながる成果が確認できる事例を優先
-- 単なるAI導入ニュースではなく、具体的な活用が分かるものを優先
-- 検索結果だけで会社規模が断定できなくても候補にはできるが、
-  小規模事業者らしい根拠があるものを優先
-- 過去に紹介した企業・事例と実質的に重複するものは避ける
-- URLを新しく作らない
+目的は「AIを導入した会社」を集めることではありません。
+読者自身が仕事や日常生活で真似・再現・応用できる、具体的なAIワークフローを集めることです。
 
-過去に紹介した事例:
+優先する候補:
+- 入力 → AI処理 → 出力 → 人間の最終作業、の流れが想像できる
+- AIを何に使ったかが具体的
+- 個人、中小企業、少人数チームでも再現できそう
+- Gmail、Excel、Google Sheets、PDF、Slack、Notion、Python、API、Zapier、Make、GitHub Actions等との組み合わせが分かる
+- 時間削減、ミス削減、品質向上、顧客対応改善など実務上の価値がある
+- 大企業の事例でも、ワークフロー自体を小規模に再現できるなら候補にしてよい
+- 仕事だけでなく個人生活で役立つ実践例も可
+
+優先しない候補:
+- AI業界ニュース、モデル発表、株価、資金調達、市場規模
+- 「AIを導入した」だけで具体的な使い方が分からないもの
+- 単なる製品PR
+- 一般的な文章生成・要約だけで、新しい実践上の工夫がないもの
+- 過去事例と本質的に同じワークフロー
+
+この段階では検索結果だけなので、最終的な採用判定はしません。
+「本文を読めば有用な具体例が見つかりそうか」で1件を選んでください。
+URLは新しく作らないでください。
+
+過去に保存した事例:
 {past_text}
 
 今回の候補:
@@ -330,8 +356,8 @@ URL: {item['url']}
             {
                 "role": "system",
                 "content": (
-                    "あなたはスモールビジネスのAI活用事例を選定するリサーチャーです。"
-                    "与えられた検索結果だけを根拠に選定してください。"
+                    "あなたは実践的なAIワークフローを発見するリサーチャーです。"
+                    "企業規模や売上ニュースより、具体性・再現性・実用性を重視してください。"
                 ),
             },
             {"role": "user", "content": prompt},
@@ -410,6 +436,105 @@ def fetch_article_text(url):
 
 
 # ============================================================
+# OpenAI：本文を読んだ最終採用判定
+# ============================================================
+
+def evaluate_case(candidate, source_text, log):
+    client = OpenAI(api_key=OPENAI_API_KEY)
+
+    source_section = (
+        source_text
+        if source_text
+        else "参考記事本文を取得できませんでした。検索結果の説明のみです。"
+    )
+
+    past_text = "\n".join(
+        f"- {item.get('headline', item.get('title', ''))} / "
+        f"ワークフロー: {item.get('workflow_signature', '記録なし')}"
+        for item in log[-PAST_LOG_LIMIT:]
+    ) or "まだありません。"
+
+    prompt = f"""
+以下の候補を「長期的に残す価値のあるAI活用ワークフロー」として採用するか評価してください。
+
+【候補】
+タイトル: {candidate['title']}
+URL: {candidate['url']}
+検索結果の説明: {candidate['snippet']}
+
+【取得できた本文】
+{source_section}
+
+【過去に保存した事例】
+{past_text}
+
+100点満点で厳しく評価してください。
+
+1. 具体性 0～25点
+何を入力し、AIが何をし、何を出力するかが具体的か。
+
+2. 再現性 0～25点
+個人や中小企業が、一般的なツールやAPI等で似た仕組みを再現できるか。
+
+3. 実用性 0～25点
+時間削減、ミス削減、品質向上、顧客対応改善、意思決定改善などにつながるか。
+
+4. 新規性 0～15点
+単純な文章生成・要約・一般的なチャット利用を超える発見があるか。
+過去事例と本質的に同じワークフローなら大きく減点する。
+
+5. 情報信頼性 0～10点
+実際の使い方が本文から確認でき、単なる広告や憶測に偏っていないか。
+
+採用ルール:
+- total_score が {MIN_ADOPTION_SCORE} 点以上なら原則 adopt=true
+- ただし、AIの具体的な使い方が本文から確認できない場合は70点以上でも adopt=false
+- 本文取得に失敗し、snippetだけでは具体的なワークフローを確認できない場合は adopt=false
+- AIニュース、モデル発表、資金調達、業界論だけなら adopt=false
+- 過去事例と本質的に重複する場合は adopt=false
+- 良い候補でなければ、記事を作るために無理に採用しない
+
+workflow_signature は、企業名を使わず、ワークフローの本質を短く表してください。
+例: 「問い合わせメール→AIで分類・項目抽出→CRM登録→担当者通知」
+"""
+
+    response = client.responses.parse(
+        model=OPENAI_MODEL,
+        input=[
+            {
+                "role": "system",
+                "content": (
+                    "あなたはAI活用図鑑の編集者です。"
+                    "毎日1件埋めることより、具体性・再現性・実用性の高い事例だけ残すことを優先してください。"
+                ),
+            },
+            {"role": "user", "content": prompt},
+        ],
+        text_format=CaseEvaluation,
+        store=False,
+    )
+
+    result = response.output_parsed
+    if result is None:
+        raise RuntimeError("OpenAIから採用判定を取得できませんでした。")
+
+    # モデルのtotal_scoreと内訳が食い違った場合は内訳を正とする
+    calculated = (
+        result.specificity_score
+        + result.reproducibility_score
+        + result.usefulness_score
+        + result.novelty_score
+        + result.reliability_score
+    )
+    result.total_score = calculated
+
+    if calculated < MIN_ADOPTION_SCORE:
+        result.adopt = False
+
+    return result
+
+
+# ============================================================
 # OpenAI：長文記事生成
 # ============================================================
 
@@ -423,12 +548,8 @@ def generate_article(candidate, source_text):
     )
 
     prompt = f"""
-以下の情報だけを根拠として、日本語で
-「AIを活用したスモールビジネスの事例」の解説記事を作成してください。
-
-目安は1,500～2,500字程度です。
-ただし、根拠情報が少ない場合は無理に長くせず、
-事実を水増ししないことを最優先してください。
+以下の情報を根拠として、日本語で「真似できるAI活用ワークフロー」の記事を作成してください。
+目的はニュース紹介ではなく、読者が「これなら自分でも使えそう」と思えるAI活用図鑑を作ることです。
 
 【検索結果】
 タイトル: {candidate['title']}
@@ -438,59 +559,78 @@ URL: {candidate['url']}
 【取得できた参考記事本文】
 {source_section}
 
-重要ルール:
-- 上記情報にない事実を作らない
-- 従業員数、売上、利益、顧客数、割合などの数字を推測しない
-- 「AI導入によって収益が増えた」と因果関係が確認できない場合は断定しない
-- 会社規模が確認できない場合はその旨を書く
-- 収益額が確認できない場合はその旨を書く
-- 外部知識で穴埋めしない
-- URLは本文内に生成しない
-- 日本の小規模事業者への応用部分は分析・提案なので、
-  事実部分と区別して書く
-- 読み物として自然で、専門用語を使いすぎない
-- 同じ説明を繰り返して文字数を増やさない
+最重要ルール:
+- 元記事で確認できる事実と、あなたが考える応用案を明確に分ける
+- 元記事にない運用方法を「実際に行っている」と書かない
+- 数字、使用ツール、成果、企業規模などを推測しない
+- URLは本文内に新しく生成しない
+- 「AIを活用」「効率化した」だけで終わらず、可能な限り入力→AI処理→出力→人間の作業を説明する
+- 具体的なフローが不明な部分は「記事からは確認できない」と明記する
+- 応用案では、どのデータを使い、AIに何をさせ、どこへ出力するかまで具体化する
+- 毎回むりに会計・保険へ結びつけない。適合する場合だけ具体案を書く
+- 仕事だけでなく、自然に応用できるなら個人利用も提案する
+- 一般論を繰り返して文字数を水増ししない
 
 各項目:
 headline:
-記事タイトル。会社名とAI活用の特徴が分かるもの。
+会社名より「何をAI化したのか」が一目で分かるタイトル。必要なら会社名も含める。
 
 company_name:
-事業者名。不明なら「記事から確認できません」。
+実際の事例の企業・人物名。不明なら「記事から確認できません」。
 
 business_type:
-どのような事業か。
+業種・用途。
 
 company_size:
-分かる範囲の規模感。確認できない場合は明記。
+確認できる場合のみ。確認できなければその旨を書く。
 
 overview:
-事例の全体像を2～4段落程度。
+最初の2～4文で「何が面倒だったか」「AIで何を変えたか」を説明し、その後に実際の事例概要を書く。
 
 challenge:
-AI活用前の課題。記事から明確でない場合はその旨を書く。
+AI導入前の課題とBefore。記事から確認できる範囲だけを書く。
 
 ai_usage:
-AIを何に、どう使ったのかを具体的に。
+最重要項目。
+可能なら次の形で具体的に書く:
+入力
+↓
+AIによる処理
+↓
+次のシステム・処理
+↓
+出力
+↓
+人間による確認・最終作業
+さらにAIが分類、抽出、要約、判断補助、文章生成、検索など何を担当しているか説明する。
 
 financial_result:
-売上、利益、受注、顧客獲得、コスト削減など、
-収益とのつながり。確認できた内容だけを書く。
+見出し上は「得られた効果」として使う。
+売上だけでなく、時間削減、ミス削減、返信速度、品質、顧客対応など確認できる効果を書く。
+数値がなければ作らない。
 
 why_it_worked:
-なぜこの活用が有効だったと考えられるか。
-ここは「記事内容からの分析」と分かる書き方にする。
+なぜこのワークフローが有効だったと考えられるか。元記事の事実ではなく分析なら、その旨が分かるようにする。
 
 lessons:
-他のスモールビジネスが学べるポイント。
+この事例の再利用可能なポイント。企業固有事情ではなく、他の仕事にも移植できる考え方を中心にする。
 
 application_ideas:
-日本の小規模企業、士業、会計事務所、保険代理店などに
-応用するとしたらどんな方法があるか。
-これは提案・考察として書く。
+「自分で作るなら」を中心に、実装案を具体化する。
+例:
+1. データを取得
+2. AIへ渡す
+3. AIで処理
+4. Excel/DB/Notion等へ保存
+5. Slack/Pushover/メール等で通知
+6. 人間が確認
+
+使えそうなものがあれば ChatGPT、OpenAI API、Python、Excel、Google Sheets、Gmail、GitHub Actions、Zapier、Make、Slack、Pushover 等を挙げる。
+その後、仕事への応用例を2～4個、自然に可能ならプライベート応用を1～3個書く。
+「ChatGPTで要約する」のような抽象論ではなく、入力→処理→出力まで示す。
 
 limitations:
-記事から確認できない点や、評価時の注意点。
+元記事から確認できないこと、導入上の注意、個人情報・機密情報・誤判定など人間確認が必要な点を書く。
 """
 
     response = client.responses.parse(
@@ -499,9 +639,8 @@ limitations:
             {
                 "role": "system",
                 "content": (
-                    "あなたは実在するスモールビジネスのAI活用事例を"
-                    "根拠に基づいて解説する日本語ライターです。"
-                    "確認できないことを推測して事実として書いてはいけません。"
+                    "あなたは実践的なAI活用図鑑を作る日本語編集者です。"
+                    "ニュース性より具体性・再現性・実用性を重視し、事実と提案を混同しません。"
                 ),
             },
             {"role": "user", "content": prompt},
@@ -658,7 +797,7 @@ def write_article_html(article, candidate, date_str, article_filename):
 <header class="site-header">
   <div class="wrap">
     <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
-    <p class="tagline">AIを活用して成果を生み出す、小さなビジネスの事例集。</p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
   </div>
 </header>
 
@@ -682,7 +821,7 @@ def write_article_html(article, candidate, date_str, article_filename):
     <h2>AIをどう活用したのか</h2>
     {paragraphize(article.ai_usage)}
 
-    <h2>どう収益につながったのか</h2>
+    <h2>どんな効果があったのか</h2>
     {paragraphize(article.financial_result)}
 
     <h2>なぜこのAI活用が有効だったのか</h2>
@@ -691,7 +830,7 @@ def write_article_html(article, candidate, date_str, article_filename):
     <h2>この事例から学べること</h2>
     {paragraphize(article.lessons)}
 
-    <h2>日本のスモールビジネスならどう応用できる？</h2>
+    <h2>自分で作るなら？・どう応用できる？</h2>
     {paragraphize(article.application_ideas)}
 
     <h2>確認できない点・注意点</h2>
@@ -749,23 +888,23 @@ def write_index_html(log):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AI Small Business Daily</title>
-<meta name="description" content="AIを活用して成果を生み出す世界のスモールビジネス事例を紹介します。">
+<meta name="description" content="仕事や暮らしで再現・応用できるAIワークフローを紹介します。">
 <style>{BASE_CSS}</style>
 </head>
 <body>
 <header class="site-header">
   <div class="wrap">
     <p class="brand">AI SMALL BUSINESS DAILY</p>
-    <p class="tagline">AIを活用して成果を生み出す、小さなビジネスの事例集。</p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
   </div>
 </header>
 
 <main class="wrap">
   <section class="card">
-    <h1>小さなビジネスの<br>AI活用を、毎日のヒントに。</h1>
+    <h1>真似できるAI活用を、<br>毎日のヒントに。</h1>
     <p>
-      世界のスモールビジネスから、AIを実際の事業に取り入れ、
-      売上・顧客獲得・コスト削減などにつなげている事例を紹介します。
+      世界の実践例から、入力→AI処理→出力が見える具体的なワークフローを選び、
+      個人や中小企業でも再現・応用できる形で紹介します。
     </p>
   </section>
 
@@ -825,7 +964,7 @@ def send_pushover(article, article_url):
 # ============================================================
 
 def main():
-    print("=== AI Small Business Daily ===")
+    print("=== AI Practical Workflow Daily ===")
 
     log = load_log()
     print(f"過去ログ: {len(log)}件")
@@ -834,19 +973,38 @@ def main():
     print(f"未使用候補: {len(candidates)}件")
 
     if not candidates:
-        raise RuntimeError("未使用候補がありません。")
+        print("未使用候補がありません。本日は記事を作成しません。")
+        return None
 
     for i, item in enumerate(candidates):
-        print(f"[{i}] score={item['revenue_score']} {item['title']}")
+        print(f"[{i}] workflow_score={item['workflow_score']} {item['title']}")
 
     candidate, selection_reason = select_case(candidates, log)
 
-    print(f"\n選択記事: {candidate['title']}")
+    print(f"\n仮選択記事: {candidate['title']}")
     print(candidate["url"])
-    print(f"選定理由: {selection_reason}")
+    print(f"仮選定理由: {selection_reason}")
 
     source_text = fetch_article_text(candidate["url"])
     print(f"取得本文文字数: {len(source_text)}")
+
+    evaluation = evaluate_case(candidate, source_text, log)
+    print(f"採用判定: {evaluation.adopt}")
+    print(f"総合スコア: {evaluation.total_score}/100")
+    print(
+        "内訳: "
+        f"具体性={evaluation.specificity_score}/25, "
+        f"再現性={evaluation.reproducibility_score}/25, "
+        f"実用性={evaluation.usefulness_score}/25, "
+        f"新規性={evaluation.novelty_score}/15, "
+        f"信頼性={evaluation.reliability_score}/10"
+    )
+    print(f"ワークフロー: {evaluation.workflow_signature}")
+    print(f"判定理由: {evaluation.reason}")
+
+    if not evaluation.adopt:
+        print("基準を満たさないため、本日は記事を生成・保存・通知しません。")
+        return None
 
     article = generate_article(candidate, source_text)
 
@@ -858,7 +1016,6 @@ def main():
     pages_base_url = get_pages_base_url()
     article_url = f"{pages_base_url}/articles/{article_filename}"
 
-    # 先にHTMLとログを生成
     write_article_html(
         article,
         candidate,
@@ -877,6 +1034,9 @@ def main():
         "article_url": article_url,
         "search_query": candidate["query"],
         "selection_reason": selection_reason,
+        "adoption_score": evaluation.total_score,
+        "workflow_signature": evaluation.workflow_signature,
+        "evaluation_reason": evaluation.reason,
     }
 
     # 同日の手動再実行時は同じ日付の記事を置き換える
@@ -891,9 +1051,7 @@ def main():
 
     print(f"記事生成完了: {article_url}")
 
-    # IMPORTANT:
-    # GitHub Pagesへの実際の反映は、このPython終了後に
-    # workflowがcommit/pushして行う。
+    # GitHub Pagesへの実際の反映は、このPython終了後にworkflowがcommit/pushして行う。
     # Pushover通知は workflow 側から --notify-only で再実行する。
     return article_url
 
@@ -902,9 +1060,16 @@ def notify_only():
     log = load_log()
 
     if not log:
-        raise RuntimeError("通知対象の記事ログがありません。")
+        print("通知対象の記事ログがありません。通知しません。")
+        return
 
     latest = log[-1]
+    today = now_jst().strftime("%Y-%m-%d")
+
+    # 本日新しい記事が採用されなかった場合、前日の記事を再通知しない
+    if latest.get("date") != today:
+        print("本日採用された新規記事はありません。Pushover通知をスキップします。")
+        return
 
     class MinimalArticle:
         headline = latest.get("headline", "今日のAI活用事例")
@@ -913,6 +1078,7 @@ def notify_only():
         MinimalArticle(),
         latest["article_url"],
     )
+
 
 
 if __name__ == "__main__":
