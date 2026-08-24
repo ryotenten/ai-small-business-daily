@@ -36,6 +36,7 @@ MAX_CANDIDATES = 20
 PAST_LOG_LIMIT = 100
 MAX_SOURCE_CHARS = 18000
 MIN_ADOPTION_SCORE = 70
+TOP_CANDIDATES_TO_EVALUATE = 5
 
 REQUEST_HEADERS = {
     "User-Agent": (
@@ -73,8 +74,8 @@ SEARCH_QUERIES = [
 # OpenAI Structured Outputs
 # ============================================================
 
-class SelectedCase(BaseModel):
-    selected_id: int
+class ShortlistSelection(BaseModel):
+    selected_ids: list[int]
     reason: str
 
 
@@ -84,7 +85,7 @@ class CaseEvaluation(BaseModel):
     specificity_score: int
     reproducibility_score: int
     usefulness_score: int
-    novelty_score: int
+    applicability_score: int
     reliability_score: int
     workflow_signature: str
     reason: str
@@ -237,7 +238,17 @@ WORKFLOW_KEYWORDS = [
     "workflow", "automate", "automation", "integrate", "integration",
     "api", "python", "zapier", "make.com", "n8n", "gmail", "slack",
     "notion", "spreadsheet", "excel", "google sheets", "extract",
-    "classify", "summarize", "agent", "pipeline", "process", "saved time"
+    "classify", "agent", "pipeline", "process", "saved time",
+    "i automated", "i built", "how i use", "case study", "hours saved",
+    "before and after", "before/after"
+]
+
+# 比較記事・SEO記事・一般論は、実践ワークフローである可能性が低いため減点する。
+SEO_LIKE_KEYWORDS = [
+    "best ai", "best tools", "top 5", "top 10", "top 20",
+    "platforms", "what is", "ultimate guide", "complete guide",
+    "tools for", "tested & compared", "tested and compared",
+    "comparison", "buyers guide", "buyer's guide"
 ]
 
 
@@ -245,7 +256,10 @@ def workflow_score(candidate):
     text = (
         candidate.get("title", "") + " " + candidate.get("snippet", "")
     ).lower()
-    return sum(1 for word in WORKFLOW_KEYWORDS if word in text)
+
+    positive = sum(1 for word in WORKFLOW_KEYWORDS if word in text)
+    penalty = sum(2 for word in SEO_LIKE_KEYWORDS if word in text)
+    return positive - penalty
 
 
 def get_candidates(log):
@@ -296,7 +310,8 @@ def get_candidates(log):
 # OpenAI：候補選定
 # ============================================================
 
-def select_case(candidates, log):
+def select_cases(candidates, log):
+    """検索結果だけを使い、本文確認する有望候補を最大5件に絞る。"""
     if not candidates:
         raise RuntimeError("未使用の記事候補が見つかりませんでした。")
 
@@ -318,7 +333,8 @@ URL: {item['url']}
     ) or "まだありません。"
 
     prompt = f"""
-以下のSerpAPI検索結果から、本文を詳しく確認する価値が最も高い候補を1件だけ選んでください。
+以下のSerpAPI検索結果から、本文を詳しく確認する価値が高い候補を
+最大{TOP_CANDIDATES_TO_EVALUATE}件、優先順位順に選んでください。
 
 目的は「AIを導入した会社」を集めることではありません。
 読者自身が仕事や日常生活で真似・再現・応用できる、具体的なAIワークフローを集めることです。
@@ -327,20 +343,23 @@ URL: {item['url']}
 - 入力 → AI処理 → 出力 → 人間の最終作業、の流れが想像できる
 - AIを何に使ったかが具体的
 - 個人、中小企業、少人数チームでも再現できそう
-- Gmail、Excel、Google Sheets、PDF、Slack、Notion、Python、API、Zapier、Make、GitHub Actions等との組み合わせが分かる
+- Gmail、Excel、Google Sheets、PDF、Slack、Notion、Python、API、Zapier、Make、n8n、GitHub Actions等との組み合わせが分かる
 - 時間削減、ミス削減、品質向上、顧客対応改善など実務上の価値がある
+- 一つの仕組みから他の業務・生活にも応用できそう
 - 大企業の事例でも、ワークフロー自体を小規模に再現できるなら候補にしてよい
 - 仕事だけでなく個人生活で役立つ実践例も可
 
-優先しない候補:
+強く優先しない候補:
+- 「Best tools」「Top 10」「What is ...」「comparison」などの比較・SEO記事
 - AI業界ニュース、モデル発表、株価、資金調達、市場規模
 - 「AIを導入した」だけで具体的な使い方が分からないもの
 - 単なる製品PR
-- 一般的な文章生成・要約だけで、新しい実践上の工夫がないもの
+- 一般的な文章生成・要約だけのもの
 - 過去事例と本質的に同じワークフロー
 
-この段階では検索結果だけなので、最終的な採用判定はしません。
-「本文を読めば有用な具体例が見つかりそうか」で1件を選んでください。
+この段階では検索結果だけなので、最終採用判定はしません。
+「本文を読めば有用な具体例が見つかりそうか」で候補を選んでください。
+selected_ids には候補IDを重複なく、優先順位順に最大{TOP_CANDIDATES_TO_EVALUATE}件入れてください。
 URLは新しく作らないでください。
 
 過去に保存した事例:
@@ -357,24 +376,35 @@ URLは新しく作らないでください。
                 "role": "system",
                 "content": (
                     "あなたは実践的なAIワークフローを発見するリサーチャーです。"
-                    "企業規模や売上ニュースより、具体性・再現性・実用性を重視してください。"
+                    "検索結果だけで断定せず、本文確認する価値の高い候補を複数選んでください。"
                 ),
             },
             {"role": "user", "content": prompt},
         ],
-        text_format=SelectedCase,
+        text_format=ShortlistSelection,
         store=False,
     )
 
     result = response.output_parsed
-
     if result is None:
-        raise RuntimeError("OpenAIから選定結果を取得できませんでした。")
+        raise RuntimeError("OpenAIから候補選定結果を取得できませんでした。")
 
-    if not 0 <= result.selected_id < len(candidates):
-        raise RuntimeError(f"不正な候補ID: {result.selected_id}")
+    valid_ids = []
+    seen = set()
+    for candidate_id in result.selected_ids:
+        if not 0 <= candidate_id < len(candidates):
+            continue
+        if candidate_id in seen:
+            continue
+        seen.add(candidate_id)
+        valid_ids.append(candidate_id)
+        if len(valid_ids) >= TOP_CANDIDATES_TO_EVALUATE:
+            break
 
-    return candidates[result.selected_id], result.reason
+    if not valid_ids:
+        raise RuntimeError("本文確認対象となる有効な候補IDがありませんでした。")
+
+    return [candidates[i] for i in valid_ids], result.reason
 
 
 # ============================================================
@@ -479,9 +509,10 @@ URL: {candidate['url']}
 3. 実用性 0～25点
 時間削減、ミス削減、品質向上、顧客対応改善、意思決定改善などにつながるか。
 
-4. 新規性 0～15点
-単純な文章生成・要約・一般的なチャット利用を超える発見があるか。
-過去事例と本質的に同じワークフローなら大きく減点する。
+4. 応用可能性 0～15点
+このワークフローの考え方を、別の仕事・業種・個人生活にも横展開しやすいか。
+珍しさそのものは重視しない。既視感があっても、具体的で真似しやすく応用範囲が広ければ高得点にしてよい。
+ただし、過去事例と本質的に同じワークフローなら重複として減点する。
 
 5. 情報信頼性 0～10点
 実際の使い方が本文から確認でき、単なる広告や憶測に偏っていないか。
@@ -523,7 +554,7 @@ workflow_signature は、企業名を使わず、ワークフローの本質を�
         result.specificity_score
         + result.reproducibility_score
         + result.usefulness_score
-        + result.novelty_score
+        + result.applicability_score
         + result.reliability_score
     )
     result.total_score = calculated
@@ -979,32 +1010,81 @@ def main():
     for i, item in enumerate(candidates):
         print(f"[{i}] workflow_score={item['workflow_score']} {item['title']}")
 
-    candidate, selection_reason = select_case(candidates, log)
+    shortlisted, shortlist_reason = select_cases(candidates, log)
 
-    print(f"\n仮選択記事: {candidate['title']}")
-    print(candidate["url"])
-    print(f"仮選定理由: {selection_reason}")
+    print(f"\n本文確認候補: {len(shortlisted)}件")
+    print(f"候補選定理由: {shortlist_reason}")
 
-    source_text = fetch_article_text(candidate["url"])
-    print(f"取得本文文字数: {len(source_text)}")
+    evaluated = []
 
-    evaluation = evaluate_case(candidate, source_text, log)
-    print(f"採用判定: {evaluation.adopt}")
-    print(f"総合スコア: {evaluation.total_score}/100")
-    print(
-        "内訳: "
-        f"具体性={evaluation.specificity_score}/25, "
-        f"再現性={evaluation.reproducibility_score}/25, "
-        f"実用性={evaluation.usefulness_score}/25, "
-        f"新規性={evaluation.novelty_score}/15, "
-        f"信頼性={evaluation.reliability_score}/10"
-    )
-    print(f"ワークフロー: {evaluation.workflow_signature}")
-    print(f"判定理由: {evaluation.reason}")
+    for rank, candidate in enumerate(shortlisted, start=1):
+        print("\n" + "=" * 60)
+        print(f"候補{rank}: {candidate['title']}")
+        print(candidate["url"])
 
-    if not evaluation.adopt:
-        print("基準を満たさないため、本日は記事を生成・保存・通知しません。")
+        source_text = fetch_article_text(candidate["url"])
+        print(f"取得本文文字数: {len(source_text)}")
+
+        # 本文が十分取れなくてもevaluate_case側でsnippetを踏まえて不採用判定できる。
+        # 1件の取得失敗で全体を止めない。
+        try:
+            evaluation = evaluate_case(candidate, source_text, log)
+        except Exception as e:
+            print(f"採用評価に失敗したためこの候補をスキップします: {e}")
+            continue
+
+        print(f"採用判定: {evaluation.adopt}")
+        print(f"総合スコア: {evaluation.total_score}/100")
+        print(
+            "内訳: "
+            f"具体性={evaluation.specificity_score}/25, "
+            f"再現性={evaluation.reproducibility_score}/25, "
+            f"実用性={evaluation.usefulness_score}/25, "
+            f"応用可能性={evaluation.applicability_score}/15, "
+            f"信頼性={evaluation.reliability_score}/10"
+        )
+        print(f"ワークフロー: {evaluation.workflow_signature}")
+        print(f"判定理由: {evaluation.reason}")
+
+        evaluated.append({
+            "candidate": candidate,
+            "source_text": source_text,
+            "evaluation": evaluation,
+        })
+
+    if not evaluated:
+        print("評価できる候補がありませんでした。本日は記事を生成しません。")
         return None
+
+    # 採用可の候補だけに絞り、総合点が最も高いものを選ぶ。
+    adopted = [item for item in evaluated if item["evaluation"].adopt]
+
+    print("\n" + "=" * 60)
+    print("本日の評価結果")
+    for item in sorted(evaluated, key=lambda x: x["evaluation"].total_score, reverse=True):
+        ev = item["evaluation"]
+        print(
+            f"- {ev.total_score:3d}点 / {'採用' if ev.adopt else '不採用'} / "
+            f"{item['candidate']['title']}"
+        )
+
+    if not adopted:
+        best_rejected = max(evaluated, key=lambda x: x["evaluation"].total_score)
+        print(
+            f"最高点は {best_rejected['evaluation'].total_score}/100 でした。"
+            "70点以上の候補がないため、本日は記事を生成・保存・通知しません。"
+        )
+        return None
+
+    best = max(adopted, key=lambda x: x["evaluation"].total_score)
+    candidate = best["candidate"]
+    source_text = best["source_text"]
+    evaluation = best["evaluation"]
+
+    print("\n採用記事を決定しました。")
+    print(f"タイトル: {candidate['title']}")
+    print(f"総合スコア: {evaluation.total_score}/100")
+    print(f"ワークフロー: {evaluation.workflow_signature}")
 
     article = generate_article(candidate, source_text)
 
@@ -1033,10 +1113,17 @@ def main():
         "article_filename": article_filename,
         "article_url": article_url,
         "search_query": candidate["query"],
-        "selection_reason": selection_reason,
+        "selection_reason": shortlist_reason,
         "adoption_score": evaluation.total_score,
         "workflow_signature": evaluation.workflow_signature,
         "evaluation_reason": evaluation.reason,
+        "score_detail": {
+            "specificity": evaluation.specificity_score,
+            "reproducibility": evaluation.reproducibility_score,
+            "usefulness": evaluation.usefulness_score,
+            "applicability": evaluation.applicability_score,
+            "reliability": evaluation.reliability_score,
+        },
     }
 
     # 同日の手動再実行時は同じ日付の記事を置き換える
