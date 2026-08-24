@@ -159,12 +159,22 @@
     "date": "2026-08-24",
     "date_display": "2026.08.24",
     "company_name": "記事から確認できません",
-    "headline": "U.S.小規模事業者に広がる生成AI活用――米国商工会議所調査にみる成長と効率化の事例",
-    "title": "AI Adoption Fuels Small Business Growth and Optimism",
-    "url": "https://lexingtoninstitute.org/ai-adoption-fuels-small-business-growth-and-optimism/",
+    "headline": "Medium投稿の実績集計を、Python・OpenAI・Notionの3ツールで自動化したワークフロー",
+    "title": "How I Built a Fully Automated Workflow Using Just 3 AI Tools",
+    "url": "https://python.plainenglish.io/how-i-built-a-fully-automated-workflow-using-just-3-ai-tools-7df0d77a92b1",
     "article_filename": "2026-08-24.html",
     "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-24.html",
-    "search_query": "\"small business\" \"generative AI\" revenue",
-    "selection_reason": "検索結果だけで判断すると、候補3『AI Adoption Fuels Small Business Growth and Optimism』が最も事例性と小規模事業者らしさに近いです。説明文に『2025年に58%の小規模事業者が生成AIを利用』とあり、スモールビジネス当事者の利用実態を示しています。ほかの候補はOpenAIやSalesforceなど大企業向けの一般論・製品紹介・統計記事が中心で、実在する小規模事業者の具体的な活用成果（売上増、受注増、コスト削減など）が読み取れません。厳密には単一事業者の成功事例ではありませんが、与えられた候補の中ではスモールビジネスに最も近い根拠があります。"
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "本文確認する価値が高い順に、具体的な入力→AI処理→出力→人間の最終作業が想像しやすく、個人/小規模でも再現しやすいものを優先しました。2はn8nでAIエージェントを組むノーコード実装、8はメールを使った日次優先順位付けのワークフロー、3はデータ取得から自動化までの構成が見込めます。14は業務の複数タスクをChatGPTで置き換える実例で応用範囲が広く、0はChatGPT・Zapier・Airtableの組み合わせが明示されており、実務フローとして確認価値があります。",
+    "adoption_score": 83,
+    "workflow_signature": "定期取得した記事実績データ→AIで要約・傾向分析→タスク自動登録",
+    "evaluation_reason": "本文から、Mediumの実績データをPythonで取得し、OpenAIで週次要約・傾向分析を行い、Notion APIで次のアクションをタスク登録する流れが具体的に確認できる。入力・AI処理・出力が明確で、個人事業や中小企業でも同型の仕組みを再現しやすい。用途はMedium分析に限定されるが、構造としてはSNS運用、営業実績、学習ログ、EC売上、問い合わせ件数などへ横展開しやすい。定量効果や実装詳細は限定的で、記事自体はやや説明寄りだが、実運用しているワークフローとしては十分採用価値がある。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 6
+    }
   }
 ]
