@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例は、日々の運用で発生する定型的な事務作業をAIでつなぎ、メール処理と文書作成を半自動化したワークフローです。受信したGmailの内容をAIが要約してGoogle Sheetsに記録し、その後、シートに行が追加されたらAIが構造化されたGoogle Docsの下書きを作成します。結果として、既">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.08.26</div>
+    <h1>Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>業務自動化、文書作成支援、メール処理<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、日々の運用で発生する定型的な事務作業をAIでつなぎ、メール処理と文書作成を半自動化したワークフローです。受信したGmailの内容をAIが要約してGoogle Sheetsに記録し、その後、シートに行が追加されたらAIが構造化されたGoogle Docsの下書きを作成します。結果として、既存のGmail・Google Sheets・Google Docsをそのまま使いながら、記録と文書化の手間を減らす流れになっています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>元記事では、運用チームが繰り返し発生する管理業務に多くの時間を取られていたことが課題として示されています。特に、メール内容を確認して要点を整理し、記録し、さらに文書にまとめる一連の作業が手作業だったことが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【記事で確認できるフロー】</p><p>1. 入力</p><p>- ラベル付きのGmailメールが届く</p><p>- その後、Google Sheetsに新しい行が追加される</p><p>2. AIによる処理</p><p>- 受信メールの内容を要約する</p><p>- メールやシートの内容から、文書化に必要なキー情報を整理する</p><p>- Google Docs用の構造化された下書きを生成する</p><p>3. 次のシステム・処理</p><p>- 要約結果をGoogle Sheetsへ記録する</p><p>- シートの新規行をトリガーにして、Google Docsを作成する</p><p>- 作成したドキュメントのリンクをスプレッドシートへ戻す</p><p>4. 出力</p><p>- 要約済みのメール情報がSheetsに残る</p><p>- Google Docsの下書きが保存される</p><p>- ドキュメントリンクがシートに記録される</p><p>5. 人間による確認・最終作業</p><p>- 記事からは、どの段階で人間が確認するかは確認できません</p><p>- ただし、文書の最終確定や内容チェックは人手で行う運用が自然です</p><p>【AIが担っている役割】</p><p>- 要約</p><p>- キー情報の抽出</p><p>- 構造化された文章の生成</p><p>- 既存業務フローの間をつなぐ補助</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上や削減時間の数値は示されていません。確認できる効果としては、記録作業と文書作成の手間が減り、ドキュメント整理がしやすくなり、既存ツールを変えずに業務を進めやすくなった点が挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、メール→表計算→文書作成という順序が明確で、AIの得意な要約・抽出・下書き生成をそのまま当てはめやすいからだと考えられます。さらに、GmailとGoogle Workspaceという既存ツールのまま連携しているため、現場が新しい操作を覚える負担が小さい点も効いているはずです。これは分析であり、記事本文で明示された事実ではありません。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- まずは“読む・まとめる・書く”のような定型作業をAIに任せると再現しやすい</p><p>- いきなり全部自動化するより、メール処理→台帳記録→文書下書きのように段階をつなぐと組みやすい</p><p>- 既存ツールを残したままAIを挟むと、導入の心理的ハードルが下がる</p><p>- AIの出力は最終成果物ではなく、下書きや整理済みデータとして使うと運用しやすい</p><p>- “何を入力にし、どこへ保存し、誰が最後に確認するか”を先に決めると破綻しにくい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら：基本構成】</p><p>1. データを取得</p><p>- Gmailの特定ラベル付きメール</p><p>- Googleフォームの回答</p><p>- Slackの特定チャンネル投稿</p><p>- CSVやGoogle Sheetsの新規行</p><p>2. AIへ渡す</p><p>- OpenAI APIやChatGPTに本文、件名、送信者、日時、必要ならカテゴリ候補を渡す</p><p>3. AIで処理</p><p>- 要約</p><p>- 重要項目の抽出</p><p>- 種別分類</p><p>- 文書の下書き生成</p><p>- タスク化の提案</p><p>4. 保存先へ出力</p><p>- Google SheetsやExcelに記録</p><p>- NotionやAirtableに台帳化</p><p>- Google Docsに下書き保存</p><p>- Slackやメールで通知</p><p>5. 人間が確認</p><p>- 重要メール、対外文書、例外処理だけを確認</p><p>- 必要なら修正して送信や確定を行う</p><p>【仕事への応用例】</p><p>1. 問い合わせメールの一次整理</p><p>- 入力: Gmailの問い合わせメール</p><p>- AI処理: 顧客名、要件、緊急度、担当候補を抽出して要約</p><p>- 出力: Google Sheetsに記録し、Slackで担当者へ通知</p><p>- 人間: 返信内容を確認して送信</p><p>2. 会議メモから議事録下書き</p><p>- 入力: 会議メモ、文字起こし、Zoom/Meetの議事メモ</p><p>- AI処理: 決定事項、宿題、未決事項を整理して議事録形式に整形</p><p>- 出力: Google DocsやNotionに下書き保存</p><p>- 人間: 最終表現を整えて配布</p><p>3. 稟議・申請の下書き作成</p><p>- 入力: 申請内容の箇条書き、過去の申請テンプレート</p><p>- AI処理: 目的、背景、期待効果、リスクを定型文にまとめる</p><p>- 出力: Google DocsやWordの下書き</p><p>- 人間: 事実確認と承認</p><p>4. 日報・週報の自動整形</p><p>- 入力: Slack投稿、作業ログ、GitHubコミット履歴</p><p>- AI処理: 進捗、課題、次アクションをまとめる</p><p>- 出力: NotionやGoogle Docsへ保存</p><p>- 人間: 内容を確認して提出</p><p>【プライベート応用例】</p><p>1. 重要メールの要約保管</p><p>- 入力: 受信メール</p><p>- AI処理: 契約、請求、予約、締切だけを抽出</p><p>- 出力: Google Sheetsに保存し、期限が近いものを通知</p><p>- 人間: 必要な対応だけ実施</p><p>2. 買い物メモの整理</p><p>- 入力: 家族LINEやメモアプリの買い物内容</p><p>- AI処理: 食品、日用品、家電などに分類</p><p>- 出力: Google SheetsやNotionの買い物表へ反映</p><p>- 人間: 買い物時に確認</p><p>3. 旅行準備の下書き</p><p>- 入力: 行き先、日程、予約メール</p><p>- AI処理: 持ち物、移動、宿泊情報を整理して旅程表を作成</p><p>- 出力: Google DocsやNotionに保存</p><p>- 人間: 最終チェック</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、AIの具体的なプロンプト、例外処理、承認フロー、エラー時の挙動は確認できません。ラベル付きメールだけを対象にしているため、未分類メールをどう扱うかも不明です。実運用では、個人情報や機密情報をAIに渡す範囲、誤要約による記録ミス、文書の自動生成内容の正確性を人間が確認する必要があります。Google Workspaceやn8n、OpenAIの設定によっては権限管理やAPIコストも検討が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>AI Automates Gmail and Google Docs Workflow</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/erhomoseni-oyibo-717510215_aiautomation-n8n-openai-activity-7490024731509944320-rM2f"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/erhomoseni-oyibo-717510215_aiautomation-n8n-openai-activity-7490024731509944320-rM2f
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

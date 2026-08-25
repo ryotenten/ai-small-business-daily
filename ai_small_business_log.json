@@ -198,5 +198,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-08-26",
+    "date_display": "2026.08.26",
+    "company_name": "記事から確認できません",
+    "headline": "Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー",
+    "title": "AI Automates Gmail and Google Docs Workflow",
+    "url": "https://www.linkedin.com/posts/erhomoseni-oyibo-717510215_aiautomation-n8n-openai-activity-7490024731509944320-rM2f",
+    "article_filename": "2026-08-26.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-26.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "本文確認の価値が高い順に選びました。1は検索結果説明だけでも、Gmailの定期チェック→AI→自動メール送信という入力/処理/出力の流れが具体的で、個人・小規模でも再現しやすそうです。0はn8n、Gmail、Google Sheets、Slack、AI分類が明示され、実務ワークフローとして最も応用範囲が広そうです。4もGmail、Google Docs、Sheets、OpenAIの組み合わせが見え、メール/文書処理の自動化例として具体性があります。3はGoogle Workspace内で添付保存やSheets記録まで含むため、本文に具体的な業務フローがあれば再現性が高い可能性があります。2は比較・解説寄りですが、Google Sheets中心の自動化パターンや具体ユースケースが本文に入っている可能性があるため、補欠として候補に入れました。",
+    "adoption_score": 84,
+    "workflow_signature": "ラベル付きメール→AIで要約・項目抽出→スプレッドシート記録／新規行→AIで構造化文書作成→文書リンクをシートに保存",
+    "evaluation_reason": "本文から、入力（ラベル付きGmailメール／シートの新規行）、AI処理（要約、構造化）、出力（Google Sheets記録、Google Docs生成、リンク保存）まで一連の流れが具体的に確認できる。n8n・OpenAI・Gmail・Sheets・Docsという一般的な構成で再現しやすく、運用上はメール処理の一次整理と文書化の自動化として実用性が高い。用途は問い合わせ、申請、議事録下書き、案件メモ、SOP生成などへ横展開しやすい。定量成果はないが、実装内容が本文で確認できるため信頼性は一定ある。既保存の『メール→AIで抽出・要約→シート記録』系と近いが、本件はさらに『シート行→文書生成→リンク返却』まで含むため後続処理が異なり、別ワークフローとして採用可能。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 23,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 6
+    }
   }
 ]
