@@ -382,7 +382,7 @@ URLは新しく作らないでください。
             {"role": "user", "content": prompt},
         ],
         text_format=ShortlistSelection,
-        store=False,
+        store=True,
     )
 
     result = response.output_parsed
@@ -568,7 +568,7 @@ workflow_signature は、企業名を使わず、次の形でワークフロー�
             {"role": "user", "content": prompt},
         ],
         text_format=CaseEvaluation,
-        store=False,
+        store=True,
     )
 
     result = response.output_parsed
@@ -703,7 +703,7 @@ limitations:
             {"role": "user", "content": prompt},
         ],
         text_format=ArticleData,
-        store=False,
+        store=True,
     )
 
     article = response.output_parsed
