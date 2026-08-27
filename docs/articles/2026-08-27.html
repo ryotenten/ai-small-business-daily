@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPTで文書作成・会議メモ・ファイル整理を自動化した個人ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事では、面倒だが毎回発生する作業をAIで置き換え、作業の“前処理”を減らしていく流れが紹介されています。対象は、文書の書き直し、会議メモの整理、散らかったファイルの分類、PDFの検索性向上などです。ChatGPTは単なる文章生成だけでなく、分類、要約、検索補助の役割も担っています。">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.08.27</div>
+    <h1>ChatGPTで文書作成・会議メモ・ファイル整理を自動化した個人ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>個人の業務効率化、Python×ChatGPTによる自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事では、面倒だが毎回発生する作業をAIで置き換え、作業の“前処理”を減らしていく流れが紹介されています。対象は、文書の書き直し、会議メモの整理、散らかったファイルの分類、PDFの検索性向上などです。ChatGPTは単なる文章生成だけでなく、分類、要約、検索補助の役割も担っています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>導入前は、同じような文章を何度も書き直すこと、会議後のメモ整理、PDFや資料が散らばったフォルダの整理、必要な情報をファイル内から探し出すことに時間と精神的負担がかかっていました。記事では、これらが“本業そのもの”ではなく、仕事を進めるための雑務になっていたと述べられています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【文書の書き直し】</p><p>入力: ざっくりしたメモや下書き文</p><p>↓</p><p>AIによる処理: ChatGPTに送って、用途に合う整った文章へリライト</p><p>↓</p><p>次のシステム・処理: Pythonの小さな関数からChatGPTを呼び出す</p><p>↓</p><p>出力: 仕上がった文書案</p><p>↓</p><p>人間による確認・最終作業: 内容の正確性や文体を確認して使う</p><p>【会議メモの整理】</p><p>入力: 会議の文字起こしやメモ</p><p>↓</p><p>AIによる処理: ChatGPTにフォーマット用プロンプトを与え、決定事項・アクションアイテム・課題を整理</p><p>↓</p><p>次のシステム・処理: 既存の会議記録をAIに渡す</p><p>↓</p><p>出力: 見やすく整形された会議サマリー</p><p>↓</p><p>人間による確認・最終作業: 重要事項の抜け漏れや誤解がないか確認</p><p>【ファイル整理】</p><p>入力: PDF、研究資料、ドキュメント、ダウンロードファイルなどの大量ファイル</p><p>↓</p><p>AIによる処理: ファイル内容をもとに分類先カテゴリを判断</p><p>↓</p><p>次のシステム・処理: ローカルで分類スクリプトを実行</p><p>↓</p><p>出力: API、DevOps、モデルアーキテクチャ、DBチューニングなどのカテゴリ別フォルダ</p><p>↓</p><p>人間による確認・最終作業: 分類の妥当性を確認し、必要なら手動で修正</p><p>【PDF検索】</p><p>入力: PDF本文、ページ番号、ブロック番号、ファイル名などのメタデータ</p><p>↓</p><p>AIによる処理: 埋め込みを使って意味検索し、関連箇所を抽出</p><p>↓</p><p>次のシステム・処理: ローカル検索インデックスに保存</p><p>↓</p><p>出力: 質問に対して該当ページや関連箇所を返す検索結果</p><p>↓</p><p>人間による確認・最終作業: 原文を開いて最終確認</p><p>※この記事で確認できるのは、PythonとChatGPTを組み合わせた個人用の自動化であり、細かな実装環境や使ったAPI名の詳細は記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で確認できる効果として、文書作成の手間が約70%減ったと述べられています。また、180件以上のファイルを1分未満で分類できたこと、PDF検索で必要な情報へ素早くたどり着けるようになったことが挙げられています。会議メモの整理も、手書きより見やすい形で毎日使えるようになったとされています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、重いAIシステムを作るのではなく、毎回くり返す小さな手作業を1つずつ削った点にあります。入力と出力の形がはっきりしている作業ほど自動化しやすく、またローカルでファイル整理や検索までつなげたことで、単発の要約ではなく“作業の流れ”全体を軽くできたと考えられます。これは記事の事実をもとにした分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・最初から大きな仕組みを作らず、1つの反復作業だけを自動化する</p><p>・AIは“賢い相談相手”よりも、分類・要約・整形・検索の実務担当として使うと効果が出やすい</p><p>・人間が判断しやすいように、AI出力をそのまま使うのではなく、決定事項やカテゴリなどの形に整える</p><p>・ファイルや会議録のように、後から見返す情報ほどAI検索との相性がよい</p><p>・速度だけでなく、考える負担を減らすことが継続利用につながる</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【仕事への応用案1: 会議メモの自動整理】</p><p>1. Zoom/Teamsの文字起こしを取得</p><p>2. ChatGPTまたはOpenAI APIに渡す</p><p>3. 「決定事項」「担当者」「期限」「未解決事項」に分けて整形</p><p>4. Notion、Google Docs、Excel、または社内Wikiに保存</p><p>5. Slackやメールで関係者へ通知</p><p>6. 人間が期限や責任者を最終確認</p><p>【仕事への応用案2: 問い合わせメールの下書き生成】</p><p>1. GmailやOutlookの受信メールを取得</p><p>2. 件名、要点、顧客名、過去履歴をAIへ渡す</p><p>3. AIが返信案を作成し、緊急度や論点ごとに分類</p><p>4. 下書きをGmailに戻す</p><p>5. 担当者が事実確認して送信</p><p>【仕事への応用案3: 見積・提案書のたたき台作成】</p><p>1. 顧客要望、過去案件、商品説明を取り込む</p><p>2. AIに「構成案」「見出し」「注意点」を作らせる</p><p>3. WordやGoogle Docsへ出力</p><p>4. 営業担当が金額、条件、表現を修正</p><p>5. 最終版をPDF化して送付</p><p>【仕事への応用案4: 資料・PDFの社内検索】</p><p>1. SharePoint、Google Drive、Dropbox、ローカルフォルダからPDFや資料を収集</p><p>2. OCRや本文抽出を行い、AIで埋め込み化</p><p>3. ファイル名、更新日、ページ番号をメタデータとして保存</p><p>4. 検索画面やSlackボットで質問を受ける</p><p>5. AIが該当資料とページを返し、担当者が原文確認</p><p>【個人利用の応用案1: 家計の領収書整理】</p><p>1. スマホで撮った領収書画像を保存</p><p>2. OCRで文字抽出し、AIに支出項目を分類させる</p><p>3. Google Sheetsに日付・店名・金額・カテゴリを記録</p><p>4. 月末に集計し、家計簿へ反映</p><p>5. 人間が不明な項目だけ確認</p><p>【個人利用の応用案2: 読書メモの検索化】</p><p>1. PDF書籍やメモを保存</p><p>2. AIで章ごとに要点を短く要約</p><p>3. NotionやObsidianにタグ付きで保存</p><p>4. 文字検索だけでなく意味検索できる仕組みを作る</p><p>5. 後で「この話どこで読んだ？」をすぐ見つける</p><p>【個人利用の応用案3: 旅行準備のチェックリスト生成】</p><p>1. 行き先、日程、宿泊先、天気予報を入力</p><p>2. AIに持ち物、移動手段、注意点を整理させる</p><p>3. Google Docsやメモアプリに出力</p><p>4. 出発前に人間が不要品や不足品を調整する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、使ったChatGPTの具体的なモデル名、Pythonコードの全体、データの保存方法、セキュリティ対策、誤分類の修正ルールは確認できません。会議メモやファイル整理では、AIの要約漏れや分類ミスが起きうるため、最終確認は人間が必要です。機密文書や個人情報を扱う場合は、クラウド送信の可否や社内ルールを確認してください。また、意味検索は便利ですが、原文の文脈を読まずに結論だけ採用すると誤解につながる可能性があります。</p>
+
+    <h2>参考記事</h2>
+    <p>ChatGPT Turned My Boring Tasks Into Automation Gold</p>
+    <p class="source">
+      <a href="https://ai.plainenglish.io/chatgpt-turned-my-boring-tasks-into-automation-gold-heres-how-a56683c73810"
+         target="_blank" rel="noopener noreferrer">
+        https://ai.plainenglish.io/chatgpt-turned-my-boring-tasks-into-automation-gold-heres-how-a56683c73810
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
