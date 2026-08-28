@@ -242,5 +242,27 @@
       "applicability": 13,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-08-28",
+    "date_display": "2026.08.28",
+    "company_name": "記事から確認できません",
+    "headline": "Excelの表やバラバラな記載をAIで抽出し、分析用データに整えるParabolaのワークフロー",
+    "title": "Extract Excel Data Using AI – Free Template - Parabola.io",
+    "url": "https://parabola.io/tool/how-to-use-ai-to-automatically-extract-your-excel-data",
+    "article_filename": "2026-08-28.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-28.html",
+    "search_query": "\"AI workflow\" Excel automation",
+    "selection_reason": "本文を読む価値が高い順に、具体的な業務フローが見えやすく、再現性がありそうな候補を選びました。9はCSチームのチェック業務自動化で入力→AI処理→出力→人手確認の流れが明確そうです。3はExcelデータ抽出のノーコード実例で、個人・小規模でも応用しやすい可能性があります。0はExcel自動化とプロセス最適化で、業務入力から処理・出力までの実務ワークフローが期待できます。1は毎回使えるExcel+AIワークフローを示唆しており、具体手順があれば再現性が高そうです。2は一般論寄りですが、Generative AI APIを業務自動化に組み込む具体例が含まれる可能性があるため候補に入れました。",
+    "adoption_score": 82,
+    "workflow_signature": "Excelファイルのシート/範囲→AIで値・テキスト・表を抽出し整形→CSV/XLSX出力や下流ツールへ連携",
+    "evaluation_reason": "本文から、入力（Excelファイルのアップロード、シート/範囲指定）、AIの処理（Extract with AIで非構造・半構造データから値・テキスト・表を抽出、列定義や微調整）、出力（抽出データのプレビュー、CSV/XLSX出力、ダウンストリーム連携、スケジュール実行）まで具体的に確認できる。一般的なツールやノーコードでも再現しやすく、請求・経費・在庫・売上など多様な業務へ横展開しやすい。実務上は手作業の転記・整形を減らせるため有用性も高い。信頼性は広告色はあるが手順とFAQが明確で、実装像は十分読み取れる。過去事例の『メール要約→記録→文書生成』などとは入力/処理/出力が異なり、重複とはいえない。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 7
+    }
   }
 ]

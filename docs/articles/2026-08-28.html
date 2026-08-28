@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excelの表やバラバラな記載をAIで抽出し、分析用データに整えるParabolaのワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業でExcelの内容を読み取り、必要な列だけを抜き出して整えるのは時間がかかり、入力ミスも起きやすい作業です。Parabolaのテンプレートは、Excelファイルを取り込み、AIで必要な値や表を抽出し、分析や連携に使える形へ整える流れをノーコードで作れます。記事で確認できるのは、複数シートや不規">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.08.28</div>
+    <h1>Excelの表やバラバラな記載をAIで抽出し、分析用データに整えるParabolaのワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Excelファイルからのデータ抽出・整形・自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業でExcelの内容を読み取り、必要な列だけを抜き出して整えるのは時間がかかり、入力ミスも起きやすい作業です。Parabolaのテンプレートは、Excelファイルを取り込み、AIで必要な値や表を抽出し、分析や連携に使える形へ整える流れをノーコードで作れます。記事で確認できるのは、複数シートや不規則なレイアウトにも対応し、抽出後は自動更新できる点です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、Excel内のテキスト、値、表、半構造化データを手作業で読み取り、抽出し、整形する負担です。複数シート、列見出し、マージセル、レイアウトの揺れがあると、コピー＆ペーストや固定位置の読み取りだけでは扱いにくいことが示されています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>→ ExcelファイルをParabolaのFlowにアップロードし、抽出したいワークシートや範囲を指定する。</p><p>↓</p><p>AIによる処理</p><p>→ 「Extract with AI」ステップが、文脈やパターンを使って必要な値、テキスト文字列、表、半構造化データを抽出する。列見出し、マージセル、表記ゆれのあるレイアウトも解釈対象になる。</p><p>↓</p><p>次のシステム・処理</p><p>→ 追加のAI系変換ステップや通常の変換で、データのクレンジング、標準化、フィールドマッピングを行う。必要に応じて複数シートや複数ファイルを結合する。</p><p>↓</p><p>出力</p><p>→ 抽出・整形されたデータをプレビューし、CSV、XLSX、または下流のツール・データベース・BIプラットフォームへ送る。</p><p>↓</p><p>人間による確認・最終作業</p><p>→ 抽出結果をプレビューで確認し、設定を調整する。レイアウトが変わった場合はシート選択やマッピングを見直す。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上などの数値成果は確認できません。確認できる効果は、手作業のコピー＆ペースト削減、抽出ミスの減少、分析や報告に使えるデータを早く作れること、自動更新により繰り返し作業を減らせることです。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この記事の範囲から考えると、うまく機能する理由は、AIが「固定のセル位置」ではなく「文脈とパターン」で抽出できる点にあります。Excelの見た目が少し崩れても、見出しや周辺情報から必要項目を推定しやすいため、手作業での補正を減らせます。さらに、抽出前後に通常の整形・マッピング工程を挟むことで、AIだけに任せず、業務で使える形まで仕上げやすい構成になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・Excelの処理は、いきなり分析するより先に「抽出」と「整形」を分けると再利用しやすい。</p><p>・AIには全文理解よりも、必要な列や値を抜く役割を持たせると運用しやすい。</p><p>・レイアウトが揺れる実務データは、固定ルールより文脈ベースの抽出が向く。</p><p>・出力先をCSV、XLSX、DB、BIなどに分けておくと、後工程へつなげやすい。</p><p>・自動化しても、最初の設定確認と例外時の見直しは人が担当する前提が重要。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用案</p><p>1. 経費精算一覧の整形</p><p>- 入力: 担当者ごとのExcel経費明細</p><p>- AI処理: 勘定科目、日付、金額、支払先を抽出して分類</p><p>- 出力: CSVまたはGoogle Sheetsに保存</p><p>- 人間作業: 例外明細だけ確認して承認</p><p>2. 営業報告書の集約</p><p>- 入力: 各営業担当が送るExcel報告ファイル</p><p>- AI処理: 商談先、案件名、進捗、次回アクションを抽出</p><p>- 出力: 1つの集計表に統合し、Slackへ更新通知</p><p>- 人間作業: 重要案件の進捗だけ確認</p><p>3. 在庫表の監視</p><p>- 入力: 在庫一覧のExcelファイル</p><p>- AI処理: 商品名、在庫数、発注点を抽出し、低在庫を判定しやすい形に整形</p><p>- 出力: Google SheetsやBIツールへ送信し、必要ならメール通知</p><p>- 人間作業: 発注の最終判断</p><p>4. 請求書・納品書の項目抜き出し</p><p>- 入力: 取引先ごとに形式が違うExcel添付ファイル</p><p>- AI処理: 取引先名、金額、請求日、支払期限を抽出</p><p>- 出力: データベースや会計前処理用の表に保存</p><p>- 人間作業: 不一致項目の確認</p><p>個人利用の応用案</p><p>1. 家計簿の自動整理</p><p>- 入力: 銀行やカードの利用明細Excel</p><p>- AI処理: 店名、カテゴリ、金額を抽出して分類</p><p>- 出力: Google Sheetsの家計簿に反映</p><p>- 人間作業: 迷う支出だけ修正</p><p>2. 複数の旅行見積もり比較</p><p>- 入力: 宿泊・交通の見積もり表</p><p>- AI処理: 日程、料金、条件を抜き出して比較しやすく整形</p><p>- 出力: 比較表を作成</p><p>- 人間作業: 最終的な予約選択</p><p>実装するなら、Parabolaのようなノーコード基盤のほか、PythonでExcelを読み込み、OpenAI APIで項目抽出を行い、結果をGoogle SheetsやSlackへ送る構成でも作れます。自動実行はGitHub ActionsやZapier、Makeでつなぐと運用しやすいです。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できるのは一般的な仕組みまでで、特定企業の導入事例や運用体制は分かりません。AI抽出は便利ですが、元データの個人情報、機密情報、表記ゆれ、誤抽出のリスクがあります。特に列名が曖昧な場合やレイアウト変更が大きい場合は、抽出結果の人手確認が必要です。非常に大きいファイルは分割や絞り込みが必要になる可能性があります。抽出精度や上限値の詳細は記事からは確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>Extract Excel Data Using AI – Free Template - Parabola.io</p>
+    <p class="source">
+      <a href="https://parabola.io/tool/how-to-use-ai-to-automatically-extract-your-excel-data"
+         target="_blank" rel="noopener noreferrer">
+        https://parabola.io/tool/how-to-use-ai-to-automatically-extract-your-excel-data
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
