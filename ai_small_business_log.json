@@ -286,5 +286,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-08-30",
+    "date_display": "2026.08.30",
+    "company_name": "記事から確認できません",
+    "headline": "LinkedIn・Google Maps・記事要約を組み合わせて営業と発信を自動化するAIワークフロー集",
+    "title": "22 AI workflow automation examples you have to try in 2026",
+    "url": "https://www.gumloop.com/blog/ai-workflow-automation-examples",
+    "article_filename": "2026-08-30.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-30.html",
+    "search_query": "\"AI workflow\" automation \"how I\"",
+    "selection_reason": "本文確認の価値が高い順に選びました。1は『production-ready AI pipelines』とあり、実運用の具体ワークフローが出やすいです。6は『22 AI workflow automation examples』で、入力→AI処理→出力の具体例が複数見つかる可能性が高いです。8は業務現場のAIエージェント事例で、実務ワークフローや他ツール連携の記述が期待できます。0はRedditですが、n8n/Make/Zapier/Relevance AIなど実装ツール名が並んでおり、個人・小規模で再現しやすい実践例や学習導線が見つかる可能性があります。7はvacation planningの例があり、メールやAPIを使う具体的なエージェントワークフローの説明に繋がりやすく、仕事・生活両方への応用も期待できます。",
+    "adoption_score": 82,
+    "workflow_signature": "Web/社内データ→AIで調査・要約・文書生成→シート/文書/メール/Slackへ出力",
+    "evaluation_reason": "本文から、実際のワークフローとして『手順を手で整理→AIに計画化→質問で要件詰め→ワークフロービルダーで自動化』という導入法と、複数の具体的な自動化例（リード調査、連絡先補完、SNSコメント抽出、コンテンツ再利用、SEO/競合分析、メール処理など）が確認できる。個別例は営業・マーケ中心だが、抽象化すると『外部/社内データ収集→AIで要約・分類・生成→表やメール、ドキュメントに反映』の形で横展開しやすい。実際のツール連携名と入出力もかなり明示されており、再現性も高い。広告色はあるが、単なる概念論ではなく実装イメージが十分あるため採用可。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 10
+    }
   }
 ]

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LinkedIn・Google Maps・記事要約を組み合わせて営業と発信を自動化するAIワークフロー集 | AI Small Business Daily</title>
+<meta name="description" content="この記事は、AIエージェントやワークフロー自動化を、実務の細かい作業に落とし込む方法をまとめた事例集です。特に、事前の調査・リスト作成・要約・下書き作成のような「毎回同じ手順だが手間がかかる仕事」を、入力→AI処理→出力の流れに分解しています。筆者は、まず手作業で業務手順を書き出し、例外も整理したう">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.08.30</div>
+    <h1>LinkedIn・Google Maps・記事要約を組み合わせて営業と発信を自動化するAIワークフロー集</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>AIワークフロー自動化の事例集（営業、SNS運用、SEO、競合調査、メール対応）<br>
+      <strong>規模：</strong>記事の筆者は solo founder と書いていますが、各事例の実運用組織規模は記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、AIエージェントやワークフロー自動化を、実務の細かい作業に落とし込む方法をまとめた事例集です。特に、事前の調査・リスト作成・要約・下書き作成のような「毎回同じ手順だが手間がかかる仕事」を、入力→AI処理→出力の流れに分解しています。筆者は、まず手作業で業務手順を書き出し、例外も整理したうえで、Claudeに計画を作らせ、最後にワークフロービルダーで自動化する進め方を推奨しています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で繰り返し挙げられている課題は、営業・マーケティング・発信業務で発生する反復作業です。たとえば、LinkedIn会社ページの確認、Google Mapsでの店舗探し、メールアドレスからのプロフィール探索、コメント欄からのリード抽出、記事の再編集、競合投稿の定点観測などに時間がかかっていた、と説明されています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事内の代表例は次のような流れです。</p><p>例1: LinkedIn会社ページから情報取得</p><p>入力: LinkedInの会社URL</p><p>↓</p><p>AI/自動処理: 会社名、説明、業界、Webサイト、規模、本社所在地、設立年、類似企業、最近のニュースを取得・整理</p><p>↓</p><p>次の処理: Google DocsやAirtableに保存可能</p><p>↓</p><p>出力: 会社の要点がまとまったスナップショット</p><p>↓</p><p>人間による確認: 営業前調査や競合確認に使う</p><p>例2: Google Mapsからローカル見込み客を集める</p><p>入力: キーワード（例: gyms）と地域名</p><p>↓</p><p>AI/自動処理: Google Mapsから店舗を抽出し、Apolloで連絡先情報を補完</p><p>↓</p><p>次の処理: Google Sheetsに書き出し</p><p>↓</p><p>出力: アプローチ可能な店舗リスト</p><p>↓</p><p>人間による確認: 対象業種や地域が正しいか確認して送信先を決める</p><p>例3: 記事をLinkedIn投稿に再利用</p><p>入力: 既存の長文記事やニュースレター</p><p>↓</p><p>AIによる処理: 1本の長文から、フック型、体験談型、How-to型、逆張り型、ストーリー型など複数の投稿案を生成</p><p>↓</p><p>次の処理: LinkedIn投稿の下書きとして使う</p><p>↓</p><p>出力: そのまま流用しやすい投稿案</p><p>↓</p><p>人間による確認: 口調、事実関係、公開可否を調整</p><p>例4: 競合の最新投稿を定点観測</p><p>入力: 追跡したいLinkedInプロフィールURLの一覧</p><p>↓</p><p>AI/自動処理: 投稿を取得し、要点や傾向を要約</p><p>↓</p><p>次の処理: 毎週のメール要約として送信</p><p>↓</p><p>出力: 競合の発信動向レポート</p><p>↓</p><p>人間による確認: 重要な変化だけ深掘りする</p><p>記事全体として、AIは「検索・抽出・分類・要約・下書き生成」を担当し、人間は「対象の選定、例外処理、最終確認、実行判断」を担う構成です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では金額成果は示されていません。確認できる効果としては、手作業の調査時間短縮、リスト作成の高速化、投稿やメール下書きの作成負荷軽減、競合監視の自動化、営業前準備の省力化が挙げられています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、業務を細かいステップに分解し、AIに任せる部分を「抽出・要約・文案化」に限定しているからだと考えられます。これは記事の事実ではなく分析ですが、元データが明確で、出力形式が決まっているほどAIの品質が安定しやすいです。さらに、最後に人間が確認する前提なので、完全自動化よりも実務に載せやすい構造になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、AIをいきなり万能に使うのではなく、まず手順を紙や文書に書き出してから自動化することです。特に、入力データの型が決まっている仕事、毎回似た要約を作る仕事、リスト化して管理する仕事、定期レポートが必要な仕事は移植しやすいです。もう一つの教訓は、AIの出力先を最初に決めることです。Google Sheets、Airtable、Docs、メール、Slackなど、置き場所まで決めると運用が崩れにくくなります。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のように組めます。</p><p>1. データを取得する: LinkedIn URL、Google Maps検索結果、記事URL、メール一覧、競合サイトURLなどを集める</p><p>2. AIへ渡す: OpenAI APIやChatGPT、Claudeに、取得したテキストと目的を渡す</p><p>3. AIで処理する: 要約、分類、抽出、比較、文案生成、優先度付けを行う</p><p>4. 保存する: Google Sheets、Excel、Notion、Airtable、SQLiteなどに書き戻す</p><p>5. 通知する: Slack、Gmail、Pushoverで「要確認」だけ送る</p><p>6. 人間が確認する: 対象の妥当性、文面、公開可否、送信先を最終判断する</p><p>仕事への応用例:</p><p>- 営業リスト作成: Google Mapsで業種＋地域を取得→AIで業種判定と要約→Sheets保存→営業担当が優先順位をつける</p><p>- 事前調査メモ: 会社URLを入力→AIが会社概要、最近の話題、比較対象を抽出→Docsに整形→商談前に確認</p><p>- SNS運用: 過去のブログやニュースレターを入力→AIが複数の投稿案に変換→Notionに蓄積→担当者が選んで投稿</p><p>- 競合ウォッチ: 競合サイトやSNS投稿を定期取得→AIが新規トピックと変化点を要約→Slackに配信→必要時だけ人が深掘り</p><p>プライベート応用:</p><p>- 読んだ記事の要点整理: 記事URLや本文を入力→AIが3行要約と行動メモを作成→Notionやメモアプリに保存</p><p>- イベント参加前の下調べ: イベントページや登壇者一覧を入力→AIが人物ごとの要点を整理→スマホに送信</p><p>- メールの一次仕分け: 受信メールをAIで「返信要」「保留」「削除候補」に分類→重要なものだけ自分が確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、各ワークフローの実際の設定手順、精度、運用コスト、失敗率、法的な注意点は不明です。LinkedInやGoogle Mapsなどの取得対象は、利用規約や取得方法によって制約が出る可能性があるため、実装時は確認が必要です。人物情報や連絡先を扱う場合は、個人情報の取り扱いと送信前確認が必須です。AIの要約や分類は誤判定することがあるため、営業先の選定、対外送信、競合分析の結論は人間が最終判断する前提で使うべきです。</p>
+
+    <h2>参考記事</h2>
+    <p>22 AI workflow automation examples you have to try in 2026</p>
+    <p class="source">
+      <a href="https://www.gumloop.com/blog/ai-workflow-automation-examples"
+         target="_blank" rel="noopener noreferrer">
+        https://www.gumloop.com/blog/ai-workflow-automation-examples
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
