@@ -264,5 +264,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-08-29",
+    "date_display": "2026.08.29",
+    "company_name": "記事から確認できません",
+    "headline": "B2Bソロプレナーが真似しやすい、5つのAI自動化ワークフロー",
+    "title": "5 AI Workflows Every B2B Solopreneur Should Automate",
+    "url": "https://like2byte.com/ai-workflows-for-solopreneurs/",
+    "article_filename": "2026-08-29.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-29.html",
+    "search_query": "solopreneur AI workflow automation",
+    "selection_reason": "優先したのは、検索結果だけでも『入力→AI処理→出力→人間の最終作業』の流れが比較的想像しやすく、個人・小規模でも再現しやすい候補です。0はAI-based actions/eventsを起点にしたワークフロー自動化で、API連携の具体例が本文にありそう。3はOpenAI APIでユーザーストーリー生成や見積りを行う開発工程の自動化で、実務ワークフローとして具体性が高そう。1はAWSのSMB向けで、CRM/ヘルプデスクとZapier/Make等の連携が明示され、業務フロー化の説明が期待できる。2はソロ起業家向けの複数ワークフロー集で、実際の業務に落とし込みやすい。11はOpenAI APIの具体的ユースケースとして顧客対応自動化が示されており、本文で実装パターンを確認する価値があるため選びました。",
+    "adoption_score": 88,
+    "workflow_signature": "リード/契約/通話/業界シグナル→AIで下書き・要約・構造化・優先付け→CRM/提案書/オンボーディング/定期ブリーフに反映",
+    "evaluation_reason": "本文から、B2Bソロ起業家向けに5つの具体的ワークフローが明確に確認できる。入力、AI処理、出力、後続アクションがそれぞれ記述されており、Make.com/n8n、Claude/ChatGPT、HubSpot/Pipedrive、Notion、Calendly、各種転記・通知など一般的なツールで再現可能。特にリード追客、提案書下書き、オンボーディング自動化は業務削減と機会損失防止に直結して実用性が高い。内容はB2Bソロ向けだが、構造としては『イベント発生→AIで文書化・要約・個別化→台帳/ツールに登録→人が確認』に抽象化でき、営業、士業、受託、顧客対応などへ横展開しやすい。定量値や月額コストなど一部は記事内の主張ベースだが、実装フロー自体は具体的で、広告文だけではないため信頼性も十分。過去保存事例とは用途が近いものはあるが、主入力・AI処理・出力の組み合わせは異なり、重複として除外するほどではない。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
