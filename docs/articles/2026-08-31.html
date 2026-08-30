@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例は、日々のメール処理と記録作成、文書下書き作成に時間を取られがちな運用業務を、AIと自動化ツールでつなぎ直したものです。メールを読んで要点を整理し、その内容を表に残し、さらに文書のたたき台まで作ることで、手作業の往復を減らしています。記事で確認できるのは、Gmail、Google Sheet">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.08.31</div>
+    <h1>Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（本文では特定の企業名ではなく、Chidera Okonkwo / theStackedHQ などの表記のみ確認できます）<br>
+      <strong>業種：</strong>業務自動化・バックオフィス支援（メール処理、記録作成、文書下書き）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、日々のメール処理と記録作成、文書下書き作成に時間を取られがちな運用業務を、AIと自動化ツールでつなぎ直したものです。メールを読んで要点を整理し、その内容を表に残し、さらに文書のたたき台まで作ることで、手作業の往復を減らしています。記事で確認できるのは、Gmail、Google Sheets、Google Docs、OpenAI、n8nを使った2段階のワークフローです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、運用チームが繰り返し発生する事務作業に時間を取られていることです。具体的には、ラベル付きのGmailを確認し、内容を要約し、重要情報をスプレッドシートに記録し、その後に文書を作るという一連の作業が手間だったと読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【事例で確認できるフロー】</p><p>1. 入力</p><p>- Gmailで、特定ラベルが付いたメールが届く</p><p>2. AIによる処理</p><p>- OpenAIがメール本文を要約する</p><p>- 要点や重要情報を整理して、Google Sheetsに記録しやすい形にする</p><p>- その後、スプレッドシートに新しい行が追加されると、AIが構造化されたGoogle Docsの下書きを作成する</p><p>3. 次のシステム・処理</p><p>- n8nがGmail、Google Sheets、Google Docs、OpenAIをつないで自動実行する</p><p>- Sheetsの新規行をトリガーに、Docs生成へ進む</p><p>4. 出力</p><p>- Google Sheetsに要点が蓄積される</p><p>- Google Docsに文書の下書きが保存される</p><p>- 文書リンクがスプレッドシートへ書き戻される</p><p>5. 人間による確認・最終作業</p><p>- 記事からは、誰がどの段階で確認するかの詳細は確認できません</p><p>- ただし、AIが作った要約や下書きは、最終的には人間が確認して使う前提のワークフローと考えるのが自然です</p><p>【AIが担っている役割】</p><p>- 要約</p><p>- 情報抽出</p><p>- 構造化</p><p>- 文書下書き生成</p><p>- 事務データの整形補助</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上やコスト削減額の数値は確認できません。確認できる効果は、手作業の削減、文書整理のしやすさ向上、チームが繰り返し作業ではなく本来の業務に時間を使いやすくなることです。文書リンクがシートに残るため、記録の追跡もしやすくなります。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、メール→記録→文書という頻出の作業を、1つずつ人が移動して処理するのではなく、イベント駆動で連結しているからです。分析として言えば、AIに「判断を任せる」のではなく、「要約・抽出・下書き」という比較的失敗しにくい役割を担当させている点が実用的です。また、既存のGoogle Workspaceをそのまま使っているため、導入時の心理的・運用的なハードルが低いと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIは大きな業務を丸ごと置き換えるより、メール処理や記録作成のような細かい手作業をつなぐと効果が出やすい</p><p>- まずは「入力が来たら要約して台帳に残す」だけでも価値がある</p><p>- 次に、その台帳をトリガーにして「下書きを生成する」など、段階的に自動化を広げられる</p><p>- 既存ツール（Gmail、Sheets、Docs）を変えずに使うと、現場に乗せやすい</p><p>- AIの出力は完成品ではなく、確認しやすい下書きとして扱うと安全</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【仕事での応用案】</p><p>1. 問い合わせメールの一次整理</p><p>- 入力: Gmailの問い合わせラベル付きメール</p><p>- AI処理: 件名・本文から要件、緊急度、担当候補を抽出</p><p>- 出力: Google Sheetsに一覧化、Slackに通知</p><p>- 人間: 担当者が内容を確認して返信</p><p>2. 日報・週報の下書き生成</p><p>- 入力: フォーム回答やチャットログ</p><p>- AI処理: 重要トピックを要約して報告文に整形</p><p>- 出力: Google DocsまたはNotionに下書き保存</p><p>- 人間: 数字や表現を確認して提出</p><p>3. 見積依頼・発注依頼の記録化</p><p>- 入力: メール本文、添付ファイル名、差出人</p><p>- AI処理: 依頼内容、期限、金額候補を抽出</p><p>- 出力: Sheetsに台帳化、必要ならSlackでアラート</p><p>- 人間: 数値や条件をチェック</p><p>4. 社内ナレッジの初稿作成</p><p>- 入力: 共有メールや議事メモ</p><p>- AI処理: FAQ形式や手順書形式に再構成</p><p>- 出力: Google Docsに下書き</p><p>- 人間: 表現と事実を確認して公開</p><p>【個人利用の応用案】</p><p>1. 重要メールの自動メモ化</p><p>- 入力: Gmailの「後で対応」ラベル</p><p>- AI処理: 要点、期限、やることを抽出</p><p>- 出力: Google SheetsやNotionに保存、カレンダーに転記候補を作成</p><p>- 人間: 優先度を調整</p><p>2. 家計・購入記録の整理</p><p>- 入力: 購入メールや領収書メール</p><p>- AI処理: 店名、日付、金額、用途を抽出</p><p>- 出力: スプレッドシートに記録</p><p>- 人間: 家計カテゴリを確認</p><p>3. 学習メモの下書き化</p><p>- 入力: 読んだ記事のメモやメールで届いた学習資料</p><p>- AI処理: 要点整理、箇条書き化、復習用Q&amp;A化</p><p>- 出力: Docsに保存</p><p>- 人間: 自分用に追記</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、メールのラベル条件、要約の精度確認方法、例外処理、失敗時の再実行、権限管理、個人情報の扱いは確認できません。実運用では、AI要約の誤り、重要情報の抜け、文書の自動生成ミスに注意が必要です。特にメール本文には機密情報が含まれることがあるため、外部AIへ送る範囲や保存先の権限を明確にする必要があります。自動化は便利ですが、最終承認を人間が持つ設計が安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>AI Automates Gmail and Google Docs Workflow | Erhomoseni ...</p>
+    <p class="source">
+      <a href="https://www.google.com/goto?url=CAESqwEB6zswFRBEwA4Up0QhoGiQ1sGtUqYhx3s8gRQkkMjWZW2unNAdfomYYtUlh2-XNs5A2DxOM7nWGgRqVftPMiiEYPx6asmm7Wpov0PIh7gvD4IWQdG_njL6fy86uDCTryNyZhtAYDqNh5pQ9mU-O5cbviXopzo8mLnPLbGRvoDZZRKxQ-OkxYKtoqOlNRPmKkR1dtM3ZjJGBbR3M82EVsZhWqUB9pBQr_bELjI"
+         target="_blank" rel="noopener noreferrer">
+        https://www.google.com/goto?url=CAESqwEB6zswFRBEwA4Up0QhoGiQ1sGtUqYhx3s8gRQkkMjWZW2unNAdfomYYtUlh2-XNs5A2DxOM7nWGgRqVftPMiiEYPx6asmm7Wpov0PIh7gvD4IWQdG_njL6fy86uDCTryNyZhtAYDqNh5pQ9mU-O5cbviXopzo8mLnPLbGRvoDZZRKxQ-OkxYKtoqOlNRPmKkR1dtM3ZjJGBbR3M82EVsZhWqUB9pBQr_bELjI
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

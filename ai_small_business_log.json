@@ -308,5 +308,27 @@
       "applicability": 13,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-08-31",
+    "date_display": "2026.08.31",
+    "company_name": "記事から確認できません（本文では特定の企業名ではなく、Chidera Okonkwo / theStackedHQ などの表記のみ確認できます）",
+    "headline": "Gmailのメールを要約してGoogle Sheetsに記録し、Google Docsの下書きまで自動生成するAIワークフロー",
+    "title": "AI Automates Gmail and Google Docs Workflow | Erhomoseni ...",
+    "url": "https://www.google.com/goto?url=CAESqwEB6zswFRBEwA4Up0QhoGiQ1sGtUqYhx3s8gRQkkMjWZW2unNAdfomYYtUlh2-XNs5A2DxOM7nWGgRqVftPMiiEYPx6asmm7Wpov0PIh7gvD4IWQdG_njL6fy86uDCTryNyZhtAYDqNh5pQ9mU-O5cbviXopzo8mLnPLbGRvoDZZRKxQ-OkxYKtoqOlNRPmKkR1dtM3ZjJGBbR3M82EVsZhWqUB9pBQr_bELjI",
+    "article_filename": "2026-08-31.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-08-31.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "0はGmail→AI→Google Sheetsという入力/処理/出力の流れが明確で、Reddit投稿由来でも本文に具体的な実装や運用の工夫がありそうです。5はGmail・Google Docs・OpenAI・Sheetsの組み合わせが見え、メール処理から文書生成までの再現可能なワークフロー候補です。6はExcelデータ抽出にAIを使う用途が具体的で、個人や少人数でも応用しやすい実務ワークフローが本文で確認できそうです。3はGoogle Sheetsベースのノーコード自動化で、既存業務を棚卸ししてAI化する観点が強く、実践例の幅がありそうです。9はGoogle Sheetsの各種CRUD操作とAI Automation Builderが示されており、シート中心の業務フローを拡張する具体例が見込めます。",
+    "adoption_score": 88,
+    "workflow_signature": "ラベル付きメール→AIで要約・項目抽出→スプレッドシート記録→新規行から構造化文書を生成してリンク保存",
+    "evaluation_reason": "本文から、入力（ラベル付きGmail）、AI処理（要約・キー情報抽出、次段で構造化文書生成）、出力（Google Sheets記録、Google Docs下書き作成、リンクをシートへ保存）まで一連の流れが明確に確認できる。Gmail/Sheets/Docs/n8n/OpenAIという一般的な構成で再現しやすく、個人や中小企業でも導入しやすい。時間削減・記録漏れ防止・文書化の標準化に直結し、営業、問い合わせ管理、経理、採用、案件進行などへ横展開もしやすい。定量成果はないが、実装内容は具体的で実在の運用を示す本文があるため信頼性も十分。過去事例の中にはメール要約→シート記録→文書生成に近いものがあるが、今回も同系統の実用ワークフローとして価値が高い。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 23,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
