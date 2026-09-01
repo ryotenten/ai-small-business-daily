@@ -352,5 +352,27 @@
       "applicability": 14,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-02",
+    "date_display": "2026.09.02",
+    "company_name": "記事から確認できません",
+    "headline": "Google Sheetsの新規アイデアをAIでNotion化する、Zapier自動ワークフロー",
+    "title": "How I Automated My Workflow Using Zapier and Why You ...",
+    "url": "https://dev.to/andrewbaisden/how-i-automated-my-workflow-using-zapier-and-why-you-should-too-1g4d",
+    "article_filename": "2026-09-02.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-02.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "本文確認の価値が高い順に、具体的な自動化フローが検索結果から比較的はっきり見えるものを優先しました。4はn8n+ChatGPTでフリーランス業務を広く自動化した実例で、入力→AI処理→出力の再現性が高そうです。2はGoogle Sheet起点のZapier自動化が説明されており、シート/通知/生成物の連携が具体的です。9は『80%の仕事をChatGPTで自動化』とあり、フォローアップメール・顧客メモ・提案書など実務ワークフローが見えます。0は事例そのものではないものの、AI workflow automationの実務像や使われるツールの話が出そうで、具体例収集の入口として有望です。5はproduction-ready AI pipelinesとあり、実運用レベルのワークフローや工具の組み合わせが読める可能性があります。比較・入門系よりも、実際の手順や入出力が本文で拾える可能性を重視しました。",
+    "adoption_score": 79,
+    "workflow_signature": "Googleスプレッドシートの新規行→AIで内容を構造化・アウトライン化→Notionにページ作成しシートを更新",
+    "evaluation_reason": "本文から、入力（Google Sheetsの新規行/アイデア）、AI処理（ChatGPTでアイデアをNotion向けに構造化・アウトライン化）、出力（Notionページ作成、シートのProcessed更新とURL反映）まで具体的に確認できる。Zapierのトリガー、各ステップの設定、テスト方法、行IDの扱い、重複防止、Pollingの説明まであり、再現性は高い。用途はコンテンツアイデア管理に限定されるが、構造としては「新規データを受けてAIで整形し、別台帳へ登録して元表を更新する」ため、タスク受付、案件メモ、問い合わせ下書き、学習メモ整理などへ横展開しやすい。実用性も、手作業の転記削減とステータス管理の自動化という点で十分ある。信頼性は実装手順が具体的で体験ベースだが、記事の性質上ややチュートリアル寄りで、運用実績の定量裏付けは薄いので満点にはしない。過去事例との実質重複もなく、採用可。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 17,
+      "applicability": 11,
+      "reliability": 8
+    }
   }
 ]
