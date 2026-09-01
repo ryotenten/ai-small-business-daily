@@ -330,5 +330,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-01",
+    "date_display": "2026.09.01",
+    "company_name": "記事から確認できません（個人著者の事例）",
+    "headline": "メールを起点に予定を整理するAIエージェントを試作：AI Calendar Assistantの作り方",
+    "title": "Learning How to Build AI Agents. My First No-Code Workflow",
+    "url": "https://medium.com/@neriasebastien/learning-how-to-build-ai-agents-7349f3821c3d",
+    "article_filename": "2026-09-01.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-01.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "本文確認の価値が高い順に、具体的な入力→AI処理→出力の流れが想像しやすく、小規模でも再現しやすい候補を優先しました。1はMake.com+OpenAIで複数ブログを自動化した実装寄りの事例で、運用フローが具体化しやすいです。2はn8nで自作AIエージェントを作る実践記事で、個人・少人数チーム向けの再現性が高いです。5はメールを使った日次優先順位管理のノーコードワークフローで、日常/業務の両方に応用しやすいです。0はツール選定型の投稿ですが、実際のエージェント/ワークフロー設計の論点が出やすく、本文で実例が見つかる可能性があります。7はAWSのSMB向け実務記事で、CRM・ヘルプデスク・iPaaS連携など再現可能な業務フローが期待できるため候補に入れました。",
+    "adoption_score": 84,
+    "workflow_signature": "メールで送る日次タスク→AIで抽出・優先順位付け・空き時間確認→カレンダー更新と優先スケジュール返信",
+    "evaluation_reason": "本文から、入力（Today’s Planという件名のメール本文）、AIの処理（タスク抽出、優先順位付け、Google Calendarの空き確認、最適時間帯の提案）、出力（カレンダー更新とメール返信）までが具体的に確認できます。n8n、Gmail、Google Calendar、GPT-4という一般的な構成で再現しやすく、2時間で初版を作ったとあるため実装難易度も高すぎません。用途は日次予定管理に限られますが、構造としては営業タスク、顧客対応、学習計画、家事計画などへ横展開しやすく、実用性も十分です。定量効果はありませんが、実際に作ったワークフローとツール接続が書かれているため信頼性は一定あります。過去事例の多くは業務自動化や要約中心ですが、本件はメール起点でのタスク優先付けとカレンダー自動調整が主で、入力・処理・出力の組み合わせも異なるため重複とは見なしません。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 23,
+      "usefulness": 18,
+      "applicability": 14,
+      "reliability": 7
+    }
   }
 ]

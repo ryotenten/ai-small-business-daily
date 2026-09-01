@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メールを起点に予定を整理するAIエージェントを試作：AI Calendar Assistantの作り方 | AI Small Business Daily</title>
+<meta name="description" content="この事例で面倒だったのは、日々の優先タスクを整理し、空いている時間を見ながら予定に落とし込む作業です。著者は、メールを起点に動くノーコードのAIエージェントを作り、この手作業を一部自動化しました。記事では、メールで受け取ったタスクをAIが読み取り、優先順位をつけ、Googleカレンダーの空き時間を見">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.01</div>
+    <h1>メールを起点に予定を整理するAIエージェントを試作：AI Calendar Assistantの作り方</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（個人著者の事例）<br>
+      <strong>業種：</strong>個人の業務整理・日程調整支援<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例で面倒だったのは、日々の優先タスクを整理し、空いている時間を見ながら予定に落とし込む作業です。著者は、メールを起点に動くノーコードのAIエージェントを作り、この手作業を一部自動化しました。記事では、メールで受け取ったタスクをAIが読み取り、優先順位をつけ、Googleカレンダーの空き時間を見て予定案を作る流れが紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>導入前の課題は、日々の優先順位付けとカレンダー調整をその都度自分で行う必要があったことです。記事から確認できる範囲では、著者はAIエージェントの概念を学ぶ中で、実際に使える小さなワークフローとして「今日の予定」を管理する仕組みを作ろうとしていました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>自分宛てに件名「Today’s Plan」のメールを送る。本文にその日のタスクを列挙する。</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>GPT-4がメール本文からタスクを抽出し、優先順位をつけ、Googleカレンダーの空き状況を確認して、各タスクの推奨時間帯を組み立てる。</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>n8n.ioのノーコード自動化で、GmailとGoogle Calendarを連携する。記事では、Google CalendarはAPIの制約により「事前に定義されたカレンダーフィールドしか見られない」と説明されています。</p><p>↓</p><p>出力</p><p>↓</p><p>更新されたGoogleカレンダーと、優先順位付きの予定表を返送メールで受け取る。</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>最終的な実行・修正の有無までは記事から確認できませんが、少なくとも著者はこのワークフローを使う前提で検証しています。完全自動ではなく、必要に応じて人が見直す前提で考えるのが自然です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で売上やコスト削減額の数値は示されていません。確認できる効果としては、タスク整理と予定作成をメール起点でまとめられること、そして日々の優先順位付けとカレンダー調整を手作業で行う負担を減らせる可能性があります。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、対象業務を「毎日やる小さな判断」に絞っている点です。著者自身も引用している通り、最初から大規模で複雑な自動化を狙わず、既に使っているメールとカレンダーをつないだことで、導入障壁を下げています。分析としては、入力形式をメール本文に固定したことでAIが処理しやすくなり、出力先もカレンダーとメールに限定したため、実運用に乗せやすかったと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・AIエージェントは「何でもできる自律型」より、まずは1つの定型作業を任せるほうが実用的です。</p><p>・メールやカレンダーのような既存ツールを入口・出口にすると、利用者の学習コストが低くなります。</p><p>・AIに任せる範囲は、抽出・優先順位付け・時間割案の作成など、判断補助に寄せると再現しやすいです。</p><p>・ノーコードでも、入力→AI処理→外部ツール更新→通知、という流れは十分組めます。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用案</p><p>1. 週次タスク整理</p><p>- データ: 自分宛てメール、ToDo一覧、Slackの未対応メッセージ</p><p>- AIにやらせること: 締切順に並べ替え、重複削除、所要時間の見積もり補助</p><p>- 出力先: Google SheetsやNotionに週次計画として保存、Slackやメールで通知</p><p>- 人間の役割: 実行順の最終決定</p><p>2. 会議準備の自動下書き</p><p>- データ: 会議招待メール、関連資料リンク、前回議事録</p><p>- AIにやらせること: 議題候補の抽出、確認事項の整理、事前質問の作成</p><p>- 出力先: メール下書き、Notion、Google Docs</p><p>- 人間の役割: 送信前確認</p><p>3. 営業フォローの優先順位付け</p><p>- データ: 問い合わせメール、商談メモ、CRMのステータス</p><p>- AIにやらせること: 緊急度と対応優先度の分類、返信文案の作成</p><p>- 出力先: Gmail下書き、Slack通知、CRM更新</p><p>- 人間の役割: 顧客ごとの文面調整</p><p>4. 個人利用: 1日の家事・用事整理</p><p>- データ: 自分宛てメール、カレンダー予定、買い物メモ</p><p>- AIにやらせること: 外出順に並べ替え、空き時間に入る用事を提案</p><p>- 出力先: Google Calendar、Google Sheets、メール返信</p><p>- 人間の役割: 実際に行く順番の確認</p><p>実装のたたき台</p><p>1. Gmailやフォームで「今日やること」を入力</p><p>2. OpenAI APIやChatGPTでタスク抽出・優先順位付け</p><p>3. Google Calendar APIやSheetsへ書き込み</p><p>4. Slack、メール、Notionで通知</p><p>5. 最後に人が確認して確定</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実際の精度、誤判定率、例外処理、セキュリティ対策、どこまで自動反映するかの運用ルールは不明です。Google Calendarは記事内でAPI制約に触れられているため、取得できる情報に限界があります。個人情報や業務機密をメール本文に入れる場合は、送信先・保存先・AIサービスの取り扱いを確認する必要があります。また、優先順位や会議時間の判断はAIの提案をそのまま採用せず、人が最終確認する前提が安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>Learning How to Build AI Agents. My First No-Code Workflow</p>
+    <p class="source">
+      <a href="https://medium.com/@neriasebastien/learning-how-to-build-ai-agents-7349f3821c3d"
+         target="_blank" rel="noopener noreferrer">
+        https://medium.com/@neriasebastien/learning-how-to-build-ai-agents-7349f3821c3d
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
