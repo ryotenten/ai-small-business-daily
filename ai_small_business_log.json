@@ -374,5 +374,27 @@
       "applicability": 11,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-03",
+    "date_display": "2026.09.03",
+    "company_name": "記事から確認できません",
+    "headline": "データ収集から監視・UI化までを自動化するAIワークフロー設計",
+    "title": "Mastering AI Workflow Automation with Real-World Tools",
+    "url": "https://medium.com/write-a-catalyst/mastering-ai-workflow-automation-with-real-world-tools-478de10722ea",
+    "article_filename": "2026-09-03.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-03.html",
+    "search_query": "\"AI workflow\" automation \"how I\"",
+    "selection_reason": "優先したのは、検索結果の段階でも入力→AI処理→出力の流れが比較的具体的で、Gmail/Google Sheets/自動化基盤との接続が見え、本文を読むと再現可能なワークフローが見つかりそうなものです。2はGmail→AI→Sheetsの直球で実務再現性が高い。3はGmail内で添付保存やSheets記録など具体機能が見え、Google Workspace上で応用しやすい。8はSheets/Tavily/OpenRouter/Gmailの組み合わせで定期ニュースレター生成という明確な流れがある。5はMediumだが『production-ready AI pipelines』『saved me weeks』とあり、実務ワークフローの具体例が期待できる。0は抽象的ではあるものの、AI workflow automationを仕事にする視点で、本文に実例や業務分解が含まれる可能性があり、次点として確認価値があるため選びました。",
+    "adoption_score": 81,
+    "workflow_signature": "データ収集・前処理・学習/監視・UI化→AIで自動化・標準化→再利用可能なAIパイプライン",
+    "evaluation_reason": "本文から、AI活用を単発の生成ではなく、データ収集→前処理→ハイパーパラメータ探索→特徴量生成→監視→デプロイ→実験管理→UI公開までの一連のワークフローとして扱っていることが確認できる。個別ツール名は多いが、入力・処理・出力の流れは明確で、一般的なPython/ML系ツールで再現可能。特定業務に閉じず、営業分析、需要予測、文書処理、社内モデル運用などに抽象化して横展開しやすい。一方で、記事は概念的な説明が中心で、各工程の具体的な実装手順や設定値、失敗例の深掘りは限定的なため、信頼性は中程度に留めた。重複判定としては、過去事例のメール/Sheets/Docs系自動化とは入力・処理・出力が異なり、別ワークフローとして採用可能。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 20,
+      "usefulness": 18,
+      "applicability": 14,
+      "reliability": 7
+    }
   }
 ]
