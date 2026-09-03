@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nで自作AIエージェントを作る：YouTube・Strava・Gmailをつなぐ実用ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事は、「AIエージェントを自分で作るのは難しそう」という印象を、n8nを使った視覚的なワークフローでかなり下げてくれる内容です。著者は、複数のデータソースをまたいで質問に答えたり、メールで要約を送ったりできるチャット型エージェントを自作しました。記事で確認できる範囲では、YouTubeの登録者">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.04</div>
+    <h1>n8nで自作AIエージェントを作る：YouTube・Strava・Gmailをつなぐ実用ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（個人の投稿）<br>
+      <strong>業種：</strong>個人向けのAIワークフロー自作・自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、「AIエージェントを自分で作るのは難しそう」という印象を、n8nを使った視覚的なワークフローでかなり下げてくれる内容です。著者は、複数のデータソースをまたいで質問に答えたり、メールで要約を送ったりできるチャット型エージェントを自作しました。記事で確認できる範囲では、YouTubeの登録者数、Stravaのランニング記録、Gmailへの会話要約送信などを扱っています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>導入前の課題として記事から読み取れるのは、複数サービスの情報をまたいで確認する作業が手間になりやすいことです。たとえば、YouTubeの数値確認、Stravaの記録確認、会話内容の要約送信を、都度別々に行う必要がありました。なお、具体的な業務上のBefore/Afterの定量比較は記事からは確認できません。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>チャット画面からの質問や依頼（例: YouTube登録者数を知りたい、Stravaの最近のランニング記録を見たい、会話要約をメールで送りたい）</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>LLM（記事ではGemini、OpenAIでも可と記載）を使い、会話の文脈を踏まえながら、必要なツールを選んで情報を取りに行く、または文章をまとめる。会話記憶（conversation memory）で過去のやり取りを保持する</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>n8nの各ノードで外部連携を実行。例として、HTTP Requestで天気APIのような外部APIを呼ぶ、YouTube Data APIで登録者数を取得する、Gmailアクションで要約メールを送る</p><p>↓</p><p>出力</p><p>↓</p><p>チャット上で回答を返す、必要に応じてメール通知を送る</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>ユーザーがチャット結果を確認し、必要なら送信内容や利用APIを調整する。記事では、各ツールを一つずつテストしてからつなぐことが推奨されている</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>数値での成果は記事から確認できません。確認できる効果としては、複数サービスを横断する確認作業を一つのチャットに集約できること、会話の要約をメールで送れること、自然な対話でデータ参照とアクション実行をつなげられることが挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、分析としては「AIに全部を任せる」のではなく、n8nで役割を分解している点です。会話の受付、文脈保持、API呼び出し、メール送信を別ノードに分けることで、実装の見通しがよくなり、段階的に拡張しやすくなっています。また、最初から大規模に作らず、1つずつツールを追加して検証しているため、失敗点を切り分けやすい構造になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIエージェントは、まず「何を聞かれたら何を見に行くか」を決めると作りやすい</p><p>- 会話記憶は、単発の自動化よりも対話型の使い勝手を大きく上げる</p><p>- 外部APIは一気につながず、1ノードずつ動作確認すると再現しやすい</p><p>- AIは判断や要約を担当し、取得自体はAPIに任せると役割分担が明確になる</p><p>- GUI型ツールでも、入力→処理→出力を整理すると実用レベルまで持っていける</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、以下のような形にすると再現しやすいです。</p><p>1. データを取得</p><p>- Google Sheets、Notion、Slack履歴、Gmail、YouTube API、Strava API、社内CSVなど</p><p>2. AIへ渡す</p><p>- ChatGPT / OpenAI API / Geminiで、取得データの要約、分類、優先度付け、文章生成を行う</p><p>3. AIで処理</p><p>- 例: 「今日の重要メッセージだけ抽出」「運動記録の変化を要約」「問い合わせ文を返信案に整形」</p><p>4. 保存</p><p>- Google Sheets、Excel、Notion、Airtable、データベースに記録</p><p>5. 通知</p><p>- Slack、メール、Pushoverで要約やアラートを送る</p><p>6. 人間が確認</p><p>- 送信前レビュー、重要度の最終判断、誤判定の修正</p><p>仕事への応用例:</p><p>- 営業/CS: Gmailや問い合わせフォームを取得 → AIで要件分類と返信草案作成 → Slackに通知 → 担当者が確認して返信</p><p>- 管理部門: 請求書PDFやメール本文を取得 → AIで項目抽出・要約 → Google Sheetsに保存 → 不備があればメールで差し戻し</p><p>- マーケティング: YouTube/ブログ/SNSの数値を取得 → AIで前週比の変化を要約 → Notionに週報として保存 → チームに共有</p><p>- 個人利用: Stravaや睡眠記録を取得 → AIで傾向を要約 → 毎朝メールやLINE代替の通知に送る</p><p>プライベート応用例:</p><p>- 家計の明細CSVを読み込み → AIで支出カテゴリを整理 → Google Sheetsに保存 → 月末に要点だけ通知</p><p>- 旅行計画の情報収集 → AIで候補を比較要約 → Notionにまとめる → 家族に共有</p><p>- 読書メモやWebクリップを取得 → AIでテーマ別に整理 → 週1回メールで振り返り送信</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、セキュリティ設定、権限管理、APIエラー時の処理、個人情報の扱い、ログ保存方針は明記されていません。実運用では、Gmailや各種APIの認証情報をどう保護するかが重要です。また、AIの判断が常に正しいとは限らないため、送信・通知・データ更新の前に人間の確認を入れる設計が安全です。さらに、著者自身も『最初のハードルはAPI認証情報の設定』と述べており、ここは導入時の注意点と言えます。</p>
+
+    <h2>参考記事</h2>
+    <p>I Built My Own AI Agent using n8n — And You Can Too</p>
+    <p class="source">
+      <a href="https://dev.to/debs_obrien/i-built-my-own-ai-agent-and-you-can-too-56l1"
+         target="_blank" rel="noopener noreferrer">
+        https://dev.to/debs_obrien/i-built-my-own-ai-agent-and-you-can-too-56l1
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

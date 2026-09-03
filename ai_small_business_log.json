@@ -396,5 +396,27 @@
       "applicability": 14,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-04",
+    "date_display": "2026.09.04",
+    "company_name": "記事から確認できません（個人の投稿）",
+    "headline": "n8nで自作AIエージェントを作る：YouTube・Strava・Gmailをつなぐ実用ワークフロー",
+    "title": "I Built My Own AI Agent using n8n — And You Can Too",
+    "url": "https://dev.to/debs_obrien/i-built-my-own-ai-agent-and-you-can-too-56l1",
+    "article_filename": "2026-09-04.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-04.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "本文を読む価値が高い順に、実際の入力→AI処理→出力→人間の最終作業が想像しやすく、個人/少人数でも再現しやすい候補を優先しました。1はn8nで自作AIエージェントを構築する実装寄りで、具体的なワークフロー化が期待できます。4はGmail・カレンダー・Notionをまたぐ個人業務の中核自動化で、再現性が高いです。3は「ビジネス全体」をAIツールだけで回す構成で、本文に複数の実務ワークフローが出てきそうです。6はサイドハッスル運営の実践例として、入力/処理/出力が具体化されやすく応用範囲も広そうです。0は初心者向けの議論記事ですが、n8n/Make/Zapierなど実用ツール選定や具体ワークフローの入口として参考になる可能性があります。",
+    "adoption_score": 81,
+    "workflow_signature": "チャット入力→AIで会話記憶を参照し外部APIを呼び出して回答・実行→要約メール送信や各種連携",
+    "evaluation_reason": "n8nのチャットトリガー、LLM、会話メモリ、HTTP Requestなど、実際に何を組み立てるかが本文から確認でき、手順も段階的で再現しやすいです。入力はチャットでの質問、AI処理は会話文脈を踏まえた推論とツール選択、出力はYouTube残高確認・Strava取得・メール要約などの実行結果で、個人や小規模事業でも横展開しやすい構造です。用途自体はややデモ寄りですが、抽象化すると『チャット起点の業務エージェント』として問い合わせ対応、社内ヘルプ、個人秘書、データ参照に転用できます。実運用の成果指標はないものの、実際に作った内容と構成要素が具体的なので信頼性は十分あります。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]
