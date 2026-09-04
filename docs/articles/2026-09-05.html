@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nとOpenAIで「社員ごとの作業計画」を自動生成するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業で社員情報を見ながら作業計画を組み、さらにタスクに落とし込む作業は、地味ですが毎回時間がかかります。この事例では、n8nとOpenAI、Google Sheetsをつないで、チャットで依頼が来たら社員データを読み込み、AIが個別の作業計画とタスク案を作り、結果を表に戻す流れを自動化しています。">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.05</div>
+    <h1>n8nとOpenAIで「社員ごとの作業計画」を自動生成するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>社員のタスク計画・作業割り当ての自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業で社員情報を見ながら作業計画を組み、さらにタスクに落とし込む作業は、地味ですが毎回時間がかかります。この事例では、n8nとOpenAI、Google Sheetsをつないで、チャットで依頼が来たら社員データを読み込み、AIが個別の作業計画とタスク案を作り、結果を表に戻す流れを自動化しています。記事から確認できるのは、計画作成と記録を一連のワークフローにした点です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる範囲では、課題は「社員情報をもとにした作業計画の作成」と「タスク割り当て」を毎回人手で行う必要があったことです。どの程度の件数や頻度だったかは確認できません。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>ユーザーがチャットメッセージを送る</p><p>↓</p><p>Google Sheetsから社員情報を取得する</p><p>↓</p><p>AIによる処理</p><p>OpenAIのAIエージェントが社員情報を分析し、個別の作業計画を生成する</p><p>別のAIエージェントが、その作業計画をもとに詳細なタスク割り当てを作る</p><p>↓</p><p>次のシステム・処理</p><p>生成結果を分割して構造化レコードに整える</p><p>↓</p><p>出力</p><p>作業計画とタスク割り当てがGoogle Sheetsに保存される</p><p>↓</p><p>人間による確認・最終作業</p><p>記事からは、最終確認を誰がどのように行うかまでは確認できません。したがって、実運用では人が内容を確認してから確定する設計が前提だと考えるのが安全です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事から確認できる効果は、反復的な計画作成を自動化し、構造化されたワークフローで業務運用しやすくしたことです。数値的な削減効果、売上、処理件数の増加は記載されていません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、入力データがGoogle Sheetsのように整理された形で存在し、AIに渡す前処理と保存先が明確だからです。さらに、1回のAI生成で終わらせず、計画作成用のAIとタスク生成用のAIを分けているため、役割を分担しやすく、出力の粒度を揃えやすい構造になっています。これは記事の事実に基づくというより、ワークフロー設計としての分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、1) 元データを表形式で持つ、2) AIの役割を1つに詰め込みすぎず分ける、3) 生成結果をいきなり完了扱いにせず、構造化して保存する、の3点です。人が毎回ゼロから文章を書くのではなく、AIに「下書き」と「分解」を任せると、後工程で確認しやすくなります。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次の形にすると再現しやすいです。</p><p>1. データを取得する</p><p>- Google Sheets、Excel、Notion、CSV、社内DBから対象データを読む</p><p>- 例: 担当者一覧、案件一覧、優先度、締切、スキル</p><p>2. AIへ渡す</p><p>- ChatGPT APIやOpenAI API、n8n、Make、Zapier、Pythonで整形して送る</p><p>3. AIで処理する</p><p>- どの人に何を割り当てるかを提案させる</p><p>- 作業を優先度順に並べる</p><p>- 必要なら理由や注意点も出させる</p><p>4. 保存する</p><p>- Google Sheets、Excel、Notion、Airtable、DBへ書き戻す</p><p>5. 通知する</p><p>- Slack、Gmail、Pushoverで担当者や管理者へ送る</p><p>6. 人間が確認する</p><p>- 例外案件、重要案件、空き時間のない人の割り当てを最終承認する</p><p>仕事への応用例</p><p>- 営業チームの案件振り分け: 商談メモと担当者スキル一覧を読み込み、AIに「誰が対応すべきか」「次のアクション」を出させ、Google SheetsとSlackに反映する</p><p>- カスタマーサポートの一次仕分け: 問い合わせ本文と顧客属性を入力し、AIにカテゴリ分類、優先度判定、返信下書きを作らせ、Zendeskやスプレッドシートに保存する</p><p>- 制作会社の作業割り当て: 案件内容、納期、各メンバーの稼働状況を入力し、AIにタスク分解と担当候補を作らせ、NotionやTrelloへ書き出す</p><p>- 採用業務の面接調整: 応募者情報と面接官の空き時間を入力し、AIに候補日を整理させ、Gmail送信文とカレンダー登録案を作る</p><p>プライベート応用例</p><p>- 家事分担: 家族の予定と未実施の家事を入力し、AIに週次の担当案を作らせて共有スプレッドシートに保存する</p><p>- 旅行準備: 行き先、日程、持ち物リストを入力し、AIに日別の準備タスクを作らせてNotionに記録する</p><p>- 学習計画: 受けたい講座の一覧と空き時間を入れ、AIに1週間単位の勉強計画を作らせてカレンダーに落とす</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実際の精度、承認フロー、例外処理、エラー時の挙動、セキュリティ対策は不明です。社員情報を扱うため、個人情報の取り扱いには注意が必要です。AIの提案は誤りや偏りを含む可能性があるので、最終決定を自動化せず人間が確認する運用が望ましいです。Google Sheetsに保存する設計なので、データ量が増えた場合の拡張性やアクセス権管理も検討が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>harshineeshree/n8n-ai-automation: AI-powered employee task ...</p>
+    <p class="source">
+      <a href="https://github.com/harshineeshree/n8n-ai-automation"
+         target="_blank" rel="noopener noreferrer">
+        https://github.com/harshineeshree/n8n-ai-automation
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

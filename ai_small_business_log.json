@@ -418,5 +418,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-05",
+    "date_display": "2026.09.05",
+    "company_name": "記事から確認できません",
+    "headline": "n8nとOpenAIで「社員ごとの作業計画」を自動生成するワークフロー",
+    "title": "harshineeshree/n8n-ai-automation: AI-powered employee task ...",
+    "url": "https://github.com/harshineeshree/n8n-ai-automation",
+    "article_filename": "2026-09-05.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-05.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "本文確認の価値が高い順に、具体的な入力→AI処理→出力→人間の最終作業が想像しやすく、再現性も高そうなものを選びました。8はn8nで社員タスク計画をAI化する実用ワークフロー、6はPower Automate DesktopとGPT-4oの組み合わせで業務自動化の手順が読み取れそうです。0はZapier/Makeを使うソロ向け自動化の導入・比較ではあるものの、本文で具体的な業務フロー例が出る可能性があります。3はGitHub Actions上でPR/issue分析などの実務ワークフローに落とし込みやすく、4はn8n+Gemini+Supabaseの自動採用/スクリーニング系で、抽出・判定・台帳化の再現例が期待できます。",
+    "adoption_score": 74,
+    "workflow_signature": "社員情報のチャット入力→AIで個別の作業計画・タスクを生成→Google Sheetsに保存",
+    "evaluation_reason": "本文から、入力（ユーザーのメッセージ）、AIの処理（社員情報を参照して作業計画とタスク割り当てを生成）、出力（Google Sheetsへの保存）まで一連の流れが確認できるため、実際のワークフローとして評価できる。n8n、OpenAI、Google Sheetsという一般的な構成で再現しやすく、中小企業でも業務計画の下書き作成やタスク配分の自動化に応用しやすい。用途は社員タスク計画に限定されるが、構造としては『対象者データ→AIで個別計画生成→台帳保存』であり、オンボーディング、営業割当、学習計画、日次業務配分などへ横展開できる。定量成果や運用実績の記述は少ないため信頼性は高くないが、実装手順と処理内容は本文から十分確認できる。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 20,
+      "usefulness": 17,
+      "applicability": 12,
+      "reliability": 5
+    }
   }
 ]
