@@ -440,5 +440,27 @@
       "applicability": 12,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-09-06",
+    "date_display": "2026.09.06",
+    "company_name": "Mohsin Abro（記事内の筆者名）",
+    "headline": "PDF・画像つき資料をまとめて読ませる「研究用AIアシスタント」の作り方",
+    "title": "7 Insanely Useful AI Tools I Built to Instantly Transform My ...",
+    "url": "https://python.plainenglish.io/7-insanely-useful-ai-tools-i-built-to-instantly-transform-my-workflow-40b42798dd0d",
+    "article_filename": "2026-09-06.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-06.html",
+    "search_query": "\"AI workflow\" automation \"how I\"",
+    "selection_reason": "優先したのは、検索結果だけでも『入力→AI処理→出力→人間の最終作業』が比較的はっきり想像でき、Gmail/Sheets/n8n/Python/PDFなど再現しやすい道具立てが見えるものです。0はGmail・Google Sheets・Slack・AI分類の業務自動化で最も具体性が高そうです。4はn8n/Postman/Google Sheets/Gmailを使うAIリード管理で、実務ワークフローとして再現性が高そうです。1はGmail→AI→Google Sheets抽出の直球事例で、個人・小規模でも真似しやすい可能性があります。6はPython・PDF・RAG・LLMを使う実装寄りの自動化で、文書処理ワークフローの応用範囲が広そうです。8は日常業務をAIワークフローで短時間に自動化した個人事例で、本文に具体例が含まれる可能性があります。",
+    "adoption_score": 85,
+    "workflow_signature": "PDF・画像資料→AIで内容抽出・埋め込み化・検索/RAG→質問応答付きナレッジベース",
+    "evaluation_reason": "本文から、PDFのテキストと画像を対象にしたチャンク分割、埋め込み作成、FAISSによる検索、RAGでの質問応答、GradioでのUI化、ページ番号付き引用、SQLite/ChromaDBやOCR、非同期処理での拡張方針まで確認でき、実装イメージは具体的です。個人や小規模チームが一般的なPython、FAISS、LLM、Gradio、OCR系ツールで再現しやすく、研究資料・契約書・技術文書・社内ドキュメントなどへ横展開しやすい構造です。実用面でも、大量文書の探索時間削減や参照精度向上に直結します。定量成果はないものの、実装経験に基づく手順が示されているため信頼性も十分です。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 9
+    }
   }
 ]

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF・画像つき資料をまとめて読ませる「研究用AIアシスタント」の作り方 | AI Small Business Daily</title>
+<meta name="description" content="記事の筆者は、SSDに溜まった200本以上の技術レポートやホワイトペーパーを手作業で探すのが非現実的になったため、AIで“資料に質問できる仕組み”を作りました。ポイントは、PDFの本文だけでなく画像も扱い、検索しやすい形に分割して、質問に対して根拠つきで答えられるようにしたことです。最終的には、PD">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.06</div>
+    <h1>PDF・画像つき資料をまとめて読ませる「研究用AIアシスタント」の作り方</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Mohsin Abro（記事内の筆者名）<br>
+      <strong>業種：</strong>個人の研究・情報整理用途（技術文書、ホワイトペーパー、PDF検索）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>記事の筆者は、SSDに溜まった200本以上の技術レポートやホワイトペーパーを手作業で探すのが非現実的になったため、AIで“資料に質問できる仕組み”を作りました。ポイントは、PDFの本文だけでなく画像も扱い、検索しやすい形に分割して、質問に対して根拠つきで答えられるようにしたことです。最終的には、PDFを読む・探す・要点を拾う作業をAIに寄せ、必要な確認だけ人間が行うワークフローにしています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前の課題は、大量の技術文書が散在していて、必要な情報を見つけるのに時間がかかることでした。筆者は200本以上のPDFを持っていたものの、手で開いて検索するのは事実上困難だったと述べています。特に、PDF内の画像や図表を含めて内容を扱いたい点が、通常のテキスト検索だけでは不十分でした。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- 200本以上の技術レポートやホワイトペーパーのPDF</p><p>- PDF内の本文テキストと画像</p><p>- ユーザーの質問</p><p>↓</p><p>AIによる処理</p><p>- PDFをテキストの意味単位で分割（chunking）</p><p>- 画像も含めて埋め込み（embeddings）を作成</p><p>- ベクトルDB（FAISS）で検索可能な形に保存</p><p>- 質問に関連する断片を検索（Retrieval）</p><p>- その断片と質問をLLMに渡して回答文を生成（RAG）</p><p>- 必要に応じてページ番号つきの引用を出すよう促す</p><p>↓</p><p>次のシステム・処理</p><p>- Gradioで簡易UI化</p><p>- SQLiteやChromaDBなどにメタデータを保存する案が記事内で触れられている</p><p>- 重い処理はバックグラウンドジョブ化する案も挙げられている</p><p>↓</p><p>出力</p><p>- PDF群に対する自然言語の回答</p><p>- 参照元のページ番号を含む回答</p><p>- 研究用の“自分専用ChatGPT”のような画面</p><p>↓</p><p>人間による確認・最終作業</p><p>- 回答内容と引用元を確認</p><p>- どの資料を信頼するかを判断</p><p>- 必要なら元PDFを開いて精読する</p><p>補足</p><p>- 記事で確認できるAIの役割は、分類、抽出、検索、要約、回答生成、引用指示への追従です。</p><p>- どのPDFパーサーやOCRを実運用で使っているかは記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>金銭的な売上増は記事から確認できません。確認できる効果は、PDFを探したり読み直したりする時間を節約できること、200本以上の資料から質問に答えられること、引用つきで根拠を確認しやすくなることです。筆者は“毎週何時間も節約できる”と述べていますが、具体的な数値は示していません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だったのは、検索対象を“ファイルの山”ではなく“検索できる知識ベース”に変えたからです。分析として言えば、PDFを小さく分割して埋め込みを作ることで、全文を毎回読むよりも関連箇所を素早く引けるようになり、RAGで回答生成までつなぐことで、単なる検索ツールではなく質問応答ツールになっています。画像も扱う設計にしたことで、図表が重要な技術資料にも対応しやすくなっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- 大量文書は“保存”より“再発見”しやすさが重要</p><p>- テキストだけでなく、図や画像が価値を持つ資料は多い</p><p>- まずは完全自動化ではなく、検索と回答の補助から始めると実用化しやすい</p><p>- 引用元を残すと、AI回答の信頼性を人間が確認しやすい</p><p>- UIを簡単に付けるだけで、個人用スクリプトが実用ツールに変わる</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 社内資料検索アシスタント</p><p>- データを取得: 共有フォルダやGoogle Drive内のPDF、議事録、仕様書</p><p>- AIへ渡す: テキスト抽出＋必要ならOCRで画像文字も抽出</p><p>- AIで処理: chunking、埋め込み生成、関連箇所検索、質問への回答生成</p><p>- 保存: FAISS/ChromaDB＋SQLiteに本文断片とファイル名、ページ番号を保存</p><p>- 出力: Web画面やSlack botで“どの資料の何ページに書いてあるか”を返す</p><p>- 人間が確認: 参照元PDFを開いて最終判断</p><p>2. 契約書・規約の確認補助</p><p>- データを取得: 契約書PDF、約款、覚書</p><p>- AIへ渡す: 条項ごとに分割した本文とページ情報</p><p>- AIで処理: 期限、金額、解除条件、禁止事項などを抽出</p><p>- 保存: Excel/Google Sheetsに一覧化</p><p>- 出力: 重要条項のサマリーをメールで通知</p><p>- 人間が確認: 法務担当が原文と照合して承認</p><p>3. 研究・学習ノートの自分専用検索</p><p>- データを取得: Kindleのメモ、読書ノート、PDF、講義資料</p><p>- AIへ渡す: ノート本文と書籍名・章情報</p><p>- AIで処理: 要点の抽出、重複テーマの統合、質問応答</p><p>- 保存: NotionやObsidianに整理</p><p>- 出力: “このテーマに関する過去メモ”を検索画面で返す</p><p>- 人間が確認: 使う知識だけを選んで再整理</p><p>4. 個人利用: 家電・保険・旅行書類の問い合わせ箱</p><p>- データを取得: 保証書、取扱説明書、保険証券、旅行のPDF</p><p>- AIへ渡す: 文書本文と画像、購入日や契約日</p><p>- AIで処理: 期限、連絡先、手続き手順を抽出</p><p>- 保存: Google SheetsやNotionに一覧化</p><p>- 出力: “保証期限が近いもの”“解約条件”をメール通知</p><p>- 人間が確認: 必要な手続きを自分で実行する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実際の精度、対応できるPDFの種類、OCRの有無、更新頻度、セキュリティ設計、権限管理は不明です。RAGは便利ですが、検索が外れれば誤った回答につながるため、機密文書や法務・医療などの重要用途では人間の確認が必須です。画像付きPDFの扱いは難度が上がるため、スキャン品質が悪い資料では抽出精度が落ちる可能性があります。引用を付けても、AIが文脈を取り違えることはあるため、最終判断をAIに任せない運用が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>7 Insanely Useful AI Tools I Built to Instantly Transform My ...</p>
+    <p class="source">
+      <a href="https://python.plainenglish.io/7-insanely-useful-ai-tools-i-built-to-instantly-transform-my-workflow-40b42798dd0d"
+         target="_blank" rel="noopener noreferrer">
+        https://python.plainenglish.io/7-insanely-useful-ai-tools-i-built-to-instantly-transform-my-workflow-40b42798dd0d
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
