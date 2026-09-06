@@ -462,5 +462,27 @@
       "applicability": 13,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-09-07",
+    "date_display": "2026.09.07",
+    "company_name": "記事から確認できません（West Midlandsの12人規模の採用エージェンシー）",
+    "headline": "手書きタイムシート、候補者連絡、書類追跡を自動化して週32時間削減した採用エージェンシーのAIワークフロー",
+    "title": "AI Automation Case Study: Recruitment Agency Saves 40 Hours",
+    "url": "https://blog.innovate247.ai/ai-automation-case-study-recruitment-agency-40-hours/",
+    "article_filename": "2026-09-07.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-07.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "1はn8n + GPT-4o-mini + Google Sheets APIの具体的な自動化で、入力→AI処理→出力の流れが明確そうです。2はn8nとGPT-4oを使った実装記事で、コストや構成から再現性の高いワークフローが期待できます。3は採用業務の40時間削減事例で、候補者データ処理にLLMを使う実務フローが本文で具体化されそうです。4はn8nとOpenAIでNotionのチャットアシスタントを生成・配備するワークフローで、小規模でも応用しやすいです。10はサイドハッスル運営の自動化で、個人が真似しやすい実践例が本文に含まれる可能性があります。",
+    "adoption_score": 88,
+    "workflow_signature": "手書き/写真のtimesheet・候補者連絡・本人確認書類→AIでOCR/構造化/文面生成/期限チェック→CRM登録・自動送信・例外のみ手動レビュー",
+    "evaluation_reason": "本文から、入力（写真付き手書きtimesheet、候補者情報、本人確認書類）、AI処理（TextractでOCR、GPTで項目抽出・検証・文面生成、期限/不備チェック）、出力（Bullhorn/Xeroへの登録、WhatsApp/メール送信、Slackで例外通知）まで具体的に確認できる。3つのワークフローはいずれも一般的なツールで再現しやすく、個人や中小企業でも同型に実装可能。実用面では、週32時間の削減、手戻りの例外処理、文面の抜け漏れ防止、コンプライアンスの期限管理など効果が明確で、単なる紹介ではなく運用上の工夫と失敗→修正も記載されているため信頼性も十分高い。応用可能性は、timesheet/OCR、定型連絡、期限管理という3系統に分けて他業種へ横展開できるが、特に本事例は人手での転記・追客・書類催促に強く、抽象化した場合の転用範囲は広い。過去事例との重複も、主入力・AI処理・後続処理が一致するものはなく、別案件として採用妥当。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]

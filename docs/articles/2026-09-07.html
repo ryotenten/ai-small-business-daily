@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>手書きタイムシート、候補者連絡、書類追跡を自動化して週32時間削減した採用エージェンシーのAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例では、採用エージェンシーが手書き・写真送付のタイムシート入力、候補者への定型連絡、コンプライアンス書類の追跡という、時間を食う事務作業をAIと自動化ツールで置き換えました。人がやっていたのは「読む」「転記する」「催促する」「期限を確認する」作業で、そこを入力→抽出・判定→CRMや請求システム">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.07</div>
+    <h1>手書きタイムシート、候補者連絡、書類追跡を自動化して週32時間削減した採用エージェンシーのAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（West Midlandsの12人規模の採用エージェンシー）<br>
+      <strong>業種：</strong>人材紹介・採用支援（temporary/contract workerの紹介）<br>
+      <strong>規模：</strong>12人規模（3人のコンサルタント、2人の管理担当、1人のコンプライアンス担当を含む）
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例では、採用エージェンシーが手書き・写真送付のタイムシート入力、候補者への定型連絡、コンプライアンス書類の追跡という、時間を食う事務作業をAIと自動化ツールで置き換えました。人がやっていたのは「読む」「転記する」「催促する」「期限を確認する」作業で、そこを入力→抽出・判定→CRMや請求システムへ反映、に組み替えています。結果として、管理業務の合計負荷が大きく減ったと記事は述べています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>導入前は、週あたり約200件のタイムシートを手入力し、Bullhornへの転記やXeroへの出力を行っていました。候補者への面接確認、持ち物や書類の連絡、リマインド、参照確認などのやり取りも毎回手作業でした。さらに、Right to Work、DBS、健康安全関連の書類回収と期限管理をコンプライアンス担当がスプレッドシート中心で行っており、管理業務だけで週38〜40時間ほどかかっていました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【1. タイムシートOCRと転記】</p><p>入力：WhatsApp Business API経由で送られてくる、手書きタイムシートの写真</p><p>↓</p><p>AIによる処理：AWS Textractで文字認識し、GPT-4.1 Miniで抽出結果を構造化（氏名、日付、開始時刻、終了時刻、休憩、総時間などに分解）。さらに、総時間が12時間超過、または6時間超の勤務で休憩0分などのルールを検証</p><p>↓</p><p>次のシステム・処理：n8nがワークフローを制御し、BullhornのAPIとXeroへ連携</p><p>↓</p><p>出力：CRMへの勤務実績登録と請求用データの反映</p><p>↓</p><p>人間による確認：低信頼度・ルール違反のものだけSlackに送られ、管理担当が原本画像と抽出結果を見比べて修正</p><p>【2. 候補者コミュニケーションの自動化】</p><p>入力：Bullhorn内で候補者レコードが特定のパイプライン段階に入った情報、候補者名、紹介先の職種、クライアント名、面接日</p><p>↓</p><p>AIによる処理：LLMが、面接確認・事前案内・面接後フォロー・参照依頼・稼働可否確認などの定型文を、指定トーンに合わせて生成</p><p>↓</p><p>次のシステム・処理：候補者の希望チャネルに応じてWhatsApp Business APIまたはメールで送信</p><p>↓</p><p>出力：候補者への連絡文面</p><p>↓</p><p>人間による確認：返信は担当コンサルタントの個別受信箱へ戻り、最終対応は人が行う</p><p>【3. コンプライアンス書類の収集・督促】</p><p>入力：候補者のパイプライン進行、提出書類の写真またはPDF、書類の有効期限情報</p><p>↓</p><p>AIによる処理：書類の内容を読み取り、種類を判定し、名前一致・有効期限の有無などを確認</p><p>↓</p><p>次のシステム・処理：Google Driveへ標準命名で保存し、Bullhornのカスタムフィールドを更新。期限30日前になったら自動更新依頼を送信</p><p>↓</p><p>出力：提出状況の更新、督促メッセージ、期限切れ警告</p><p>↓</p><p>人間による確認：不一致や判定不能の書類はコンプライアンス担当に回し、最終確認を行う</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では、管理業務の合計が週38〜40時間から大きく減少したとされています。個別には、タイムシート処理が週15時間程度から約45分の例外処理へ、候補者連絡が週12時間から3時間へ、コンプライアンス事務が週10〜12時間から2〜3時間へ削減されました。合計で週32時間の削減、月あたり約2,560ポンド相当の管理工数回収、月75ポンドの運用費、総開発費11,500ポンド、回収期間は5か月未満と説明されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが機能した理由は、完全自動化ではなく「定型で反復する部分だけ」を切り出した点にあります。手書き認識のように不確実性が高い工程では、AIの結果をそのまま採用せず、信頼度やルールで弾いて人に戻す設計にしていました。候補者連絡も、内容は自動生成しても、誰に何を送るかという判断は人が保持しています。つまり、AIを“判断の代替”ではなく“転記・草案・確認補助”として使ったことが、実運用に乗った要因だと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIは「例外が少ない定型作業」と相性が良い</p><p>- いきなり全自動にせず、低信頼度や例外だけ人に戻すと運用しやすい</p><p>- CRM、メール、チャット、ストレージをつなぐと効果が出やすい</p><p>- 書類処理では、AIの分類結果よりも“人に渡す条件”を先に決めると事故が減る</p><p>- 文面生成では、AIに自由作文させるより、口調・禁止事項・例文を与えた方がブレが少ない</p><p>- ROIは「削減時間 × 反復件数」で測りやすい仕事から始めるのがよい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら：採用・事務フロー版】</p><p>1. 受信箱（Gmail/WhatsApp/Slack）やフォームからファイルを取得</p><p>2. PythonまたはMake/Zapierで画像・PDFをOCRへ送る</p><p>3. OpenAI APIで項目抽出（氏名、日付、金額、期限、ステータスなど）とルールチェック</p><p>4. Google SheetsやNotion、Excel、Airtableに保存</p><p>5. 条件に応じてSlackやメールで「要確認」だけ通知</p><p>6. 最後は人が原本を見て確定</p><p>【仕事への応用例1：請求書・領収書の整理】</p><p>- 入力：メール添付の請求書PDFや写真</p><p>- 処理：OCRで金額、日付、支払先、税区分を抽出し、OpenAI APIで項目の整合性チェック</p><p>- 出力：スプレッドシートに一覧化し、月次の経理レビュー用にSlack通知</p><p>- 人間：例外のみ確認して会計ソフトへ反映</p><p>【仕事への応用例2：営業問い合わせの一次仕分け】</p><p>- 入力：問い合わせフォーム、Gmail、Webチャット</p><p>- 処理：AIが内容を分類（見込み客、既存顧客、採用、苦情など）し、要点を3行で要約</p><p>- 出力：HubSpotやスプレッドシートに保存し、担当者へ自動振り分け</p><p>- 人間：重要案件だけ返信文を確認して送信</p><p>【仕事への応用例3：社内申請書のチェック】</p><p>- 入力：経費申請、休暇申請、稟議のPDF</p><p>- 処理：AIが必要項目の欠落、添付不足、金額の不自然さを検出</p><p>- 出力：Google Sheetsにステータス記録、Slackで差し戻し通知</p><p>- 人間：承認者が最終判断</p><p>【個人利用の応用例1：保管書類の期限管理】</p><p>- 入力：免許証、パスポート、保険証券、サブスクの更新メール</p><p>- 処理：AIが期限日を抽出し、Google Calendarに登録</p><p>- 出力：期限30日前、7日前にメールやPush通知</p><p>- 人間：更新の実行だけ行う</p><p>【個人利用の応用例2：家計のレシート整理】</p><p>- 入力：スマホで撮ったレシート</p><p>- 処理：OCRとAIで店舗名・金額・カテゴリを抽出</p><p>- 出力：スプレッドシートへ自動記録</p><p>- 人間：月末に分類ミスだけ修正</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、実際の設定画面やプロンプト全文、n8nの詳細な分岐条件までは確認できません</p><p>- Bullhorn以外のCRMでの実装手順は記事では具体化されていません</p><p>- WhatsAppでの送信は、候補者の同意取得が必要だと記事は述べていますが、同意管理の実装方法は確認できません</p><p>- LLMの判定やOCRは誤認識が起こりうるため、例外処理と人の最終確認は必須です</p><p>- 書類には個人情報や機微情報が含まれるため、保存先、アクセス権限、保持期間の設計が必要です</p><p>- 記事では運用コストの内訳は示されていますが、導入保守や将来のAPI料金変動までは確認できません</p><p>- 事例は採用・人材紹介業のように定型事務が多い業務に向いており、同じやり方がすべての業種にそのまま当てはまるとは限りません</p>
+
+    <h2>参考記事</h2>
+    <p>AI Automation Case Study: Recruitment Agency Saves 40 Hours</p>
+    <p class="source">
+      <a href="https://blog.innovate247.ai/ai-automation-case-study-recruitment-agency-40-hours/"
+         target="_blank" rel="noopener noreferrer">
+        https://blog.innovate247.ai/ai-automation-case-study-recruitment-agency-40-hours/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
