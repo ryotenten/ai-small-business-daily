@@ -484,5 +484,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-08",
+    "date_display": "2026.09.08",
+    "company_name": "記事から確認できません",
+    "headline": "Google Sheetsの未処理行から個別メールを自動生成・送信するAIワークフロー",
+    "title": "Building My First AI-Powered Automation Workflow",
+    "url": "https://www.linkedin.com/posts/nimra-n-869968256_automation-aiworkflows-googlesheets-activity-7389664845471752192-wYfy",
+    "article_filename": "2026-09-08.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-08.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、検索結果の段階でも『入力→AI処理→出力→人間の最終作業』がかなり具体的に想像でき、かつGmail/Sheets/n8n/Makeなど再現しやすい構成が見えるものです。1位の8はGmail受信→AI分類→Google Sheet参照という実務フローが明確で、受注・問い合わせ・物流などへ応用しやすいです。2位の4はメールフォローアップをSheets連携で回す定番だが実務価値が高く、小規模でも再現しやすいです。3位の0はn8n×Google Sheets×Gmailの自作自動化で、本文に入ると実装と運用の工夫が見つかりそうです。4位の2はMake/Google Sheets/Gmail/Notionの組み合わせが見え、業務台帳・通知・記録の流れを確認する価値があります。5位の3はReddit系でややノイズがあるものの、AI関連のメール通知やGmail/Docs/Sheets連携の実例が本文に含まれる可能性があり、ワークフロー収集の観点で拾う余地があります。",
+    "adoption_score": 84,
+    "workflow_signature": "定期取得したシート行→AIで個別メール文生成→Gmail送信→シートを完了更新",
+    "evaluation_reason": "本文から、入力（Google Sheetsの保留行）、AIの役割（Geminiで行ごとに個別メール文を生成）、出力（Gmail送信とシートのDone更新）が明確に確認できる。n8n/Google Sheets/Gmail/Geminiという一般的な構成で、個人や小規模組織でも再現しやすい。用途はメール自動送信に限定されるが、抽象化すると「一覧データ→AIで文面生成→送信→ステータス更新」という実用的な自動化パターンで、営業連絡、督促、案内、フォローアップなどへ横展開しやすい。実装の詳細手順や運用上の例外処理は少ないが、実際に作ったワークフローとして最低限の信頼性はあるため、採用基準は満たす。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 12,
+      "reliability": 7
+    }
   }
 ]

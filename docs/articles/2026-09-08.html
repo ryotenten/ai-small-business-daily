@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Sheetsの未処理行から個別メールを自動生成・送信するAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業での定型メール送信は、件数が増えるほど時間がかかり、送信漏れや入力ミスも起きやすくなります。この事例では、Google Sheetsの未処理データを起点に、AIが文面を個別生成し、Gmailで送信して、送信後はシート側のステータスまで更新する流れに変えています。記事で確認できるのは、n8n上で">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.08</div>
+    <h1>Google Sheetsの未処理行から個別メールを自動生成・送信するAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Google SheetsとGmailを使ったメール自動化／業務自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業での定型メール送信は、件数が増えるほど時間がかかり、送信漏れや入力ミスも起きやすくなります。この事例では、Google Sheetsの未処理データを起点に、AIが文面を個別生成し、Gmailで送信して、送信後はシート側のステータスまで更新する流れに変えています。記事で確認できるのは、n8n上でこの一連の自動化を初めて組んだという点です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、反復的な手動メール送信をなくしたいことでした。あわせて、連絡内容は自動化しても個別性を保ち、管理は整理された状態で続けたい、という狙いが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>Google Sheetsの「保留中」の行を取得</p><p>↓</p><p>Edit FieldsでAI処理しやすい形に整形</p><p>↓</p><p>AI Agent（Gemini Model）が行ごとに個別のメール文面を生成</p><p>↓</p><p>Gmail Nodeが受信者へメール送信</p><p>↓</p><p>Sheet Updateで該当行を「Done」に更新</p><p>↓</p><p>人間による確認</p><p>記事から確認できるのは、ワークフローがこの順で動くことまでです。AIは、各行の情報をもとに人間らしい個別メールを文章生成する役割を担っています。分類や抽出の詳細、送信前レビューの有無、例外処理の方法は記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上などの数値成果は確認できません。ただし、手作業のメール作成・送信・進捗更新をまとめて自動化したことで、反復作業の時間削減と、連絡の一貫性向上が見込める構成です。本文には「hours of manual effortを節約できる」とあり、定量値はないものの手作業時間の削減効果が示されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この構成が有効なのは、メール作成に必要な情報がすでにGoogle Sheetsにまとまっており、AIが文面生成に集中できる形になっているためだと考えられます。さらに、送信後にシートを更新することで、データ・送信・進捗管理が同じ流れで閉じるので、抜け漏れが起きにくくなります。これは記事の事実に基づくというより、ワークフロー設計上の分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・AIは『ゼロから判断』より、『整理済みデータから文章化する』用途で使うと組み込みやすい</p><p>・送信や処理のあとにステータスを更新すると、運用が見える化しやすい</p><p>・入力元、AI、送信先、記録先を分けても、1本の流れにすると手戻りが減る</p><p>・まずは1つの定型業務だけ自動化し、例外処理は人間確認に残すと始めやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 問い合わせ返信の下書き自動化</p><p>- 入力: Google Sheetsやフォームに入った問い合わせ内容</p><p>- AI処理: 用件別に文面を生成し、必要な確認事項を補う</p><p>- 出力: Gmailの下書き、またはSlackで担当者に通知</p><p>- 人間確認: 送信前に担当者が内容を確認</p><p>2. 既存顧客へのフォロー連絡</p><p>- 入力: CRMやスプレッドシートの顧客名、前回対応日、案件メモ</p><p>- AI処理: 状況に応じたフォローメールを個別生成</p><p>- 出力: Gmail送信、送信済みをSheets/DBに記録</p><p>- 人間確認: 重要顧客だけ送信前チェック</p><p>3. 社内リマインドの自動送付</p><p>- 入力: 期限が近いタスク一覧</p><p>- AI処理: 宛先ごとに短い催促文を生成</p><p>- 出力: Slackまたはメールで自動送信</p><p>- 人間確認: 期限や宛先の誤りを確認</p><p>4. 営業後の面談お礼メール</p><p>- 入力: 商談メモ、会社名、担当者名、次回アクション</p><p>- AI処理: 商談内容に沿ったお礼文と次回提案文を生成</p><p>- 出力: Gmail下書き、Notionに送信履歴保存</p><p>- 人間確認: トーンと提案内容を確認</p><p>個人利用の応用例</p><p>1. イベント参加後のお礼メッセージ</p><p>- 入力: 参加者名、会った話題、連絡先</p><p>- AI処理: 会話内容を反映した個別メッセージを作成</p><p>- 出力: Gmail下書きやLINE送信用メモ</p><p>- 人間確認: 送信前に一言調整</p><p>2. 忘れがちな定期連絡の自動化</p><p>- 入力: 連絡先リストと前回連絡日</p><p>- AI処理: 間隔に応じたリマインド文を生成</p><p>- 出力: メール下書きや通知</p><p>- 人間確認: 本当に送る相手だけ確認</p><p>3. 家族・友人向けの予定連絡</p><p>- 入力: 予定、集合時間、場所</p><p>- AI処理: わかりやすい案内文に整形</p><p>- 出力: メッセージアプリ用の送信文</p><p>- 人間確認: 時間・場所の最終確認</p><p>実装に使いやすいツール例: n8n、Google Sheets、Gmail、Slack、ChatGPT、OpenAI API、Python、Zapier、Make、Notion、GitHub Actions。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、メールの送信前に人間がレビューしていたか、エラー時の再実行方法、重複送信防止、AIのプロンプト設計、データの個人情報保護方針は不明です。個人名・連絡先・業務情報をAIに渡す場合は、機密情報の扱いと保存先を確認する必要があります。また、AI生成文面は誤解を含む可能性があるため、重要な連絡は人間の最終確認を残すのが安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>Building My First AI-Powered Automation Workflow</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/nimra-n-869968256_automation-aiworkflows-googlesheets-activity-7389664845471752192-wYfy"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/nimra-n-869968256_automation-aiworkflows-googlesheets-activity-7389664845471752192-wYfy
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
