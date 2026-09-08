@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GmailのPDF荷物情報をGeminiで抽出し、Telegram送信まで自動化した物流会社のワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業でPDFを開き、荷物情報を転記して、チャットへ送る――この一連の作業が毎回10分かかっていました。Imona Logisticsでは、ブローカーから届くPDFをもとにしたディスパッチ業務をAIと自動化ツールでつなぎ、転記作業を大幅に短縮した事例です。記事では、Gemini AIにPDFから必要">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.09</div>
+    <h1>GmailのPDF荷物情報をGeminiで抽出し、Telegram送信まで自動化した物流会社のワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Imona Logistics / Joseph Asinyo<br>
+      <strong>業種：</strong>物流・トラック輸送のディスパッチ業務<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業でPDFを開き、荷物情報を転記して、チャットへ送る――この一連の作業が毎回10分かかっていました。Imona Logisticsでは、ブローカーから届くPDFをもとにしたディスパッチ業務をAIと自動化ツールでつなぎ、転記作業を大幅に短縮した事例です。記事では、Gemini AIにPDFから必要項目を抽出させ、その結果をTelegramのディスパッチグループへ流す流れが紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で確認できる導入前の課題は、ブローカーからGmailで届くPDFを人が開き、荷物情報をコピーして整形し、Telegramのディスパッチグループへ送る作業が毎回発生していたことです。1件あたり約10分かかり、1日20件超を処理していたため、月80時間以上が手作業に消えていました。PDFのレイアウトが毎回少しずつ違い、必要情報を見つけて転記する負荷が高かったことも課題です。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>→ Gmailで受信したブローカーのPDF</p><p>AIによる処理</p><p>→ Gemini AIがPDFから必要な荷物情報を抽出</p><p>→ 抽出対象は、記事で確認できる範囲では pickup / delivery address、pickup / delivery date、rate、mileage など</p><p>→ 著者は、どの項目を抜き出すか、通常どこにあるか、どの形式で返すかをプロンプトで教え込んだと説明している</p><p>次のシステム・処理</p><p>→ 抽出結果をディスパッチ用の後続処理へ渡す</p><p>→ Telegramのディスパッチグループへ送信</p><p>出力</p><p>→ 受け取った荷物情報を整理した状態でTelegramに共有</p><p>人間による確認・最終作業</p><p>→ 記事からは、誰がどの段階で最終確認するかの詳細は確認できません</p><p>→ ただし、AIが誤ると誤った情報共有や配送遅延につながるため、最終的な運用では人の確認が重要であることは記事から読み取れます</p><p>補足</p><p>→ この事例のAI担当は、分類よりも「抽出」が中心です</p><p>→ PDFごとのレイアウト差に対して、試行錯誤でプロンプトを調整し、複数の実ファイルで精度を高めたとされています</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、手作業の10分/件が数秒に短縮されたこと、月80時間の削減、3か月以上運用して精度が安定していることです。著者の計算では、10分削減 × 1日20件 × 週6日で月80時間の削減になります。売上増加や人員削減の有無は記事から確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが機能した理由は、PDFから取り出す項目を固定し、出力形式も明確にしたうえで、実ファイルを使ってプロンプトを繰り返し調整した点にあると考えられます。AIに自由な要約をさせるのではなく、必要なフィールドだけを抽出させたことで、後続のTelegram共有にそのまま使える形へ寄せられました。これは分析であり、記事本文の直接記述ではありません。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>1. AIは“賢く読む”より“決まった項目を抜く”用途で安定しやすい。</p><p>2. 入力ファイルの形式がばらばらでも、抽出項目を固定すると自動化しやすい。</p><p>3. AIの出力先を最初から決めると、手作業の残りが減る。</p><p>4. 精度が重要な業務ほど、最初から完全自動ではなく、人の確認を前提に設計したほうが安全。</p><p>5. 実データで何度も試し、プロンプトを育てる工程が品質を左右する。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような流れが考えられます。</p><p>1. GmailやDropbox、Google DriveからPDFや添付ファイルを取得する</p><p>2. Python、Google Apps Script、Zapier、MakeなどでファイルをAIへ渡す</p><p>3. ChatGPT APIやOpenAI API、Geminiで必要項目を抽出する</p><p>4. 抽出結果をGoogle Sheets、Excel、Notion、Airtable、DBに保存する</p><p>5. Slack、Teams、メール、Telegramで担当者へ通知する</p><p>6. 人間が最終確認して、確定情報として使う</p><p>仕事への応用例</p><p>- 物流・配送: 受信した見積書や配送依頼PDFから、住所・日時・金額・数量だけを抜き出してスプレッドシートへ記録し、担当者へ通知する</p><p>- 営業事務: 取引先メール添付の注文書PDFから、会社名・品目・納期・数量を抽出して受注管理表に自動入力する</p><p>- 現場管理: 点検報告書PDFから、異常箇所・対応期限・担当者を抜き出してタスク管理ツールに送る</p><p>- カスタマーサポート: 問い合わせメールの本文と添付を読み、種類ごとに分類して担当チームへ振り分ける</p><p>プライベート応用例</p><p>- 旅行計画: 予約メールやPDFから、便名・日程・ホテル名を抜き出してカレンダーに登録する</p><p>- 家計管理: 明細PDFや領収書画像から、支出日・金額・店名を抽出して家計簿に入れる</p><p>- 書類整理: 保険証券や契約書のPDFから、更新日・契約先・連絡先を抜き出して一覧化する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、具体的な自動化ツール名、Telegramへ送るまでの中間処理、誰が最終確認するか、例外処理、失敗時のリトライ、セキュリティ対策は明記されていません。PDFの種類が増えると誤抽出が起きる可能性があるため、住所・日付・金額のような重要情報は必ず人が確認すべきです。ブローカー資料には個人情報や機密情報が含まれる可能性があるため、保存先、アクセス権限、ログ管理にも注意が必要です。AIの出力をそのまま現場へ流す運用は、誤配送や遅延につながるおそれがあります。</p>
+
+    <h2>参考記事</h2>
+    <p>How I automated a trucking company&#x27;s workflow with ...</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/josephasinyo_80-hours-month-saved-post-5-activity-7379462363491635200-VsVw"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/josephasinyo_80-hours-month-saved-post-5-activity-7379462363491635200-VsVw
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

@@ -506,5 +506,27 @@
       "applicability": 12,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-09",
+    "date_display": "2026.09.09",
+    "company_name": "Imona Logistics / Joseph Asinyo",
+    "headline": "GmailのPDF荷物情報をGeminiで抽出し、Telegram送信まで自動化した物流会社のワークフロー",
+    "title": "How I automated a trucking company's workflow with ...",
+    "url": "https://www.linkedin.com/posts/josephasinyo_80-hours-month-saved-post-5-activity-7379462363491635200-VsVw",
+    "article_filename": "2026-09-09.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-09.html",
+    "search_query": "\"AI workflow\" automation \"how I\"",
+    "selection_reason": "本文を読む価値が高いのは、具体的な入力→AI処理→出力→人間の仕上げが想像しやすく、個人や少人数でも再現しやすいものです。1はn8nのAIエージェントで生成・実行まで踏み込んだ実装系、7は物流会社の業務フロー自動化で人間の関与点も見えやすく実務応用しやすい、15はChatGPTで営業・提案・顧客対応などの定番業務をどう置き換えたかが具体化されやすい、2は週次計画という再現しやすい個人ワークフロー、19は複数の実用ワークフローをまとめて紹介している可能性が高く横展開しやすいと判断しました。",
+    "adoption_score": 81,
+    "workflow_signature": "broker PDFメール→AIで荷情報を抽出・整形→Telegramに配送指示を送信",
+    "evaluation_reason": "本文から、Gmailで受け取ったPDFの荷情報をGeminiで抽出し、必要項目を整形してTelegramのdispatchグループへ送る、という具体的な入出力と後続アクションが確認できる。実装は一般的なメール連携、PDF処理、LLM抽出、チャット通知の組み合わせで再現しやすく、同種の請求書・申込書・受発注書・現場連絡などへ横展開しやすい。80時間/月削減という定量効果もあり実用性が高い。一方で、成果は投稿者の自己申告ベースで、詳細な実装手順や失敗時の例外処理までは十分に確認できないため信頼性は満点ではないが、採用基準は十分満たす。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 20,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 5
+    }
   }
 ]
