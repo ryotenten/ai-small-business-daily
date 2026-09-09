@@ -528,5 +528,27 @@
       "applicability": 13,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-09-10",
+    "date_display": "2026.09.10",
+    "company_name": "記事から確認できません",
+    "headline": "AIで問い合わせ・営業・財務・コンテンツを流す：業務ワークフロー自動化の実践ガイド",
+    "title": "AI Workflow Automation for Business: 2026 Guide",
+    "url": "https://www.tommasomariaricci.com/blog/ai-workflow-automation-for-business",
+    "article_filename": "2026-09-10.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-10.html",
+    "search_query": "\"AI workflow\" small business operations",
+    "selection_reason": "本文確認の価値が高い順に、まず6はNetSuite承認→ChatGPT分析→Slack通知という入力/AI処理/出力が明確で、業務フローとして再現しやすいです。0はRedditですが、AI workflow automationを学ぶ文脈で具体的な自動化事例や実装パターンが出る可能性があり、n8n/Make/Zapier系の実例探索に向きます。4はビジネス向けの実践ガイドで、本文に具体的な業務ワークフローやROI測定、導入手順がある可能性が高いです。1は比較記事寄りですが、説明文に『browser automation』『LinkedIn to CRM』が見えており、営業・入力→処理→CRM反映の再現可能なワークフロー候補として確認価値があります。9はUiPath×OpenAIで、RPAにLLMを組み合わせた具体的な処理拡張が期待でき、既存業務の自動化を小規模でも応用しやすいので候補に入れました。",
+    "adoption_score": 84,
+    "workflow_signature": "業務プロセス棚卸し→AIで価値/複雑性を評価・優先順位付け→優先ワークフローを選定してpilot/ROI計測",
+    "evaluation_reason": "本文から、AIを使って何をするか（業務プロセスの棚卸し、価値/複雑性による優先順位付け、パイロット設計、ROI計測、スケール判断）が具体的に確認できます。入力・処理・出力の形は、特定業種に依存せず別業務へ横展開しやすく、中小企業でも一般的な表計算、CRM、チャットボット、RPA/API連携で再現しやすいです。成果の数値はやや誇張気味に見える箇所がありますが、実装の進め方自体は実務的で、長期保存に値する汎用フレームワークとして採用可です。過去事例との入力/処理/出力の実質一致もありません。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]
