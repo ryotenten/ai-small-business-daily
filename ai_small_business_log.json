@@ -550,5 +550,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-11",
+    "date_display": "2026.09.11",
+    "company_name": "記事から確認できません",
+    "headline": "OpenAI APIでユーザーストーリー作成と工数見積もりを自動化するワークフロー",
+    "title": "Automation of Software Development Stages with the ...",
+    "url": "https://www.techscience.com/csse/v49n1/59200/html",
+    "article_filename": "2026-09-11.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-11.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "優先したのは、検索結果の段階でも『何を入力し、AIで何を処理し、どう出力・運用するか』が本文で具体例として出てきそうなものです。0はn8n/Zapier/Makeを使う実務自動化の話題で、再現可能なワークフローに繋がりやすい。4はOpenAI APIで業務オペレーションを自動化した実装談で、具体的な業務フローが本文に期待できる。6はOpenAI APIでソフトウェア開発工程を自動化する研究/実装系で、入力→生成→評価の流れが明確になりやすい。11はカスタマーサポート自動化など用途が具体的で、メール/FAQ/チケット運用に応用しやすい。12はコンテンツ制作ワークフローの実例を掘れる可能性があり、個人・小規模チームに再現しやすい候補です。",
+    "adoption_score": 78,
+    "workflow_signature": "業務シナリオ説明→AIでユーザーストーリー生成・工数見積もり→開発計画と実装支援",
+    "evaluation_reason": "本文から、OpenAI APIを使ってユーザーストーリーを自動生成し、工数を見積もり、さらに複数の実用シナリオ（医療予約、ホテル予約、車両予約など）で検証した流れが確認できるため、AIの具体的な使い方は十分に把握できます。入力→AI処理→出力の構造が明確で、要件定義・初期見積もり・開発計画の支援という点で実用性があります。一般的なAPIやプロンプト設計で再現しやすく、ソフトウェア開発以外でも業務フローの整理、タスク分解、見積もり補助に横展開しやすいです。定量的な効果は限定的ですが、実際にツールを構築してケース比較しているため信頼性は一定あります。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 19,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 7
+    }
   }
 ]
