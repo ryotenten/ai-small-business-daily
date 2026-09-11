@@ -572,5 +572,27 @@
       "applicability": 12,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-12",
+    "date_display": "2026.09.12",
+    "company_name": "記事から確認できません",
+    "headline": "Google Sheetsのテーマキューから週刊ニュースレターを自動生成・配信するAIワークフロー",
+    "title": "Generate weekly AI automation newsletters with Google ...",
+    "url": "https://n8n.io/workflows/18394-generate-weekly-ai-automation-newsletters-with-google-sheets-tavily-openrouter-and-gmail/",
+    "article_filename": "2026-09-12.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-12.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、検索結果の時点で入力→AI処理→出力→人間の最終作業が比較的具体的に想像でき、かつGmail/Sheets/n8n/Pythonなど再現しやすい構成が見えるものです。0はGmail→AI→Sheetsの直接的な実務自動化で、具体例が本文にある可能性が高いです。3はn8n・Postman・Google Sheets・Gmailを使ったAI Lead Management Systemで、リード処理の流れが明確です。5はGoogle Sheets/Tavily/OpenRouter/Gmailで週次ニュースレター生成という、収集→生成→配信のワークフローが追いやすいです。11はDeep Research APIを使った実務寄りの探索・調査自動化の可能性があり、再現性のあるプロンプト/APIワークフローが見込めます。16はChatGPTを使った業務自動化の試行で、リサーチ業務改善という具体タスクがあり、本文に実装手順や精度検証が載っている可能性があります。",
+    "adoption_score": 81,
+    "workflow_signature": "週次のトピック入力/収集→AIで調査・構成・執筆→HTMLニュースレター生成・配信リストへ一斉送信",
+    "evaluation_reason": "Google Sheetsを起点に、未指定ならReddit/Tavilyで題材選定し、OpenRouterで企画・3セクション執筆・編集まで行い、HTML化してGmail配信する流れが本文から具体的に確認できます。入力、AIの役割、出力が明確で、n8n/Sheets/Tavily/OpenRouter/Gmailという一般的な構成で再現しやすいです。実務的には定期コンテンツ制作と配信の省力化に直結し、マーケティング、社内週報、業界ブリーフ、リサーチ要約などへ横展開しやすいワークフローです。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 14,
+      "reliability": 7
+    }
   }
 ]

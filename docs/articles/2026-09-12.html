@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Sheetsのテーマキューから週刊ニュースレターを自動生成・配信するAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業でのネタ探し、構成づくり、本文作成、配信先への送信までを毎週繰り返すのは負担が大きい作業です。この事例では、Google Sheetsを起点に、Tavilyで調査し、OpenRouter（OpenAIモデル）で構成と本文を作り、Gmailで購読者へ送る流れを自動化しています。記事で確認できるの">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.12</div>
+    <h1>Google Sheetsのテーマキューから週刊ニュースレターを自動生成・配信するAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>ニュースレター制作・メール配信の自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業でのネタ探し、構成づくり、本文作成、配信先への送信までを毎週繰り返すのは負担が大きい作業です。この事例では、Google Sheetsを起点に、Tavilyで調査し、OpenRouter（OpenAIモデル）で構成と本文を作り、Gmailで購読者へ送る流れを自動化しています。記事で確認できるのは、ニュースレターの下書き生成からHTML整形、送信までをつなぐワークフローです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、週刊ニュースレターを継続的に作るためのネタ選定、WebやRedditの調査、3セクション構成の執筆、HTML化、配信先管理、メール送信を毎回手作業で行う負担です。また、手動トピックがない場合に何を題材にするか決める必要があったことが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Google Sheetsの行にある Action = &quot;Generate&quot; の指定</p><p>- Newsletter Topic があればそのテーマ</p><p>- テーマがなければ Tavily Search API でRedditを検索した結果</p><p>- その後の調査用に Tavily で取得した最近のニュース結果</p><p>↓</p><p>AIによる処理</p><p>- OpenRouter上のOpenAIモデルが、手動テーマがない場合に単一のニュースレタートピックを選定</p><p>- そのトピックに対して、号のタイトル案と「ちょうど3つ」のセクション構成を計画</p><p>- 各セクションごとにTavily検索を行い、引用付きの本文を作成</p><p>- 3つのセクションを編集・統合して、メール送信用の件名と本文に整形</p><p>↓</p><p>次のシステム・処理</p><p>- Google Sheetsの対象行に ID、Source、Title、Content、Createxd Time、Updated Time を更新</p><p>- 仕上がったプレーンテキストをスタイル付きHTMLに変換</p><p>- 別のGoogle SheetsのLeadsファイルから受信者メールアドレスを読み込み</p><p>- Gmailで各宛先へ送信</p><p>↓</p><p>出力</p><p>- 週刊ニュースレターのタイトル</p><p>- 引用付きの3セクション本文</p><p>- HTMLメール</p><p>- 送信済みのメール</p><p>- Google Sheets上のステータスを DONE ✅ に更新</p><p>↓</p><p>人間による確認・最終作業</p><p>- 記事からは、最終確認や承認フローの有無は確認できません</p><p>- ただし、Google Sheets上の設定値、スプレッドシートID、タブ名、送信設定、スケジュール実行時刻は調整する前提です</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事から確認できる効果は、週刊ニュースレター作成から配信までの作業を一連で自動化できることです。数値による削減効果、売上増加、開封率改善などは記事からは確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが機能しやすい理由は、テーマ管理、調査、執筆、整形、配信という工程を分離し、それぞれに適したツールを当てているためだと考えられます。特にGoogle Sheetsを「キュー」として使うことで、AIに渡す前の入力管理と、生成後の状態管理を同じ場所で扱える点が実務向きです。これは記事の構成から読み取れる分析であり、明示的に述べられている事実ではありません。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIは「全部を一気に書く」より、構成案作成と本文生成を分けたほうが管理しやすい</p><p>- 生成前の入力をGoogle Sheetsのような表で管理すると、処理待ち・完了・更新履歴を追いやすい</p><p>- 調査AIと執筆AIを同じフローに入れても、役割を分ければ再現しやすい</p><p>- メール本文は、プレーンテキスト生成後にHTMLへ変換すると配信用途に乗せやすい</p><p>- 受信者リストを別シートに分けることで、コンテンツ制作と配信管理を分離できる</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 週報・社内ニュースの自動作成</p><p>- データ取得: Google Sheetsに各部署のトピックを入力</p><p>- AIへ渡す: 週次の更新内容、重要度、締切をOpenAI APIやChatGPTに渡す</p><p>- AIで処理: 3項目の要点に要約し、社内向け件名と本文を作成</p><p>- 保存: Google SheetsやNotionに下書きを保存</p><p>- 出力: SlackまたはGmailで担当者へ送信</p><p>- 人間: 最終確認して配信</p><p>2. 顧客向け事例集・導入事例メールの作成</p><p>- データ取得: 商談メモ、導入実績、FAQをスプレッドシートやExcelに蓄積</p><p>- AIへ渡す: 直近の事例情報と対象業界を渡す</p><p>- AIで処理: 業界別に3パターンの紹介文を生成し、引用元と対応づける</p><p>- 保存: Google DocsやNotionに下書き保存</p><p>- 出力: MailchimpやGmailの配信原稿に反映</p><p>- 人間: 事実確認後に送信</p><p>3. 個人の情報収集ノートの週次整理</p><p>- データ取得: 1週間に保存した記事URL、メモ、ブックマークを入力</p><p>- AIへ渡す: 各メモの要点とテーマを渡す</p><p>- AIで処理: テーマ別に3セクションへ整理し、読み返しやすい要約を作成</p><p>- 保存: NotionやEvernoteに保存</p><p>- 出力: 自分用の週報メールとしてGmailに送信</p><p>- 人間: 必要な項目だけ再編集して保管</p><p>4. プライベート: 趣味情報の週刊まとめ</p><p>- データ取得: Reddit、ニュース、RSSの保存項目を収集</p><p>- AIへ渡す: 好きな分野のキーワードと最近の情報</p><p>- AIで処理: 興味に合うトピック選定、見出し作成、短い要約生成</p><p>- 保存: Google Sheetsで管理</p><p>- 出力: 自分専用のメールニュースレターとして受信</p><p>- 人間: 興味がない回はスキップして調整</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事から、最終確認の有無や承認プロセスは確認できません</p><p>- 調査元にTavilyとRedditを使うため、検索結果の偏りや取得漏れが起こり得ます</p><p>- AI生成の引用付き本文でも、事実関係は人間が確認したほうが安全です</p><p>- Google Sheetsの列名に Createxd Time という綴りがあり、設定を合わせないと動作しない可能性があります</p><p>- 受信者リストには、送信対象として適切なアドレスだけを入れる必要があります</p><p>- Gmail送信や外部API利用では、個人情報・機密情報の取り扱いに注意が必要です</p><p>- 記事からは、配信到達率、開封率、クリック率、法務対応などは確認できません</p>
+
+    <h2>参考記事</h2>
+    <p>Generate weekly AI automation newsletters with Google ...</p>
+    <p class="source">
+      <a href="https://n8n.io/workflows/18394-generate-weekly-ai-automation-newsletters-with-google-sheets-tavily-openrouter-and-gmail/"
+         target="_blank" rel="noopener noreferrer">
+        https://n8n.io/workflows/18394-generate-weekly-ai-automation-newsletters-with-google-sheets-tavily-openrouter-and-gmail/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
