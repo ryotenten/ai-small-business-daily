@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI Assistants APIでCSのプロフィール審査を自動化したワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業で行っていたユーザープロフィールのチェックは、担当者の時間を取り、判断基準がぶれやすい作業です。この記事の事例では、OpenAIのAssistants APIを使って、プロフィール情報をAIに審査させ、承認・否認・中立の判断を返すワークフローに置き換えています。AIが一次判定を担当し、人間は中">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.13</div>
+    <h1>OpenAI Assistants APIでCSのプロフィール審査を自動化したワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>ユーザーのプロフィール審査・承認/否認の業務自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業で行っていたユーザープロフィールのチェックは、担当者の時間を取り、判断基準がぶれやすい作業です。この記事の事例では、OpenAIのAssistants APIを使って、プロフィール情報をAIに審査させ、承認・否認・中立の判断を返すワークフローに置き換えています。AIが一次判定を担当し、人間は中立ケースなどの確認に回る形です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前は、CSチームがユーザーのプロフィールを見て承認か否認かを手動で判断していました。記事から確認できる範囲では、この作業を自動化したいというのが主な課題です。追記では、以前は夜勤スタッフがこのチェックを担っていたことも確認できます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>ユーザーのプロフィール情報をAssistants APIに渡す。どのAssistantを使うかは assistant_id で指定する。</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>Assistantに「Webサービスの審査役」のような役割を与え、プロフィール内容をもとに承認・否認の判断をさせる。レスポンス形式はJSONを想定している。</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>ThreadとMessageを作成して createThreadAndRun で実行する。Runのステータスを監視し、completed になるまで確認する。途中で期待した形式のメッセージが見つかれば、そこでRunを中断する実装もしている。</p><p>↓</p><p>出力</p><p>↓</p><p>AIの判定結果を受け取り、承認・否認・中立に振り分ける。</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>中立のケースはCSチームが手動で審査する。承認は厳しめ、否認は緩めにして初期運用し、AIの審査結果は保存して精度改善に活用する。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で確認できる効果としては、手動チェックの自動化、夜勤スタッフによるチェック業務の終了、人件費削減、そして人間がよりクリエイティブな業務に集中できるようになったことが挙げられます。数値の削減額や処理件数は記事から確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、判断基準が比較的定型的なチェック業務をAIに寄せ、人間は例外処理だけを見る構造にしたからだと考えられます。さらに、JSON形式で返答を指定し、特定形式のメッセージが出た時点で処理を打ち切るなど、AIの曖昧さをシステム側で吸収する設計になっています。これは記事の事実に基づく部分と、再現性の観点からの分析を含みます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・AIに全部を任せず、承認/否認/中立のように段階を分けると導入しやすい</p><p>・最終判断を人間に残すことで、初期段階でも運用しやすい</p><p>・AIの出力形式をJSONなどで固定すると後続処理につなげやすい</p><p>・Runの失敗や中断を前提にした例外処理が必要</p><p>・AIの判定ログを保存して、あとから精度改善に使うと継続運用しやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 申請書・問い合わせの一次振り分け</p><p>- 入力: フォーム送信内容、メール本文、添付された申請情報</p><p>- AI処理: ルールに沿って承認候補/差し戻し/要確認に分類</p><p>- 出力: Google SheetsやDBに保存、Slackで担当者へ通知</p><p>- 人間: 要確認のみ最終チェック</p><p>2. 採用応募の書類スクリーニング補助</p><p>- 入力: 応募フォーム、職務経歴書のテキスト</p><p>- AI処理: 必須条件の有無を抽出し、要件適合度を要約</p><p>- 出力: Notionやスプレッドシートに一覧化</p><p>- 人間: 面接に進める候補だけ確認</p><p>3. ECやSaaSの不正/例外レビュー</p><p>- 入力: アカウント登録情報、注文情報、利用履歴</p><p>- AI処理: 既定ルールに照らして危険度を分類</p><p>- 出力: 管理画面のフラグ、Slack通知</p><p>- 人間: 高リスク案件のみ審査</p><p>4. 問い合わせ対応の前処理</p><p>- 入力: メール、チャット、問い合わせフォーム</p><p>- AI処理: 問い合わせ種別を分類し、返信案を生成</p><p>- 出力: ZendeskやGmailの下書き、担当者キュー</p><p>- 人間: 送信前レビュー</p><p>個人利用の応用例</p><p>1. 家計の明細チェック</p><p>- 入力: クレジットカード明細のCSV</p><p>- AI処理: サブスク、食費、交通費などに分類</p><p>- 出力: Google Sheetsに集計</p><p>- 人間: 不明な支出だけ確認</p><p>2. メールの重要度仕分け</p><p>- 入力: 受信メール本文</p><p>- AI処理: 緊急、後で返信、不要に分類</p><p>- 出力: ラベル付けや通知</p><p>- 人間: 緊急だけ即対応</p><p>3. 書類の初期整理</p><p>- 入力: 契約書や説明書のPDFテキスト</p><p>- AI処理: 重要項目を抽出して要約</p><p>- 出力: Notionやメモに保存</p><p>- 人間: 原本確認は必要な箇所だけ</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、判定精度の詳細、誤判定率、処理件数、導入コスト、セキュリティ対策、個人情報の扱いは確認できません。プロフィール審査のような業務では、誤って承認/否認してしまうリスクがあるため、初期は人間の確認を残す設計が重要です。Assistants APIは当時beta版であり、Runの失敗時に無限ループへ入る可能性があったため、例外処理と監視が必要です。機密情報や個人情報を扱う場合は、AIに渡す範囲を最小限にする運用が必要ですが、その具体策は記事からは確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>OpenAIのAssistants APIを使用してチェック業務を自動化 ...</p>
+    <p class="source">
+      <a href="https://qiita.com/haraitai00/items/fb9e85101ab681dfd414"
+         target="_blank" rel="noopener noreferrer">
+        https://qiita.com/haraitai00/items/fb9e85101ab681dfd414
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

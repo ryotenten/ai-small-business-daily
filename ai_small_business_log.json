@@ -594,5 +594,27 @@
       "applicability": 14,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-13",
+    "date_display": "2026.09.13",
+    "company_name": "記事から確認できません",
+    "headline": "OpenAI Assistants APIでCSのプロフィール審査を自動化したワークフロー",
+    "title": "OpenAIのAssistants APIを使用してチェック業務を自動化 ...",
+    "url": "https://qiita.com/haraitai00/items/fb9e85101ab681dfd414",
+    "article_filename": "2026-09-13.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-13.html",
+    "search_query": "site:qiita.com AI OpenAI 自動化 業務",
+    "selection_reason": "最優先は、本文を読めば具体的な入力→AI処理→出力→人手の流れが見えそうで、個人・小規模でも再現しやすいものです。6はn8n+OpenAIで受信メール要約→LINE通知の実装例として直接的。10はAssistants APIでチェック業務自動化の流れが具体化されそう。0はAI workflow automationを仕事にする視点ですが、コメントや本文に実務ワークフローの具体例が含まれる可能性が高い。1は初心者向けだが、学習者が実際に作るワークフロー例の整理に有用そう。9は『企業が実際に使っているAI自動化』という問いで、具体事例の掘り下げ余地があるため候補に残しました。",
+    "adoption_score": 78,
+    "workflow_signature": "審査対象プロフィール→AIで承認/否認/中立を判定→結果保存・手動レビューへ分岐",
+    "evaluation_reason": "本文から、ユーザープロフィールのチェック業務をAIで自動審査し、承認・否認・中立に振り分ける実運用が確認できる。Assistants APIを使った実装手順、Thread/Message/Runの扱い、ステータス監視、途中打ち切り最適化、失敗ステータス検知まで具体的で再現しやすい。入力・処理・出力の流れも明確で、CS審査、申込審査、与信補助、投稿モデレーションなどへ横展開しやすい。定量効果はないが、夜勤スタッフの業務削減につながった追記もあり実用性は高い。信頼性も実装経験ベースで一定以上あるため、長期保存候補として採用する。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 20,
+      "usefulness": 18,
+      "applicability": 11,
+      "reliability": 8
+    }
   }
 ]
