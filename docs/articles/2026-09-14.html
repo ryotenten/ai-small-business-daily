@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nでAIエージェントを分業化し、調査・要約・検証まで流すワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事で中心になっているのは、AIを“会話するだけの道具”ではなく、業務の流れに組み込んで使う方法です。n8nでは、1つのAIに全部やらせるのではなく、役割の違うエージェントを分けて、調査・記述・QA・実行をつなぐ考え方が示されています。加えて、手動確認やエラー処理を挟みながら、API連携や社内デ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.14</div>
+    <h1>n8nでAIエージェントを分業化し、調査・要約・検証まで流すワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>n8n（掲載事例: SanctifAI ほか、ただし細部は記事から確認できません）<br>
+      <strong>業種：</strong>AIワークフロー自動化・業務オーケストレーション<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で中心になっているのは、AIを“会話するだけの道具”ではなく、業務の流れに組み込んで使う方法です。n8nでは、1つのAIに全部やらせるのではなく、役割の違うエージェントを分けて、調査・記述・QA・実行をつなぐ考え方が示されています。加えて、手動確認やエラー処理を挟みながら、API連携や社内データ参照まで含めた実務向けのフローを作れる点が強調されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事内で確認できる課題は、複雑なAIワークフローをゼロからコードで作る負荷、AIの暴走や誤動作への不安、そして人手不足や予算制約の中で安全に運用する難しさです。SanctifAIの事例では、400以上のワークフォースで人間がAIワークフローの一部作業を簡単に実行できる仕組みが必要でしたが、社内で一からコード基盤を維持したくない、という前提がありました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事から確認できる範囲では、n8n上でAIエージェントを次のように組み立てています。</p><p>入力</p><p>↓</p><p>チャットメッセージ、Webhook、各種外部サービスのデータ、Google DriveやGoogle Sheet、Webページ、社内ドキュメントなど</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>- 役割ごとに分かれたエージェントが、調査・文章生成・QA・計画立案を担当</p><p>- Memoryで会話や文脈を保持</p><p>- System promptで振る舞いを制御</p><p>- RAGで社内文書や最新情報を参照して回答を補強</p><p>- 条件分岐やフィルタで不要なデータを削ってからAIに渡す</p><p>- 必要に応じて人間の承認を挟む</p><p>- 失敗時のフォールバックやエラーハンドリングを組み込む</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>- n8nの各ノードでルーティング</p><p>- HTTP Requestノードで外部API呼び出し</p><p>- Google Drive / Google Sheet / Webスクレイピング / Slack等の連携</p><p>- 既存ワークフローの再利用やJSONエクスポート</p><p>↓</p><p>出力</p><p>↓</p><p>- 要約済みの調査結果</p><p>- 検証済みの回答</p><p>- 更新されたCRM、メール、レポート、チャット応答、スプレッドシートなど</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>- 重要な判断の承認</p><p>- プロンプトや分岐の調整</p><p>- 結果のレビュー、監視、再学習的な改善</p><p>SanctifAIの事例では、最初のn8nワークフローを約2時間で立ち上げたと説明されています。また、n8nの視覚的なビルダーとルーティングにより、PMが直接ビルドとテストを行えるようになったとされています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果としては、ワークフロー作成時間の短縮、コードを一から書く負担の軽減、少人数でも実装・検証を進めやすくなったことが挙げられます。SanctifAIの事例では、最初のワークフローを2時間で作成できたとされています。ほかの引用では、3日かかるはずの作業が2時間で終わった、半時間でSlackエージェントを作れた、という利用者の声が載っていますが、これらは個別の体験談として受け取るべきです。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIを単体で使うのではなく、決定論的な自動化、承認フロー、エラー処理、外部連携を組み合わせて“壊れにくい業務フロー”にしている点だと考えられます。これは記事の事実というより分析ですが、AIの弱点である不安定さを、ルールベースの処理と人間確認で囲っているため、実務に載せやすい構造になっています。また、役割分担したエージェント設計により、1つのAIに過負荷をかけず、処理の責任範囲も分かりやすくなっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすい学びは、AIに全部やらせるのではなく、AIに向く部分だけを切り出すことです。たとえば、(1) 収集、(2) 要約、(3) 判定補助、(4) 出力整形、(5) 人間の最終確認、のように分解すると導入しやすくなります。</p><p>もう1つは、最初から完璧な自動化を目指さず、承認を挟んで段階導入することです。AIの出力をそのまま実行せず、どこで止めるかを決めておくと、ミスの影響を抑えられます。</p><p>さらに、社内文書やスプレッドシートのような既存データをつなぐだけでも、AIの価値は出やすいです。新しいモデルを作るより、データの流れを整えるほうが再現性があります。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、まずは次の構成が実用的です。</p><p>1. データを取得</p><p>- Gmail、Google Drive、Notion、Google Sheets、Slack、Webページ、フォーム回答などを収集</p><p>2. AIへ渡す</p><p>- ChatGPT / OpenAI API / Claude に、必要最小限のテキストだけ渡す</p><p>3. AIで処理</p><p>- 要約、分類、優先度付け、返信文案作成、差分検出、FAQ照合、タスク分割</p><p>4. Excel / Google Sheets / Notion / DBへ保存</p><p>- 進捗、要約、判断結果、次アクションを記録</p><p>5. Slack / Gmail / Pushoverで通知</p><p>- 人間が確認すべきものだけ送る</p><p>6. 人間が確認</p><p>- 重要案件だけ承認、最終送信、例外対応を行う</p><p>仕事への応用例:</p><p>- 問い合わせ一次対応: Gmailに届いた問い合わせを取得 → AIがカテゴリ分類と下書き返信を生成 → 重要案件だけSlack通知 → 担当者が承認して送信</p><p>- 社内文書QA: Google Drive内の規程やマニュアルをRAGで参照 → AIが質問に回答案を生成 → 根拠文書リンクを添えてNotionに保存 → 人間が最終チェック</p><p>- 週次レポート作成: Sheetsの売上・工数・KPIを取得 → AIが異常値や増減理由の要約を作成 → Google Docsへ整形出力 → マネージャーが確認</p><p>- 競合・市場ウォッチ: WebスクレイピングやRSSを収集 → AIが要点抽出と重要度判定 → Slackに朝まとめを通知 → 必要なものだけ人が深掘り</p><p>プライベート応用例:</p><p>- 旅行計画補助: 航空券・ホテル候補をメモに集約 → AIが条件比較と旅程案を作成 → スプレッドシートに整理 → 人が予約</p><p>- 家計見直し: 銀行明細や支出CSVを読み込み → AIがカテゴリ分類と固定費候補を抽出 → Excelで一覧化 → 人が解約判断</p><p>- 読書メモ整理: Kindleメモや手書きメモを取り込み → AIがテーマ別に要約 → Notionへ保存 → 後で再読</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実際の各ワークフローの詳細な設計、使ったモデルの種類、プロンプト全文、データ保持期間、権限設計、運用コスト、失敗率は不明です。SanctifAIの導入規模や成果も、具体的な定量値までは確認できません。</p><p>運用上の注意としては、AIの誤判定、幻覚、暴走ループ、不要な外部送信、機密情報の取り扱いに注意が必要です。特にRAGや外部API連携では、参照元の古さや権限の範囲を確認しないと、誤った回答や情報漏えいにつながります。人間の承認が必要な工程は、自動実行に置き換えず、止める地点を明確にしておくべきです。</p>
+
+    <h2>参考記事</h2>
+    <p>Build Custom AI Agents With Logic &amp; Control</p>
+    <p class="source">
+      <a href="https://n8n.io/ai-agents/"
+         target="_blank" rel="noopener noreferrer">
+        https://n8n.io/ai-agents/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

@@ -616,5 +616,27 @@
       "applicability": 11,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-14",
+    "date_display": "2026.09.14",
+    "company_name": "n8n（掲載事例: SanctifAI ほか、ただし細部は記事から確認できません）",
+    "headline": "n8nでAIエージェントを分業化し、調査・要約・検証まで流すワークフロー",
+    "title": "Build Custom AI Agents With Logic & Control",
+    "url": "https://n8n.io/ai-agents/",
+    "article_filename": "2026-09-14.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-14.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "本文確認の価値が高い順に選びました。14は検索結果だけでも業務プロセスの判定自動化が見え、入力→AI判定→承認/却下の流れが具体的です。3はOpenAI APIで業務運用を自動化した企業事例で、実装ワークフローの詳細が出やすいです。0はChatGPT/Zapier/Makeなどを使った業務自動化のキャリア文脈ですが、実際の具体例や用途が本文に含まれる可能性があります。8はn8nのAIエージェント実例やテンプレート紹介があり、個人・少人数で再現しやすいワークフロー候補です。11はAPIの代表的ユースケースを整理しており、顧客対応など再現可能な実務フローの具体例が本文で得られる可能性があります。",
+    "adoption_score": 79,
+    "workflow_signature": "チャット入力・外部データ・業務ツール→AIで分解計画、記憶参照、ツール選択、要約/生成→自動実行、承認待ち分岐、ログ記録",
+    "evaluation_reason": "採用可。本文から、AIエージェントの基本構成（チャットトリガー、メモリ、システム/ユーザーメッセージ、ツール連携、ヒューマンインザループ、エラーハンドリング、コスト制御、評価）が具体的に確認できるため、単なる概念紹介ではない。特に「入力→計画/分解→ツール実行→承認/ログ/評価」という構造は、問い合わせ対応、営業支援、社内申請、調査、文書生成などに横展開しやすい。n8n前提ではあるが、一般的なAPI連携・ワークフロー自動化へ抽象化しやすく、再現性も高い。重複についても、既存保存例のメール要約やSheets登録、研究用RAG、カレンダー支援とは主入力・主要処理・出力が異なり、別ワークフローとして扱える。信頼性は広告色や体験談が多い一方、実装要素と使い方の説明が本文にあり、最低限の実在性は確認できる。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 7
+    }
   }
 ]
