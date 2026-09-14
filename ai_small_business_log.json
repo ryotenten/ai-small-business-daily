@@ -638,5 +638,27 @@
       "applicability": 12,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-15",
+    "date_display": "2026.09.15",
+    "company_name": "記事から確認できません",
+    "headline": "280超のn8nテンプレートで、メール・チャット・文書処理をAIワークフロー化する",
+    "title": "enescingoz/awesome-n8n-templates: 280+ free ...",
+    "url": "https://github.com/enescingoz/awesome-n8n-templates",
+    "article_filename": "2026-09-15.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-15.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "本文確認の価値が高い順に、具体的な入力→AI処理→出力→人間の仕上げが想像しやすいものを優先しました。8はメール受信→要約→LINE通知の実用ワークフローで小規模再現しやすい。1はWeb/APIテスト→AIでレポート生成→メール送信まで含み、品質改善の流れが明確。6はGitHub上のPR/issue解析や開発フローへの組み込みが期待でき、再現性が高い。7はPower Automate DesktopとGPT-4oの組み合わせで、実務自動化の具体例になりやすい。0はn8nテンプレート集で比較記事ではあるものの、Gmail/Slack/Notion/OpenAIなど実装可能なワークフロー候補を多数含み、本文から再現可能な具体例を拾える可能性が高い。",
+    "adoption_score": 86,
+    "workflow_signature": "各種業務データ/外部サービスのテンプレートJSON→AIで要約・分類・抽出・生成→n8nで各サービス連携を自動実行",
+    "evaluation_reason": "採用します。本文から、n8nの実運用テンプレート集として具体的な入力・AI処理・出力の型が多数確認でき、単なる紹介記事ではありません。メール、チャット、PDF、スプレッドシート、RAG、DevOps、SNSなどにまたがるテンプレートがあり、AIの役割も要約・分類・抽出・生成・RAG・エージェント実行と明確です。個人や中小企業でもn8nと一般的なAPI/連携先で再現しやすく、横展開もしやすいです。注意点は、これは“完成済みのワークフロー事例”というより“テンプレート集”であり、各テンプレートは設定・検証が必要なこと、また一部は広告/紹介要素を含むことです。それでも、実際の使い方と構成が本文で確認できるため、長期保存に値する実用的なレシピ群として評価できます。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 23,
+      "usefulness": 19,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
