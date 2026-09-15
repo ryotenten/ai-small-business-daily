@@ -660,5 +660,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-16",
+    "date_display": "2026.09.16",
+    "company_name": "記事から確認できません",
+    "headline": "GitHubのPRレビュー・Issue対応・コードスキャンをAI化する「AI GitHub Action」活用ワークフロー",
+    "title": "AI GitHub Action - GitHub Marketplace",
+    "url": "https://github.com/marketplace/actions/ai-github-action",
+    "article_filename": "2026-09-16.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-16.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "1位は0: Python/LangChain/OpenAIで自律的な業務自動化をうたっており、本文で具体的な入出力や人手の介入点が見つかる可能性が高いです。2位は4: GitHub Actions上でPR/issue分析などの実務フローに直結し、小規模チームでも再現しやすいです。3位は5: Power Automate DesktopとGPT-4oの組み合わせで、メール/Excel/画面操作などの具体ワークフローが本文にありそうです。4位は1: n8n、Google Workspace、OpenAI API、CRM/予約/リード評価など再現性の高い業務フローが検索説明から想像できます。5位は3: Firecrawlを使ったビジュアルなエージェントパイプラインで、調査→抽出→出力の流れが具体化されそうです。",
+    "adoption_score": 81,
+    "workflow_signature": "PR/Issue/コード→AIでレビュー・分類・脆弱性/改善点検出→コメント投稿・レビュー承認・優先付け",
+    "evaluation_reason": "本文から、PRレビュー・Issue分析・コードスキャン・カスタム指示・Tracingという実際の機能が確認でき、入力→AI処理→出力の流れも明確です。GitHub Actionsとして一般的な環境で再現しやすく、個人開発から小規模チームまで導入可能です。用途は開発運用に限定されますが、レビュー自動化・分類・優先付け・品質検査という構造は、文書審査や申請チェックなど他業務にも抽象化しやすいです。GitHub非認証のサードパーティである点は信頼性の減点要素ですが、実装内容が本文で具体的に確認できるため採用基準は満たします。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 19,
+      "applicability": 11,
+      "reliability": 8
+    }
   }
 ]
