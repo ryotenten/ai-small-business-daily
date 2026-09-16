@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OpenAI Deep Research APIで、質問の曖昧さを先にほどいてから深掘り調査するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事で扱われているのは、OpenAIのDeep Research APIを使って、Web調査と要約を自分のアプリや業務フローに組み込む方法です。単に質問を投げるのではなく、先に意図を確認し、次に調査用の指示へ書き換えてから深掘り検索させることで、出力の質を上げています。元記事では、同じテーマでも">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.17</div>
+    <h1>OpenAI Deep Research APIで、質問の曖昧さを先にほどいてから深掘り調査するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>AI開発・研究支援（Deep Research APIの活用例）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で扱われているのは、OpenAIのDeep Research APIを使って、Web調査と要約を自分のアプリや業務フローに組み込む方法です。単に質問を投げるのではなく、先に意図を確認し、次に調査用の指示へ書き換えてから深掘り検索させることで、出力の質を上げています。元記事では、同じテーマでも入力の作り方次第でレポート品質が大きく変わることが示されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、単純な質問をそのままDeep Research APIに投げると、回答が抽象的で物足りなくなりやすいことです。特に、複雑な調査では「何を知りたいのか」「比較観点は何か」「どの粒度でまとめるか」が曖昧だと、研究結果がぼやけると述べられています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- 調査したいテーマの初期プロンプト</p><p>- 必要に応じて、AIが生成したフォローアップ質問への回答</p><p>↓</p><p>AIによる処理</p><p>- まずClarificationで、調査目的や条件を確認する質問を行う</p><p>- 次にPrompt Rewritingで、初期依頼と回答内容を調査用の詳細プロンプトへ再構成する</p><p>- その後Deep Researchで、Web検索を使って調査・比較・要約を実行する</p><p>- 元記事では、最初の報告と、質問を深掘りした後の報告を比較している</p><p>↓</p><p>次のシステム・処理</p><p>- OpenAIのResponses API / Deep Research APIを呼び出す</p><p>- 長時間かかる処理なので、background modeを使って非同期実行する</p><p>- 必要ならアプリ側で、質問収集画面や実行状況管理を組み込む</p><p>↓</p><p>出力</p><p>- 調査レポート</p><p>- 比較表を含む整理された要約</p><p>- 参照ソースを含む調査結果</p><p>↓</p><p>人間による確認・最終作業</p><p>- 生成されたレポートの妥当性確認</p><p>- 比較観点や引用元の確認</p><p>- 必要に応じてプロンプトや質問項目を修正して再実行</p><p>この事例でAIが担当しているのは、質問の整理、意図の言語化、レポート生成、Web調査です。人間は、調査テーマを決めること、追加入力に答えること、最終結果を吟味することを担っています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>元記事で確認できる効果は、レポート品質の向上です。単純な質問だけで実行した1回目は抽象的でやや曖昧でしたが、フォローアップ質問とプロンプト書き換えを入れた2回目は、比較表や具体的な技術仕様、数値を含む整理されたレポートになりました。時間や売上の削減効果は記事からは確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、Deep Researchの弱点が「調査能力そのもの」ではなく「入力の曖昧さ」にあったからだと考えられます。これは元記事の事実というより分析ですが、AIに調査をさせる前に人間の意図を明確化し、検索用の指示へ変換することで、探索範囲と出力形式が絞られ、結果のブレが減ったと解釈できます。さらに、長時間処理をbackground modeで回すことで、タイムアウトを避けやすくした点も実運用上の安定性につながっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AI検索は「質問を投げる」だけでなく、「質問を整える前処理」が品質を左右する</p><p>- 複雑な調査では、最初に曖昧さを解消する質問工程を入れると再現性が上がる</p><p>- レポート生成前に、比較観点・対象範囲・出力形式を明示すると実務で使いやすくなる</p><p>- 長時間のAI処理は、同期処理より非同期実行の設計が向いている</p><p>- 1回で完成させるより、回答を見てプロンプトを改善する方が実用的</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 競合比較レポート作成</p><p>- データ: 競合名、製品ページ、価格表、導入事例、FAQ</p><p>- AIにさせること: フォローアップ質問で比較軸を確認し、その後に各社の違いを表形式で要約</p><p>- 出力先: Google Docs、Notion、Excel</p><p>- 人間の作業: 最終的に自社に関係ある比較軸だけ採用する</p><p>2. 社内制度・規程の調査窓口</p><p>- データ: 就業規則、申請フロー、社内FAQ、マニュアル</p><p>- AIにさせること: まず「どの制度について、誰向けに、何を知りたいか」を確認し、社内文書を検索して要点をまとめる</p><p>- 出力先: Slackや社内ポータル</p><p>- 人間の作業: 最終判断が必要なケースだけ総務・人事へ回す</p><p>3. 技術選定の比較メモ作成</p><p>- データ: 仕様書、公式ドキュメント、変更履歴、ベンチマーク記事</p><p>- AIにさせること: 目的を確認→比較観点を再構成→候補技術の差分を要約</p><p>- 出力先: GitHub Issue、Notion、Google Sheets</p><p>- 人間の作業: 導入可否の判断とリスク確認</p><p>4. 個人の学習調査</p><p>- データ: 学びたいテーマ、手元のメモ、読んだ記事、参考文献</p><p>- AIにさせること: 目的を聞き直してから、学習順序や論点整理を作る</p><p>- 出力先: Notion、Obsidian、メモアプリ</p><p>- 人間の作業: 実際に読む順番や学習計画を決める</p><p>実装イメージとしては、ChatGPTまたはOpenAI APIで「質問収集→プロンプト再構成→Deep Research実行」を分け、PythonやZapier/Makeでつなぐ構成が作りやすいです。調査結果はGoogle SheetsやNotionへ保存し、完了通知をSlackやメールで送る形にすると、業務フローへ載せやすくなります。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 元記事では、実装コードの細部や正確な処理フローの全容は確認できません</p><p>- どの程度まで自動化したか、UIの作り方、保存先、通知方法は記事からは確認できません</p><p>- Deep ResearchはWeb検索前提であり、社内文書や非公開データを扱う場合は別設計が必要です</p><p>- 調査結果はもっともらしく見えても誤りや偏りがあり得るため、人間の検証が必要です</p><p>- 長時間実行や高コストになりやすいので、試行回数や対象範囲を絞る運用が重要です</p><p>- 機密情報や個人情報をそのまま入力しないよう注意が必要です</p>
+
+    <h2>参考記事</h2>
+    <p>Getting Started with the Deep Research API! Advanced ...</p>
+    <p class="source">
+      <a href="https://zenn.dev/tsuzukia/articles/b35350967b48d5?locale=en"
+         target="_blank" rel="noopener noreferrer">
+        https://zenn.dev/tsuzukia/articles/b35350967b48d5?locale=en
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

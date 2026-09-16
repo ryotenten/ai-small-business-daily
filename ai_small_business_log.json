@@ -682,5 +682,27 @@
       "applicability": 11,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-17",
+    "date_display": "2026.09.17",
+    "company_name": "記事から確認できません",
+    "headline": "OpenAI Deep Research APIで、質問の曖昧さを先にほどいてから深掘り調査するワークフロー",
+    "title": "Getting Started with the Deep Research API! Advanced ...",
+    "url": "https://zenn.dev/tsuzukia/articles/b35350967b48d5?locale=en",
+    "article_filename": "2026-09-17.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-17.html",
+    "search_query": "site:zenn.dev AI OpenAI 自動化 業務",
+    "selection_reason": "本文を読む価値が高い順に、具体的な業務フローや再現可能性が見えやすい候補を選びました。2は実際にAIエージェントでワークフロー自動化を組むデモ系で、入力→処理→出力の流れが期待できます。12はBrowser Automationで定常業務を自動化する試行で、個人や小規模チームにも転用しやすい実装例が見込めます。17はChatGPTを使った業務自動化の挑戦記事で、リサーチ業務改善という具体用途があり、失敗や精度面も含めて学べる可能性があります。0はn8n・Zapier・Makeなどを使った実務自動化の文脈があり、実務ワークフローのアイデアや再現可能な組み合わせが出てくる期待があります。11はDeep Research APIの応用記事で、調査→要約→出力の流れを具体化している可能性が高く、他業務への横展開もしやすそうです。",
+    "adoption_score": 84,
+    "workflow_signature": "Web調査テーマ→AIで追質問・プロンプト再構成→詳細リサーチレポート生成",
+    "evaluation_reason": "本文から、Deep Research APIをそのまま呼ぶだけでなく、追質問による要件明確化とプロンプト再構成を挟んで研究品質を上げる具体的な実装フローが確認できる。入力・処理・出力が明確で、一般的なLLM API、バックグラウンド実行、プロンプト設計で再現しやすい。業務調査、競合比較、社内リサーチ、購買前比較などへ横展開もしやすく実用性が高い。実際に2回の実行例と所感があり、単なる紹介記事ではなく試行ベースで信頼性も十分ある。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 10
+    }
   }
 ]
