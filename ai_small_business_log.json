@@ -704,5 +704,27 @@
       "applicability": 12,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-09-18",
+    "date_display": "2026.09.18",
+    "company_name": "記事から確認できません（本文はGleanの解説記事ですが、個別導入事例ではありません）",
+    "headline": "Gleanが示す「AIで業務フローをつなぐ」活用法：問い合わせ分類・要約・返信文作成までを自動化する考え方",
+    "title": "5 free AI workflow automation tools for small businesses in ...",
+    "url": "https://www.glean.com/perspectives/5-free-ai-workflow-automation-tools-for-small-businesses-in-2026",
+    "article_filename": "2026-09-18.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-18.html",
+    "search_query": "\"AI workflow\" small business operations",
+    "selection_reason": "0はYouTube実演で、Gumloopを使った具体的な自動化ワークフローの中身が本文/動画で確認できそうです。8は『20+ small businesses』向けに実装した実例のReddit投稿で、再現可能なワークフローの具体が出る可能性が高いです。2はソロプレナーの実運用で、ClaudeとMakeをどうオーケストレーションしているかが本文で掘れそうです。7は『一人ビジネスを週末で作る』系ですが、複数のAIツールを組み合わせた実務フローの紹介余地があり、再現可能な例を拾える可能性があります。9は無料ツールを使った小規模事業向けの実務ワークフロー集で、メール処理・文書要約・リード整理など、入力→AI処理→出力の形が想像しやすいです。",
+    "adoption_score": 76,
+    "workflow_signature": "業務データや文書→AIで分類・要約・抽出・生成→各種業務アプリへ自動連携",
+    "evaluation_reason": "本文から、AI workflow automationの定義、free tierの制約、比較観点、実運用に向く5カテゴリが確認でき、単なる概念紹介ではなく小規模事業者向けの実用ガイドになっています。入力・AI処理・出力の粒度はカテゴリ説明レベルですが、『メール/フォーム/文書などの非構造データ→AIで分類・要約・抽出→CRM/シート/通知/プロジェクト管理へ連携』という再現可能な一般形が明確です。個別の単一事例ではないため具体性は中程度ですが、横展開しやすく、長期保存向きのワークフロー雛形として価値があります。信頼性は販売導線が強めで定量検証は限定的ですが、本文内に実運用前提の比較軸と制約があり、完全な広告記事よりは採用可能です。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 19,
+      "usefulness": 18,
+      "applicability": 10,
+      "reliability": 9
+    }
   }
 ]

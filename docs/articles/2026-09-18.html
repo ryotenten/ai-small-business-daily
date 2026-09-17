@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gleanが示す「AIで業務フローをつなぐ」活用法：問い合わせ分類・要約・返信文作成までを自動化する考え方 | AI Small Business Daily</title>
+<meta name="description" content="この記事は、AIを単なる文章生成ではなく、業務フローの中で『入力を見て、次の処理を決める役』として使う考え方をまとめています。特に、小規模事業者が手作業でやりがちな問い合わせの振り分け、文書要約、フォローアップ文作成を、アプリ連携とAIでつなぐのが主題です。実例の紹介ではなく、無料枠のあるAIワーク">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.18</div>
+    <h1>Gleanが示す「AIで業務フローをつなぐ」活用法：問い合わせ分類・要約・返信文作成までを自動化する考え方</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（本文はGleanの解説記事ですが、個別導入事例ではありません）<br>
+      <strong>業種：</strong>小規模事業者向けのAIワークフロー自動化ツール解説<br>
+      <strong>規模：</strong>小規模事業者向けの一般論として書かれており、特定企業の規模は記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、AIを単なる文章生成ではなく、業務フローの中で『入力を見て、次の処理を決める役』として使う考え方をまとめています。特に、小規模事業者が手作業でやりがちな問い合わせの振り分け、文書要約、フォローアップ文作成を、アプリ連携とAIでつなぐのが主題です。実例の紹介ではなく、無料枠のあるAIワークフロー自動化ツールをどう選ぶかを整理した内容です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事が挙げている課題は、受信メールやWebフォームの内容確認、データ入力、レポート準備、アプリ間の手作業コピーなどの反復業務です。こうした『最後のひと手間』が毎週の時間を消費し、少人数チームの負担になっている、というのがBeforeです。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【記事から確認できる範囲】</p><p>入力：メール、Webフォーム、文書、スプレッドシート、CRM、メッセージ、ファイル保管場所などの非構造化情報やアプリ内データ。</p><p>↓</p><p>AIによる処理：</p><p>- 分類（問い合わせの緊急度や種類を判定）</p><p>- 要約（文書や内容を短く整理）</p><p>- 抽出（必要な項目を取り出す）</p><p>- 生成（返信文、タスク文、プロジェクト案などを作る）</p><p>- 判断補助（次に誰へ回すか、どのワークフローを動かすかを決める）</p><p>↓</p><p>次のシステム・処理：</p><p>- コネクタでCRM、メール、スプレッドシート、メッセージツール、ファイルストレージへ連携</p><p>- 条件分岐のあるワークフローへ受け渡し</p><p>- 権限を持つユーザーだけが見られる形で処理</p><p>↓</p><p>出力：</p><p>- 担当者に回されたリード</p><p>- 要約された文書</p><p>- 下書き返信</p><p>- タスク化された業務</p><p>↓</p><p>人間による確認・最終作業：</p><p>- 返信の送信</p><p>- 振り分けの最終判断</p><p>- 機密データや誤判定の確認</p><p>- 必要に応じた修正</p><p>【記事内容を踏まえた整理】</p><p>記事では、AIは単なる固定ルールの自動化ではなく、未整形の入力を読んで分類し、次のアクションを決める役割を担うと説明されています。特に、会社の実データに根ざした『permission-aware』な仕組みが重要だとされています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、手作業の削減、応答速度の向上、ミスの減少、成長に向けた余力の確保です。一般的な文脈として、少規模事業者の従業員がAI活用で週平均5.6時間を節約できると紹介されています。ただし、これは記事内の一般論であり、個別企業の実績ではありません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由として記事から読み取れるのは、AIを『文章を作る道具』ではなく『業務の途中に入る判断レイヤー』として置いている点です。固定条件だけの自動化では扱いにくい、曖昧な問い合わせや崩れた入力にも対応しやすい構造だからです。さらに、会社の実データと権限管理のある環境に結びつけることで、出力の信頼性を上げている点が効いていると考えられます。これは記事の記述に基づく分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは3つです。1つ目は、最初から大きな業務全体を自動化せず、問い合わせ振り分けや要約のような『最後の手作業』から始めること。2つ目は、AIに自由作文をさせるのではなく、分類・抽出・要約・下書き生成のような役割を分けること。3つ目は、無料プランの機能だけを見るのではなく、月間実行回数、分岐の可否、権限管理、処理速度を確認して、実運用に耐えるかを見極めることです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら：基本フロー】</p><p>1. 取得：Gmailや問い合わせフォーム、Google Sheets、Notion、Slackの新規投稿を集める。</p><p>2. AIへ渡す：OpenAI APIやChatGPT、またはZapier/MakeのAIステップに本文を送る。</p><p>3. AIで処理：内容を分類し、重要度を判定し、必要項目を抽出し、返信下書きを作る。</p><p>4. 保存：結果をGoogle SheetsやNotionに記録する。</p><p>5. 通知：Slackやメールで担当者に送る。</p><p>6. 人間が確認：送信前に人がチェックして、最終承認する。</p><p>【仕事への応用例】</p><p>- 問い合わせ対応</p><p>受信メールを取得 → AIで『見積もり・クレーム・質問』に分類 → 重要度ごとにSlackへ通知 → 返信下書きをGmail下書きに保存 → 担当者が確認して送信。</p><p>- 営業リードの一次整理</p><p>フォーム入力を取得 → AIで業種、規模、緊急度、要望を抽出 → Google Sheetsに整理 → 高優先度だけCRMへ登録 → 営業担当が最終確認。</p><p>- 会議メモからタスク化</p><p>会議メモや録音の文字起こしを取得 → AIで決定事項と担当者、期限を抽出 → NotionやAsanaにタスク登録 → マネージャーが見直して確定。</p><p>- 文書レビューの下準備</p><p>受け取ったPDFや契約草案をアップロード → AIで要点、懸念点、未記入項目を要約 → レビュー用メモをGoogle Docsに出力 → 人が最終判断。</p><p>【個人利用の応用例】</p><p>- 受信メールの自動仕分け</p><p>重要メールだけを抽出 → AIで要約 → Slackやメールで自分に通知。</p><p>- レシート整理</p><p>写真を保存 → AI/OCRで金額と日付を抽出 → Google Sheetsへ記録。</p><p>- 読書メモの整理</p><p>メモを貼り付け → AIで要約と行動項目に分解 → Notionへ保存。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、特定企業が実際にどのツールをどう設定したか、どの業務で何件処理したか、どの程度の精度だったかは確認できません。無料プランには月間タスク数、2段階までの制限、分岐ロジック制限、低速処理、サポート制限があると説明されています。また、機密情報を扱う場合は、権限管理、監査ログ、秘密情報管理、SOC 2対応などを確認する必要があります。AIは誤分類や誤要約を起こす可能性があるため、送信や承認の最終判断は人間が行う前提で設計するべきです。</p>
+
+    <h2>参考記事</h2>
+    <p>5 free AI workflow automation tools for small businesses in ...</p>
+    <p class="source">
+      <a href="https://www.glean.com/perspectives/5-free-ai-workflow-automation-tools-for-small-businesses-in-2026"
+         target="_blank" rel="noopener noreferrer">
+        https://www.glean.com/perspectives/5-free-ai-workflow-automation-tools-for-small-businesses-in-2026
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
