@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEO・コンテンツ・データ処理を自律実行する「Agentic AI Workflows」：Reallytics.aiの業務自動化ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事で紹介されているのは、LLMを使って複数工程の作業を自律実行するためのエージェント型ワークフローです。人が1つずつ指示しなくても、SEO最適化、コンテンツ生成、データ処理、業務タスクの実行を進めることを目指しています。実例としては、Reallytics.aiで企業クライアント向けに構築・導入">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.19</div>
+    <h1>SEO・コンテンツ・データ処理を自律実行する「Agentic AI Workflows」：Reallytics.aiの業務自動化ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Reallytics.ai（記事本文でプロジェクトは同社で構築・運用されたと読めます）<br>
+      <strong>業種：</strong>企業向けの業務自動化基盤（SEO、コンテンツ生成、データワークフロー、タスク実行）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で紹介されているのは、LLMを使って複数工程の作業を自律実行するためのエージェント型ワークフローです。人が1つずつ指示しなくても、SEO最適化、コンテンツ生成、データ処理、業務タスクの実行を進めることを目指しています。実例としては、Reallytics.aiで企業クライアント向けに構築・導入されたフレームワークで、内部API、データベース、メッセージング基盤、外部サービスをつないで端から端まで処理する設計になっています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から読み取れる課題は、SEO、コンテンツ生成、データ処理、業務タスクのような複数ステップの仕事を、人手で都度進めると時間がかかり、工程ごとの連携も煩雑になりやすいことです。従来の単発AI利用ではなく、複数のシステムをまたいで継続的に処理する必要があったことが示されています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事から確認できるワークフローは次の通りです。</p><p>入力</p><p>↓</p><p>内部API、データベース、ファイルシステム、メッセージングプラットフォーム、外部サービスからのデータやタスク</p><p>↓</p><p>AIによる処理</p><p>・タスクの計画</p><p>・複数ステップの実行</p><p>・結果の評価</p><p>・必要に応じた再試行や代替手順への切り替え</p><p>・長い処理での文脈保持</p><p>・並列実行による複数タスクの同時進行</p><p>・出力の安全性チェックや妥当性検証</p><p>↓</p><p>次のシステム・処理</p><p>・データベース更新</p><p>・外部サービスへの送信</p><p>・メッセージング基盤への通知</p><p>・ログ保存</p><p>↓</p><p>出力</p><p>・SEO最適化結果</p><p>・コンテンツ案または文章生成結果</p><p>・データ処理結果</p><p>・業務タスクの実行結果</p><p>↓</p><p>人間による確認・最終作業</p><p>記事では、最終的な確認担当がどこまで介入するかは確認できません。ただし、監査ログとガードレールがあるため、少なくとも後から判断経路を追える設計です。</p><p>この事例でAIが担っているのは、分類、実行計画の立案、文章生成、処理の継続判断、失敗時の回復、並列実行の調整、出力検証です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事本文では売上やコスト削減の数値は確認できません。確認できる効果としては、複数工程の業務を人手なしで進められること、長時間のワークフローでも文脈を維持できること、失敗時に自動で再試行できること、監査ログにより後追い確認しやすいことが挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由として考えられるのは、単発のチャット利用ではなく、入力・判断・実行・記録までを一連の業務フローとして設計している点です。また、ツール連携、記憶、エラー回復、並列実行、監査ログ、ガードレールを組み合わせているため、実運用で起きやすい失敗や確認漏れを減らしやすい構造になっています。これは記事の事実を踏まえた分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、AIに『文章を作らせる』だけで終わらず、『どのデータを見て、何を判断し、どのシステムへ反映するか』まで固定化していることです。特に、(1) 事前に使うツールを限定する、(2) 途中結果をログに残す、(3) 失敗時の再試行を組み込む、(4) 人間の確認点を明確にする、の4点は他業務にも移植しやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような構成が作りやすいです。</p><p>1. データを取得</p><p>- 例: Google Sheets、CSV、Notion、Gmail、Slack、Webフォーム</p><p>2. AIへ渡す</p><p>- 例: OpenAI API または ChatGPT に、入力データとルールを渡す</p><p>3. AIで処理</p><p>- 分類、要約、優先順位付け、下書き作成、異常検知、次アクション提案</p><p>4. 保存先へ出力</p><p>- 例: Google Sheetsに結果を書き戻す、Notionにページ作成、Excelに追記、DB更新</p><p>5. 通知</p><p>- 例: Slack、メール、Pushoverで担当者に送る</p><p>6. 人間が確認</p><p>- 重要案件だけ承認して実行、または修正文をそのまま採用</p><p>仕事への応用例</p><p>- SEO運用: Search ConsoleのCSVを取得→AIでクエリ分類と改善案作成→Google Sheetsに整理→担当者が優先順位を決めて記事修正</p><p>- 問い合わせ対応: Gmail/フォーム内容を取得→AIでカテゴリ分類と返信下書き作成→Slackに通知→人が送信前に確認</p><p>- 社内データ整理: 定期的にCSVを取得→AIで異常値や欠損を検出→結果をExcel/DBへ保存→担当者が修正依頼</p><p>- コンテンツ運用: ネタ一覧をNotionから取得→AIで見出し案と構成案を生成→Notionへ保存→編集者が採用判断</p><p>プライベート応用例</p><p>- 家計の明細整理: 銀行CSVを取り込み→AIで支出分類→Google Sheetsに記録→月末に家計レビュー</p><p>- 旅行計画: 行き先候補を入力→AIで移動時間と日程案を整理→Notionに出力→家族で確認</p><p>- 受信メール整理: 重要メールをAIで分類→要対応だけSlackやメールで通知→不要なものはアーカイブ候補に分ける</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点が多くあります。実際のプロンプト設計、各ツールの接続方法、どこまで自律実行していたか、人間の承認が必要な範囲、運用コスト、精度評価の方法は確認できません。また、企業向けの自動化では、誤出力、機密情報の扱い、外部API障害、ガードレール設定の不足がリスクになります。特に、文章生成や業務実行をそのまま自動化すると、誤送信・誤更新の可能性があるため、重要な処理は人間の確認を残す必要があります。</p>
+
+    <h2>参考記事</h2>
+    <p>rehan243/Agentic-AI-Workflows</p>
+    <p class="source">
+      <a href="https://github.com/rehan243/Agentic-AI-Workflows"
+         target="_blank" rel="noopener noreferrer">
+        https://github.com/rehan243/Agentic-AI-Workflows
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

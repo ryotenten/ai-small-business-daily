@@ -726,5 +726,27 @@
       "applicability": 10,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-09-19",
+    "date_display": "2026.09.19",
+    "company_name": "Reallytics.ai（記事本文でプロジェクトは同社で構築・運用されたと読めます）",
+    "headline": "SEO・コンテンツ・データ処理を自律実行する「Agentic AI Workflows」：Reallytics.aiの業務自動化ワークフロー",
+    "title": "rehan243/Agentic-AI-Workflows",
+    "url": "https://github.com/rehan243/Agentic-AI-Workflows",
+    "article_filename": "2026-09-19.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-19.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "本文を読む価値が高い順に、具体的な自動化フローが想像しやすく、個人・小規模でも再現しやすい候補を優先しました。0はPython/LangChain/OpenAIを使うエンタープライズ自動化で、詳細な業務フローが出やすいです。3はPower Automate DesktopとGPT-4oの連携で、入力→AI処理→操作実行の再現性が高そうです。5はcoding agents向けの反復可能なワークフローで、実務の分解・検証フローが見込めます。4はAgents SDK自体の情報ですが、マルチエージェント実装例や入出力設計の参考になりそうです。2は業界ニュース監視・重複排除・優先付け・配信という、具体的で応用可能な情報処理ワークフローが読み取れます。",
+    "adoption_score": 82,
+    "workflow_signature": "業務データ・外部API・メール/DB→AIで計画・実行・評価、失敗時リトライと監査ログ→各種業務の自動処理・通知・記録",
+    "evaluation_reason": "本文から、単なる概念紹介ではなく、実運用を想定したエージェント型自動化の構成が確認できる。入力はDB、API、ファイル、メッセージ、外部サービスなどで、AIが多段タスクの計画・実行・評価、メモリ参照、エラー回復、並列実行、ガードレール付き出力を担い、結果として業務自動処理や監査可能な記録を残す。コードは非公開だが、どのような処理をさせるかは比較的明確で、一般的なLLM、LangChain系、各種API連携で再現しやすい。SEO、コンテンツ生成、データ処理、社内業務などへ横展開もしやすく、入力→AI処理→出力の骨格が汎用的。数値成果はないものの、実装方針と運用要素が具体的で、長期保存に値するワークフローとして採用可。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 19,
+      "usefulness": 19,
+      "applicability": 13,
+      "reliability": 10
+    }
   }
 ]
