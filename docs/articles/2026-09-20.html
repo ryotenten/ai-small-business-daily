@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>長文メモや動画を、投稿用コンテンツに分解して予約配信するAIワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例では、AIを「ゼロから全部書く道具」ではなく、面倒な下ごしらえと配信準備を減らす道具として使っています。元の材料は長いYouTube動画や散らかったメモで、そこから投稿の角度を複数作り、必要なものだけ人間が整えて、最後に各SNSへ予約配信する流れです。記事から確認できるのは、生成そのものより">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.20</div>
+    <h1>長文メモや動画を、投稿用コンテンツに分解して予約配信するAIワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>コンテンツ制作・SNS運用<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例では、AIを「ゼロから全部書く道具」ではなく、面倒な下ごしらえと配信準備を減らす道具として使っています。元の材料は長いYouTube動画や散らかったメモで、そこから投稿の角度を複数作り、必要なものだけ人間が整えて、最後に各SNSへ予約配信する流れです。記事から確認できるのは、生成そのものよりも、研究・書き直し・配信のつなぎ込みをAIと自動化で分担している点です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事では、コンテンツ制作で時間を食うのは「生成」よりも、その前後にある面倒な接着作業だと述べられています。具体的には、1つの素材から1本の要約にまとめるだけでは平坦になりやすく、投稿先ごとの角度を作ること、画像が必要なときだけ追加すること、配信タイミングを分散することが手間だったと読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- 長いYouTube動画の文字起こし、または散らかったメモや本文テキスト</p><p>↓</p><p>AIによる処理</p><p>- 文字起こしやテキストを読み込み、研究・要約・言い換えを行う</p><p>- 1つの素材から4〜5個の切り口を作る</p><p>- 投稿の冒頭文や構成案を複数出す</p><p>- 必要に応じてSNS向け文章を下書きする</p><p>↓</p><p>次のシステム・処理</p><p>- n8nのような自動化基盤で処理をつなぐ</p><p>- SheetsやAirtableをキューとして使い、投稿候補を管理する</p><p>- 最終的な多媒体投稿は別のツールでまとめて行う</p><p>↓</p><p>出力</p><p>- LinkedInなどに載せる複数の投稿案</p><p>- 必要なら画像付きのカルーセル案</p><p>- 予約配信用の投稿データ</p><p>↓</p><p>人間による確認・最終作業</p><p>- カルーセルは人間が短く手直しする</p><p>- 自動生成の文面が単調にならないよう、見出しや構成を確認する</p><p>- その日のうちに一気に出さず、週を通して配信するよう調整する</p><p>- 投稿先ごとの認証エラーや配信失敗は、再生成ではなく配信工程だけを見直す</p><p>補足</p><p>- 記事で明確に確認できるAIの役割は、研究、書き直し、複数切り口の生成です</p><p>- 画像生成や完全自動キャプションは言及されていますが、常用方法として細部までは確認できません</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内に売上などの数値はありません。確認できる効果としては、素材探し、切り口出し、下書き作成、配信のつなぎ込みにかかる手間を減らせること、また投稿を一度に出し切らず分散することでアカウントが機械的に見えにくくなることが挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIに向いている作業と人間が見るべき作業を分けているからだと考えられます。AIは長文から切り口を複数出す、文章を整える、候補を並べるのが得意で、人間はその中から文脈に合うものを選び、投稿の見せ方や配信タイミングを調整できます。さらに、コンテンツ作成と配信を別工程にしたことで、配信側の不具合が内容の作り直しに波及しない設計になっています。これは元記事の分析に基づく解釈です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- 1つの素材を1本にまとめるのではなく、複数の切り口に分解すると再利用しやすい</p><p>- AIには「完成品」より「候補出し」を任せると、人間の判断を残しやすい</p><p>- 作成と配信を分離すると、配信トラブルで制作工程まで巻き戻らない</p><p>- 一気出しより、配信を分散したほうが人間らしい運用になりやすい</p><p>- 自動化は本体の執筆より、キュー管理や転記のような地味な部分で効きやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用例</p><p>1. 社内勉強会の録音や議事録を入力にする</p><p>- 入力: 音声文字起こし、議事メモ</p><p>- AI処理: 論点抽出、3〜5個の社内共有用見出し作成、要点の言い換え</p><p>- 出力: NotionやGoogle Docsに下書き保存</p><p>- 人間確認: 部署名、機密情報、表現をチェックして配信</p><p>2. 営業資料の元ネタからSNS投稿を作る</p><p>- 入力: 既存の提案書、導入事例メモ、FAQ</p><p>- AI処理: 導入前後の変化、FAQ向けの1問1答、短文投稿案へ分割</p><p>- 出力: Google Sheetsに投稿キューを作成し、Slackでレビュー依頼</p><p>- 人間確認: 数字や表現を確認して予約投稿</p><p>3. 問い合わせ対応の下書き作成</p><p>- 入力: よくある問い合わせ内容、過去回答</p><p>- AI処理: 重要論点の抽出、回答のドラフト化、丁寧語への整形</p><p>- 出力: Gmail下書きやCRMコメント欄に保存</p><p>- 人間確認: 個別事情や契約条件を見て送信</p><p>4. YouTube配信やウェビナーの再利用</p><p>- 入力: 動画の文字起こし</p><p>- AI処理: ブログ見出し、要約、X/LinkedIn向け短文、カルーセルの骨子作成</p><p>- 出力: WordPress下書き、Canva用原稿、投稿管理表</p><p>- 人間確認: トーン調整と最終校正</p><p>プライベート応用例</p><p>1. 長い動画の自分用メモ化</p><p>- 入力: YouTubeの文字起こし</p><p>- AI処理: 学びの要点、実践手順、忘れやすい点を抽出</p><p>- 出力: Notionやメモアプリに保存</p><p>- 人間確認: 自分の目的に合うかを選別</p><p>2. 読書メモから学習カード作成</p><p>- 入力: 本の要約メモや引用</p><p>- AI処理: 章ごとの要点、復習用Q&amp;A、行動メモに変換</p><p>- 出力: スプレッドシートやAnki用テキスト</p><p>- 人間確認: 事実関係と引用の正確性を確認</p><p>3. 旅行メモの整理</p><p>- 入力: 行きたい場所の断片メモ、口コミの抜粋</p><p>- AI処理: エリア別に分類、日程案、移動順の提案</p><p>- 出力: Google Docsやスプレッドシートに旅程案</p><p>- 人間確認: 営業時間、予算、予約可否を確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、実際の運用規模、投稿頻度、成功指標、使用したモデル名、完全自動化の範囲は確認できません。画像生成やカルーセル制作についても、どこまでAIが担当し、どこから人間が手を入れたかは詳細不明です。また、投稿先の認証情報やAPI連携は壊れやすいため、配信工程とコンテンツ工程は分けて管理する必要があります。機密情報や未公開情報を文字起こしやメモとしてAIに渡す場合は、社内ルールの確認が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>How Are You Using AI to Automate Content Creation ...</p>
+    <p class="source">
+      <a href="https://community.openai.com/t/how-are-you-using-ai-to-automate-content-creation-workflows/1384504"
+         target="_blank" rel="noopener noreferrer">
+        https://community.openai.com/t/how-are-you-using-ai-to-automate-content-creation-workflows/1384504
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

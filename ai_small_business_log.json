@@ -748,5 +748,27 @@
       "applicability": 13,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-09-20",
+    "date_display": "2026.09.20",
+    "company_name": "記事から確認できません",
+    "headline": "長文メモや動画を、投稿用コンテンツに分解して予約配信するAIワークフロー",
+    "title": "How Are You Using AI to Automate Content Creation ...",
+    "url": "https://community.openai.com/t/how-are-you-using-ai-to-automate-content-creation-workflows/1384504",
+    "article_filename": "2026-09-20.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-20.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "本文確認の価値が高い順に選びました。0は『業務フローを理解せず自動化しない』という実務設計の話で、具体的な運用フレームや失敗回避のワークフローが期待できます。1はOpenAI APIを使った業務自動化の実装例がまとまっていそうで、入力→AI処理→出力の流れを確認しやすい候補です。5はコンテンツ作成の自動化ワークフロー事例が集まりそうで、個人・小規模チームに応用しやすい可能性があります。7は社内の手作業をOpenAI APIで自動化している投稿で、具体的な業務フローやツール連携が見込めます。2はRedditの実例収集系で粒度は粗いものの、実際に統合されたエージェント/ワークフローの具体例に辿り着ける可能性があるため候補に入れました。",
+    "adoption_score": 82,
+    "workflow_signature": "長尺の元素材（動画・メモ）→AIで複数切り口に再構成・文章化→投稿案の作成・画像付与・予約投稿",
+    "evaluation_reason": "本文から、実際に「長尺のソースを1つ入れて、4〜5個の切り口を出す」「研究/執筆と投稿を分離する」「n8n・スプレッドシート/Airtable・投稿ツールで流す」という具体的な運用が確認できる。入力・AI処理・出力の流れが明確で、個人や小規模チームでも一般的なツールで再現しやすい。コンテンツ制作だけでなく、元素材の分解→複数案生成→人手で最終調整→スケジューリングという構造は、営業資料、ニュースレター、社内広報、学習ノート整理などへ横展開しやすい。実務上の学びとして「生成より配信の分離が重要」「同時大量投稿を避ける」など運用知見も含まれており、長期保存に値する。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 10
+    }
   }
 ]
