@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azure AI Foundry の Browser Automation Tool で、出張申請フォーム入力をAI化したワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事で扱っているのは、Azure AI Foundry に追加された Browser Automation Tool を使い、ブラウザ上の定常作業をAIに実行させる試みです。人が毎回フォームを開いて入力する代わりに、会話メモのような自然文をAIに渡し、申請フォームへの入力と申請処理を進める流れを">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.21</div>
+    <h1>Azure AI Foundry の Browser Automation Tool で、出張申請フォーム入力をAI化したワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>ブラウザ操作の定常業務自動化（出張申請）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で扱っているのは、Azure AI Foundry に追加された Browser Automation Tool を使い、ブラウザ上の定常作業をAIに実行させる試みです。人が毎回フォームを開いて入力する代わりに、会話メモのような自然文をAIに渡し、申請フォームへの入力と申請処理を進める流れを作っています。実例では、日々の会話メモをもとに出張申請フォームへ情報を入力するエージェントを試しています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、出張申請のような定常業務で、必要情報を毎回ブラウザに手入力する手間があることです。また、サービス側にAPIがない場合は、通常のAPI連携だけでは自動化しづらい点が示されています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力：SlackやTeamsなどに書かれた出張情報（対象者、日付、行先、目的、備考、費用概算）をLLMに渡す。</p><p>↓</p><p>AIによる処理：LLMが内容を解釈し、Browser Automation Tool（Playwright）を使ってWebフォームの各項目を特定し、入力する。記事では、DOMやアクセシビリティツリーをもとに要素を解析して操作できる点が述べられている。</p><p>↓</p><p>次のシステム・処理：Azure AI Foundry のエージェント実行環境で、Playwright Workspace に接続してブラウザ操作を行う。</p><p>↓</p><p>出力：出張申請フォームに情報が入力され、申請処理が進む。</p><p>↓</p><p>人間による確認・最終作業：記事では、単発エージェントとして動かす場合は、申請に必要なコンテキストが十分に入力されているかが重要だと述べている。最終承認や内容確認を人が行う運用が前提と読み取れます。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事中では金額ベースの成果は確認できません。確認できる効果は、ブラウザ上の定常入力をAIに任せられること、APIがないサービスでも自動化の余地があること、そして単発の申請作業を手入力より短い手順で進められる可能性です。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由として考えられるのは、フォーム入力のように手順が比較的定型で、入力項目が明確な作業だったことです。さらに、PlaywrightベースでDOMやアクセシビリティツリーを使えるため、画像認識や座標依存よりも安定して要素を操作しやすい点が効いています。これは記事の事実に基づく部分と、定型業務に向くという分析の両方を含みます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、1) 入力項目が決まっている業務を選ぶこと、2) 自然文のメモをそのまま渡すのではなく、必要項目を整理してLLMに渡すこと、3) ブラウザ操作はLLM単独ではなくPlaywrightのような実行ツールと組み合わせること、4) APIがないサービスでも自動化候補にできることです。特に、最初から複雑な業務を狙うより、まずはフォーム入力や申請送信のようなシンプルな流れから始めるのが現実的です。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 経費申請の下書き作成：Slackやメール本文から、日付・金額・用途・取引先名を抽出 → LLMで申請フォーム用の項目に整形 → ブラウザで申請画面へ入力 → 人間が最終確認して送信。</p><p>2. 問い合わせ管理の転記：問い合わせメールを取得 → LLMで件名、要約、緊急度、担当部署を分類 → CRMや管理画面へ入力 → 担当者へ通知。</p><p>3. 出欠・予約申請の代行：会議案内や依頼文から候補日時・人数・場所を抽出 → 予約サイトや社内フォームに入力 → 送信前に人が確認。</p><p>4. 定型報告の登録：日報メモを取得 → LLMで「実施内容」「課題」「翌日対応」に整形 → Notion、Google Sheets、社内システムに登録 → 上長に通知。</p><p>個人利用の応用例</p><p>1. 旅行の予約メモ整理：メールやメモから宿泊日程・人数・希望条件を抽出 → 予約サイト入力用に整形 → 自分で最終予約。</p><p>2. 各種申請の補助：保険や自治体の申請で、手元のメモや必要情報を整理 → フォーム入力前の下書きを作成 → 本人が確認して提出。</p><p>3. 反復入力の補助：イベント申込や会員登録で、氏名・住所・連絡先を整形 → ブラウザ自動入力 → 提出前に目視確認。</p><p>実装するなら、例えば次の流れです。</p><p>1. Slack、メール、Googleフォーム回答、CSVなどから入力データを取得する</p><p>2. ChatGPTやOpenAI APIで必要項目を抽出・整形する</p><p>3. PythonでPlaywrightを呼び出し、Webフォームへ自動入力する</p><p>4. 入力結果をExcel、Google Sheets、Notion、DBに保存する</p><p>5. 完了時にSlack、メール、Pushoverで通知する</p><p>6. 最終送信だけ人間が確認する、またはエラー時のみ人が介入する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実運用での安定性、エラー時の復旧方法、処理速度、監査ログの有無、セキュリティ設定の詳細は不明です。さらに、個人情報や社内情報をLLMに渡すため、入力内容の取り扱いには注意が必要です。ブラウザ操作は画面変更や要素名の変更で壊れやすいため、重要な申請は人間の最終確認を残すべきです。記事では単発エージェントとしての有効性が示されていますが、継続運用での保守方法までは確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>AI Foundry Browser Automation Tool で定常業務を自動化し ...</p>
+    <p class="source">
+      <a href="https://zenn.dev/nomhiro/articles/browser-automation-ai-foundry-poc"
+         target="_blank" rel="noopener noreferrer">
+        https://zenn.dev/nomhiro/articles/browser-automation-ai-foundry-poc
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

@@ -770,5 +770,27 @@
       "applicability": 12,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-09-21",
+    "date_display": "2026.09.21",
+    "company_name": "記事から確認できません",
+    "headline": "Azure AI Foundry の Browser Automation Tool で、出張申請フォーム入力をAI化したワークフロー",
+    "title": "AI Foundry Browser Automation Tool で定常業務を自動化し ...",
+    "url": "https://zenn.dev/nomhiro/articles/browser-automation-ai-foundry-poc",
+    "article_filename": "2026-09-21.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-21.html",
+    "search_query": "site:zenn.dev AI OpenAI 自動化 業務",
+    "selection_reason": "本文確認の価値が高い順に、まず具体的な入力→AI処理→出力の流れが検索結果から想像できるものを優先しました。4はn8nでWebメール要約→LINE送信という再現しやすい実務ワークフローが明確で、小規模でも応用しやすいです。2はGPT-4o＋Power Automate Desktopの組み合わせで、既存業務を自動化する実装例として本文に具体手順がありそうです。11はブラウザ操作をAIに担わせる定常業務自動化の試行で、個人・少人数の事務作業に転用しやすい候補です。0はHexabotのワークフロー/アクション/エージェント統合が示されており、具体的な業務フロー例が本文に入っている可能性があります。3は400+ integrationsの自動化基盤で、単なる製品紹介よりも実際の連携ワークフロー例が見つかる余地が高いと判断しました。",
+    "adoption_score": 77,
+    "workflow_signature": "フォーム入力用の業務メモ→AIで内容を解釈してブラウザ操作→申請フォーム送信",
+    "evaluation_reason": "本文から、AI Foundry の Browser Automation Tool（Playwright）を使い、ユーザーがSlack/Teams等に貼った出張情報をもとに出張申請フォームへ入力・送信する具体的な流れが確認できる。入力（対象者・日付・行先・目的・備考・費用概算）、AIの処理（ツール呼び出しでブラウザ操作）、出力（フォーム申請完了）が明確で、単発の定常業務自動化として再現可能性が高い。APIのないWeb業務をブラウザ経由で代替できるため、申請・予約・登録など他の業務にも横展開しやすい。一方で、現状はPreview機能であり、複雑な操作では人手介在や安定性の課題が残るため、実用性と信頼性は満点ではない。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 22,
+      "usefulness": 17,
+      "applicability": 11,
+      "reliability": 7
+    }
   }
 ]
