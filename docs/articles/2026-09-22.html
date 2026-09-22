@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI × RPA × AWS Step Functionsで、ダウンロードファイルの確認・処理を自動化するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="外部サービスからファイルを手作業でダウンロードし、1件ずつ開いて条件分岐する作業は、地味ですが時間もミスも発生しやすいです。この記事では、その流れをRPA・AWS Step Functions・OCR・OpenAI APIでつなぎ、処理の一部を自動化しています。完全自動化ではなく、AIが得意な読み取">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.22</div>
+    <h1>AI × RPA × AWS Step Functionsで、ダウンロードファイルの確認・処理を自動化するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>株式会社ネクストビート（記事から確認できる範囲）<br>
+      <strong>業種：</strong>業務プロセス自動化 / テックブログ事例<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>外部サービスからファイルを手作業でダウンロードし、1件ずつ開いて条件分岐する作業は、地味ですが時間もミスも発生しやすいです。この記事では、その流れをRPA・AWS Step Functions・OCR・OpenAI APIでつなぎ、処理の一部を自動化しています。完全自動化ではなく、AIが得意な読み取りや処理補助を任せ、最後は人の確認を前提にした構成です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事では、外部サービスにAPIがなく、前日にアップロードされたファイルを一括で取得する必要があったことが分かります。また、ダウンロードしたファイルを1つずつ開き、特定条件に基づいて処理する手順が煩雑だったことが課題です。さらに、長時間処理や並列処理、失敗時の扱いを安全に回す仕組みも必要でした。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- 外部サービスからRPAで一括ダウンロードしたファイル</p><p>- その中の画像・文書の内容</p><p>↓</p><p>AIによる処理</p><p>- Azure AI VisionのRead APIでOCRを実行し、日本語文字列を抽出</p><p>- 抽出した文字列をOpenAI APIに渡し、特定の処理を実行</p><p>- 記事からは、具体的に何を判断・生成したかまでは確認できませんが、少なくともOCR後のテキストをもとに処理を進めています</p><p>↓</p><p>次のシステム・処理</p><p>- AWS Step Functionsでワークフローを制御</p><p>- WaitステートとChoiceステートで、RPAの完了をポーリング</p><p>- Mapステートで複数ファイルの処理を並列化</p><p>- 失敗したタスクはエラーハンドリングし、成功したものだけ次工程へ進める設定</p><p>↓</p><p>出力</p><p>- 処理結果をまとめてDBへ格納</p><p>- Slack通知も行っていると記載あり</p><p>↓</p><p>人間による確認・最終作業</p><p>- AIは完全ではないため、最終的な品質保証として人のレビューが必要と明記されています</p><p>- どのようなレビュー観点で見たかは記事からは確認できません</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内では売上やコスト削減額の数値は示されていません。確認できる効果としては、ファイル取得から処理までの作業効率化、処理速度の向上、Lambdaのタイムアウト回避による安定運用、Mapステートによる並列化での全体処理の高速化、エラーが起きても成功分を先に進められる耐障害性の向上が挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この構成が有効だった理由は、役割分担が明確だからだと考えられます。RPAはAPIのない外部サービスからの取得を担当し、OCRは画像や文書の文字起こしを担当し、OpenAIは文字列をもとにした次の処理を担当しています。さらにStep Functionsが待機・分岐・並列実行・エラー処理をまとめて管理することで、個別の処理をつなぎ合わせても壊れにくい流れになっています。これは記事の事実に基づく構成要素の整理であり、評価は分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- APIがない部分は、無理にAIだけで解決せずRPAを組み合わせる</p><p>- OCRのような前処理を分けると、AIに渡す入力を整えやすい</p><p>- 長時間処理は、アプリ側のタイムアウトに依存せず待機・再確認の設計にする</p><p>- 並列化できる部分はMapのような仕組みで分けると速くなる</p><p>- 全自動にせず、失敗や曖昧さが残る工程は人間の確認を残すほうが現実的</p><p>- AIの役割を「判断の全部」ではなく「処理の一部」に切ると導入しやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、以下のように分けると再現しやすいです。</p><p>1. データを取得</p><p>- 例: Gmailの添付ファイル、Google Driveの新規アップロード、Web画面からのダウンロード</p><p>- APIがあればPythonやZapier、なければRPAで取得</p><p>2. AIへ渡す</p><p>- PDFや画像ならOCRで文字化</p><p>- そのテキストをChatGPT/OpenAI APIに送る</p><p>3. AIで処理</p><p>- 分類: 種類ごとにラベル付け</p><p>- 抽出: 日付、金額、氏名、案件名などを取り出す</p><p>- 要約: 長文を短くまとめる</p><p>- 判定補助: ルールに合うかを下書き判定する</p><p>4. 保存</p><p>- Excel、Google Sheets、DB、Notionなどに結果を保存</p><p>- 元データとAI出力を並べて残すと後で検証しやすい</p><p>5. 通知</p><p>- Slack、メール、Pushoverで完了通知や要確認通知を送る</p><p>6. 人間が確認</p><p>- 例外や曖昧なものだけ人が見る</p><p>仕事への応用例</p><p>- 請求書・領収書の処理: PDFをOCR→AIで取引先名・日付・金額を抽出→Google Sheetsに保存→経理担当へSlack通知</p><p>- 問い合わせ振り分け: メール本文をAIで分類→優先度と担当部署を付与→チケットシステムに登録</p><p>- 申請書チェック: 画像やPDFから項目を抽出→必須項目の抜けをAIで確認→不足だけ差し戻しリスト化</p><p>- 週次レポート補助: 複数のCSVやログを集約→AIで要点を要約→Notionやメールで共有</p><p>個人利用の応用例</p><p>- 家計のレシート整理: レシート画像をOCR→支出カテゴリをAIで分類→スプレッドシートへ記録</p><p>- 契約書や長文メールの要点整理: PDFやメールを要約→ToDoだけ抜き出してNotionに保存</p><p>- 旅行の予約確認: 予約メールをAIで抽出→日付・場所・持ち物を一覧化→カレンダーに転記</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、AIが具体的に何を判断・生成したのか、詳細なプロンプトやルールは確認できません</p><p>- 成果の定量値は示されていないため、削減時間や精度向上率は不明です</p><p>- 外部サービス、RPA、OCR、LLMを組み合わせるため、各サービスの障害や仕様変更の影響を受けます</p><p>- AIの誤読・誤抽出は起こりうるため、重要な業務では人の確認が必要です</p><p>- 画像や文書に個人情報・機密情報が含まれる場合、取り扱いルールと保存先の管理が重要です</p><p>- BizteX Cobitを使っているという記載がありますが、記事本文の中心構成とは別の補足情報で、詳細な使い方までは確認できません</p>
+
+    <h2>参考記事</h2>
+    <p>AI × RPA × StepFunctionsで煩雑な業務プロセスを自動化した話</p>
+    <p class="source">
+      <a href="https://zenn.dev/nextbeat/articles/ai-rpa-stepfunctions-auto-process"
+         target="_blank" rel="noopener noreferrer">
+        https://zenn.dev/nextbeat/articles/ai-rpa-stepfunctions-auto-process
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

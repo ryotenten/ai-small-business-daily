@@ -792,5 +792,27 @@
       "applicability": 11,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-22",
+    "date_display": "2026.09.22",
+    "company_name": "株式会社ネクストビート（記事から確認できる範囲）",
+    "headline": "AI × RPA × AWS Step Functionsで、ダウンロードファイルの確認・処理を自動化するワークフロー",
+    "title": "AI × RPA × StepFunctionsで煩雑な業務プロセスを自動化した話",
+    "url": "https://zenn.dev/nextbeat/articles/ai-rpa-stepfunctions-auto-process",
+    "article_filename": "2026-09-22.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-22.html",
+    "search_query": "site:zenn.dev AI OpenAI 自動化 業務",
+    "selection_reason": "検索結果だけでも、具体的な入力→AI処理→出力→人手確認の流れが比較的想像しやすく、本文確認で再現可能なワークフローが見つかる可能性が高い候補を優先しました。12はAI+RPA+StepFunctionsで業務プロセス自動化、11はChatGPTでの自動リサーチ、16はChatGPTを使った実務改善の複数事例、14はブラウザ操作系エージェントで申請・入力系ワークフローに展開しやすい、0はAI Agentsとworkflow automationの比較から実務的な使い分けや具体例が拾える可能性があります。",
+    "adoption_score": 82,
+    "workflow_signature": "ファイル群→AIでOCR・抽出・処理→DB格納・通知",
+    "evaluation_reason": "本文から、RPAで外部サイトからファイルを取得し、Step Functionsで待機・分岐・並列化を行い、OCRで文字起こしした上でAIに処理させ、結果をDB保存する流れが具体的に確認できます。入力・AI処理・出力が明確で、Lambdaのタイムアウト回避、Mapによる並列化、エラーハンドリングなど実装上の要点も押さえられています。用途は特定業務ですが、抽象化すると『ファイル取得→AI処理→記録/通知』として、帳票処理、定型書類確認、画像OCR後の分類・抽出などへ横展開しやすいです。定量成果はないものの、実運用の構成と使い方が読めるため信頼性は一定以上と判断しました。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 12,
+      "reliability": 6
+    }
   }
 ]
