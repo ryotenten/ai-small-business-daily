@@ -814,5 +814,27 @@
       "applicability": 12,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-09-23",
+    "date_display": "2026.09.23",
+    "company_name": "Google Workspace Studio",
+    "headline": "Google Workspace StudioでGmail・Drive・Sheetsをつなぎ、定型業務をAIワークフロー化する",
+    "title": "Automate Workflows with Agentic AI Powered by Gemini",
+    "url": "https://workspace.google.com/studio/",
+    "article_filename": "2026-09-23.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-23.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に追えそうで、Gmail/Sheets/Slack等の再現しやすい組み合わせが見える候補です。0はGmail→AI→Sheetsの実用ワークフローが明確、4もSheets起点でメール送信・返信追跡まで含み業務再現性が高いです。3はGoogle Workspace内で添付保存やSheets記録などの具体フローが想像でき、日常業務に落とし込みやすいです。2はテンプレート集だがGmail/Slack/Notion/OpenAIなど横展開の具体例を拾える可能性が高く、5はSheets業務をAI化する一般化しやすい実践記事として有望です。",
+    "adoption_score": 86,
+    "workflow_signature": "Workspace内のメール・会議情報・添付ファイル→AIで要約・抽出・分類・下書き生成→Gmail/Sheets/Driveへ記録・通知・共有",
+    "evaluation_reason": "本文から、実際に何を入力し、Geminiが何を行い、どこへ出力するかが複数例で確認できます。メールの高優先度判定、添付ファイルのDrive保存とSheets記録、会議内容からの要約やアクションアイテム抽出、チーム共有メールの下書き作成など、業務でそのまま使える処理が明確です。Google Workspace内で完結し、一般的な業務に横展開しやすく、個人や中小企業でも似た構成を再現しやすい点を高く評価します。一般的なテンプレート起点の自動化として実用性も十分です。信頼性は公式説明中心で、実運用の詳細や定量成果は限定的ですが、一般公開された製品ページとしては妥当です。過去事例の中にGmail→要約→Sheets記録という近いものはありますが、本件はWorkspaceネイティブのエージェント設計・会議/メール/添付の統合自動化が中心で、入力・処理・後続アクションが同一ではないため重複扱いにはしません。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 23,
+      "usefulness": 21,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]

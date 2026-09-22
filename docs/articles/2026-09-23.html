@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Workspace StudioでGmail・Drive・Sheetsをつなぎ、定型業務をAIワークフロー化する | AI Small Business Daily</title>
+<meta name="description" content="Google Workspace Studioは、GmailやChat、DriveなどのWorkspaceアプリ内で、日常業務の流れをAIワークフローとして組み立てられる仕組みです。面倒な定型作業を、自然文での指示からフロー化できる点が特徴です。記事で確認できるのは、メール処理、会議要約、添付ファイ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.23</div>
+    <h1>Google Workspace StudioでGmail・Drive・Sheetsをつなぎ、定型業務をAIワークフロー化する</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Google Workspace Studio<br>
+      <strong>業種：</strong>Google Workspace上の業務自動化・AIワークフロー作成<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>Google Workspace Studioは、GmailやChat、DriveなどのWorkspaceアプリ内で、日常業務の流れをAIワークフローとして組み立てられる仕組みです。面倒な定型作業を、自然文での指示からフロー化できる点が特徴です。記事で確認できるのは、メール処理、会議要約、添付ファイル保存、Sheetsへの記録などをWorkspace内でつなぐ使い方です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、Gmail・Drive・Sheets・Chatにまたがる定型業務が手作業だと分断されやすいことです。たとえば、重要メールの見分け、会議後のアクションアイテム整理、添付ファイルの保存と記録といった作業を、人手で毎回行う必要がありました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Gmailの受信メール、添付ファイル、会議の詳細、参加者情報、関連資料など</p><p>↓</p><p>AIによる処理</p><p>- 高優先度メールの検知とラベル付け</p><p>- 会議情報にもとづく要約作成</p><p>- 会議のアクションアイテム抽出、翻訳、メール下書き生成</p><p>- 添付ファイルの保存対象判断と記録内容の作成</p><p>↓</p><p>次のシステム・処理</p><p>- Gmail内でのラベル付け、下書き作成</p><p>- Driveフォルダへの保存</p><p>- Sheetsへの記録</p><p>- Chatでの要約表示</p><p>↓</p><p>出力</p><p>- 重要メールの整理済み受信箱</p><p>- 会議サマリー</p><p>- チーム共有用のメール下書き</p><p>- Driveに保存された添付ファイル</p><p>- Sheetsに残る記録</p><p>↓</p><p>人間による確認・最終作業</p><p>- ラベルや要約、下書きの内容確認</p><p>- 必要に応じた編集・送信</p><p>- 保存先や記録内容の妥当性確認</p><p>記事から確認できるのは、こうした処理をGoogle Workspace Studioで設計・管理・共有できることです。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内では金額や件数の成果は確認できません。確認できる効果としては、ルーティン業務の自動化、会議後の整理時間の短縮、重要メールの見落とし防止、添付ファイル保存と台帳記録の手間削減が挙げられます。導入企業のコメントとして、個人・チームの生産性向上や、現場が小さな改善を自分たちで解決しやすくなる効果が示されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、入力データがすでにWorkspace内にあり、Gmail・Drive・Sheets・Chatをまたぐ処理を一つの場所でつなげられるからだと考えられます。さらに、自然文からフローを作れるため、専門知識がなくても定型業務を分解しやすい点が強みです。記事の事実としては、事前設定済みステップやコネクタが用意されており、実務で使いやすい構造になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- まずは「メールを読む→判断する→保存する→記録する」のような短い業務単位から自動化すると移植しやすいです。</p><p>- AIに全部を任せるより、抽出・分類・要約・下書き生成までをAIに担当させ、最終判断は人間が行う形が実用的です。</p><p>- 既存の業務ツールの中で完結させると、現場に定着しやすくなります。</p><p>- 1つの大きな自動化より、テンプレート化しやすい小さなフローを複数持つ方が再利用しやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用案</p><p>1. 問い合わせメールの一次仕分け</p><p>- 入力: Gmailの受信メール本文、件名、送信者、添付有無</p><p>- AI処理: 緊急度分類、担当部署候補の推定、返信下書き生成</p><p>- 出力: Gmailラベル付け、Slack通知、Google Sheetsへの記録</p><p>- 人間確認: 優先度と返信文を確認して送信</p><p>2. 会議後の議事録整理</p><p>- 入力: 会議メモ、参加者、アジェンダ、添付資料</p><p>- AI処理: 要点要約、アクションアイテム抽出、担当者ごとの整理</p><p>- 出力: Google Docs下書き、Chat共有、メール送信用下書き</p><p>- 人間確認: 表現修正と最終共有</p><p>3. 添付ファイルの保存と台帳化</p><p>- 入力: Gmailの添付ファイル</p><p>- AI処理: ファイル名の標準化、内容カテゴリ推定、必要項目の抽出</p><p>- 出力: Driveの所定フォルダへ保存、Sheetsに日付・送信者・件名を記録</p><p>- 人間確認: 保存先と記録漏れの確認</p><p>4. 日次メール要約</p><p>- 入力: 未読メール一覧</p><p>- AI処理: 重要メールの抽出、トピック別要約</p><p>- 出力: 毎朝の要約メールまたはChat投稿</p><p>- 人間確認: 返信が必要なものだけ対応</p><p>個人利用の応用案</p><p>1. 重要メールだけ通知する</p><p>- 入力: 受信メール</p><p>- AI処理: 家族、学校、金融、宅配などを分類</p><p>- 出力: 重要メールのみスマホ通知</p><p>- 人間確認: 通知内容を見て対応</p><p>2. 保証書・領収書の整理</p><p>- 入力: メール添付や画像ファイル</p><p>- AI処理: 種別判定、日付・金額・店名の抽出</p><p>- 出力: DriveやNotionに保存、一覧表に追記</p><p>- 人間確認: 抽出ミスを修正</p><p>3. 旅行前の情報整理</p><p>- 入力: 予約メール、チケット、宿泊情報</p><p>- AI処理: 日時・場所・持ち物を要約</p><p>- 出力: 旅行チェックリストを作成</p><p>- 人間確認: 抜け漏れ確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、具体的な設定手順、実行速度、精度、対応できる例外処理は確認できません。実運用では、メール内容や添付ファイルに個人情報・機密情報が含まれるため、アクセス権限の確認が必要です。AIの分類や抽出は誤判定の可能性があるため、重要な送信・保存・共有は人間の最終確認を前提にすべきです。また、記事ではWorkspaceの権限に従うことやDLP制御を尊重することが示されていますが、第三者サービスとの連携範囲や運用ルールの詳細は記事からは確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>Automate Workflows with Agentic AI Powered by Gemini</p>
+    <p class="source">
+      <a href="https://workspace.google.com/studio/"
+         target="_blank" rel="noopener noreferrer">
+        https://workspace.google.com/studio/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
