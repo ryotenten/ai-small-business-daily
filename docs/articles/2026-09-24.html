@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Airtableの新規リードと予約をChatGPTで要約し、Discordへ毎朝配信する自動化ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="Airtable、ChatGPT、Discordをつないで、毎朝の確認作業を自動化した事例です。投稿者は、物件更新・リード・メッセージが複数アプリに散らばり、朝の把握に手間がかかっていたため、日次サマリーを自動送信する仕組みを作りました。記事では、Airtableの新規データをChatGPTで整え、">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.24</div>
+    <h1>Airtableの新規リードと予約をChatGPTで要約し、Discordへ毎朝配信する自動化ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（投稿者はGermán Buendia）<br>
+      <strong>業種：</strong>不動産関連の業務フローを含む、情報整理・通知の自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>Airtable、ChatGPT、Discordをつないで、毎朝の確認作業を自動化した事例です。投稿者は、物件更新・リード・メッセージが複数アプリに散らばり、朝の把握に手間がかかっていたため、日次サマリーを自動送信する仕組みを作りました。記事では、Airtableの新規データをChatGPTで整え、Discordに送る流れが確認できます。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前は、物件更新、リード、メッセージを3つのアプリで横断的に確認していました。朝の時点で何が新しいのかを把握するために、毎回手作業で情報を見に行く必要があり、時間がかかっていたことが課題です。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力: Airtableに入っている新規リードと予約情報。</p><p>↓</p><p>AIによる処理: ChatGPTが、毎朝確認しやすい形に要約・整形する。記事からは、具体的にどの項目を抽出したか、どのようなプロンプトを使ったかは確認できません。</p><p>↓</p><p>次のシステム・処理: ZapierがAirtable、ChatGPT、Discordを接続する。</p><p>↓</p><p>出力: Discordに「その日の新規リードと予約のクリーンな要約」が届く。</p><p>↓</p><p>人間による確認・最終作業: 投稿者がDiscordの要約を見て、その日の対応を開始する。記事からは、手動修正や例外処理の有無は確認できません。</p><p>この事例でAIが担っている役割は、単純な保存ではなく、日々のデータを読みやすいサマリーに変換することです。つまり、AIは分類・要約・文章生成の担当、Zapierは連携担当、Airtableはデータ保管庫として機能しています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、毎朝の把握作業が自動化され、会議や手作業のレポートが不要になったことです。投稿では「No meetings. No reports. No wasted time.」と述べられており、朝の準備時間が減ったことが分かります。数値は示されていません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが機能した理由は、目的が「全部を自動化する」ではなく、「毎朝必要な情報だけを1か所にまとめる」ことに絞られていたからだと考えられます。Airtableにデータが集まっているため入力元が明確で、ChatGPTには要約という得意な処理を任せ、Discordで即時通知することで、確認の手間を最小化できています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・最初の自動化は、業務全体ではなく「毎日くり返す小さな確認作業」から始めるとよい。</p><p>・AIは“判断そのもの”より、“人が読む前の整形”に向いている。</p><p>・データの置き場、要約、通知の3役を分けると設計しやすい。</p><p>・まず1本成功すると、同じ型で次の業務にも広げやすい。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【業務への応用例】</p><p>1. 営業の新着リード通知</p><p>- 取得: Google SheetsやAirtableに入った新規問い合わせ</p><p>- AI処理: 会社名、担当者名、問い合わせ内容、緊急度を抽出して短く要約</p><p>- 出力: Slackやメールに「今朝の優先対応リスト」として送信</p><p>- 人間: 優先順位を確認して電話・返信を行う</p><p>2. 問い合わせメールの一次整理</p><p>- 取得: Gmailの新着メール</p><p>- AI処理: 要件分類、返信候補の下書き作成、緊急度判定</p><p>- 出力: Notionやスプレッドシートに一覧化し、重要件だけSlack通知</p><p>- 人間: 最終返信を確認して送信</p><p>3. 週次の業務レビュー</p><p>- 取得: 1週間分の案件メモ、商談記録、タスク完了ログ</p><p>- AI処理: 進捗の要約、遅延案件の抽出、次週の論点整理</p><p>- 出力: Notionの週報ページやPDF下書き</p><p>- 人間: 内容を見て会議資料として整える</p><p>【個人利用の応用例】</p><p>1. 家計の毎朝チェック</p><p>- 取得: 家計簿アプリの記録をCSVやスプレッドシートに出力</p><p>- AI処理: 昨日の支出をカテゴリ別に要約し、異常支出を抽出</p><p>- 出力: メールやLINE通知用の短いレポート</p><p>- 人間: 必要なら手動で修正</p><p>2. 受信メールの朝確認</p><p>- 取得: 前日夜から今朝までの受信メール</p><p>- AI処理: 重要メール、広告、あとで読むものに分類</p><p>- 出力: 1通の要約メールに集約</p><p>- 人間: その日の対応順を決める</p><p>3. 学習ログの整理</p><p>- 取得: 読書メモ、講義メモ、見学メモ</p><p>- AI処理: 要点抽出、復習すべき論点のリスト化</p><p>- 出力: NotionやGoogle Docsに保存</p><p>- 人間: 次に学ぶ内容を決める</p><p>実装の基本形は、&quot;データ取得 → AIで要約・分類 → 保存 → 通知 → 人間が確認&quot; です。ChatGPT単体でも試せますが、運用化するなら Zapier、Make、Python、Google Sheets、Airtable、Slack、Discord などを組み合わせると再現しやすくなります。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、Airtableのどの項目を使ったか、ChatGPTへの具体的な指示、Zapierの設定内容、エラー時の処理は確認できません。また、リードや予約情報には個人情報が含まれる可能性があるため、外部AIに渡す範囲の設計には注意が必要です。要約の誤り、重複、抜け漏れが起きる可能性もあるため、最終判断は人間が行う前提で使うべきです。</p>
+
+    <h2>参考記事</h2>
+    <p>How I automated my workflow with ChatGPT, Zapier, and ...</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/germanbuendia_nocode-automation-airtable-activity-7389085154343858176-WISb"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/germanbuendia_nocode-automation-airtable-activity-7389085154343858176-WISb
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

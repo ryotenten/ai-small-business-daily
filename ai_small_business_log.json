@@ -836,5 +836,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-09-24",
+    "date_display": "2026.09.24",
+    "company_name": "記事から確認できません（投稿者はGermán Buendia）",
+    "headline": "Airtableの新規リードと予約をChatGPTで要約し、Discordへ毎朝配信する自動化ワークフロー",
+    "title": "How I automated my workflow with ChatGPT, Zapier, and ...",
+    "url": "https://www.linkedin.com/posts/germanbuendia_nocode-automation-airtable-activity-7389085154343858176-WISb",
+    "article_filename": "2026-09-24.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-24.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、検索結果の段階でも「入力→AI処理→出力→人間の最終作業」の流れが見えやすく、個人や小規模チームに再現しやすそうなものです。0はChatGPT+Zapier+Airtableで業務自動化の具体例が期待でき、6と7はコンテンツ制作の実務フローがかなり具体化しやすい候補です。1はRedditで実例や派生ワークフローが集まりやすく、長尺動画→短尺化のような再現性の高い処理が読み取れます。4は複数の小規模事業に共通する実務ワークフローの横展開事例が期待でき、本文を読む価値があります。",
+    "adoption_score": 81,
+    "workflow_signature": "Airtableの新規リード・予約情報→AIで要約・整形→毎朝の要約をDiscordへ送信",
+    "evaluation_reason": "本文から、Airtableに蓄積された新規リード/予約をChatGPTで要約し、Zapier経由でDiscordへ毎朝自動配信する流れが確認できる。入力・AI処理・出力が明確で、一般的なノーコード/AIツールで再現しやすい。業務の立ち上がり時の確認コスト削減という実用性も高く、同型の構造は営業、予約管理、問い合わせ、社内通知、家事管理などへ横展開しやすい。定量成果は乏しいが、実際に「live」として運用している記述があり信頼性も一定ある。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]
