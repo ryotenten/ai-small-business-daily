@@ -858,5 +858,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-26",
+    "date_display": "2026.09.26",
+    "company_name": "Dara Denney",
+    "headline": "ChatGPT Workで広告レポートを月次自動化：Meta広告データを読み込み、固定フォーマットのデッキを生成する方法",
+    "title": "#chatgptpartner #ad | Dara Denney | 24 comments",
+    "url": "https://www.linkedin.com/posts/daradenney_chatgptpartner-ad-activity-7488226742428430336-DJX-",
+    "article_filename": "2026-09-26.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-26.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "本文を読む価値が高いのは、実際の個人/少人数運用のワークフローが見えやすく、入力→AI処理→出力→人間の確認まで想像しやすいものを優先しました。0はChatGPT+Notionで日次QAレポート自動化の具体例が期待でき、再現性が高そうです。3はリード獲得の自動化で、入力元・抽出・整形・出力先が具体化されていそうです。4は求人応募ワークフローの自動化で、メール/応募文/求人取得など複数ツール連携の可能性があり実用的です。6はデータ入力自動化で、汎用化しやすい典型ワークフローとして有用そうです。7は代理店のクリエイティブレポーティング自動化で、レポート作成→AI要約/整形→クライアント共有の流れが読み取れ、業務改善の再現候補として有望です。",
+    "adoption_score": 84,
+    "workflow_signature": "Meta広告データ→AIで定型レポート構成に整形・要約→Slack共有の月次クリエイティブ報告デッキ作成",
+    "evaluation_reason": "本文から、Meta Adsの読み取り専用接続をデータ स्रोतにし、ChatGPTのplugin skillでクライアント向けの固定フォーマットに整形、月次で自動起動してSlackに送る、という実運用ワークフローが確認できる。入力・AI処理・出力が明確で再現性が高い。特定業種は広告運用だが、抽象化すると「定期数値→AIで標準レポート化→社内共有」という汎用性があり、運用改善や意思決定の省力化に直結するため採用価値が高い。定量効果も3-4時間→20分と具体的で、信頼性も十分。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 20,
+      "usefulness": 22,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]

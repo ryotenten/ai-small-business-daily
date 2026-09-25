@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPT Workで広告レポートを月次自動化：Meta広告データを読み込み、固定フォーマットのデッキを生成する方法 | AI Small Business Daily</title>
+<meta name="description" content="Dara Denney氏は、クライアントごとのクリエイティブレポート作成に毎回3〜4時間かかっていた作業を、ChatGPT Workを使って約20分まで短縮したと投稿しています。ポイントは、単に要約させることではなく、データ取得・レポート構成・定期実行・社内共有までを一連のワークフローにしたことです">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.26</div>
+    <h1>ChatGPT Workで広告レポートを月次自動化：Meta広告データを読み込み、固定フォーマットのデッキを生成する方法</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Dara Denney<br>
+      <strong>業種：</strong>広告運用・クリエイティブ報告（代理店業務）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>Dara Denney氏は、クライアントごとのクリエイティブレポート作成に毎回3〜4時間かかっていた作業を、ChatGPT Workを使って約20分まで短縮したと投稿しています。ポイントは、単に要約させることではなく、データ取得・レポート構成・定期実行・社内共有までを一連のワークフローにしたことです。記事上では、Meta広告データを起点に、決まったデッキ構成で月次レポートを自動生成し、Slackへ送る流れが紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>事例から確認できる導入前の課題は、クライアントごとのクリエイティブ報告に毎回3〜4時間かかっていたことです。さらに、レポートの構成を毎回整える作業が負担で、同じような報告を繰り返していたと読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Meta Adsのデータ（記事ではMeta Adsへの直接接続、read only）</p><p>- クライアントごとのブランド情報</p><p>- 既存のレポート構成ルール</p><p>↓</p><p>AIによる処理</p><p>- ChatGPT Workが定期的にデータを取得</p><p>- あらかじめ作ったplugin skillで、レポートを固定の順序・構成に整形</p><p>- クリエイティブ分析、競合ウォッチ、次のアクションなどの項目を、既定のデッキ形式にまとめる</p><p>↓</p><p>次のシステム・処理</p><p>- 月1回のスケジュール実行でワークフローを起動</p><p>- 生成したデッキをSlackで社内チームに送付</p><p>↓</p><p>出力</p><p>- クライアント向けクリエイティブ報告用のデッキ</p><p>- 社内での最終確認に回せる下書き</p><p>↓</p><p>人間による確認・最終作業</p><p>- 送られてきたデッキを社内チームが最終調整</p><p>- 記事では、どの数値をどこまで自動化したか、どの程度人手で修正しているかは確認できません</p><p>この事例でAIが担っているのは、単なる文章生成ではなく、データ取得後の整理、既定フォーマットへの再構成、定期実行による自動配信です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事上で確認できる効果は、1クライアントあたり3〜4時間かかっていた作業が約20分に短縮されたことです。加えて、レポート作成に使っていた時間を、データを見て次の打ち手を考える時間に回せるようになった点が示されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIに自由作文をさせたのではなく、すでにチーム内にある報告フォーマットをそのまま機械化した点にあります。これは分析ですが、出力形式が固定されているほど、AIは“考える”より“整える”役割に向き、品質のばらつきと手戻りを減らしやすいです。また、月1回の定期実行により、誰かが思い出して作る作業をなくしたことも効いています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AI導入は『何を作るか』より『どの順番で、どの形式で出すか』を固定すると使いやすい</p><p>- データ取得、整形、配信をつなぐと、単発の要約より実務効果が大きい</p><p>- レポートの価値は数字の羅列ではなく、同じ見方で比較できることにある</p><p>- 人間は生成結果を最終確認し、判断や解釈に集中するのが向いている</p><p>- 月次自動化だけでなく、同じデータを日次チェックに回す設計も相性がよい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 広告運用レポートの自動化</p><p>- データ取得: Meta Ads / Google Ads / GA4 / CSV / Google Sheets</p><p>- AI処理: 指標の要約、前月比の変化抽出、勝ちクリエイティブの整理、次回テスト案の下書き作成</p><p>- 出力: Google Slides / PowerPoint / Notionの定型レポート</p><p>- 配信: Slackで担当者に送付、メールでクライアント確認用に転送</p><p>- 人間確認: 異常値、誤った解釈、クリエイティブ名の整合性を確認</p><p>2. 週次営業レポート</p><p>- データ取得: CRM（HubSpot等）、商談メモ、案件ステータス</p><p>- AI処理: 進捗停滞案件の抽出、失注理由の要約、次に連絡すべき案件の優先順位付け</p><p>- 出力: 週次サマリーをSlack/メール/Notionに保存</p><p>- 人間確認: 優先順位と次アクションを営業担当が修正</p><p>3. 問い合わせ対応の下書き生成</p><p>- データ取得: 受信メール、問い合わせフォーム、FAQ</p><p>- AI処理: 問い合わせを分類し、回答文のドラフトを作成、必要部署へ振り分け</p><p>- 出力: Gmail下書き、Zendeskチケット、Slack通知</p><p>- 人間確認: 重要案件やクレームは必ず人が承認</p><p>4. 個人利用: 家計・サブスクの月次見直し</p><p>- データ取得: 銀行明細CSV、カード明細、家計簿アプリの出力</p><p>- AI処理: 固定費の増加、使いすぎカテゴリ、見直し候補の抽出</p><p>- 出力: Google Sheetsの集計表、Notionの節約メモ、月末の確認リスト</p><p>- 人間確認: 解約や変更の判断は自分で行う</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、実際のツール構成の詳細（ChatGPT Work以外の連携方法、plugin skillの具体内容）は確認できません</p><p>- どの指標をどこまで自動集計しているかは不明です</p><p>- 人手でどの程度修正しているかは記事だけでは分かりません</p><p>- Meta Adsへの接続はread onlyとされていますが、権限設計の詳細は確認できません</p><p>- クリエイティブ分析は誤解釈が起きやすいため、最終判断は人間が必要です</p><p>- 競合ウォッチや「他ブランドの勝ちクリエイティブ」は、データソースの信頼性確認が重要です</p><p>- 個人情報、広告アカウント情報、クライアント機密を扱うため、入力データの範囲を絞る運用が前提です</p>
+
+    <h2>参考記事</h2>
+    <p>#chatgptpartner #ad | Dara Denney | 24 comments</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/daradenney_chatgptpartner-ad-activity-7488226742428430336-DJX-"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/daradenney_chatgptpartner-ad-activity-7488226742428430336-DJX-
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
