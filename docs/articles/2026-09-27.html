@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zapier＋ChatGPTで問い合わせメールを自動返信するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例では、ワークショップの申込メールに対して1件ずつ返信文を作る手間が課題でした。そこで、Gmailのラベルを起点にZapierとChatGPTを組み合わせ、メール内容を構造化してから返信下書きを自動生成する流れに変えています。単なる自動返信ではなく、いったんZapier Tablesに情報をた">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.27</div>
+    <h1>Zapier＋ChatGPTで問い合わせメールを自動返信するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>メール運用の自動化（ワークショップ登録対応）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例では、ワークショップの申込メールに対して1件ずつ返信文を作る手間が課題でした。そこで、Gmailのラベルを起点にZapierとChatGPTを組み合わせ、メール内容を構造化してから返信下書きを自動生成する流れに変えています。単なる自動返信ではなく、いったんZapier Tablesに情報をためることで、後続のCRM登録や請求処理にもつなげやすい設計にしているのが特徴です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>ワークショップ参加者の登録メールを受け取るたびに、案内や必要情報を含む返信を手作業で送っていたことが課題でした。申込者が増えるほど返信作業に時間がかかるようになり、事務負担が大きくなっていました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Gmailで特定ラベル（workshop registration）が付いたメールの件名・本文</p><p>↓</p><p>AIによる処理</p><p>- ChatGPTの「Extract Structured Data」機能で、非構造のメール本文から参加者情報やワークショップ情報を抽出・構造化</p><p>- どの項目を取り出すかをZapier側で定義し、必要なフィールドに分解</p><p>↓</p><p>次のシステム・処理</p><p>- 抽出したデータをZapier Tablesにレコードとして保存</p><p>- そのテーブルを起点に別のZapを起動</p><p>- Zapier Formatterのlookup tableで、ワークショップ名に応じた返信テンプレートを選択</p><p>- テンプレート内に名前や日付などの値を差し込み</p><p>↓</p><p>出力</p><p>- Gmailの下書きとして返信文を自動作成</p><p>↓</p><p>人間による確認・最終作業</p><p>- 下書き内容を人が確認してから送信する運用にしている</p><p>- 記事では、直接送信ではなく下書き作成を安全策として採用している</p><p>補足</p><p>- AIは主に「抽出」「構造化」「テンプレート選択の前提データ作成」に使われており、最終判断や送信の確定は人間側に残しています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上や削減時間の数値は示されていません。確認できる効果としては、返信作業の手間を減らし、メール対応を下書き生成まで自動化できたこと、さらにZapier Tablesを中心にして今後の連携先を広げやすくしたことが挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、メール本文をそのまま扱うのではなく、まず構造化データに変換してから次の処理につなげた点にあります。入力を一度テーブルに集約することで、返信だけでなくCRM登録や請求など複数用途へ展開しやすくなっています。加えて、いきなり送信せず下書きにする設計が、誤送信リスクを下げています。これは記事の事実に基づく整理であり、一般化した分析でもあります。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- まずAIで文章を「読める形」に分解すると、後続の自動化が作りやすい</p><p>- 生成AIは本文生成だけでなく、情報抽出・分類にも強い</p><p>- いきなり最終送信せず、下書きや承認ステップを挟むと実運用しやすい</p><p>- 1つの入力を中央テーブルに集めると、返信以外の業務にも再利用できる</p><p>- テンプレート分岐は、業務メールの定型化と相性が良い</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次の形にすると再現しやすいです。</p><p>1. Gmailやフォーム、問い合わせフォームから新規メールを取得</p><p>2. Zapier / Make / Pythonで本文を取得し、OpenAI APIやChatGPTに渡す</p><p>3. AIで必要項目を抽出（氏名、要件、日付、商品名、優先度など）</p><p>4. Google Sheets、Excel、Notion、Airtable、Zapier Tablesに保存</p><p>5. 条件分岐でテンプレートを選び、返信文のたたき台を作成</p><p>6. Slackやメール下書きに出力し、人間が確認して送信</p><p>仕事への応用例</p><p>- 問い合わせ一次対応: 問い合わせメールを取得 → AIでカテゴリ分類と必要情報抽出 → Google Sheetsに保存 → Gmail下書きを作成 → 担当者が確認して送信</p><p>- 申込受付: フォーム送信内容を取得 → AIで参加種別や不足情報を整理 → 予定表の候補や案内文を生成 → Calendly/Google Calendarと連携して通知</p><p>- 営業見込みの整理: 受信メールから会社名・要件・緊急度を抽出 → CRM（HubSpot等）に登録 → Slackに通知 → 担当者が優先度を判断</p><p>- 見積依頼の仕分け: メール本文をAIで要約・分類 → スプレッドシートに案件名と要件を記録 → 担当部署ごとに下書き返信を作成</p><p>プライベート応用例</p><p>- イベント参加の自動整理: 招待メールを取得 → AIで日時・場所・持ち物を抽出 → カレンダー登録案を作成 → 最後に自分で確認</p><p>- 通販注文の管理: 注文確認メールを取得 → AIで商品名・配送予定を抽出 → Notionや表計算に保存 → 追跡番号の通知をまとめる</p><p>- 旅行メールの整理: 航空券やホテルの予約メールを取得 → AIで予約番号・日付・住所を抽出 → Google Sheetsに一覧化 → 旅程メモを生成</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、実際の業務での精度、運用件数、削減時間は確認できません</p><p>- 使用モデルは記事内でgpt-3.5-turbo-0613と書かれていますが、現在も同条件で再現できるとは限りません</p><p>- 返信文の自動生成には誤記・誤案内のリスクがあるため、下書き確認は必要です</p><p>- メール本文には個人情報が含まれる可能性があるため、外部サービスに渡す範囲は要確認です</p><p>- テンプレート分岐は便利ですが、例外的な問い合わせには人間判断が必要です</p><p>- 記事からは、失敗ケース、例外処理、運用ルール、権限管理の詳細は確認できません</p>
+
+    <h2>参考記事</h2>
+    <p>How I automated Email replies with Zapier and ChatGPT</p>
+    <p class="source">
+      <a href="https://exdatis.ai/en/how-i-automated-email-replies-with-zapier-and-chatgpt/"
+         target="_blank" rel="noopener noreferrer">
+        https://exdatis.ai/en/how-i-automated-email-replies-with-zapier-and-chatgpt/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

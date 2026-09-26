@@ -880,5 +880,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-09-27",
+    "date_display": "2026.09.27",
+    "company_name": "記事から確認できません",
+    "headline": "Zapier＋ChatGPTで問い合わせメールを自動返信するワークフロー",
+    "title": "How I automated Email replies with Zapier and ChatGPT",
+    "url": "https://exdatis.ai/en/how-i-automated-email-replies-with-zapier-and-chatgpt/",
+    "article_filename": "2026-09-27.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-27.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "本文を読む価値が高い順に、具体的な入力→AI処理→出力→人間の最終作業が想像しやすく、小規模でも再現しやすい候補を優先しました。1はChatGPT+Notionで日次QAレポート自動化、3はZapier+ChatGPTでメール返信自動化、6は求人探索〜応募文生成までの就職活動ワークフロー、0はUpworkの案件探索・絞り込み・承認付き自動化で実務転用しやすいです。4はクライアントコミュニケーションの自動化で汎用性が高く、個人/少人数チームでの応用を本文で確認する価値があります。",
+    "adoption_score": 80,
+    "workflow_signature": "ラベル付きメール→AIで項目抽出・テンプレ選択→返信下書き作成と台帳記録",
+    "evaluation_reason": "本文から、メールのラベルをトリガーに、ChatGPTの構造化抽出で本文を項目化し、Zapier Tablesに保存、その後テンプレート選択してGmail下書きを作る流れが具体的に確認できます。入力・AI処理・出力が明確で、一般的なツールで再現しやすいです。用途はワークショップ登録ですが、メール起点の受付、問い合わせ振り分け、通知文生成、台帳化などへ十分横展開できます。安全のため直接送信ではなく下書きにしている点も実用的です。定量成果はないものの、実装手順と運用の意図は十分読み取れます。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 14,
+      "reliability": 5
+    }
   }
 ]
