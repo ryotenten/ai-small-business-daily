@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gmailの受信メールをAIで分類し、Google SheetsとSlackへ流すn8nワークフロー | AI Small Business Daily</title>
+<meta name="description" content="受信メールの振り分け、状況管理、緊急通知、定型返信は、手作業だと抜け漏れや二重処理が起きやすい作業です。参考記事では、Gmailで受けたメールをAIで分類し、Google Sheetsで状態を管理し、必要に応じてSlackへ通知する流れを段階的に組む考え方が示されています。記事から確認できる範囲では">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.09.28</div>
+    <h1>Gmailの受信メールをAIで分類し、Google SheetsとSlackへ流すn8nワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>n8nを使ったメール運用・業務自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>受信メールの振り分け、状況管理、緊急通知、定型返信は、手作業だと抜け漏れや二重処理が起きやすい作業です。参考記事では、Gmailで受けたメールをAIで分類し、Google Sheetsで状態を管理し、必要に応じてSlackへ通知する流れを段階的に組む考え方が示されています。記事から確認できる範囲では、いきなり6本を一気に作るのではなく、まず1本目の分類ワークフローを安全に作り、その後に周辺処理を足す進め方が提案されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>参考記事で確認できる課題は、メールが複数カテゴリにまたがり、言語も英語・ドイツ語・フランス語を含むため、誤分類や誤送信のリスクがあることです。また、状態管理を手作業で行うと、どのメールが処理済みか、どれが緊急か、どれが未対応かを追いにくくなります。さらに、自動返信にはループ防止が必要で、同じスレッドに何度も返信してしまう事故を避ける必要があることも読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力:</p><p>- Gmailで受信したメール本文、件名、送信者情報</p><p>- 必要に応じてGoogle Sheets上の顧客名・参照番号・ステータス表</p><p>- 緊急判定に使うキーワードやカテゴリ定義</p><p>↓</p><p>AIによる処理:</p><p>- メールを5つのカテゴリに分類</p><p>- 多言語メールの内容を踏まえてラベル判定</p><p>- 低信頼度や曖昧なケースを人手確認対象として分ける</p><p>- 参考記事内では、Claude/OpenAI系のLLMを使った分類が想定されているが、どのモデルを最終採用したかは確認できない</p><p>↓</p><p>次のシステム・処理:</p><p>- n8nで分類結果に応じて分岐</p><p>- Google Sheetsに参照番号、ステータス、タイムスタンプを記録</p><p>- 必要なメールだけSlackへ通知</p><p>- 条件に応じてGmailのラベル付け、下書き作成、転送、返信候補生成を行う</p><p>↓</p><p>出力:</p><p>- Gmailのラベル付きメール</p><p>- Google Sheetsの進捗管理行</p><p>- Slackの緊急アラートや日次要約</p><p>- 自動返信用の下書き、または送信候補</p><p>↓</p><p>人間による確認・最終作業:</p><p>- 曖昧な分類結果の確認</p><p>- 自動返信や転送を本番化する前の承認</p><p>- ルールやラベル定義の調整</p><p>- エラー時の復旧判断</p><p>記事から確認できる範囲では、AIの役割は「分類・抽出・文章生成の補助」です。特に、メール分類、言語対応、参照番号付きの状態管理、Slack通知の判断補助が中心で、最終的な運用ルールは人が決める構成です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>数値の成果は記事から確認できません。確認できる効果としては、メールの分類・振り分け・状況記録・緊急通知を一連で扱えるため、手作業の確認負担や見落としリスクを減らせることです。また、分類結果をGoogle Sheetsに残すことで、どのメールがどこまで処理されたかを追いやすくなり、Slack通知によって重要案件の初動を早めやすくなります。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、処理を1本の巨大な自動化にせず、分類、記録、通知、返信という単位に分けている点です。これは元記事の提案に基づく分析ですが、段階化することで、分類ミスが起きたときの影響範囲を小さくできます。また、Google Sheetsを状態台帳として使うと、後から確認・修正しやすく、n8nの各フローをテストしやすくなります。さらに、緊急判定をAI任せにせずキーワード判定と組み合わせる発想は、速度と安定性の両立に役立ちます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- まず最初に「分類ルール」を固めると、その後の転送・通知・返信が作りやすい</p><p>- 処理結果を必ず台帳に残すと、再実行や監査に強くなる</p><p>- AIは全部を決める役ではなく、曖昧なメールを人に回す振り分け役として使うと安定する</p><p>- 自動返信は便利だが、ループ防止と手動確認の設計が欠かせない</p><p>- 多言語対応は翻訳を挟まず、分類器に直接扱わせる設計も選択肢になる</p><p>- いきなり全体構築をせず、1本目のワークフローをテストしてから拡張すると失敗しにくい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次の構成が再現しやすいです。</p><p>1. データを取得</p><p>- Gmailの受信トリガー</p><p>- もし社内問い合わせや注文メールなら、送信者、件名、本文、スレッドIDを取得</p><p>2. AIへ渡す</p><p>- ChatGPT APIやOpenAI API、Claude APIにメール本文を渡す</p><p>- 「カテゴリA/B/C…のどれか」「緊急度」「返信要否」をJSONで返すように指示する</p><p>3. AIで処理</p><p>- メール分類</p><p>- 重要キーワード抽出</p><p>- 要返信か、保留か、転送かの判定補助</p><p>- 必要なら本文の要約</p><p>4. 保存先へ出力</p><p>- Google Sheetsに参照番号、受信日時、分類結果、ステータス、担当者欄を記録</p><p>- 余力があればExcelやNotion、PostgreSQLにも展開可能</p><p>5. 通知</p><p>- 緊急メールだけSlackへ投稿</p><p>- 件名、送信者、要点、スレッドURLを通知</p><p>- 自動返信が必要ならGmailの下書きを作るか、承認待ちにする</p><p>6. 人間が確認</p><p>- 低信頼度だけ手動レビュー</p><p>- ラベル修正</p><p>- 返信内容の承認</p><p>仕事への応用例:</p><p>- 問い合わせ窓口: Gmailで受けた問い合わせを「見積」「障害」「解約」「至急」に分類し、Sheetsに記録、至急だけSlackへ通知</p><p>- 営業メール: 送信者ドメイン、本文、件名から商談候補を判定し、担当者別に振り分ける</p><p>- 予約・受付メール: 予約変更、キャンセル、確認依頼を分類し、必要なものだけ下書き返信を作る</p><p>- 社内申請: 申請種別をAIで抜き出して台帳化し、承認が必要なものだけ通知する</p><p>個人利用の応用例:</p><p>- 重要メールだけを自動でラベル分けして、あとでまとめて確認する</p><p>- 家賃、学校、行政、サブスクの通知メールをカテゴリ別に分ける</p><p>- 旅行やイベントの確認メールをSheetsに一覧化して、締切が近いものだけ通知する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 参考記事からは、実際の本番運用でどこまで自動送信していたかは確認できません</p><p>- 使用したLLM、最終的なプロンプト、閾値設定の詳細は不明です</p><p>- 会社名、担当者名、企業規模、処理件数、効果の数値は確認できません</p><p>- 多言語分類は有効そうですが、誤分類ゼロは期待できないため、人間の確認が必要です</p><p>- Gmailの自動返信や転送は、誤送信やループ返信のリスクがあります</p><p>- 顧客情報や個人情報を扱う場合は、メール本文を外部AIに送る前の取り扱いルールを決める必要があります</p><p>- Google Sheetsだけで状態管理すると、件数増加時に管理しづらくなる可能性があります</p><p>- 記事内ではbooking engine APIやホテル向けの後続処理案が出ていますが、実装内容の詳細は確認できません</p>
+
+    <h2>参考記事</h2>
+    <p>n8n Automation Expert – Gmail / Google Sheets / Slack / AI ...</p>
+    <p class="source">
+      <a href="https://community.n8n.io/t/freelancer-n8n-automation-expert-gmail-google-sheets-slack-ai-email-classification/289856?page=2"
+         target="_blank" rel="noopener noreferrer">
+        https://community.n8n.io/t/freelancer-n8n-automation-expert-gmail-google-sheets-slack-ai-email-classification/289856?page=2
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

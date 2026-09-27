@@ -902,5 +902,27 @@
       "applicability": 14,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-09-28",
+    "date_display": "2026.09.28",
+    "company_name": "記事から確認できません",
+    "headline": "Gmailの受信メールをAIで分類し、Google SheetsとSlackへ流すn8nワークフロー",
+    "title": "n8n Automation Expert – Gmail / Google Sheets / Slack / AI ...",
+    "url": "https://community.n8n.io/t/freelancer-n8n-automation-expert-gmail-google-sheets-slack-ai-email-classification/289856?page=2",
+    "article_filename": "2026-09-28.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-28.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "本文を読む価値が高そうな順に選びました。0はGmail/Google Sheets/Slack/AIの組み合わせが見え、メール分類や業務連携の具体ワークフローが期待できます。2はMake・Google Sheets・Gmail・Notionの小規模事業向け自動化で、再現性の高い実務フローが見込めます。6はGoogle Workspace内でGmail中心のAI自動化を扱っており、個人でも応用しやすい題材です。1はExcel連携のAIワークフローで、データ抽出・整理・表計算業務への応用余地があります。7はn8n×Gmail/Docs/Sheets系の実践投稿で、本文に具体的なテンプレートや実装フローがある可能性が高いです。",
+    "adoption_score": 80,
+    "workflow_signature": "メール→AIで分類・ラベル付け・状態管理→Sheets記録・Slack通知・自動返信/転送",
+    "evaluation_reason": "本文から、Gmail受信を起点にAI分類、Google Sheetsでの参照番号・状態管理、Slack通知、必要に応じた自動返信/転送という具体的な流れが確認できる。n8nでの実装前提も明示されており、一般的なAPI/ノーコード基盤で再現しやすい。用途はメール運用・問い合わせ対応・タスク分岐・進捗管理に広く横展開でき、実務上の効率化効果も大きい。一方で、本文は応募文の断片が多く、実運用の証拠や定量成果は弱いため信頼性は高すぎないが、ワークフロー自体の実在性は十分に読み取れる。過去事例とも主入力・主要処理・出力が完全一致するものではないため重複扱いにはしない。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 20,
+      "usefulness": 22,
+      "applicability": 10,
+      "reliability": 6
+    }
   }
 ]
