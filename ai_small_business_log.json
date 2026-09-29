@@ -924,5 +924,27 @@
       "applicability": 10,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-09-29",
+    "date_display": "2026.09.29",
+    "company_name": "記事から確認できません（個人の実践共有）",
+    "headline": "ChatGPTでUpworkの案件探しを自動化するワークフロー",
+    "title": "How I use ChatGPT to automate job hunting on Upwork",
+    "url": "https://www.linkedin.com/posts/austin-benoit-seo_upwork-launched-my-entrepreneurship-journey-activity-7354560543308857344-_rao",
+    "article_filename": "2026-09-29.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-09-29.html",
+    "search_query": "\"how I use ChatGPT\" automate work",
+    "selection_reason": "1位の0は『1つのプロンプト→Python/API/構造化データ→コンテンツ事業』と、入力→AI処理→出力の流れがかなり具体的で再現性が高そうです。2位の2はUpworkの求人探索・絞り込み・応募補助という個人向けワークフローで、仕事の再現性が高い候補です。3位の4はChatGPT+Notionでのクライアントコミュニケーション自動化で、少人数チームに応用しやすいです。4位の5はローカルAI workflow automation stackをゼロから組んだ事例で、本文に具体的な構成要素や連携パターンがありそうです。5位の9は日常的なChatGPT活用の実例集で、一般論に寄る可能性はあるものの、反復可能な作業フローが見つかる余地があります。",
+    "adoption_score": 82,
+    "workflow_signature": "求人投稿→AIで条件スクリーニング・応募文作成→応募送信・人手承認",
+    "evaluation_reason": "本文から、求人をスキャン/絞り込みし、承認を挟んで、本人の文体に合わせたカバーレターを生成し、自動応募する流れが確認できる。入力・処理・出力が明確で、Upwork以外の求人媒体、業務委託案件、営業提案、入札応募などへ横展開しやすい。求職者の時間削減と応募品質の両立にもつながるため実用性が高い。公開投稿ではあるが、実際にテスト運用している旨と改善ループが書かれており、信頼性も十分。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 20,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 10
+    }
   }
 ]
