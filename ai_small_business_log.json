@@ -946,5 +946,27 @@
       "applicability": 13,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-10-01",
+    "date_display": "2026.10.01",
+    "company_name": "記事から確認できません",
+    "headline": "Gmailの定型返信をMake.comとChatGPTで自動化し、問い合わせ・日程調整・苦情対応まで回すワークフロー",
+    "title": "How I Automated My Gmail Inbox with ChatGPT (Step-by- ...",
+    "url": "https://growwstacks.com/blog/automate-gmail-with-chatgpt-make-com",
+    "article_filename": "2026-10-01.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-01.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、検索結果だけでも「入力→AI処理→出力→人間の最終作業」の流れが比較的想像しやすく、個人/小規模でも再現しやすい候補です。0は業務全体の自動化をうたうReddit事例で、営業や業務フローの具体例が本文にある可能性が高いです。1はGmail→ChatGPT→Make→Sheetsという定番で再現性が高く、実務ワークフローの具体化が期待できます。4はDaily QA ReportsをChatGPTとNotionで自動化し、報告業務の入力・要約・整形・人手確認の流れが明確そうです。3は長尺動画→縦型クリップ化の自動化で、抽出・分割・編集補助など具体的な処理が読めそうで応用範囲も広いです。10は日次アカウンタビリティをChatGPTで回す個人向けワークフローで、仕事・生活の両面に転用しやすい実践例が見込めます。",
+    "adoption_score": 81,
+    "workflow_signature": "受信メール→AIで分類・文面生成→自動返信・台帳記録",
+    "evaluation_reason": "本文から、Gmail監視→Google Sheets記録→ChatGPTで返信文生成→Gmail送信という具体的な実装フローが確認できる。入力・処理・出力が明確で、Make.com、Gmail、Google Sheets、ChatGPTという一般的なツールで再現しやすい。問い合わせ、スケジュール調整、苦情対応など実務上の削減効果も高く、メール対応自動化の構造は他業種にも横展開しやすい。 一方で、本文はかなり宣伝色が強く、7-10時間削減などの定量主張は裏取りしづらい。とはいえ、実装手順自体は具体的で、AIが何をしているかも確認できるため、採用基準は満たす。過去事例とは『メールを起点にAIが文面生成し、後続で送信する』点が似るが、本件は受信メールの自動返信とスパム除外が中心で、入力・処理・出力の組み合わせとしては別ワークフローとして扱える。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 20,
+      "usefulness": 23,
+      "applicability": 11,
+      "reliability": 5
+    }
   }
 ]
