@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Sheetsを“自動で動く業務ハブ”に変える：ZenphiのSheets自動化ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業でのデータ入力、照合、更新、通知は、Google Sheetsを使う業務で見えにくく時間を奪う作業です。Zenphiは、Sheetsを単なる表ではなく、GmailやDrive、外部ツールとつながる業務の起点として扱い、行の作成・更新・検証・要約・通知までを自動化します。記事では、スケジュール実">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.02</div>
+    <h1>Google Sheetsを“自動で動く業務ハブ”に変える：ZenphiのSheets自動化ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Zenphi<br>
+      <strong>業種：</strong>Google Workspace向けのノーコード自動化プラットフォーム<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業でのデータ入力、照合、更新、通知は、Google Sheetsを使う業務で見えにくく時間を奪う作業です。Zenphiは、Sheetsを単なる表ではなく、GmailやDrive、外部ツールとつながる業務の起点として扱い、行の作成・更新・検証・要約・通知までを自動化します。記事では、スケジュール実行を軸に、変更のあった行だけを処理し、AIで分類や異常検知を行い、結果をSheetsや他システムへ戻す流れが紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、Sheets上の情報を手で入力・更新し続ける負担、レポート再作成や不整合の確認に時間がかかること、そして他システムとの情報ずれが起きやすいことです。特に、編集のたびに反応する不安定なトリガーでは、意図しない再実行や取りこぼしが起こりやすい点が課題として挙げられています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>Google Sheetsの行データ、フォーム送信、メール受信、スケジュール実行で取得した情報</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>Zenphiのワークフロー内で、AIがデータの分類、要約、異常検知、抽出、文章生成を担当。記事ではGemini、OpenAI、Claudeを埋め込めるとされています。</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>条件分岐により、該当行を更新、別システムへ同期、Gmailで通知、Docs/Slidesの生成、承認ルートへの送信などを実行。</p><p>↓</p><p>出力</p><p>↓</p><p>更新済みのSheets、送信済みメール、生成されたドキュメントやスライド、他システムへ反映されたレコード。</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>全ステップの監査ログを確認し、必要なエラー対応や承認判断を人が行う。記事では、スケジュール実行で変更を追跡するため、毎回の編集に直接反応するのではなく、処理対象を安定して制御する設計が強調されています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、手作業削減、エラー削減、監査性の向上、処理時間の短縮です。例として、ある利用者コメントでは、手動のファイル共有監査をなくし、ワークフローあたり40〜50時間削減したとされています。別のコメントでは、請求書確認と処理を外注から内製へ戻せたこと、処理時間とコストを下げられたことが述べられています。ただし、これらは個別コメントであり、すべての導入先に一般化はできません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、Sheetsを単独の表ではなく、業務プロセスの中心に置いている点だと考えられます。加えて、編集イベントに依存せずスケジュール実行で差分を処理するため、誤作動や二重実行が起きにくい構造です。AIは判断が難しい分類や要約を補助し、人間は例外確認や承認に集中できるため、役割分担が明確になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、(1) スプレッドシートを“入力箱”ではなく“業務の起点”として設計すること、(2) AIに任せるのは分類・抽出・要約・異常検知のような判断補助が向く作業に絞ること、(3) 実行トリガーは曖昧なイベントよりもスケジュール＋差分管理にすること、(4) 結果を書き戻し、ログを残して、後から追えるようにすることです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、まず「Sheetsに集まるデータ」を1つ決めます。たとえば問い合わせ、申請、請求書、在庫、日報、個人の家計データです。</p><p>実装の基本フロー</p><p>1. Google SheetsやGoogle Forms、Gmailからデータを取得</p><p>2. ChatGPT / OpenAI API / Claudeに渡して、分類・要約・抽出・優先度付けを行う</p><p>3. 結果をSheets、Notion、Excel、CSV、データベースに保存</p><p>4. 必要ならSlack、Gmail、Pushoverで通知</p><p>5. 人間が例外だけ確認し、最終承認する</p><p>仕事への応用例</p><p>- 問い合わせ仕分け：Gmailやフォーム回答を取得→AIが内容を分類し緊急度を判定→Google Sheetsに記録→担当者へSlack通知→人が対応</p><p>- 請求書・経費チェック：PDFや画像をDriveに保存→OCR後のテキストをAIで項目抽出・異常検知→Sheetsに転記→不備だけ人が確認</p><p>- 採用・人事の応募管理：フォーム回答を取得→AIが職種適合度や重複を要約→Sheetsに一覧化→面接候補だけメール通知</p><p>- 営業リード管理：CSVやフォーム入力を取得→AIが業種・温度感を分類→HubSpotやSheetsへ反映→優先リードだけ自動通知</p><p>個人利用の応用例</p><p>- 家計のレシート管理：写真を保存→AIで店名・金額・カテゴリ抽出→Sheetsへ記録→月末に自動集計</p><p>- 読書メモ整理：メモを入力→AIが要点を3行要約→NotionやSheetsへ保存→後で検索しやすくする</p><p>- 旅行準備リスト：宿泊先メールや予約情報を集約→AIが出発日・持ち物・締切を抽出→Sheetsでチェックリスト化→期限前に通知</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点は、具体的な導入企業名、会社規模、実運用の詳細設定、AIモデルの選定理由、精度、失敗率です。また、請求書・人事・顧客情報のような機密データを扱う場合は、AIへの入力範囲、保存先、権限管理、監査ログ、個人情報の取り扱いを事前に設計する必要があります。さらに、記事でも触れられている通り、編集ごとのトリガーは誤作動しやすいため、二重処理防止とエラー時の再実行設計は人の確認が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>Google Sheets Automation</p>
+    <p class="source">
+      <a href="https://zenphi.com/google-sheets-automation/"
+         target="_blank" rel="noopener noreferrer">
+        https://zenphi.com/google-sheets-automation/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

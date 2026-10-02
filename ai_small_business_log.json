@@ -968,5 +968,27 @@
       "applicability": 11,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-10-02",
+    "date_display": "2026.10.02",
+    "company_name": "Zenphi",
+    "headline": "Google Sheetsを“自動で動く業務ハブ”に変える：ZenphiのSheets自動化ワークフロー",
+    "title": "Google Sheets Automation",
+    "url": "https://zenphi.com/google-sheets-automation/",
+    "article_filename": "2026-10-02.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-02.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "1位の0は、Google Sheets→Gmail連携を含む具体的な自動化導線が検索結果から見え、本文で実務ワークフロー例を拾える可能性が高いです。7もGoogle Sheetsの作成・更新・抽出・生成まで扱うため、個人/小規模で再現しやすい実践例が期待できます。1と8はExcelを中心にした業務自動化で、入力→AI処理→出力の流れを本文で確認できそうです。6はやや一般論寄りですが、Business Guideとして具体例や分解されたワークフローが含まれる可能性があるため、候補に残します。",
+    "adoption_score": 84,
+    "workflow_signature": "Google Sheetsの行データ/外部入力→AIで分類・要約・検証→シート更新・通知・他システム連携",
+    "evaluation_reason": "本文から、Sheetsを起点にした具体的な自動化の流れが十分確認できます。入力は新規/更新行、フォーム送信、メール、他システムのデータで、AIは要約・分類・異常検知・項目抽出・文面生成を担い、出力はSheets更新、Gmail送信、Drive/Docs/Slides生成、承認フローや外部システム更新です。定期実行で差分を追跡し、重複処理防止、監査ログ、エラー処理まで言及があり、再現可能性が高いです。業務用途も請求書処理、HR同期、IT監査、メールマージなど汎用性が高く、他の台帳・申請・通知・レポート自動化へ横展開しやすいです。情報信頼性も、単なる概念紹介ではなく実装上の注意点や処理手順が書かれているため高めに評価できます。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 21,
+      "applicability": 12,
+      "reliability": 7
+    }
   }
 ]
