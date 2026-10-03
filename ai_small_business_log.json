@@ -990,5 +990,27 @@
       "applicability": 12,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-10-03",
+    "date_display": "2026.10.03",
+    "company_name": "記事から確認できません",
+    "headline": "2,000件超のGmailをAIで仕分け・下書き返信するワークフロー",
+    "title": "How I automated my 2000+ email inbox with AI",
+    "url": "https://ai-finance.club/the-ai-finance-pro/how-i-automated-my-2000-email-inbox-with-ai/",
+    "article_filename": "2026-10-03.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-03.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、検索結果だけでも入力→AI処理→出力→人手の最終作業が比較的想像しやすく、個人や少人数でも再現しやすい候補です。0はカレンダー/営業プロセスをAIエージェントで回す系で、実務ワークフローの具体像がありそう。4は求人探索→応募文生成→応募送信の流れが明確で再現性が高い。5は大量メールをGmailとAIで仕分け・表化する実用例で、個人業務への転用価値が高い。2は長尺動画→縦型クリップ化で、AI編集ワークフローの具体例として応用範囲が広い。3はChatGPTとNotionでQAレポート自動化しており、入力・整形・記録・人の確認という形が見えやすいので選びました。",
+    "adoption_score": 83,
+    "workflow_signature": "受信メール→AIで分類・重要度判定・返信下書き生成→ラベル付け・Slack通知・人手対応へ分岐",
+    "evaluation_reason": "本文から、Gmailの新着メールをトリガーにAIが送信者意図を判定し、14分類のラベル付けを行い、一部は標準回答DBを参照して返信下書きを作成、例外や失敗時はSlack通知・人手対応に回す流れが具体的に確認できる。n8n/ChatGPT/Claude/Gmail/Slack/Google Sheets相当の一般的なツールで再現しやすく、個人の受信箱だけでなく共有メールボックス、問い合わせ対応、営業リード振り分け、社内申請受付などへ横展開しやすい。入力・AI処理・出力が明確で、実務上の時短と見落とし防止に効くため実用性も高い。一方で記事は自分の運用紹介＋ツール案内の色があり、定量効果は弱めなので信頼性は中程度に留めた。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 14,
+      "reliability": 6
+    }
   }
 ]
