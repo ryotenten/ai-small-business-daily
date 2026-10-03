@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nで顧客対応・見込み客評価・請求書処理まで自動化するAIワークフロー集 | AI Small Business Daily</title>
+<meta name="description" content="この事例は、面倒な定型業務をAIとn8nの自動化フローで分担し、入力から分類・抽出・要約・通知までをつなげる発想が中心です。記事本文では、9本のproduction-readyワークフローが公開されており、すぐ試せるモックデータ付きで、導入手順やテスト方法まで用意されています。対象は顧客サポート、リ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.04</div>
+    <h1>n8nで顧客対応・見込み客評価・請求書処理まで自動化するAIワークフロー集</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Stevenshanmukh / n8n-ai-automation<br>
+      <strong>業種：</strong>n8nを使った業務自動化・AIワークフローの公開ポートフォリオ<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、面倒な定型業務をAIとn8nの自動化フローで分担し、入力から分類・抽出・要約・通知までをつなげる発想が中心です。記事本文では、9本のproduction-readyワークフローが公開されており、すぐ試せるモックデータ付きで、導入手順やテスト方法まで用意されています。対象は顧客サポート、リードスコアリング、オンボーディング、請求書処理、データ補完、メール生成、経営レポート、履歴書解析、在庫管理などです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、個別の業務ごとに手作業が多く、分類・抽出・要約・振り分けといった定型処理を毎回人がやる必要があることです。また、複数の外部データや承認フローをまたぐ処理は、ミスや遅れが起きやすい構造だったと読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事から確認できる範囲では、各ワークフローでAIが担当するのは主に分類、スコアリング、要約、抽出、文章生成、候補評価、判断補助です。</p><p>例として、顧客サポートでは「問い合わせ入力 → AIで内容分類 → 適切な担当やキューへ振り分け → 人間が対応」という流れが想定されます。本文では『customer support tickets を AI で分類しルーティングする』とあり、AIが一次仕分けを担うことまでは確認できますが、実際の接続先システムの詳細は記事からは確認できません。</p><p>請求書処理では「請求書データ入力 → AIで項目抽出 → 多段階承認フローへ送る → 最終承認後に処理」という流れが示唆されています。ここでも、AIは請求書から必要情報を読み取る役割、承認フローはn8n側の自動処理、人間は承認判断を担う構成です。</p><p>データ補完では「連絡先データ入力 → 複数ソースから情報取得 → AIやルールで整形・補完 → CRMへ同期 → 人間が必要に応じて確認」という形が考えられます。本文では『multiple sources から contact data を enrich して CRM に sync』とあるため、少なくとも取得・補完・同期の流れは確認できます。</p><p>他にも、メール生成では入力された条件や文脈をもとにAIがパーソナライズ文面を作成し、経営レポートでは複数指標を集計してAIが要約を作る構成、履歴書解析では候補者情報を抽出して評価補助を行う構成、在庫管理では在庫状況を見て補充判断を支援する構成が確認できます。ただし、各ワークフローの個別の入出力項目や接続APIの詳細は記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>数値による成果は記事から確認できません。ただし、ワークフローの性質上、手作業の分類・抽出・要約・ルーティングを減らし、テスト用モックデータ付きで即試せるため、導入前の検証コストを下げる効果は期待できます。本文では、production-readyで監査済み、セットアップやデバッグの手順があることも示されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフロー集が有効に見える理由は、AIを『全部を自動で判断する存在』ではなく、定型処理の一部だけを担当させている点です。分類・抽出・要約のような相性のよい工程に絞ることで、n8nの分岐や承認フローと組み合わせやすくなっています。さらに、モックデータ、ドキュメント、監査済み修正、テスト手順があるため、実運用前に壊れやすい箇所を確認しやすい構成になっています。これは元記事の事実というより、公開内容からの分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>1. AIは『作業全体』ではなく『判断の入口』に置くと使いやすい。</p><p>2. まず分類・抽出・要約のような失敗しにくい処理から始めると導入しやすい。</p><p>3. 人間の承認を残すことで、請求書や候補者評価のような重要業務にも広げやすい。</p><p>4. モックデータ付きで試せる形にしておくと、現場が使い方を理解しやすい。</p><p>5. 監視とエラー通知を組み込むと、AIや外部APIの失敗に気づきやすい。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような流れが実装しやすいです。</p><p>1. Googleフォーム、メール、CSV、Webhook、CRMからデータを取得する。</p><p>2. ChatGPTやOpenAI APIに渡して、分類・要約・項目抽出・優先度付けをさせる。</p><p>3. 結果をGoogle Sheets、Excel、Notion、Airtable、DBに保存する。</p><p>4. Slack、メール、Pushoverで担当者へ通知する。</p><p>5. 人間が最終確認して、返信・承認・登録を行う。</p><p>仕事への応用例:</p><p>- 問い合わせ振り分け: 受信メール本文を取得 → AIで「請求/技術/解約」などに分類 → Slackで担当チームへ通知 → 人間が返信。</p><p>- 営業リードの一次選別: フォーム入力や名刺データを取得 → AIで業種・規模・確度を要約しスコア化 → CRMに登録 → 営業が優先順位を決める。</p><p>- 請求書の確認補助: PDF請求書をOCRでテキスト化 → AIで請求日・金額・取引先を抽出 → Google Sheetsに一覧化 → 経理担当が承認。</p><p>- 日次レポートの要約: GA4や売上DBから数値を取得 → AIに前日比・異常値・注目点を要約させる → Slackへ送信 → マネージャーが確認。</p><p>プライベート応用例:</p><p>- メール整理: 受信メールをAIで重要度分類 → 重要のみ通知 → それ以外は後で確認用フォルダへ保存。</p><p>- 家計の分類: 明細CSVを取得 → AIで支出カテゴリを推定 → スプレッドシートに記録 → 月末に見直し。</p><p>- 履歴書・応募書類の下書き支援: 職務経歴メモを入力 → AIで要約や整文 → Word/Google Docsに保存 → 自分で最終調整。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、各ワークフローで実際に使っている外部API、プロンプト、データ項目、精度、処理時間、運用体制は確認できません。数字的な成果も不明です。また、顧客情報、請求書、候補者データのような機密性の高い情報を扱う可能性があるため、個人情報の取り扱い、権限管理、ログ保存、誤抽出の確認が必要です。さらに、本文では『production-ready』とありますが、実際の導入先でそのまま使えるかは各社の業務ルールやデータ構造に依存します。</p>
+
+    <h2>参考記事</h2>
+    <p>Stevenshanmukh/n8n-ai-automation: A portfolio of 9 ...</p>
+    <p class="source">
+      <a href="https://github.com/Stevenshanmukh/n8n-ai-automation"
+         target="_blank" rel="noopener noreferrer">
+        https://github.com/Stevenshanmukh/n8n-ai-automation
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

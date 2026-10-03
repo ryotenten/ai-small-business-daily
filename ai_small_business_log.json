@@ -1012,5 +1012,27 @@
       "applicability": 14,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-10-04",
+    "date_display": "2026.10.04",
+    "company_name": "Stevenshanmukh / n8n-ai-automation",
+    "headline": "n8nで顧客対応・見込み客評価・請求書処理まで自動化するAIワークフロー集",
+    "title": "Stevenshanmukh/n8n-ai-automation: A portfolio of 9 ...",
+    "url": "https://github.com/Stevenshanmukh/n8n-ai-automation",
+    "article_filename": "2026-10-04.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-04.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "優先して本文確認したいのは、具体的な入出力と再現可能性が見えやすいものです。5はn8nの実運用ワークフロー集で、customer support/lead scoring/onboarding/invoice processingなど複数の具体例がありそうです。0はGoogle Sheets→AI Agent→Telegram/Sheets連携が読み取れ、個人や小規模でも再現しやすい実装例の可能性が高いです。2はMake・Google Sheets・Gmail・Notion・Formsなど中小規模で真似しやすい構成が見えます。4はGoogle Workspace（Gmail/Docs/Sheets）内での定型業務自動化の流れが具体化していそうで、汎用性も高いです。7はChatGPT+Zapierでメール理解・自動化をした個人/小規模の実例らしく、実務ワークフローの詳細が得られる可能性があります。",
+    "adoption_score": 82,
+    "workflow_signature": "各種業務データ→AIで分類・抽出・生成・要約→各業務ツールへ記録/通知/承認分岐",
+    "evaluation_reason": "9本のn8n自動化ワークフロー集として、入力・AI処理・出力の型が明確に確認できる。本文には顧客対応、リードスコアリング、オンボーディング、請求書処理、データ強化、要約レポート、採用評価、在庫管理など、実務でそのまま使える典型的なAI業務フローが並び、mock data、設定手順、デプロイ、テスト、監視まで含まれているため再現性も高い。特定業界専用ではなく、メール・フォーム・文書・業務イベントを起点に分類/抽出/要約/生成して各種ツールへ渡す構造なので横展開しやすい。信頼性はリポジトリ説明ベースで実運用の個別成果は薄く、監査や設定案内の記述中心なので控えめ。ただし本文から具体的な使い方は確認でき、AIの役割も明確なので採用基準は満たす。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 23,
+      "usefulness": 21,
+      "applicability": 12,
+      "reliability": 4
+    }
   }
 ]
