@@ -1034,5 +1034,27 @@
       "applicability": 12,
       "reliability": 4
     }
+  },
+  {
+    "date": "2026-10-05",
+    "date_display": "2026.10.05",
+    "company_name": "n8n",
+    "headline": "n8nで実現する、自然文→API呼び出し→確認まで回すAIワークフロー自動化",
+    "title": "n8n: AI Workflow Automation Platform",
+    "url": "https://n8n.io/",
+    "article_filename": "2026-10-05.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-05.html",
+    "search_query": "\"AI workflow\" small business operations",
+    "selection_reason": "本文確認の価値が高い順に、実際のワークフロー設計や再現可能性に近いものを優先しました。0はn8nのAIワークフロー基盤そのもの、2はメール・メッセージ・cronなど入力起点の自動化が想像しやすく、小規模再現に向きます。8はAPI/agentsを使った業務連携の核になり得て、具体ワークフロー記事の引用元としても有用そうです。11はDuckDB＋AIの実データ処理系で、分析・整理・再利用の流れが期待できます。12はデザインチーム向けですが、AIワークフロー構築の試行錯誤と実務上の学びがあり、本文に具体的な運用パターンが含まれる可能性が高いです。",
+    "adoption_score": 82,
+    "workflow_signature": "業務データ・外部サービス入力→AIで分類・要約・抽出・生成→各種ツール連携、自動実行、承認分岐、ログ記録",
+    "evaluation_reason": "採用可。本文から、n8nが『入力データ→AI処理→出力/後続アクション』を組む実用ワークフロー基盤であり、メール・Sheets・Docs・Slack・CRM・外部APIなどをつなぐ具体像が確認できる。特に、自然言語からAPI呼び出し、テスト実行、単一ステップ再実行、ヒューマン・イン・ザ・ループ、ガードレール、評価、監査ログ、オンプレ運用まで示されており、個人や中小企業でも再現しやすい。ワークフロー自体はn8nという基盤紹介寄りで個別の一連処理が1本に絞られているわけではないが、実際に使う際の構造は明確で、問い合わせ対応、営業支援、文書処理、運用自動化などへ横展開しやすい。信頼性は製品紹介ページ中心でやや広告色があるため高満点ではないが、機能と実運用の記述は具体的で、採用基準は満たす。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 23,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 6
+    }
   }
 ]
