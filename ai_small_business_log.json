@@ -1056,5 +1056,27 @@
       "applicability": 13,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-10-06",
+    "date_display": "2026.10.06",
+    "company_name": "記事から確認できません（個人名として AiMe / Derek の記載あり）",
+    "headline": "n8nを“脳”にしてAIエージェントの業務を回す：14本のワークフローで作る自動運用",
+    "title": "I built an AI agent OS using n8n as the brain",
+    "url": "https://community.n8n.io/t/i-built-an-ai-agent-os-using-n8n-as-the-brain-heres-the-full-stack-14-workflows-all-free/274096?tl=fr",
+    "article_filename": "2026-10-06.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-06.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "優先したのは、本文を読めば「入力→AI処理→出力→人間の最終作業」が具体的に追えそうで、個人や小規模チームにも再現しやすい候補です。1はn8nでのクライアントリサーチ自動化が明確、2はn8nベースの14ワークフローで業務分解が豊富そう、4はリード獲得までつながる実務ワークフロー、5はメール分類・要約・ルーティングの定番だが応用範囲が広い、6は複数の業務フローをまとめて実運用している可能性が高く、具体例の宝庫になりそうです。",
+    "adoption_score": 84,
+    "workflow_signature": "定期取得した業務タスク・各種外部データ→AIで要約・優先順位付け・生成・監視→タスク実行・記録更新・通知",
+    "evaluation_reason": "本文から、n8nを中核にした14本の実運用ワークフローが具体的に確認できるため採用可。単なる概念紹介ではなく、cron、HTTP Request、Webhook→Wait→Resume、RAG、監視、配信、通知、状態管理などの実装パターンが列挙されており、入力・処理・出力の構造がはっきりしている。特に『定期取得→AIで要約/優先付け→記録や通知』『ファイル監視→分割/埋め込み→検索』『メールやAPIデータ→分類/整形→台帳更新・送信』といった構造は、中小企業や個人でも一般的なツールで再現しやすく、営業、運用、コンテンツ、情報整理、監視などへ横展開しやすい。実用面でも、優先タスク処理、売上監視、競合監視、ダイジェスト配信、ナレッジ検索など業務改善効果が明確。信頼性は著者の自己報告であり、個々の成果の定量裏付けは弱いが、実際に動いているワークフローと再利用前提のJSONパックが示されているため、極端に低くはない。重複についても、過去保存事例の『メール要約』『Sheets連携』『問い合わせ自動化』とは一部近いが、本件はエージェントOSとして複数の運用系フローを束ねた構成で、入力・処理・出力の中心が異なる。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 14,
+      "reliability": 6
+    }
   }
 ]

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nを“脳”にしてAIエージェントの業務を回す：14本のワークフローで作る自動運用 | AI Small Business Daily</title>
+<meta name="description" content="この記事は、AIエージェントが日々の業務をこなすための“運用基盤”を、n8nのワークフローで組み立てた事例です。単発の自動化ではなく、タスク管理、記憶、外部API連携、通知、公開までを分けて設計しているのが特徴です。結果として、AIが「何をすべきかを拾う」「情報を集める」「下書きを作る」「更新を知ら">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.06</div>
+    <h1>n8nを“脳”にしてAIエージェントの業務を回す：14本のワークフローで作る自動運用</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（個人名として AiMe / Derek の記載あり）<br>
+      <strong>業種：</strong>AIエージェントの運用自動化、コンテンツ制作、監視、通知、メモリ管理<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、AIエージェントが日々の業務をこなすための“運用基盤”を、n8nのワークフローで組み立てた事例です。単発の自動化ではなく、タスク管理、記憶、外部API連携、通知、公開までを分けて設計しているのが特徴です。結果として、AIが「何をすべきかを拾う」「情報を集める」「下書きを作る」「更新を知らせる」といった役割を担い、人間は確認と最終判断に寄せています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、AIエージェントが日々の業務を継続的に回すための仕組みが必要だったことです。具体的には、タスクの優先順位付け、知識の蓄積と検索、SNSやStripeなど外部サービスの状況把握、コンテンツ作成、競合監視、メッセージの受け渡しを、手作業に頼らず回したい状況が読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- TASKS.md や Markdown の知識ファイル</p><p>- フォルダに追加された新規ファイル</p><p>- Stripe、Instagram、YouTube、X、TikTok、Qdrant、PocketBase、WordPress、Beehiiv、各種サイトのAPIやHTML</p><p>- 競合サイトの差分、トピック、動画メタデータなど</p><p>↓</p><p>AIによる処理</p><p>- タスクの優先順位を見て、次にやる仕事を選ぶ</p><p>- 新規ファイルを分割・埋め込みして検索可能な知識にする</p><p>- 収集情報をもとに要約やコンテンツブリーフを作る</p><p>- 動画メタデータからサムネイル用のプロンプト案を作る</p><p>- 差分検知や通知のトリガー判断を行う</p><p>- 文章の整形や公開用の下書き生成を行う</p><p>↓</p><p>次のシステム・処理</p><p>- n8nの各ワークフローで cron、Webhook、Wait、HTTP Request などを使って処理をつなぐ</p><p>- Qdrant に埋め込みを保存して検索可能にする</p><p>- PocketBase をメッセージバスとして使い、他エージェントとのタスク受け渡しを行う</p><p>- WordPress REST API、Telegram、Beehiiv API などへ送る</p><p>↓</p><p>出力</p><p>- 7時のダイジェスト、時間ごとの業務エンジン、Stripe通知、SNS数値のMarkdown、コンテンツブリーフ、ブログ投稿、ニュースレター送信準備、競合差分アラートなど</p><p>↓</p><p>人間による確認・最終作業</p><p>- Derek が起動時に見る情報を確認する</p><p>- Stripe通知や競合差分、公開前のコンテンツを最終判断する</p><p>- Beehiiv はアカウント設定待ちで、ワークフローは準備済みだが配信は未完了</p><p>記事で確認できるAIの役割は、検索、要約、整形、分類、差分検知、生成、通知の補助です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事上で金額ベースの成果は確認できません。確認できる効果としては、毎朝のSNS数値収集、Stripe入金検知、競合サイトの差分確認、日次ブリーフ作成、コンテンツ公開、ニュースレター準備などを自動化し、手作業の巡回や集計を減らしている点があります。なお、Stripeモニターは現時点で売上0と書かれていますが、これは成果ではなく監視対象の状態です。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、役割を1本の巨大フローにまとめず、用途ごとに14本へ分けたことだと考えられます。これは分析ですが、入力と出力が明確な単位に分かれるため、失敗箇所の切り分けや差し替えがしやすくなります。さらに、HTTP Request中心で外部APIへ接続し、PocketBaseやMarkdownのような軽量な仕組みを使っているため、専用連携がなくても拡張しやすい構成になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- 自動化は“全部をAIに任せる”より、受付・検索・要約・通知・公開のように工程分割すると作りやすい</p><p>- 既製の専用ノードがなくても、HTTP Request と認証ヘッダーで多くのAPIはつながる</p><p>- 共有メモリやタスクキューは、重い基盤より軽量なJSONやMarkdownでも始められる</p><p>- 非同期処理が必要な箇所は、Webhook→Wait→Resume のように一時停止と再開で設計できる</p><p>- “毎時の最重要タスクを1つ選ぶ”ような単純なルールは、小規模運用では十分実用的</p><p>- AIの役割は文章生成だけでなく、監視・差分検知・優先順位付け・ルーティングにも広げられる</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 自分で作るなら：日次タスクの自動優先順位付け</p><p>- 取得: Google Sheets や Notion のTASKS一覧</p><p>- AIに渡す: 未完了タスク、期限、重要度、担当者</p><p>- 処理: 優先順位付けと、今日やるべき1件の選定</p><p>- 保存: Sheets/Notion にステータス更新</p><p>- 通知: Slack かメールで「今日の最優先」を送る</p><p>- 人間: 最終的に着手可否を確認</p><p>2. コンテンツ制作の下書き支援</p><p>- 取得: トピック一覧、既存記事、Web検索結果、YouTube字幕</p><p>- AIに渡す: 要点、見出し候補、競合記事の要約</p><p>- 処理: 記事ブリーフ、構成案、FAQ、タイトル案を生成</p><p>- 保存: Google Docs や Notion に下書き保存</p><p>- 通知: Slack で編集者へ送る</p><p>- 人間: 取材事実の確認、表現調整、公開判断</p><p>3. 競合・価格・在庫の定点監視</p><p>- 取得: 競合サイト、価格ページ、在庫ページ、RSS</p><p>- AIに渡す: 前回との差分、変更箇所の抜粋</p><p>- 処理: 重要変更だけを要約し、影響度を分類</p><p>- 保存: スプレッドシートやDBに履歴保存</p><p>- 通知: 変化があったときだけSlack/Pushoverで通知</p><p>- 人間: 本当に対応すべき変更か判断</p><p>4. 個人利用：情報の“記憶庫”を作る</p><p>- 取得: メモ、PDF、保存した記事、議事録</p><p>- AIに渡す: 新規ファイルの本文</p><p>- 処理: 分割、要約、タグ付け、埋め込み化</p><p>- 保存: Qdrant、Notion、Obsidian、Google Drive など</p><p>- 出力: キーワード検索や質問応答で取り出す</p><p>- 人間: 重要メモだけをレビュー</p><p>5. 個人利用：通知の一本化</p><p>- 取得: Stripe、Gmail、カレンダー、SNSの重要イベント</p><p>- AIに渡す: イベント内容と緊急度</p><p>- 処理: 緊急度判定と要約</p><p>- 保存: ログ用のSheets</p><p>- 通知: Telegram、Slack、メールへ振り分け</p><p>- 人間: 必要なものだけ確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、実際の運用規模、処理件数、精度、費用対効果は確認できません</p><p>- 14本のワークフローの詳細なJSONや各ノード設定までは確認できません</p><p>- Beehiiv送信はアカウント設定待ちと書かれており、全工程が稼働済みとは限りません</p><p>- 競合サイトのスクレイピングは、利用規約やrobots.txtへの配慮が必要です</p><p>- Stripe、SNS、メール、社内メモなどを扱う場合は、認証情報や個人情報の管理が重要です</p><p>- AIによる差分判定や優先順位付けは誤判定がありうるため、公開前・送信前・課金関連は人間の確認が必要です</p><p>- PocketBaseやMarkdownのような軽量構成は便利ですが、大規模運用では権限管理や監査ログが別途必要になる可能性があります</p>
+
+    <h2>参考記事</h2>
+    <p>I built an AI agent OS using n8n as the brain</p>
+    <p class="source">
+      <a href="https://community.n8n.io/t/i-built-an-ai-agent-os-using-n8n-as-the-brain-heres-the-full-stack-14-workflows-all-free/274096?tl=fr"
+         target="_blank" rel="noopener noreferrer">
+        https://community.n8n.io/t/i-built-an-ai-agent-os-using-n8n-as-the-brain-heres-the-full-stack-14-workflows-all-free/274096?tl=fr
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
