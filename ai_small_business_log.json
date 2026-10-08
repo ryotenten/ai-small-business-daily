@@ -1078,5 +1078,27 @@
       "applicability": 14,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-10-08",
+    "date_display": "2026.10.08",
+    "company_name": "記事から確認できません（WhizzBridgeが支援したソフトウェア開発会社の事例）",
+    "headline": "開発者の繰り返し作業を自動化し、コード品質もそろえるAIワークフロー（WhizzBridge事例）",
+    "title": "Transforming Developer Productivity with Generative AI",
+    "url": "https://www.whizzbridge.com/case-studies/transforming-developer-productivity-with-generative-ai",
+    "article_filename": "2026-10-08.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-08.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に見えそうで、個人・少人数でも再現しやすいものです。0はMake.com+OpenAIで複数ブログを自動化した実例で、実装ワークフローが本文で詳しく出やすいです。4はExcelオンライン×AIで注文状況やメール送信など業務フロー化の余地があり、再現性の高い実務パターンが期待できます。9はAPI取得→GPT要約→メール/PDF出力という典型的で応用しやすい流れが明確です。1はExcelワークフロー自動化の難しさを扱う記事で、失敗しやすい論点や設計パターンが本文に含まれる可能性があります。3はOpenAI API・Python自動化・カスタムモデルを使った開発者生産性向上の事例で、具体的な業務フローやツール連携が読めそうなので候補に入れました。",
+    "adoption_score": 80,
+    "workflow_signature": "開発タスク・コード→AIで生成・レビュー・標準化→IDE内で作業効率化と品質向上",
+    "evaluation_reason": "本文から、何を入力にし、AIが何をし、何を改善したかが確認できる。入力は開発中の反復コード作業とコード品質、AIの役割はコード生成とコードレビュー/標準化で、出力は開発時間短縮と品質向上。一般的なOpenAI API・Python・IDE連携で再現しやすく、個別業務は開発現場に限られるが、反復生成＋品質チェック＋既存ツール内埋め込みという構造は横展開しやすい。成果も60%の工数削減、40%の生産性向上と定量的で、広告だけでなく実運用の記述があるため信頼性も十分。過去事例と入力・AI処理・出力の実質重複もない。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 18,
+      "usefulness": 17,
+      "applicability": 12,
+      "reliability": 13
+    }
   }
 ]
