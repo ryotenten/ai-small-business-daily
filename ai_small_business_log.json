@@ -1100,5 +1100,27 @@
       "applicability": 12,
       "reliability": 13
     }
+  },
+  {
+    "date": "2026-10-09",
+    "date_display": "2026.10.09",
+    "company_name": "記事から確認できません",
+    "headline": "TeamAIで作るAI自動ワークフロー：検索・抽出・要約をつないで定型作業を流す方法",
+    "title": "How to Set Up AI Automated Workflows - TeamAI",
+    "url": "https://platform.teamai.com/blog/ai-automation/how-to-set-up-ai-automated-workflows/",
+    "article_filename": "2026-10-09.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-09.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "優先したのは、本文を読めば「入力→AI処理→出力→人間の最終作業」が具体的に見えそうで、しかも小規模でも再現しやすい候補です。1はn8n/OpenAIを使うソロプレナーの実運用が示唆され、複数業務への応用余地が大きいです。0と3はExcel業務の自動化で、メール送信・在庫/受注追跡など実務ワークフローに落ちやすく、個人や少人数チームで再現しやすいです。6はAI自動化ワークフローの組み方自体が主題で、具体例の宝庫になりやすいです。9はメール・文章・コード・データ分析まで横断しており、汎用ワークフローの実例が拾える可能性が高いです。",
+    "adoption_score": 75,
+    "workflow_signature": "業務データや検索入力→複数ステップのAI処理と外部連携→結果の出力・記録・管理",
+    "evaluation_reason": "本文から、ワークフロー入力（競合URLなどの入力設定）、AI処理（Chat StepでURL抽出や各種解析）、出力（検索結果や分析レポートの閲覧、実行履歴管理）までの流れが確認でき、単なる概念紹介ではなく実装手順もあるため採用可です。特定製品内の操作説明に寄っており、汎用レシピとしては抽象度がやや高い一方、入力→複数ステップ処理→外部検索/DB連携という構造自体は幅広く転用できます。重複判定上も、既存保存事例の多くはメール・Sheets・文書中心で、本件はWeb検索や複数アクションのワークフロー設計が主眼で実質一致しません。",
+    "score_detail": {
+      "specificity": 19,
+      "reproducibility": 20,
+      "usefulness": 17,
+      "applicability": 11,
+      "reliability": 8
+    }
   }
 ]

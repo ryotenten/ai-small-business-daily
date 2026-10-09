@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TeamAIで作るAI自動ワークフロー：検索・抽出・要約をつないで定型作業を流す方法 | AI Small Business Daily</title>
+<meta name="description" content="この記事で紹介されているのは、TeamAIのWorkflow機能を使って、複数の処理を順番につなぐAI自動ワークフローです。単発のプロンプトではなく、インターネット検索、情報抽出、AIによる解析、外部ツール連携までを組み合わせて、手作業の多い定型タスクを流れ作業に変えています。 元記事では、初心者で">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.09</div>
+    <h1>TeamAIで作るAI自動ワークフロー：検索・抽出・要約をつないで定型作業を流す方法</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>AIワークフロー自動化ツールの利用例<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で紹介されているのは、TeamAIのWorkflow機能を使って、複数の処理を順番につなぐAI自動ワークフローです。単発のプロンプトではなく、インターネット検索、情報抽出、AIによる解析、外部ツール連携までを組み合わせて、手作業の多い定型タスクを流れ作業に変えています。</p><p>元記事では、初心者でも使えるノーコードの仕組みとして説明されており、入力を受け取って複数のStepを実行し、最終結果を出力する流れが確認できます。具体例としては、競合レポート作成のような用途を想定し、URLを入力にして検索やAI処理を連結する使い方が示されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、単発のAI回答だけでは完結しない複雑な作業があることです。たとえば、データの取得、Web検索、URLの抽出、複数ステップの判定や整形などを手作業でつないでいると、時間がかかり、処理が分断されやすいという前提があります。</p><p>また、記事では「競合レポート」のように、同じ型で繰り返し回す業務を想定しており、毎回ゼロから調べてまとめる負担があることが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Workflowの入力欄に、たとえば「Competitor URL」のようなユーザー定義の入力を設定する。</p><p>↓</p><p>AIによる処理</p><p>- Add Stepで処理を連結する。</p><p>- Internet Set actionで、検索クエリを使ってWeb上の情報を取得する。</p><p>- Chat Stepで、前のステップの出力から必要な情報を抽出・整形する。記事では、たとえば前段の出力から実際のURLを取り出す用途が示されている。</p><p>- 変数を入力欄、検索欄、システムプロンプト、URLなどに再利用できる。</p><p>↓</p><p>次のシステム・処理</p><p>- 必要に応じてZapierやRapidAPIのような外部サービスと組み合わせられる、と記事では説明されている。</p><p>- Proprietary documents and databasesとの連携も可能とされていますが、具体的な接続方法は記事からは確認できません。</p><p>↓</p><p>出力</p><p>- 各Stepの結果がWorkflow outputとして確認できる。</p><p>- 初期の検索結果から最終的な分析レポートまでを順に見られる。</p><p>↓</p><p>人間による確認・最終作業</p><p>- Table RunやSingle Runの結果を見て、内容を確認する。</p><p>- Workflow Runsで各実行の状態を確認する。</p><p>- Settingsでワークフロー名や説明を調整する。</p><p>補足</p><p>- 記事で確認できるのは、検索、抽出、AIによる処理、出力の連結です。</p><p>- どの業務をどの順でどこまで自動化しているかの詳細な運用設計は、記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では、Workflowによって複雑な作業を自動化し、時間を節約できると説明されています。あわせて、業務プロセスを効率化し、データに基づいた判断をしやすくする効果が挙げられています。</p><p>ただし、売上増加や削減時間の数値、導入前後の比較値は確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だと考えられる理由は、単発のAI回答ではなく、入力→検索→抽出→AI処理→出力という形で作業を分解しているからです。分析として言えば、各Stepの役割が分かれているため、1つのプロンプトに全部任せるよりも、処理の再利用と確認がしやすくなります。</p><p>また、変数をどこでも使えるため、同じ型の処理を複数入力に対して回しやすい設計です。これにより、定型業務を人手で繰り返すよりも安定して回せる可能性があります。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIは「文章を作る」だけでなく、検索・抽出・整形・連結の中継役にも使える。</p><p>- 1回の長いプロンプトより、Stepを分けたほうが確認しやすい。</p><p>- 入力を変数化すると、同じワークフローを別の対象にも使い回しやすい。</p><p>- 最終出力だけでなく、途中結果を見られる設計にすると、ミスの発見がしやすい。</p><p>- ノーコードでも、まずは小さな定型業務から自動化を始めるのが現実的。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用例</p><p>1. 競合調査レポートの下書き</p><p>- 入力: 競合のURLや社名</p><p>- 処理: Web検索で最新情報を取得→AIで会社概要、特徴、最近の動きに分類→要点を箇条書き化</p><p>- 出力: Google SheetsやNotionに保存→担当者が最終確認して営業資料に反映</p><p>2. 問い合わせ内容の一次仕分け</p><p>- 入力: Gmailや問い合わせフォームの本文</p><p>- 処理: AIで「請求」「障害」「見積依頼」などに分類→必要情報を抽出</p><p>- 出力: Slackで担当部署へ通知、またはExcel/スプレッドシートに追記</p><p>- 人間: 重要案件だけ確認して対応</p><p>3. 会議メモの整理</p><p>- 入力: 議事録のメモや録音文字起こし</p><p>- 処理: AIで決定事項、ToDo、未決事項を抽出</p><p>- 出力: Notion、Google Docs、タスク管理ツールへ振り分け</p><p>- 人間: ToDoの担当割り当てだけ確認</p><p>4. FAQ下書き作成</p><p>- 入力: 過去の問い合わせログ</p><p>- 処理: AIで頻出質問と回答候補を生成</p><p>- 出力: FAQ草案をGoogle Docsに保存</p><p>- 人間: 表現と正確性を確認して公開</p><p>プライベートでの応用例</p><p>1. 購入候補の比較表作成</p><p>- 入力: 商品URLや商品名</p><p>- 処理: AIで仕様差分を抽出し、比較観点ごとに整理</p><p>- 出力: スプレッドシートに一覧化</p><p>- 人間: 価格や在庫を最終確認</p><p>2. 旅行計画の下調べ</p><p>- 入力: 行き先、日程、興味のある条件</p><p>- 処理: AIで観光候補や移動案を整理</p><p>- 出力: Notionやメモアプリに日程案を保存</p><p>- 人間: 宿や交通手段を予約</p><p>3. 読書・学習メモの整理</p><p>- 入力: 本のメモや記事の抜粋</p><p>- 処理: AIで重要ポイント、疑問点、実践項目を抽出</p><p>- 出力: 学習ノートに保存</p><p>- 人間: 次に試す行動だけ決める</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、TeamAIの具体的な画面遷移や設定値の詳細は確認できません。</p><p>- どの外部サービスとどこまで連携するかは、一般的な説明にとどまり、個別の運用実績は不明です。</p><p>- AIの検索結果や抽出結果には誤りが混じる可能性があるため、最終確認は人間が必要です。</p><p>- 会社情報、機密情報、個人情報を入力する場合は、保存先、権限、利用規約を事前に確認する必要があります。</p><p>- 変数の再利用や複数Stepの連結は便利ですが、入力が不正確だと後段の出力も連鎖的に崩れます。</p><p>- 記事では数値成果や導入規模が示されていないため、投資対効果は自社で小さく試して見極めるのが安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>How to Set Up AI Automated Workflows - TeamAI</p>
+    <p class="source">
+      <a href="https://platform.teamai.com/blog/ai-automation/how-to-set-up-ai-automated-workflows/"
+         target="_blank" rel="noopener noreferrer">
+        https://platform.teamai.com/blog/ai-automation/how-to-set-up-ai-automated-workflows/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
