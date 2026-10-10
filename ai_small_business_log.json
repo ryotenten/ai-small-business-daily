@@ -1122,5 +1122,27 @@
       "applicability": 11,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-10",
+    "date_display": "2026.10.10",
+    "company_name": "記事から確認できません",
+    "headline": "Zapierで実現する、会議要約とAI指示を自動で流す業務ワークフロー",
+    "title": "AI-assisted Productivity Automations & AI Workflows",
+    "url": "https://zapier.com/automations/personal-productivity/ai-assisted-productivity",
+    "article_filename": "2026-10-10.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-10.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、検索結果だけでも入力→AI処理→出力→人手確認の流れが比較的想像しやすく、個人や少人数でも再現しやすいものです。0はYouTube制作の実務フロー（台本・サムネ・投稿）で再現性が高そう。4は日次業務の自動化の具体例があり、本文で入力/出力の中身が見込めます。7はZapierでフォーム・ドキュメント・タスクをつなぐ汎用ワークフローで応用範囲が広いです。13はアプリ横断の業務自動化という方向性が明確で、実務フロー例が本文にありそうです。12は情報取得から量的処理までつなぐ構成で、本文に入ると再現可能なパイプライン例が出てきそうなので候補に入れました。",
+    "adoption_score": 82,
+    "workflow_signature": "各種業務入力（フォーム・会議メモ・メール・文書）→AIで要約・抽出・分類・下書き生成→タスク登録・文書保存・通知・自動実行",
+    "evaluation_reason": "本文から、何を入力し、AIが何をし、何を出力するかが複数の具体例で確認できる。特に、会議要約→アクションアイテム抽出→タスク化、フォーム入力→AI処理→外部アプリ更新、メールやNotion/Slack/Docsへの自動保存と通知など、一般的なツールで再現しやすい構造が明確。個別ユースケースは多いが、抽象化すると入力・処理・出力の型がはっきりしており、営業・採用・CS・個人管理・文書整理などへ横展開しやすい。企業の実績訴求や宣伝色は強く、定量成果や実装詳細は限定的なので信頼性は高くないが、ワークフロー自体の具体性は十分あり採用基準は満たす。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 24,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 3
+    }
   }
 ]

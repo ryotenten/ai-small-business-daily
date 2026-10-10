@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zapierで実現する、会議要約とAI指示を自動で流す業務ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事で紹介されているのは、Zapierを使ってAIの入出力を複数ツール間で自動連携するワークフローです。手作業でのコピー＆ペースト、会議後の要約共有、タスク起票、文書保存といった面倒を減らし、トリガーが起きた瞬間にAI処理を走らせる設計になっています。記事中では、AIライティング支援、会議要約、">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.10</div>
+    <h1>Zapierで実現する、会議要約とAI指示を自動で流す業務ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>業務自動化・AIワークフロー基盤<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事で紹介されているのは、Zapierを使ってAIの入出力を複数ツール間で自動連携するワークフローです。手作業でのコピー＆ペースト、会議後の要約共有、タスク起票、文書保存といった面倒を減らし、トリガーが起きた瞬間にAI処理を走らせる設計になっています。記事中では、AIライティング支援、会議要約、ChatGPT(OpenAI)連携、AIエージェント起動などの用途が挙げられています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、ツールが分断されていて、プロンプト、会議メモ、タスク更新、文書保存を人手でつなぐ必要があったことです。特に、会議後の要点共有やアクションアイテムの整理、AIの応答保存、エラー確認などが手作業だと遅れや抜け漏れが起きやすい構造だったと読めます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【記事で確認できるフロー】</p><p>入力: Google Forms、Typeform、Jotformの送信内容、SlackやNotion上の依頼、ZoomやFireflies.aiの会議ノート、プロンプト要求、タスク変更、エラー通知など。</p><p>↓</p><p>AIによる処理: ChatGPT(OpenAI)やAIツールが、内容の分類、要約、アクションアイテム抽出、文章生成、ルーティング補助を担当。会議では要点をまとめ、決定事項・担当者・期限を拾い出す用途が示されています。AIエージェントは、プロンプトやタスクやメッセージを受けると自動で起動します。</p><p>↓</p><p>次のシステム・処理: Zapierが条件に応じてSlack、Notion、Google Docs、Gmail、Google Drive、タスク管理ツールへ送る。状況や優先度、ソースに応じて分岐させることも可能です。</p><p>↓</p><p>出力: 会議要約のSlack/Gmail送信、NotionやGoogle Driveへの保存、タスクの自動作成、AI応答の記録、失敗時のSlack通知など。</p><p>↓</p><p>人間による確認・最終作業: 記事では、高優先度の要約はレビュー担当者へ通知して確認する設計が紹介されています。最終承認や機密情報の確認は人が行う前提です。</p><p>【記事から読み取れる役割分担】</p><p>- AI: 要約、抽出、文章化、分類の初回処理</p><p>- Zapier: 連携、分岐、転送、記録、通知</p><p>- 人間: 重要内容の確認、最終判断、例外対応</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で数値として確認できる効果はありません。確認できる成果としては、会議後の要点共有が速くなること、タスクの抜け漏れを減らせること、AI応答や会議記録を検索しやすくなること、エラーや未処理を早めに検知できることが挙げられます。掲載コメントでは、人数を増やさずに運用を拡大できた、より多くの案件を獲得できた、より少ない人数で業務を回せた、という趣旨の声が紹介されていますが、個別の数値は記事から確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、AI単体で完結させず、入力→処理→保存→通知→確認までを1本につないでいるからです。分析として見ると、作業の起点が明確なため自動化しやすく、会議メモやフォーム送信のような構造化しやすい情報を扱っているので、AIの要約や抽出が機能しやすい設計です。また、失敗通知やレビュー分岐を入れているため、完全自動にせず品質管理も組み込めています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、1) 先にトリガーを決める、2) AIの担当を「要約」「抽出」「分類」に絞る、3) 出力先をNotionやDocsなどの保管場所に固定する、4) 例外時だけ人が見る形にする、の4つです。つまり、AIを賢い同僚として使うより、まずは『受け取った情報を整えて次工程へ渡す係』として使うと導入しやすいです。会議、問い合わせ、申請、メモ、依頼文など、入力形式が似ている業務ほど移植しやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るならの基本構成】</p><p>1. 取得: Google Forms、Gmail、Slack、Notion、Zoom文字起こし、CSVなどからデータを集める</p><p>2. AIへ渡す: Zapier/Make/ChatGPT API/OpenAI APIに本文やメモを送る</p><p>3. AIで処理: 要約、カテゴリ分け、アクション抽出、返信文下書き、優先度判定の補助</p><p>4. 保存: Notion、Google Sheets、Excel、Google Docs、DBへ書き込む</p><p>5. 通知: Slack、Gmail、Pushoverで担当者へ送る</p><p>6. 人間が確認: 重要案件だけ承認、修正、送信</p><p>【仕事への応用例】</p><p>1) 会議メモ自動整理</p><p>- 入力: Zoom/Fireflies.aiの文字起こし</p><p>- AI処理: 決定事項、担当者、期限を抽出して短く要約</p><p>- 出力: Notionに議事録保存、Slackに要点送信、タスク管理ツールにToDo作成</p><p>- 人間: 期限や表現の最終確認</p><p>2) 問い合わせ一次仕分け</p><p>- 入力: フォームやGmailの問い合わせ本文</p><p>- AI処理: 内容を分類し、緊急度と担当部署候補を判定補助</p><p>- 出力: Slackで担当者通知、スプレッドシートに一覧保存、返信テンプレ下書き生成</p><p>- 人間: 返信前に事実確認</p><p>3) 営業メモから次アクション作成</p><p>- 入力: 商談メモ、CRMの記録</p><p>- AI処理: 顧客課題、次回アクション、提案論点を抽出</p><p>- 出力: HubSpot等のCRMやNotionに追記、Slackでフォロー依頼</p><p>- 人間: 提案内容を調整</p><p>4) コンテンツ下書きの初稿化</p><p>- 入力: 記事ネタ、社内メモ、箇条書き</p><p>- AI処理: 見出し案、本文初稿、要点整理</p><p>- 出力: Google Docsに下書き保存、レビュー担当へ通知</p><p>- 人間: 事実確認と編集</p><p>【個人利用の応用例】</p><p>1) メール整理</p><p>- 入力: 重要ラベルのGmail</p><p>- AI処理: 要返信・保管・後回しに分類</p><p>- 出力: Google Sheetsに一覧、Slackやメールで自分へ通知</p><p>- 人間: 返信</p><p>2) 学習ノート管理</p><p>- 入力: 読書メモや講義メモ</p><p>- AI処理: 重要ポイントと復習用Q&amp;Aを作成</p><p>- 出力: Notionに保存、翌日リマインド</p><p>- 人間: 復習</p><p>3) 旅行準備チェック</p><p>- 入力: 旅程メモ、予約メール</p><p>- AI処理: 持ち物・移動時間・注意点を整理</p><p>- 出力: Google DocsやNotionのチェックリスト化、出発前通知</p><p>- 人間: 最終確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実際の導入企業名、業種、規模、処理精度、運用コスト、具体的な設定手順は不明です。AIの誤要約や誤分類、機密情報の扱い、権限管理、API利用時の情報送信範囲には注意が必要です。会議要約や問い合わせ分類は便利ですが、最終判断をAIに任せず、人間が確認する設計が前提です。また、元記事では『実際にどの業務で何時間削減したか』の数値は確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>AI-assisted Productivity Automations &amp; AI Workflows</p>
+    <p class="source">
+      <a href="https://zapier.com/automations/personal-productivity/ai-assisted-productivity"
+         target="_blank" rel="noopener noreferrer">
+        https://zapier.com/automations/personal-productivity/ai-assisted-productivity
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
