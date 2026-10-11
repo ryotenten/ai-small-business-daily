@@ -1144,5 +1144,27 @@
       "applicability": 13,
       "reliability": 3
     }
+  },
+  {
+    "date": "2026-10-11",
+    "date_display": "2026.10.11",
+    "company_name": "Workflow",
+    "headline": "デザイン修正を一元化し、AIで“提出前の見落とし”を減らす Workflow の活用",
+    "title": "Workflow – The design feedback tool loved by designers and ...",
+    "url": "https://www.workflow.design/",
+    "article_filename": "2026-10-11.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-11.html",
+    "search_query": "site:news.ycombinator.com AI automation workflow",
+    "selection_reason": "検索結果だけでも、本文を読む価値が高そうな順に選びました。19はOpenAI APIを使った情報取得→量化回帰/分析までの自動化で、入力→AI処理→出力の流れが比較的具体的です。18はOpenAIの“自動化AI研究実習生”の工程やエージェント技術栈・安全護栏に触れており、実運用ワークフローの示唆がありそうです。11はOpenAI Dev Day由来のワークフローAgent解説で、API連携や常駐協作の設計論が含まれる可能性があります。14はデザインの事前チェックをAIで行う実務ワークフローで、個人/少人数でも再現しやすい可能性が高いです。3はDynatrace Workflowsのコスト注意とAutomationEngine関連で、実際の自動化設計・運用の詳細が本文にある可能性があるため候補に入れました。",
+    "adoption_score": 82,
+    "workflow_signature": "デザイン案・修正版・コメント→AIで誤字/抜け/矛盾を事前チェック→修正前の指摘一覧と承認判断",
+    "evaluation_reason": "本文から、デザインのレビューページに対してAI pre-flight checksを行い、些細なミスを事前に検出してフィードバック回数を減らす用途が確認できる。入力はデザイン作業物とレビューフィードバック、AIの役割は誤字・抜け・不整合などの事前検査、出力は修正前の指摘とそれに基づく再提出/承認という流れで具体的。一般的なAIチェック機能とレビュー共有の組み合わせなので、個人や小規模チームでも再現しやすい。用途はデザインに寄るが、下書きレビュー、提案書、資料、Web公開前チェックなどへ横展開しやすく、実用性も高い。一方で本文の一部にノイズが多く、導入手順や定量効果の記述は限定的なので信頼性は中程度に留めた。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]

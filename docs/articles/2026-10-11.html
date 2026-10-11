@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>デザイン修正を一元化し、AIで“提出前の見落とし”を減らす Workflow の活用 | AI Small Business Daily</title>
+<meta name="description" content="デザインの修正依頼がメール、Slack、WhatsAppなどに分散すると、誰が何を言ったか追いにくくなります。Workflow は、フィードバックを1か所に集め、過去のコメントや版管理もまとめて扱えるようにしたうえで、AIの pre-flight check で提出前の細かいミスを見つける流れを打ち">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.11</div>
+    <h1>デザイン修正を一元化し、AIで“提出前の見落とし”を減らす Workflow の活用</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Workflow<br>
+      <strong>業種：</strong>デザインフィードバック／レビュー管理ツール<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>デザインの修正依頼がメール、Slack、WhatsAppなどに分散すると、誰が何を言ったか追いにくくなります。Workflow は、フィードバックを1か所に集め、過去のコメントや版管理もまとめて扱えるようにしたうえで、AIの pre-flight check で提出前の細かいミスを見つける流れを打ち出しています。記事から確認できるのは、レビューの集約、コメントの可視化、AIによる事前チェック、そしてレビュアー側の導線を簡単にする仕組みです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、修正のやり取りがメール、Slack、WhatsAppなどに散らばり、バックアンドフォースの混乱が起きやすいことです。さらに、提出前のちょっとしたミスが残ると、不要な再修正や追加のフィードバックが発生しやすい状況だったと読めます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【記事から確認できる範囲】</p><p>入力：デザインの下書き、レビュー用リンク、過去のコメントや版情報。</p><p>↓</p><p>AIによる処理：提出前に“pre-flight check”を行い、細かいミスや見落としを検出する。記事では具体的に何をどう判定するかまでは確認できませんが、「silly mistakes」を見つけて余計な修正往復を減らす役割です。</p><p>↓</p><p>次のシステム・処理：レビュー用ページにコメントを集約し、各版の履歴と並べて管理する。</p><p>↓</p><p>出力：修正指摘のまとまった一覧、過去コメントと版の参照、提出前の注意点。</p><p>↓</p><p>人間による確認・最終作業：デザイナーが各コメントを順に消し込み、必要なら再版を作成して公開・納品する。</p><p>【補足】</p><p>レビュアーはリンクを開いてクリックでコメントでき、アカウント作成なしでフィードバックを残せます。また、録画付きウォークスルーやガイドツアーで、使い方の説明負担を下げる設計です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で確認できる効果は、フィードバックの散逸を防げること、修正版の作成と公開までを短くできること、レビューのやり取りが分かりやすくなることです。定量的な売上や工数削減の数値は確認できませんが、不要な再確認や説明の手間を減らす方向の効果が示されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AI単体ではなく、レビューの集約・版管理・コメント消化という人手の多い作業の流れに組み込まれているからだと考えられます。さらに、レビュアー側の操作を極力簡単にしているため、利用者が学習コストを感じにくい点も効いています。これは記事から読み取れる設計上の特徴であり、私の分析を含みます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>1. AIは“最後の校正”に置くと使いやすい。いきなり意思決定を任せるより、提出前の見落とし検出に使うと導入しやすい。</p><p>2. 修正依頼はAIより先に集約する。メールやチャットに散る前提だと、AI以前に運用が崩れやすい。</p><p>3. 受け手の操作を軽くすることが重要。アカウント作成や複雑な手順を減らすと、フィードバック回収率が上がりやすい。</p><p>4. コメントと版を同じ場所に残すと、後からの確認が速くなる。これはデザイン以外のレビュー業務にも移植しやすい考え方です。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【仕事への応用案】</p><p>1. Web制作の納品前チェック</p><p>- データを取得：完成したLPのスクリーンショット、本文テキスト、見出し構造、リンク一覧。</p><p>- AIへ渡す：ChatGPTやOpenAI APIに「誤字脱字、表記ゆれ、リンク切れ候補、CTAの重複」を確認させる。</p><p>- AIで処理：チェック項目ごとに指摘を抽出し、優先度付きで一覧化。</p><p>- 出力先：Google SheetsやNotionにチェックリストとして保存。</p><p>- 人間が確認：制作者が修正し、再度AIチェックしてから公開。</p><p>2. 社内資料・提案書の事前レビュー</p><p>- データを取得：PowerPoint、Google Docs、PDFの原稿。</p><p>- AIへ渡す：要約、論点の抜け、数字の不整合、表現の重複を確認させる。</p><p>- AIで処理：章ごとに問題点を列挙し、修正候補文も生成。</p><p>- 出力先：メールまたはSlackで担当者へ通知、修正版はDriveに保存。</p><p>- 人間が確認：担当者が最終表現と事実関係をチェック。</p><p>3. 取引先との修正履歴管理</p><p>- データを取得：メール本文、Slackのやり取り、添付ファイルの版。</p><p>- AIへ渡す：要点抽出、合意事項の一覧化、未対応タスクの抽出。</p><p>- AIで処理：案件ごとに“未完了”をまとめる。</p><p>- 出力先：Excel、Airtable、Notionの案件台帳。</p><p>- 人間が確認：担当者が次回対応を割り当てる。</p><p>4. 動画・音声コンテンツの公開前チェック</p><p>- データを取得：字幕ファイル、台本、サムネ文言。</p><p>- AIへ渡す：表記ミス、固有名詞の誤り、長すぎる字幕を検出させる。</p><p>- AIで処理：修正箇所をタイムコード付きで出力。</p><p>- 出力先：Google Sheetsや編集メモ。</p><p>- 人間が確認：編集者が反映して公開。</p><p>【個人利用の応用案】</p><p>1. 履歴書・職務経歴書の提出前チェック</p><p>- 原稿をAIに渡し、誤字、重複、表現の不統一を検出。</p><p>- 修正案をNotionやGoogle Docsに反映してから送信。</p><p>2. 旅行前の持ち物・日程チェック</p><p>- 旅程メモと予約情報をAIに渡し、抜けている準備を抽出。</p><p>- チェックリストをスマホのメモアプリへ出力。</p><p>3. 家族や友人への案内文の事前確認</p><p>- 集合時間、場所、注意事項をAIに読み込ませ、分かりにくい表現や抜けを確認。</p><p>- 送信前に修正文を作成し、誤解を減らす。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、AI pre-flight check が具体的に何を検出するのか、どのモデルを使うのか、誤検出率がどの程度かは確認できません。レビュー内容には機密情報や個人情報が含まれる場合があるため、外部AIに渡す範囲は慎重に設計する必要があります。また、AIが見落としや過検出をする可能性があるので、最終判断は必ず人間が行うべきです。レビュアーが“クリックしてコメントできる”ことは分かりますが、実際の権限管理や保存期間などの運用詳細は記事からは確認できません。</p>
+
+    <h2>参考記事</h2>
+    <p>Workflow – The design feedback tool loved by designers and ...</p>
+    <p class="source">
+      <a href="https://www.workflow.design/"
+         target="_blank" rel="noopener noreferrer">
+        https://www.workflow.design/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
