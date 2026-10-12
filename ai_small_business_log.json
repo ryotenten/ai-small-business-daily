@@ -1166,5 +1166,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-12",
+    "date_display": "2026.10.12",
+    "company_name": "記事から確認できません",
+    "headline": "Excelのデータ整形・集計・レポート作成をAIに任せるワークフロー",
+    "title": "11 Practical Ways to Use AI for Excel to Automate Your Work",
+    "url": "https://getelyxai.com/en/blog/ai-for-excel-3",
+    "article_filename": "2026-10-12.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-12.html",
+    "search_query": "\"AI workflow\" Excel automation",
+    "selection_reason": "0はExcelワークフロー自動化の難所と設計論が主題で、本文に具体的な入力→AI処理→出力→人手確認の例が出そうです。1はAIエージェントでExcel上の財務データを扱う内容で、業務フローの具体像が最も想像しやすく再現性もあります。2はReddit投稿ながら、注文状況に応じたメール送信や在庫/受注追跡など、実務的で小規模でも真似しやすいExcel自動化の具体例が期待できます。9はSales/レポート/通話記録など複数の実運用例が検索結果に見えており、本文確認で再現可能なワークフローが拾える可能性が高いです。3は一般的な比較寄りではあるものの、データクリーニング・分析・レポート化という実務ワークフローの具体例をまとめている可能性があり、補助候補として有用です。",
+    "adoption_score": 86,
+    "workflow_signature": "Excel/表計算データ→AIで清掃・整形・数式生成・レポート作成→シート更新・ダッシュボード出力",
+    "evaluation_reason": "本文から、AI for Excelの具体的な使い方として、データクリーニング（重複削除、表記ゆれ統一、欠損補完、列の分割/結合、日付整形）、レポート/ダッシュボード作成（ピボット、グラフ、書式設定、KPI抽出、トレンド要約）、さらにツール類型の整理とプライバシー配慮まで確認できる。入力・処理・出力の流れが明確で、一般的なExcel環境やCopilot系/アドイン系ツールで再現しやすい。用途は表計算に限られるが、抽象化すると『データ整形→要約分析→報告物生成』として多くの業務に横展開でき、実務上の時間削減・ミス削減効果も大きい。記事はややプロモーション寄りだが、実際の操作イメージが十分具体的なので採用可と判断した。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 15,
+      "reliability": 8
+    }
   }
 ]

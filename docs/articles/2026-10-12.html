@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excelのデータ整形・集計・レポート作成をAIに任せるワークフロー | AI Small Business Daily</title>
+<meta name="description" content="記事が扱っているのは、Excel作業の中でも手間のかかる「整える・集める・見せる」の部分です。具体的には、重複削除、表記ゆれの統一、欠損値補完、列の分割・結合、日付形式の統一、ピボットテーブル作成、グラフ生成、体裁調整までをAIに任せる流れが紹介されています。 人がやるのは、AIに目的を伝え、結果を">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.12</div>
+    <h1>Excelのデータ整形・集計・レポート作成をAIに任せるワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Excel向けAIツールの活用事例（データ整形、分析、報告書作成）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>記事が扱っているのは、Excel作業の中でも手間のかかる「整える・集める・見せる」の部分です。具体的には、重複削除、表記ゆれの統一、欠損値補完、列の分割・結合、日付形式の統一、ピボットテーブル作成、グラフ生成、体裁調整までをAIに任せる流れが紹介されています。</p><p>人がやるのは、AIに目的を伝え、結果を確認し、必要なら微調整することです。記事の中心は、Excelを“手で操作する道具”から“指示して進める作業相手”へ変える、という考え方です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で明示されている課題は、データ清掃や集計レポート作成に多くの時間がかかることです。特に、重複行の除去、国名などの表記ゆれ、欠損値の埋め方の判断、氏名や列の分割、日付形式の統一、ピボットテーブルやグラフの作成に手作業が必要でした。記事では、こうした前処理にデータ作業時間の大半が取られることがあると述べていますが、個別企業の実績としては確認できません。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事から確認できるワークフローは、Excel上での自然言語指示を起点にした処理です。</p><p>入力</p><p>- 例: 「このシートの重複行を削除して」「C列の国名を正式名称に統一して」「F列の欠損売上を同じカテゴリの平均で補完して」「売上データを地域別・カテゴリ別に集計して」</p><p>↓</p><p>AIによる処理</p><p>- 重複の検出と削除</p><p>- 表記ゆれの統一</p><p>- 欠損値の補完条件の解釈</p><p>- 列の分割・結合</p><p>- 日付形式の統一</p><p>- ピボットテーブルの作成</p><p>- グラフの生成</p><p>- レポート用の体裁調整</p><p>- 要点の要約やトレンド記述</p><p>↓</p><p>次のシステム・処理</p><p>- Excelのシート上で直接反映</p><p>- レポートやダッシュボードの見た目調整</p><p>- 集計結果に基づく可視化</p><p>↓</p><p>出力</p><p>- 整形済みの表</p><p>- 集計表</p><p>- グラフ付きレポート</p><p>- 要約コメント</p><p>↓</p><p>人間による確認・最終作業</p><p>- 数式や集計結果の妥当性確認</p><p>- 意図しない置換や削除がないかの確認</p><p>- 表示やレイアウトの最終調整</p><p>- どの欠損値補完が適切かの判断</p><p>記事の整理に基づくと、AIの役割は「分類、抽出、標準化、集計、要約、文章生成、操作代行」です。特に、何をしたいかを自然文で伝え、実行手順の“どうやるか”をAIに委ねる点が特徴です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、作業時間の短縮と手作業の削減です。レポートやダッシュボード作成に数時間かかっていた流れを、数分に圧縮できると説明されています。ほかに、重複や表記ゆれによる集計ミスを減らし、欠損値補完や形式統一を通じて分析しやすい状態にできることが効果として挙げられます。売上増加などの数値成果は記事から確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIが“操作”ではなく“意図”を受け取れる点にあります。通常のExcel作業では、ユーザーが関数選びやクリック順を自分で組み立てる必要がありますが、この流れではAIがその中間工程を担います。これは、単発の補助よりも、複数ステップの作業をまとめて委任できるため、前処理から報告までの往復が減るからだと考えられます。これは記事内容を踏まえた分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、作業を『入力→整形→集計→可視化→確認』に分けて考えることです。AIに向いているのは、ルール化しやすい整形や説明文の生成、集計の下準備です。一方で、どの欠損値補完が妥当か、どの指標を重視するかは人が決める必要があります。</p><p>また、自然文で指示できるため、関数を覚える負担を減らしやすい点も重要です。まずは重複削除や日付統一のような小さな処理から始め、最後にレポート作成まで広げると再現しやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、以下のような流れが実装しやすいです。</p><p>1. データを取得</p><p>- Excel、Google Sheets、CSV、社内DBから売上表や問い合わせ一覧を取得</p><p>2. AIへ渡す</p><p>- ChatGPT、OpenAI API、Excelアドイン、Pythonスクリプトに「重複削除」「表記ゆれ統一」「要約」などを指示</p><p>3. AIで処理</p><p>- ルール抽出、カテゴリ分け、欠損補完案の提示、集計軸の提案、説明文生成</p><p>4. 保存先へ出力</p><p>- Excel/Google Sheetsへ書き戻す</p><p>- 必要ならNotionやMarkdownで報告書に出力</p><p>5. 通知</p><p>- Slack、メール、Pushoverで「集計完了」「要確認項目あり」を送る</p><p>6. 人間が確認</p><p>- 補完ルール、集計値、グラフ、公開文面を最終確認</p><p>仕事への応用例</p><p>- 営業日報の自動整形: フォーム入力をCSVで取り込み、AIで案件名を標準化し、Excelで担当者別に集計、Slackへ日次共有。</p><p>- 問い合わせ一覧の整理: メールやフォームの内容をAIで分類し、カテゴリ列を付与してスプレッドシートへ保存、未分類のみ人が確認。</p><p>- 月次レポートの下書き作成: 売上表をAIで要約し、前月比・地域別・商品別の見出し付きでPowerPointやNotionに出力。</p><p>- 顧客名簿の名寄せ補助: 表記ゆれのある会社名をAIで候補統一し、Excelで人が承認後に確定。</p><p>プライベート応用</p><p>- 家計簿の分類: 銀行CSVを取り込み、AIで支出カテゴリを付与してGoogle Sheetsに保存。</p><p>- 写真メモや買い物履歴の整理: テキスト化したメモをAIで用途別に分類し、Notionに蓄積。</p><p>- 旅行計画の表作成: 行き先メモをAIで日程表に整え、Google Sheetsに出力して家族と共有。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できないこととして、実際の製品名ごとの精度差、対応ファイル形式、料金、導入手順、権限管理の細部は不明です。また、AIが誤って重複を消したり、表記を統一しすぎて意味を失わせたりする可能性があるため、削除・置換系の操作は必ず人が確認すべきです。</p><p>機密データや個人情報を扱う場合は、データがクラウドに送られる設計か、ローカル処理かを確認する必要があります。さらに、欠損値補完やトレンド要約は便利ですが、分析目的によっては不適切な判断になることがあります。記事でも、最終確認は人間が行う前提で読むのが安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>11 Practical Ways to Use AI for Excel to Automate Your Work</p>
+    <p class="source">
+      <a href="https://getelyxai.com/en/blog/ai-for-excel-3"
+         target="_blank" rel="noopener noreferrer">
+        https://getelyxai.com/en/blog/ai-for-excel-3
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
