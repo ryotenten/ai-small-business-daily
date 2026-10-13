@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Flockxが実践する、ソロ起業向け5つのAI定型ワークフロー自動化 | AI Small Business Daily</title>
+<meta name="description" content="一人で事業を回すと、売上につながる仕事以外に、毎週くり返す調査・計画・点検・更新・フォローが積み重なります。この記事では、そうした定型業務をAIワークフローに任せ、最後に人が確認する形へ置き換える考え方を紹介しています。扱っているのは、競合調査、コンテンツ計画、ブランド監査、FAQ更新、提携先へのア">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.13</div>
+    <h1>Flockxが実践する、ソロ起業向け5つのAI定型ワークフロー自動化</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（Flockxの事例紹介記事）<br>
+      <strong>業種：</strong>ソロ起業・個人事業向けの業務ワークフロー自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>一人で事業を回すと、売上につながる仕事以外に、毎週くり返す調査・計画・点検・更新・フォローが積み重なります。この記事では、そうした定型業務をAIワークフローに任せ、最後に人が確認する形へ置き換える考え方を紹介しています。扱っているのは、競合調査、コンテンツ計画、ブランド監査、FAQ更新、提携先へのアウトリーチの5本です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事では、ソロ起業家は創業者・制作担当・運用担当・管理担当を兼ねるため、競合監視やコンテンツ計画のような反復作業に時間を取られやすいとしています。特に、複数の競合を複数チャネルで追うこと、30日分のコンテンツを計画すること、ブランドのトーンずれを自分で点検すること、問い合わせ内容をFAQにまとめること、継続的に個別アウトリーチを続けることが負担になっていました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事内で確認できるワークフローは、いずれも「人が方針を決める→AIが定期実行→人が確認する」という形です。</p><p>1) 週次競合インテリジェンス（Sage）</p><p>入力：競合3〜5社の最新情報、位置づけ資料、過去のブリーフ</p><p>↓</p><p>AIによる処理：過去7日間の新規コンテンツ、SNS活動、注目点を整理し、戦略に沿った示唆を抽出</p><p>↓</p><p>次のシステム・処理：知識グラフに位置づけ文書や過去ブリーフを追加</p><p>↓</p><p>出力：毎週月曜のPDFブリーフ</p><p>↓</p><p>人間による確認：内容を読み、今週の打ち手に反映</p><p>2) コンテンツカレンダー生成（Clara）</p><p>入力：ブランド方針、過去の実績、季節要因、商品発売予定、業界イベント</p><p>↓</p><p>AIによる処理：30日分のブログ、SNS、メールの案を作成し、SEOキーワードや配信日を整理</p><p>↓</p><p>次のシステム・処理：月初にカレンダーとして配布</p><p>↓</p><p>出力：30日分のコンテンツカレンダー</p><p>↓</p><p>人間による確認：実際の執筆・配信前に調整</p><p>3) ブランド整合性監査（Maya）</p><p>入力：ブランドガイド、トーン例、最近の投稿やコピー</p><p>↓</p><p>AIによる処理：トーン/声の一致度を評価し、ずれた箇所を指摘、言い換え案を提示</p><p>↓</p><p>次のシステム・処理：2週間ごとのレポート化</p><p>↓</p><p>出力：ブランド一貫性レポートとスコア推移</p><p>↓</p><p>人間による確認：修正方針を決めて文面を直す</p><p>4) FAQ更新（Eva）</p><p>入力：メール、DM、サポート履歴、既存ドキュメント、過去の回答</p><p>↓</p><p>AIによる処理：新しい質問を抽出し、頻出順に並べ、既存情報をもとに回答案を下書き</p><p>↓</p><p>次のシステム・処理：FAQ文書を2週間ごとに更新</p><p>↓</p><p>出力：更新済みFAQ、頻出質問ランキング、記事化候補</p><p>↓</p><p>人間による確認：回答の正確性を確認して公開</p><p>5) 提携・アウトリーチパイプライン（Alex）</p><p>入力：自社の条件、見込み先の情報、過去のやり取り</p><p>↓</p><p>AIによる処理：見込み先の調査、個別化された連絡文の下書き、停滞案件のフォローアップ提案</p><p>↓</p><p>次のシステム・処理：週次のパイプライン更新</p><p>↓</p><p>出力：新規候補、交渉中、成立、停滞のステータス一覧</p><p>↓</p><p>人間による確認：送信前に文面を確認し、実際の返信対応を行う</p><p>記事では、これらのAIが「判断を完全代替する」のではなく、定義済みの作業を定期実行する役割として使われている点が強調されています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は主に時間削減です。5つのワークフローを合計すると、手作業では毎週1〜2営業日分に相当する時間が節約できると説明されています。加えて、週を重ねるほど文脈を学び、Week 10の出力はWeek 1より精度が上がる、とされています。売上増加や具体的な金額効果は記事からは確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この方法が機能する理由は、毎回ゼロから考える仕事ではなく、入力と出力の型が決まっている反復業務を切り出しているからだと考えられます。さらに、各ワークフローに役割を持たせて、過去データやブランド文書を参照させることで、単なる要約ではなく自分の事業に寄った判断補助になっている点が強みです。これは元記事の事実というより、記事内容から読み取れる設計上の利点です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは次の3つです。</p><p>1. 「全部自動化」ではなく、毎週くり返す部分だけを切り出す。</p><p>2. AIに最初から最終判断をさせず、下書き・抽出・整理・指摘までを任せる。</p><p>3. 参照すべき資料を先に入れておくと、一般論ではなく自分向けの出力になりやすい。</p><p>つまり、AI活用は「考える仕事を丸投げする」より、「人が決めた型を高速で回す」用途のほうが再現しやすい、という学びです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような構成にすると再現しやすいです。</p><p>1. データを取得</p><p>- 競合サイト、SNS、問い合わせ履歴、過去の提案書、ブランドガイド、営業メモなどを集める</p><p>- 取得方法は手動アップロード、RSS、Google Sheets、Gmail、Notion、APIなど</p><p>2. AIへ渡す</p><p>- ChatGPT、OpenAI API、またはMake/Zapier経由で定期投入</p><p>- 何をしてほしいかを明確に分ける（要約、分類、抽出、下書き作成、言い換え案作成など）</p><p>3. AIで処理</p><p>- 競合監視：新情報を抽出して1ページに要約</p><p>- FAQ：質問をクラスタリングして回答案を作成</p><p>- 営業：見込み先ごとに個別メッセージの下書きを生成</p><p>- コンテンツ：1か月分のネタ案を曜日付きで整理</p><p>4. 保存先へ出力</p><p>- Excel / Google Sheets / Notion / Airtable に一覧保存</p><p>- PDF化してメール送信、またはSlackに投稿</p><p>5. 人間が確認</p><p>- 重要な数値、固有名詞、トーン、送信先をチェック</p><p>- 必要に応じて修正してから公開・送信</p><p>仕事への応用例</p><p>- 競合調査：RSSやSNS投稿を集めて、AIに「新機能・価格変更・告知」を分類させ、週次でNotionにまとめる</p><p>- FAQ更新：Gmailや問い合わせフォームの本文をAIで要約し、頻出質問をGoogle Sheetsに集計してFAQ下書きを作る</p><p>- 提案営業：見込み顧客のWebサイト要約をAIに作らせ、その内容を踏まえた初回メールを下書きする</p><p>- 企画運用：会議メモや過去実績を渡し、翌月のコンテンツ案を曜日単位で生成する</p><p>個人利用の応用例</p><p>- 買い物・生活管理：通販履歴やメモから、消耗品の補充タイミングをAIに整理させる</p><p>- 学習計画：読書メモや講義ノートから、次に復習すべき項目を週次で要約する</p><p>- 家計の振り返り：家計簿のカテゴリをAIに見やすく整理させ、見直し候補を出す</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点が多くあります。たとえば、実際の使用ツール、処理の詳細な自動化手順、データの保存先、具体的な精度、導入コスト、失敗例は確認できません。</p><p>運用上の注意としては、競合情報や顧客問い合わせ、提携候補のデータには機密や個人情報が含まれる可能性があります。AIの下書きは誤りや古い情報を含むことがあるため、送信前の人間確認が必須です。ブランド監査やFAQも、文脈依存の判断は自動化しすぎないほうが安全です。</p>
+
+    <h2>参考記事</h2>
+    <p>5 Workflows Every Solopreneur Should Automate with AI</p>
+    <p class="source">
+      <a href="https://flockx.io/blog/5-workflows-to-automate"
+         target="_blank" rel="noopener noreferrer">
+        https://flockx.io/blog/5-workflows-to-automate
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

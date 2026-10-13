@@ -1188,5 +1188,27 @@
       "applicability": 15,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-13",
+    "date_display": "2026.10.13",
+    "company_name": "記事から確認できません（Flockxの事例紹介記事）",
+    "headline": "Flockxが実践する、ソロ起業向け5つのAI定型ワークフロー自動化",
+    "title": "5 Workflows Every Solopreneur Should Automate with AI",
+    "url": "https://flockx.io/blog/5-workflows-to-automate",
+    "article_filename": "2026-10-13.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-13.html",
+    "search_query": "solopreneur AI workflow automation",
+    "selection_reason": "0はGmail→要約/アクション抽出→Google Sheetsという、再現しやすい具体ワークフローが読み取れるため最優先です。1はスプレッドシートを起点にしたAIワークフローの設計・統制というテーマで、本文に実装パターンや業務適用例が出そうです。2はWebhookで入ってくるデータの処理・整形・マージなど、実務に落とし込みやすい自動化の具体像が期待できます。6はソロプレナー向けに競合調査、コンテンツ、FAQ、営業など用途別ワークフローが並び、個人/少人数で応用しやすそうです。4はGoogle Workspace連携の実例候補で、Gmail/Driveなどを使う実践例が本文に含まれる可能性が高いので選びました。",
+    "adoption_score": 84,
+    "workflow_signature": "定期的な業務シグナル→AIで収集・要約・提案生成→ブリーフ/カレンダー/FAQ/下書き/通知を定期出力",
+    "evaluation_reason": "本文から、5つの個別ワークフローそれぞれについて入力・AI処理・出力が具体的に確認できます。競合情報、コンテンツ計画、ブランド監査、FAQ更新、アウトリーチという定期業務を、週次/隔週/月次の反復処理として自動化する構成で、一般的なAI+自動化ツールへそのまま置き換えやすいです。特定企業依存ではなく、ソロ事業者・小規模事業者の定番業務に広く転用できるため応用可能性も高めです。定量成果や実装手順の詳細は限定的ですが、実運用の姿は十分に読み取れるため信頼性は一定水準あります。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 5
+    }
   }
 ]
