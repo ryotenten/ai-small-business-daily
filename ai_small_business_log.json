@@ -1210,5 +1210,27 @@
       "applicability": 13,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-10-14",
+    "date_display": "2026.10.14",
+    "company_name": "記事から確認できません",
+    "headline": "ChatGPTをZapier・Make・Power Automate・n8nにつないで、入力→分類→出力まで流す自動化ワークフロー",
+    "title": "ChatGPT: how to connect AI assistants to automation ...",
+    "url": "https://www.datastudios.org/post/chatgpt-how-to-connect-ai-assistants-to-automation-platforms-and-streamline-workflows",
+    "article_filename": "2026-10-14.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-14.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "優先したのは、入力→AI処理→出力→人手の仕上げ、が検索結果だけでも比較的想像しやすく、個人や小規模チームで再現しやすそうな候補です。2はGmail→要約・アクション抽出→Google Sheetsという具体ワークフローが明確。1はスプレッドシート中心の業務フローをAIエージェントとオーケストレーションで回す話で、実務応用の幅が広そう。0はChatGPTをZapier/Workato等に接続する実装寄りで、複数ツール連携の具体例が本文にありそう。6は研究・履歴書・PDFなど日常/業務で再現しやすい実例が複数含まれる見込み。3はn8n＋OpenAI＋実運用のワークフロー記事群を扱っていそうで、本文確認の価値が高いと判断しました。",
+    "adoption_score": 84,
+    "workflow_signature": "各種業務データ・メール・文書→AIで要約・分類・構造化・生成→各種業務ツールへ記録・通知・自動実行",
+    "evaluation_reason": "採用価値は高いです。本文から、ChatGPTをZapier/Make/Power Automate/Workato/n8n/Azure Logic Appsのような一般的な自動化基盤に接続し、入力の受領、要約・分類・構造化、返信文/JSON/レポート生成、さらにSheets・CRM・Slack・Microsoft 365・DB等への記録や通知まで流す実用的なワークフローが確認できます。特定業界の単発事例ではなく、メール処理、問い合わせ対応、報告書作成、データ整形、文書理解、マルチステップ処理などへ横展開しやすいのが強みです。実装のイメージも具体的で、低コード/ノーコードからAPI連携まで再現しやすい点を評価できます。重複面では、過去の保存事例にメール要約やSheets連携、n8n自動化はありますが、本候補は『複数の自動化基盤ごとの接続方法と能力差を比較しつつ、ChatGPTを中核に多様な業務フローへ接続する総合レシピ』であり、入力・処理・出力の組み合わせがより広いので別事例として扱えます。信頼性は、細部に最新日付や数値が多い一方で本文全体は製品紹介寄りで、一次情報への裏取りが必要そうな箇所もあるため満点ではありませんが、実際の使い方自体は十分確認できます。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]

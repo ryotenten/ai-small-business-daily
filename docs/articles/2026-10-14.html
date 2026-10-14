@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPTをZapier・Make・Power Automate・n8nにつないで、入力→分類→出力まで流す自動化ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事のポイントは、ChatGPTを単体で使うのではなく、ZapierやMake.com、Power Automate、n8nなどの自動化基盤に組み込み、入力された情報をAIで処理して次の業務へ渡している点です。面倒な手作業だった「読み取り・分類・要約・定型文作成・データ整形」を、AIに先にやらせ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.14</div>
+    <h1>ChatGPTをZapier・Make・Power Automate・n8nにつないで、入力→分類→出力まで流す自動化ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>業務自動化プラットフォームの比較・接続事例<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事のポイントは、ChatGPTを単体で使うのではなく、ZapierやMake.com、Power Automate、n8nなどの自動化基盤に組み込み、入力された情報をAIで処理して次の業務へ渡している点です。面倒な手作業だった「読み取り・分類・要約・定型文作成・データ整形」を、AIに先にやらせて、人間は確認と例外対応に寄せています。参考記事では、各プラットフォームごとにできること、接続先、制約が整理されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、複数ツール間の情報受け渡しを手作業で行う負担、問い合わせや文書、ファイルの内容を都度読み取って分類・整形する手間、そして多段階の処理を人力で回すと遅くなりやすいことです。特に、CRM、表計算、タスク管理、メール、SharePointなどにまたがる業務では、入力内容の変換と転記がボトルネックになっていました。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【Zapierの事例】</p><p>入力: フォーム送信、受信リクエスト、CSV/XLSX/JSONファイルなど</p><p>↓</p><p>AIによる処理: ChatGPTが要約、生成、構造化、変数保存を担当。Assistants APIのfunction-callingも使えるとされています</p><p>↓</p><p>次のシステム・処理: Google Sheets、CRM、プロジェクト管理ツールなど6,000以上の連携先へ渡す</p><p>↓</p><p>出力: レポート下書き、要約、回答文、整形済みデータ</p><p>↓</p><p>人間による確認・最終作業: 内容の承認、例外対応、配信先の確認</p><p>【Make.comの事例】</p><p>入力: 複数ステップのシナリオに入る各種データ、アップロードファイル</p><p>↓</p><p>AIによる処理: 複数プロンプトを連結し、Assistants API v2 + function-callingで段階的に処理。ファイル検索はベクトル索引を使って参照可能</p><p>↓</p><p>次のシステム・処理: Google Sheets、Notion、Slack、Trello、データベースへ接続</p><p>↓</p><p>出力: 分類結果、検索結果、次工程に渡す整形データ</p><p>↓</p><p>人間による確認・最終作業: シナリオ設計、最終チェック、例外処理</p><p>【Power Automate / Azure Logic Appsの事例】</p><p>入力: Outlook、Teams、OneDrive、SharePointなどMicrosoft 365上の情報</p><p>↓</p><p>AIによる処理: プロンプト送信、返答取得、入力分類、文書・画像の扱い、埋め込みやビジョン系ワークフロー</p><p>↓</p><p>次のシステム・処理: Microsoft 365サービス、Power BI、Microsoft Graph、SharePointリポジトリへ連携</p><p>↓</p><p>出力: 分類結果、通知文、文書索引、ダッシュボード用データ</p><p>↓</p><p>人間による確認・最終作業: メール送信や承認、共有範囲の管理</p><p>【n8nの事例】</p><p>入力: Google Calendar、CRM、外部API、データベースなど</p><p>↓</p><p>AIによる処理: ChatGPTエージェントによる自律的な分岐、function-callingベータを使う多段フロー</p><p>↓</p><p>次のシステム・処理: ワークフロー全体をオープンソース環境で実行</p><p>↓</p><p>出力: 予約処理、データ更新、通知、API呼び出し結果</p><p>↓</p><p>人間による確認・最終作業: 失敗時の修正、オンプレ運用の管理</p><p>【Workatoの事例】</p><p>入力: SalesforceやSnowflakeなどのデータ、PDF/PNG/JPG/GIF/WebPファイル</p><p>↓</p><p>AIによる処理: JSON形式の構造化出力、画像・文書の分析</p><p>↓</p><p>次のシステム・処理: 監査しやすい業務フロー、承認・エスカレーション経路</p><p>↓</p><p>出力: 報告用データ、構造化JSON、判定補助情報</p><p>↓</p><p>人間による確認・最終作業: 承認、コンプライアンス確認</p><p>※上記は参考記事に書かれている接続例の整理であり、特定企業の実運用を断定するものではありません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上増などの数値成果は確認できません。確認できる効果としては、レポート作成、要約、返信文作成、分類、転記、ファイル参照といった反復作業を自動化し、処理速度を上げ、手作業の削減につなげる設計が挙げられています。特に、複数アプリをまたぐ多段階フローを人手でつなぐ負担を減らせる点が効果です。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、AIに「判断の前処理」を任せているからです。つまり、いきなり最終意思決定をさせるのではなく、分類、要約、構造化、抽出、下書き生成を先に行わせ、その後に既存の業務システムへ渡す形にしているため、低コード環境でも実装しやすくなっています。これは記事の事実に加えた分析ですが、AIを単独ではなくオートメーションの部品として使う設計が再現しやすい理由です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>1. AIは「文章を作る道具」より「業務の中間工程を受け持つ部品」として使うと、実務に入りやすい。</p><p>2. 入力→AI処理→既存ツール出力、の3段構成にすると設計が明確になる。</p><p>3. まずは要約・分類・整形・抽出のように、人間が毎回やっている前処理から置き換えると失敗しにくい。</p><p>4. 連携先は新規導入より、すでに使っているSheets、Slack、Notion、Teams、SharePoint、CRMに寄せると運用しやすい。</p><p>5. 本番では必ず人間の確認ポイントを残し、誤分類や誤送信を防ぐ。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら】</p><p>1. データを取得: フォーム、メール、CSV、Slack投稿、Google Sheetsの新規行をトリガーにする</p><p>2. AIへ渡す: ChatGPT/OpenAI APIに、本文・件名・添付要約を渡す</p><p>3. AIで処理: 問い合わせ分類、要点抽出、返信下書き作成、タグ付け、JSON整形</p><p>4. 保存: Google Sheets、Excel、Notion、Airtable、Postgresに書き込む</p><p>5. 通知: Slack、メール、Pushoverで担当者へ送る</p><p>6. 人間が確認: 送信前レビュー、例外対応、承認</p><p>【仕事への応用例】</p><p>- 問い合わせ振り分け: Gmail受信→本文をChatGPTで「営業/サポート/請求」に分類→Google Sheetsに記録→Slackで担当者通知→人が返信。</p><p>- 議事録下書き: Zoom文字起こしやメモをChatGPTで要約→Notionに議事録テンプレとして保存→担当者が最終編集。</p><p>- 見積・提案のたたき台: ヒアリングメモをOpenAI APIへ渡して、提案書の骨子とFAQを生成→Word/Google Docsへ出力→営業がレビュー。</p><p>- 定期レポート: Salesforceやスプレッドシートの更新をトリガーに、ChatGPTで週次サマリーを作成→メール配信→責任者が確認。</p><p>【個人利用の応用例】</p><p>- 受信メールの整理: 重要メールだけをChatGPTで要約→件名・締切・返信要否をメモに出力→自分で対応。</p><p>- 家計メモの整形: レシート内容をOCR→ChatGPTで費目分類→Google Sheetsに記録→月末に見直し。</p><p>- 学習ログ管理: 読んだ記事のメモをChatGPTで要点抽出→Notionへ保存→翌週に復習。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、特定企業の導入効果、実際の運用手順、人的体制、コスト回収、セキュリティ設定の詳細は不明です。注意点として、個人情報や機密情報をAIに渡す場合は利用規約、保存先、権限管理を確認する必要があります。また、分類や要約は誤ることがあるため、送信・承認・削除のような取り返しのつかない処理は人間の確認を挟むべきです。ファイル解析や画像理解も便利ですが、読み取り精度に差が出るため、元データ照合が前提です。</p>
+
+    <h2>参考記事</h2>
+    <p>ChatGPT: how to connect AI assistants to automation ...</p>
+    <p class="source">
+      <a href="https://www.datastudios.org/post/chatgpt-how-to-connect-ai-assistants-to-automation-platforms-and-streamline-workflows"
+         target="_blank" rel="noopener noreferrer">
+        https://www.datastudios.org/post/chatgpt-how-to-connect-ai-assistants-to-automation-platforms-and-streamline-workflows
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
