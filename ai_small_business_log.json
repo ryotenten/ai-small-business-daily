@@ -1232,5 +1232,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-15",
+    "date_display": "2026.10.15",
+    "company_name": "記事から確認できません",
+    "headline": "ソロプレナーがAIと自動化で「下書き・整理・振り分け」を回す実践フロー",
+    "title": "AI and Automation for Solopreneurs",
+    "url": "https://solopreneurship.wiki/ai-and-automation/",
+    "article_filename": "2026-10-15.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-15.html",
+    "search_query": "solopreneur AI workflow automation",
+    "selection_reason": "優先したのは、検索結果の時点で「入力→AI処理→出力→人間の最終作業」が比較的想像しやすく、ソロ/小規模でも再現しやすい候補です。0はZapier/Makeと連携する業務自動化が明確で、メール・追客・日程調整に直結しそうです。8は日常の実運用フロー（メール、スクリプト、録音、編集、サムネ、再利用）が具体的で、個人ワークフローとして応用余地があります。2は信頼性、human oversight、ROIまで触れており、本文で実践的な設計パターンが出てきそうです。9はメール→タスク変換など再現しやすい定型ワークフローの見込みが高いです。5はやや一般論寄りですが、ChatGPT APIで業務プロセス自動化という技術的な具体例に展開される可能性があるため候補に残しました。",
+    "adoption_score": 89,
+    "workflow_signature": "業務タスク棚卸し・評価データ→AIで優先順位付け・自動化設計→高頻度/低リスク業務を選定してpilot実施",
+    "evaluation_reason": "本文から、何を入力にし、AIが何を担い、どう評価・導入するかがかなり明確です。単なる概念論ではなく、6要素評価、ワークフロー構成要素、ROI指標、ガバナンス、導入手順まで示されており、個人事業や小規模事業で再現しやすい実務フレームとして有用です。特定業種に閉じず、問い合わせ対応、運用、営業、文書処理、個人業務などへ横展開しやすい点も高評価です。重複も、過去事例のような個別自動化レシピ群とは異なり、むしろそれらを選定・統制する上位フレームとして位置づきます。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 10
+    }
   }
 ]
