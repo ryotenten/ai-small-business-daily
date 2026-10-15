@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nで複数ツールを束ねるAIエージェントワークフローを作る | AI Small Business Daily</title>
+<meta name="description" content="この事例は、複数の作業をバラバラの自動化に分けず、1つのAIエージェントを中心にまとめたワークフローです。入力内容を受けたAIが、状況に応じて使うツールを選び、タスク作成、メール下書き、調査、シート更新などを振り分けます。記事から確認できるのは、n8n上でチャット、Webhook、セッション管理、各">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.16</div>
+    <h1>n8nで複数ツールを束ねるAIエージェントワークフローを作る</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>ノーコード/ローコード自動化、AIエージェント構築<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、複数の作業をバラバラの自動化に分けず、1つのAIエージェントを中心にまとめたワークフローです。入力内容を受けたAIが、状況に応じて使うツールを選び、タスク作成、メール下書き、調査、シート更新などを振り分けます。記事から確認できるのは、n8n上でチャット、Webhook、セッション管理、各種ツール連携を組み合わせた構成です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる範囲では、課題は「用途ごとに別々の自動化を作ると複雑になること」でした。そこで、複数サービスへの操作を1つのエージェントに集約し、依頼内容を見て適切な処理に振り分けられる形へ変えています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力: チャットメッセージ、Retrieve Deep Research用のWebhook、その他Webhook経由の依頼。</p><p>↓</p><p>前処理: SetSessionID、SetResearchID、ToolCallでセッションや依頼単位の状態を管理。</p><p>↓</p><p>AIによる処理: 中心となるAI Agentが依頼内容を解釈し、必要なツールを選択。OpenAI Modelで推論し、Memoryで会話文脈を保持。Calculatorで計算、Google Sheetsの読み書き、Gmailの送信・下書き、Task管理、Deep Researchの取得/実行、Shopping Listの取得/追加/更新、CreateHTMLやEdit Fieldsで出力整形を担当。</p><p>↓</p><p>次のシステム・処理: 選ばれた各ツールやノードが実行され、必要に応じて外部サービスを更新。</p><p>↓</p><p>出力: チャット応答、Webhook応答、スプレッドシート更新、メール下書きや送信、タスク作成・更新、調査結果、買い物リスト更新など。</p><p>↓</p><p>人間による確認・最終作業: 記事では詳細な承認フローは確認できませんが、少なくともGmailの下書き作成や調査結果の受け取りなど、人が確認して使う余地がある構成です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内では売上や時間短縮の数値は確認できません。確認できる効果は、複数の手作業を1つの流れにまとめたこと、タスク・調査・メール・シート更新を横断的に扱えること、そしてセッション管理により依頼単位の追跡がしやすくなったことです。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIに「すべてをやらせる」のではなく、判断と振り分けを担う中心役として置き、実作業は各ツールに分担させている点です。これは私の分析ですが、役割分担が明確だと、AIの得意な曖昧な依頼理解と、外部サービスの確実な実行をつなぎやすくなります。さらに、セッションIDや研究IDをAI本体の外で管理しているため、制御ロジックを変えやすい構造になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは3つあります。1つ目は、入力窓口をチャットとWebhookに分けておくこと。2つ目は、ID管理や状態管理をAIの外に置き、保守しやすくすること。3つ目は、ツールを増やしすぎると判断ミスが増えやすいので、機能ごとに分けることです。記事中でも、タスク管理や調査をサブワークフロー化して個別に呼び出す考え方が示されています。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次の形が実装しやすいです。</p><p>1. 入力を集める: Gmail、Slack、フォーム、Webhook、チャットボットから依頼を受ける。</p><p>2. AIへ渡す: 依頼文と必要な補助情報をOpenAI APIやChatGPTに渡し、「分類」「要約」「必要ツールの選択」「下書き作成」をさせる。</p><p>3. 分岐する: たとえば『タスク作成』『メール返信』『調査』『表計算更新』を別ワークフローに分ける。</p><p>4. 出力先へ反映する: Google Sheetsに記録、Gmailに下書き保存、NotionやExcelに追記、SlackやPushoverで通知。</p><p>5. 人間が確認する: 送信前メール、重要タスク、調査結果は承認してから確定する。</p><p>仕事への応用例:</p><p>- 受信メールの一次処理: Gmailから件名と本文を取得→AIが「要返信/保留/タスク化」に分類→Gmail下書き、Todoist/Asana/Notionへ登録→人が確認して送信。</p><p>- 問い合わせ対応: フォーム送信内容をWebhookで受信→AIが内容要約とカテゴリ分け→FAQ候補を生成→Slack通知とGoogle Sheets記録→担当者が最終回答。</p><p>- 調査メモ整理: Webや社内資料の要点をAIが要約→タグ付け→NotionやExcelへ保存→必要なら追加調査を別ワークフローで実行。</p><p>- 営業支援: 顧客情報をスプレッドシートから読み込み→AIが提案文を作成→Gmail下書き生成→担当者が確認して送信。</p><p>個人利用の応用例:</p><p>- 買い物リスト管理: 音声メモやチャット入力→AIが品目を正規化・重複整理→Google Sheetsや買い物リストアプリへ追加→買い物前に一覧通知。</p><p>- 旅行準備: 行き先・日程・持ち物を入力→AIが持ち物候補を整理→チェックリストを作成→NotionやSheetsに保存→出発前にリマインド。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、実運用の承認フロー、エラー時の再試行、ログ監査、権限管理、個人情報の扱いは確認できません。ツール数が増えるほど、誤ったツール選択や意図しない更新が起きやすいので、重要な操作は人間確認を挟むべきです。Gmail、Sheets、タスク管理、研究データを扱うため、機密情報や個人情報の入力範囲にも注意が必要です。サブワークフロー化は保守性に有効ですが、設計が増える分だけ構成管理は複雑になります。</p>
+
+    <h2>参考記事</h2>
+    <p>Building a Multi-Tool AI Agent Workflow in n8n</p>
+    <p class="source">
+      <a href="https://community.n8n.io/t/building-a-multi-tool-ai-agent-workflow-in-n8n/299574?tl=en"
+         target="_blank" rel="noopener noreferrer">
+        https://community.n8n.io/t/building-a-multi-tool-ai-agent-workflow-in-n8n/299574?tl=en
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

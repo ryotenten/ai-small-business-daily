@@ -1254,5 +1254,27 @@
       "applicability": 13,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-10-16",
+    "date_display": "2026.10.16",
+    "company_name": "記事から確認できません",
+    "headline": "n8nで複数ツールを束ねるAIエージェントワークフローを作る",
+    "title": "Building a Multi-Tool AI Agent Workflow in n8n",
+    "url": "https://community.n8n.io/t/building-a-multi-tool-ai-agent-workflow-in-n8n/299574?tl=en",
+    "article_filename": "2026-10-16.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-16.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "本文を読む価値が高い順に、実際の構築手順や具体的な業務フローに近いものを優先しました。1はn8nでのマルチツール・マルチエージェント実装で、入力→AI処理→外部ツール実行の流れが最も具体的そうです。0は初心者向けのAIエージェント/ワークフロー導入相談で、実例や構成比較が含まれる可能性があります。2はYouTubeですが、Gumloopでの実演は個人でも再現しやすいワークフローの手がかりになりやすいです。8は業界別のAIエージェント事例で、抽象寄りでも業務適用の具体例が見つかる可能性があります。9はビジネスワークフローにおけるAIエージェントの動き方を整理した記事で、再現可能な処理分解の参考になりそうです。",
+    "adoption_score": 82,
+    "workflow_signature": "チャット/Webhook/ID管理→AIエージェントがツール選択・実行・状態管理→各種業務操作（タスク/メール/シート/調査）",
+    "evaluation_reason": "単一のAIエージェントに複数ツールを持たせ、チャット・Webhook・セッションID管理を起点に、タスク管理、Gmail、Sheets、深掘り調査、計算などを実行する構成が本文から確認できます。入力→AI処理→出力の流れが具体的で、n8nや一般的なAPI連携で再現しやすいです。用途は業務横断ですが、構造自体は『入力を受けて適切なツールを選択し、状態を保持しながら処理する』という汎用性が高く、問い合わせ対応、社内オペレーション、個人アシスタントなどへ転用可能です。注意点としてはツール数が増えると意思決定精度が落ちやすい、という実装上の示唆も本文にあり、単なる概念紹介ではなく運用上の学びが含まれています。定量成果はありませんが、実装経験ベースで具体性は十分です。過去事例の『メール→AI要約→記録/返信』系とは入力・処理・出力の中心が異なり、重複度も低めです。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
