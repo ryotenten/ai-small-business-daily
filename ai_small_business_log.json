@@ -1276,5 +1276,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-17",
+    "date_display": "2026.10.17",
+    "company_name": "記事から確認できません",
+    "headline": "LLMに直接実行させない：AIの判断と業務ルールを分離する自動化ワークフロー",
+    "title": "A Practical Pattern for Reliable AI Business Automation",
+    "url": "https://community.openai.com/t/a-practical-pattern-for-reliable-ai-business-automation/1401619",
+    "article_filename": "2026-10-17.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-17.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "検索結果だけでも、本文に具体的な入力→AI処理→出力→人手確認の流れがありそうで、かつ小規模でも再現しやすい候補を優先しました。1と2はOpenAI APIを使った実運用の業務自動化・SMB向け設計で、具体ワークフローが出てきやすいです。0は低コード+AI Builder+OpenAI APIの組み合わせで、文書/業務処理の再現性が高そうです。9はソロプレナーのモジュール型エージェント実装で、実務応用の切り口が具体化しやすそうです。13は『persistent production system』でのOpenAI API活用例が示唆され、単なる概念説明より実装詳細が見つかる可能性があります。",
+    "adoption_score": 84,
+    "workflow_signature": "非構造化業務入力→AIで分析・構造化→検証後に業務ルールへ連携して実行",
+    "evaluation_reason": "採用。本文から、AIに非構造化入力の理解・分析を担当させ、出力を構造化してから検証し、その後に決定的な業務ロジックやアクションへ渡す、という実用的な自動化パターンが明確に確認できる。特定業界専用ではなく、問い合わせ、リード処理、申請、受注、社内承認など多くの業務に横展開しやすい。再現も一般的なLLM API、JSON出力、バリデーション、条件分岐、人手確認で組めるため高い。定量成果や実装詳細はないが、本文には実際の運用方針と失敗時のリトライ・再確認・人手エスカレーションの考え方があり、単なる概念論よりは信頼できる。過去保存事例の中に完全一致するものはなく、入力・AI処理・出力の型としては別物として扱える。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 14,
+      "reliability": 7
+    }
   }
 ]
