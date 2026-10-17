@@ -1298,5 +1298,27 @@
       "applicability": 14,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-10-18",
+    "date_display": "2026.10.18",
+    "company_name": "記事から確認できません",
+    "headline": "運用業務のAIエージェント化：要約・振り分け・異常検知を人の判断と分けて回す方法",
+    "title": "AI Agents for Operations: Practical Workflows That Stay ...",
+    "url": "https://www.crossclassify.com/resources/articles/ai-agent/ai-agents-for-operations-secure-workflows/",
+    "article_filename": "2026-10-18.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-18.html",
+    "search_query": "\"AI agent\" practical workflow business",
+    "selection_reason": "1はGmail→AI→Google Sheetsの具体的な流れがタイトルと説明から明確で、個人/小規模でも再現しやすい可能性が高いです。2はn8n・Postman・Google Sheets・Gmailを使ったリード管理で、入力→AI処理→出力の実務ワークフローが想像しやすいです。3はGoogle Workspace StudioでGmail/Sheets連携の定型業務自動化が示唆され、本文に具体例が多そうです。8はQA業務でChatGPTをどう組み込むかが具体的で、テストや不具合文面の改善など再現性が高そうです。10は失敗ケースの要約・振り分けなど運用寄りで、実務での分岐設計や人手レビューとの併用が読めそうなので選びました。",
+    "adoption_score": 76,
+    "workflow_signature": "業務イベント・例外情報→AIで要約・分類・ルーティング案作成→担当者通知・人手レビュー",
+    "evaluation_reason": "本文から、運用業務の中でAIが何をするかがかなり具体的に確認できます。主な使い方は、更新収集、異常ケースの検知、担当者振り分け、会議前の情報整理、フォームや文書の要約、滞留タスクの追跡などで、出力も「要約・推薦・ルーティング」が中心です。一般的なLLM、メール/Slack、表計算、チケット管理、簡単な自動化基盤で再現しやすく、営業、CS、バックオフィス、監査、物流、採用などに横展開しやすい構造です。実用面でも、手作業の振り分けや例外確認、報告作成の負荷を減らす効果が見込めます。一方で、記事の多くはセキュリティやリスク説明、製品訴求が中心で、実装手順や運用実績の粒度はやや浅めです。とはいえ、本文中に具体的なワークフロー例は明示されているため採用基準は満たします。重複についても、過去事例の多くはメール要約や定型返信、Sheets連携などですが、本件は運用例外のルーティングとリスク監視が中心で、入力・処理・出力の組み合わせは十分に異なります。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 20,
+      "usefulness": 19,
+      "applicability": 12,
+      "reliability": 4
+    }
   }
 ]
