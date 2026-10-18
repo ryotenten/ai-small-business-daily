@@ -1320,5 +1320,27 @@
       "applicability": 12,
       "reliability": 4
     }
+  },
+  {
+    "date": "2026-10-19",
+    "date_display": "2026.10.19",
+    "company_name": "記事から確認できません",
+    "headline": "Google Sheetsの行を起点に、ChatGPT生成・Gmail送信までつなぐ自動化ワークフロー",
+    "title": "Google Sheets integration | Workflow automation",
+    "url": "https://www.make.com/integrations/google-sheets",
+    "article_filename": "2026-10-19.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-19.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、検索結果だけでも『入力→AI処理→出力→人手の最終確認』が想像しやすく、Gmail/Sheets/業務文書/日常業務との接続が見えるものです。0はGoogle Sheets連携の実運用寄りで、メール送信などの具体的な自動化が示唆されます。1はGmail・Sheetsを使うWorkspace系ワークフローで、小規模でも再現しやすい可能性があります。7は契約確認、会議準備、提案書作成、クレーム調査など複数の実務ワークフローが並んでおり、本文で具体フローを確認する価値が高いです。8はGoogle Sheets連携のAIワークフロー集で、表計算を起点にした再現可能な実務例が見つかりやすそうです。3は動画ベースですが、コンテンツ再利用・広告文・LP作成の自動化が示されていて、個人や少人数チームへの応用余地があります。",
+    "adoption_score": 82,
+    "workflow_signature": "スプレッドシート行・Webhook・外部データ→AIで生成・要約・分類・抽出→シート記録・メール送信・他ツール連携",
+    "evaluation_reason": "本文で、Google Sheetsを起点にした具体的な自動化例（新規行からGmail送信、Webhook受信から行追加、Sheets行からChatGPT生成、Facebook Lead Ads連携など）が確認でき、入力・AI処理・出力の流れが明確です。Makeのシナリオ/モジュール/マッピングという実装概念も示されており、個人や中小企業が一般的なツールで再現しやすいです。用途はシートを業務ハブにする汎用パターンで、営業、問い合わせ管理、データ記録、通知、コンテンツ生成などへ横展開しやすく実用性も高いです。企業独自の成果事例ではなくテンプレート紹介寄りなので信頼性は中程度ですが、実際のワークフロー説明は十分あります。既存の保存事例と比べても、主な入力・AI処理・後続アクションは広義には似るものの、Sheets中心の自動化テンプレート集として独立採用できる範囲です。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 23,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 7
+    }
   }
 ]

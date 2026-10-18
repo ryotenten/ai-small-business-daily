@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Sheetsの行を起点に、ChatGPT生成・Gmail送信までつなぐ自動化ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="記事で確認できるのは、Google Sheets を Make の自動化シナリオに接続し、表の行や外部イベントを起点に他アプリへ処理を流せることです。人手での転記、式の入力、連絡先の同期、メール送信といった定型作業を減らし、データをシートで集めながら次の処理へ渡す使い方が紹介されています。実際の事例">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.19</div>
+    <h1>Google Sheetsの行を起点に、ChatGPT生成・Gmail送信までつなぐ自動化ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>スプレッドシート連携を使った業務自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>記事で確認できるのは、Google Sheets を Make の自動化シナリオに接続し、表の行や外部イベントを起点に他アプリへ処理を流せることです。人手での転記、式の入力、連絡先の同期、メール送信といった定型作業を減らし、データをシートで集めながら次の処理へ渡す使い方が紹介されています。実際の事例としては、Google Sheets の新しい行をトリガーに Gmail を送る、Webhook から受けたデータをシートに追記する、Google Sheets 行から ChatGPT の生成結果を作るテンプレートが挙げられています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、スプレッドシートへの手入力や、行が増えるたびの後続処理を人手で回す手間です。たとえば、連絡先の追加、計算の同期、メール送信、外部フォームやWebhookから来たデータの記録を毎回手作業でやると、入力漏れや対応遅れが起きやすい、という前提が読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【記事で確認できる実例】</p><p>入力: Google Sheets の新しい行、または Webhook で受けたデータ</p><p>↓</p><p>AI/自動化による処理: Make のシナリオがデータを受け取り、必要に応じて ChatGPT に渡して生成処理を行う。記事では、Google Sheets 行から SEO キーワードやカスタム応答を生成するテンプレートが紹介されている</p><p>↓</p><p>次のシステム・処理: 生成結果や受信データを Google Sheets に保存、または Gmail 送信など別アプリへ連携</p><p>↓</p><p>出力: シート内の追記、計算結果の同期、Gmail メッセージ送信、ダッシュボード用データの整形</p><p>↓</p><p>人間による確認・最終作業: 何を送るか、どの列を使うか、どの条件で発火するかはユーザーが設定する。記事からは、最終確認を人が行う運用かどうかは確認できません。</p><p>【役割の分解】</p><p>- 抽出: 受信したデータやシートの列を読み取る</p><p>- 生成: ChatGPT を使って文章やキーワードを生成するテンプレートがある</p><p>- 連携: Gmail、Webhook、Facebook Lead Ads など他サービスへつなぐ</p><p>- 変換: モジュール間でデータをマッピングし、必要な列を渡す</p><p>【記事から確認できる範囲の具体例】</p><p>- Google Sheets の新規行 → Gmail 送信</p><p>- Webhook 受信 → Google Sheets へ新規行として追加</p><p>- Google Sheets 行 → ChatGPT で生成 → 何らかの出力に利用</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上などの数値成果は確認できません。確認できる効果は、手入力の削減、データ同期の自動化、メール送信の自動化、外部データの即時記録、作業の標準化です。特に、シートを中心に複数アプリのやり取りをまとめることで、転記ミスや対応漏れを減らせる可能性があります。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>これは分析ですが、Google Sheets は多くの現場で共通のデータ置き場として使われやすく、Make のシナリオと組み合わせると「入力されたら次へ進む」という単純な条件を作りやすいからです。さらに、行・列という構造があるため、AI に渡す対象と出力先を定義しやすく、生成結果をそのまま次の処理に流し込みやすい点が有効だと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- スプレッドシートは単なる記録表ではなく、自動化の起点にもなる</p><p>- AI は「考える部分」だけでなく、列の内容をもとに文章や分類結果を作る役割に向く</p><p>- まずは1本の流れ（例: 新規行→メール送信）から作ると再現しやすい</p><p>- モジュール単位でつなぐと、入力・変換・出力を後から差し替えやすい</p><p>- 人手作業を完全置換するより、「記録は自動、最終判断は人」の分担が作りやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら: 基本フロー】</p><p>1. Google Forms、Webhook、CSV取り込み、手入力シートなどからデータを取得する</p><p>2. Make、Zapier、Python、Google Apps Script などで Google Sheets に保存する</p><p>3. 必要な列だけを ChatGPT / OpenAI API に渡し、要約、分類、返信文案、タグ付け、キーワード生成をさせる</p><p>4. 生成結果を Google Sheets に書き戻す、または Gmail / Slack / Notion / Excel に出力する</p><p>5. 最後に人が確認して送信・公開・確定する</p><p>【仕事への応用例】</p><p>- 問い合わせ一次仕分け</p><p>- 入力: フォーム送信内容を Google Sheets に保存</p><p>- AI処理: 問い合わせ内容を「営業」「サポート」「請求」などに分類し、返信文案を生成</p><p>- 出力: 担当列をシートに追記し、Slack に通知</p><p>- 人間: 返信前に内容を確認して送信</p><p>- 見込み客管理</p><p>- 入力: Facebook Lead Ads や Webhook の新規リード</p><p>- AI処理: 会社名・業種・要望を要約し、優先度を付ける</p><p>- 出力: Google Sheets に追記し、Gmail で担当者へ通知</p><p>- 人間: 優先度の妥当性を確認してフォロー開始</p><p>- コンテンツ下書き生成</p><p>- 入力: Sheets に入れた商品名、見出し、要点</p><p>- AI処理: SEOキーワード案、説明文、短い投稿文を生成</p><p>- 出力: Sheets に下書きを保存し、WordPress や Notion に転記</p><p>- 人間: 文面の事実確認と最終編集</p><p>- 定型連絡の自動化</p><p>- 入力: 期限やステータスが入ったシート行</p><p>- AI処理: 状況に応じたメール文面を作成</p><p>- 出力: Gmail で送信準備、または下書き保存</p><p>- 人間: 宛先と内容を確認して送信</p><p>【個人利用の応用例】</p><p>- 家計メモの補助</p><p>- 入力: レシート金額を Sheets に記録</p><p>- AI処理: 支出を食費・交通費・娯楽費に分類</p><p>- 出力: 集計表に反映し、月末に要約を表示</p><p>- 人間: 分類の修正だけ行う</p><p>- 旅行準備リスト</p><p>- 入力: 行き先、日数、季節を Sheets に入力</p><p>- AI処理: 持ち物案と日程別のチェックリストを生成</p><p>- 出力: Sheets または Notion に保存</p><p>- 人間: 不要品を削って確定する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、実際の導入企業名、業界、規模、運用体制、効果の数値は確認できません。また、AI の生成内容をどこまで自動承認しているか、最終確認を人が行っているかも不明です。実運用では、メール送信先や本文の誤り、個人情報や機密情報の取り扱い、Webhook の重複受信、AI の誤分類・誤生成に注意が必要です。さらに、Make のモジュール設定やマッピングの設計が不十分だと、意図しない列に書き込んだり、誤った条件で送信したりする可能性があります。</p>
+
+    <h2>参考記事</h2>
+    <p>Google Sheets integration | Workflow automation</p>
+    <p class="source">
+      <a href="https://www.make.com/integrations/google-sheets"
+         target="_blank" rel="noopener noreferrer">
+        https://www.make.com/integrations/google-sheets
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
