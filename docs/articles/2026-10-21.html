@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8nとOpenAI APIで、手作業の要約・分類・文章生成を自動化するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事では、AIを使いたいけれど「プログラミングが難しそう」「APIがよく分からない」と感じる人向けに、n8nとOpenAI APIをつないでAIワークフローを作る方法を説明しています。中心になるのは、n8nからOpenAIに指示を送り、要約や文章生成などの処理結果を受け取る流れです。実例としては">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.21</div>
+    <h1>n8nとOpenAI APIで、手作業の要約・分類・文章生成を自動化するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>n8nを使った業務自動化／AIワークフロー構築<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事では、AIを使いたいけれど「プログラミングが難しそう」「APIがよく分からない」と感じる人向けに、n8nとOpenAI APIをつないでAIワークフローを作る方法を説明しています。中心になるのは、n8nからOpenAIに指示を送り、要約や文章生成などの処理結果を受け取る流れです。実例としては、Basic LLM ChainやOpenAIノードを使って、入力した内容をAIに処理させ、指定した形式で返すところまで確認できます。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事内で示されている課題は、AIを仕事に取り入れたい人が多い一方で、プログラミング知識がなく、APIの使い方も難しく感じていることです。手作業で文章をまとめたり、AIの出力を整えたりする負担を減らしたい、という前提があります。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- n8nのトリガーで手動実行、またはワークフロー内で前段ノードから受け取ったテキストを入力</p><p>- 例として記事では、Basic LLM Chainにユーザー入力のプロンプトを渡す構成が紹介されています</p><p>↓</p><p>AIによる処理</p><p>- OpenAI APIに対して、要約・回答・文章生成などの処理を依頼</p><p>- Basic LLM Chainでは、初心者でも扱いやすい形でプロンプトを送信</p><p>- OpenAIノードでは、より細かい設定やシステムプロンプトを使った制御が可能</p><p>- 出力形式をJSONのような構造化形式に指定する設定も可能</p><p>↓</p><p>次のシステム・処理</p><p>- n8n内でOpenAI APIの認証情報を使って接続</p><p>- 必要に応じてOutput Parserをつなぎ、返答形式を整える</p><p>- ほかのノードへ値を渡して、次の処理に接続する</p><p>↓</p><p>出力</p><p>- 要約文、タグ、整形済みテキストなどをn8nに返す</p><p>- 記事では、設定した出力形式に沿って結果が返ることが確認されています</p><p>↓</p><p>人間による確認・最終作業</p><p>- workflowの実行結果を確認</p><p>- 必要なら返答内容を人間が修正、採用、または次工程へ進める</p><p>- 具体的な運用として「自動送信」まで行っているかは記事からは確認できません</p><p>補足</p><p>- 記事では、Basic LLM Chainが初心者向け、OpenAIノードが高機能向けとして整理されています</p><p>- さらに、本文中では「タイトルと説明を渡してタグを生成する」ような使い方が示されています</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では、金額ベースの成果や導入前後の比較数値は示されていません。確認できる効果としては、n8nからOpenAIを呼び出してAI処理を自動化できること、構造化された出力を得られること、初心者でもAPI利用の流れを再現しやすいことが挙げられます。あわせて、APIキーや月額利用上限を設定することで、想定外の課金を避けやすくなる点も実務上の効果です。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、AIそのものを直接使うのではなく、n8nが入力の受け取り、OpenAIへの送信、出力の受け渡しを橋渡ししているからです。分析として言えば、APIを経由することで処理を定型化でき、毎回同じルールで要約や生成を回せるため、人手のばらつきを減らしやすい構成になっています。さらに、Basic LLM Chainのような簡易ノードを用意することで、難しい設定を減らし、試作段階でも動かしやすくしています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AI活用は「AIに何をさせるか」だけでなく、「どの入力を渡し、どの形式で返すか」を決めると実用化しやすい</p><p>- 初心者は、まず簡単なノードで動かし、必要になったら高機能ノードへ進むとよい</p><p>- 返答を自由文のまま受け取るより、JSONなどの構造化出力にすると後工程へつなぎやすい</p><p>- APIキーの保管、月額上限、課金設定など、使い始めの安全設計が重要</p><p>- 人間が最終確認する前提にすると、誤出力や意図違いを業務に持ち込みにくい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 問い合わせメールの下書き作成</p><p>- 入力: Gmailやフォームに届いた問い合わせ本文</p><p>- AI処理: 内容を要約し、カテゴリ分けし、返信文の下書きを生成</p><p>- 出力: Google Sheetsに記録、Slackで担当者に通知</p><p>- 人間: 返信内容を確認して送信</p><p>2. 会議メモの整理</p><p>- 入力: Zoom録画の文字起こしや議事メモ</p><p>- AI処理: 要点、決定事項、ToDoを抽出</p><p>- 出力: NotionやExcelに保存</p><p>- 人間: 重要なタスクを確認して担当割り当て</p><p>3. 問い合わせの一次仕分け</p><p>- 入力: フォーム送信内容や問い合わせ本文</p><p>- AI処理: 緊急度、カテゴリ、担当部署候補を分類</p><p>- 出力: スプレッドシートに自動記録し、Slackへ通知</p><p>- 人間: 複雑な案件だけ確認して引き継ぎ</p><p>4. 商品説明文やSNS文案の作成</p><p>- 入力: 商品名、特徴、ターゲット、文字数条件</p><p>- AI処理: 複数パターンの文章を生成</p><p>- 出力: CSVやGoogle Sheetsに保存</p><p>- 人間: 採用文を選んで整える</p><p>プライベート応用例</p><p>1. 長文記事の要約ノート化</p><p>- 入力: Web記事やPDFのテキスト</p><p>- AI処理: 3行要約、重要ポイント、用語説明を作成</p><p>- 出力: Notionやメモアプリに保存</p><p>- 人間: 後で読み返して学習用に整理</p><p>2. 買い物メモの整形</p><p>- 入力: 乱雑なメモや音声文字起こし</p><p>- AI処理: 食材、日用品、優先順位に分類</p><p>- 出力: 買い物リストとして整形</p><p>- 人間: 実際の購入品を確認</p><p>3. 家族向け予定文の下書き</p><p>- 入力: 予定の日時、場所、持ち物</p><p>- AI処理: わかりやすい案内文に整形</p><p>- 出力: メールやチャットで送れる文面を生成</p><p>- 人間: 誤字や日程を確認して送信</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- この記事では、実際にどの業務で本番運用しているかは確認できません</p><p>- 成果の数値、導入前後の比較、利用頻度は示されていません</p><p>- どのデータソースと連携しているかは一部しか確認できず、詳細な運用設計は不明です</p><p>- APIキーは漏えいすると第三者に使われるため、公開リポジトリやチャットへの貼り付けは避ける必要があります</p><p>- AI出力は誤りや意図違いを含むことがあるため、特に外部送信や顧客対応では人間の確認が必要です</p><p>- 料金は従量課金のため、利用量が増えると想定外のコストになる可能性があります</p><p>- 出力をJSONなどで整える設定は有効ですが、実際のデータ項目設計は利用者側で詰める必要があります</p>
+
+    <h2>参考記事</h2>
+    <p>[AI Workflow Automation] Explaining how to build AI- ...</p>
+    <p class="source">
+      <a href="https://note.com/sakes9/n/n111ee34073d5?hl=en"
+         target="_blank" rel="noopener noreferrer">
+        https://note.com/sakes9/n/n111ee34073d5?hl=en
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

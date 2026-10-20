@@ -1364,5 +1364,27 @@
       "applicability": 14,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-21",
+    "date_display": "2026.10.21",
+    "company_name": "記事から確認できません",
+    "headline": "n8nとOpenAI APIで、手作業の要約・分類・文章生成を自動化するワークフロー",
+    "title": "[AI Workflow Automation] Explaining how to build AI- ...",
+    "url": "https://note.com/sakes9/n/n111ee34073d5?hl=en",
+    "article_filename": "2026-10-21.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-21.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "1はn8nとOpenAI APIを使った実装系で、本文に入出力や具体的な自動化手順が出る可能性が高いです。11はQA業務の中でChatGPTをどう挟むかが具体的で、個人でも再現しやすいワークフロー候補です。8は人気ワークフローの実例集として、本文に複数の具体パターンが載っていそうで発見価値があります。4は生成AIを業務自動化にどう組み込むかの整理記事で、実務ワークフローの分解例が見込めます。10はブラウザ自動化とChatGPTの組み合わせで、Gmailやフォーム操作などに応用しやすい再現可能な流れが期待できます。",
+    "adoption_score": 82,
+    "workflow_signature": "業務テキスト→AIで要約・構造化・出力形式整形→n8nで他ツール連携",
+    "evaluation_reason": "本文から、n8nでOpenAI APIを使い、Basic LLM ChainやOpenAIノードでプロンプト入力・モデル選択・Structured Output ParserによるJSON整形まで行う具体的な手順が確認できるため、再現性は高いです。実用面では、メールや文書、各種業務入力を要約・分類・整形して後続処理につなぐ基盤ワークフローとして長期的に使えます。用途自体はチュートリアル寄りですが、構造は問い合わせ対応、文書処理、タスク抽出、台帳登録などへ広く横展開できます。信頼性は、実装手順は明確だが成果事例や運用実績の裏付けは少ないためやや低めです。過去事例と入力・AI処理・出力が実質一致するものではなく、n8n/OpenAIの基本接続手順として別枠で残す価値があります。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 23,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 5
+    }
   }
 ]
