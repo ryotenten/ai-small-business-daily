@@ -1386,5 +1386,27 @@
       "applicability": 13,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-10-23",
+    "date_display": "2026.10.23",
+    "company_name": "記事から確認できません",
+    "headline": "スポーツ企業のマーケティング、医療機関の予約管理、ホテルの価格・接客をAIワークフロー化した事例",
+    "title": "AI Workflow Automation for Business: 2026 Guide",
+    "url": "https://www.tommasomariaricci.com/blog/ai-workflow-automation-business-guide",
+    "article_filename": "2026-10-23.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-23.html",
+    "search_query": "\"AI workflow\" automation \"how I\"",
+    "selection_reason": "優先したのは、本文を読むと『入力→AI処理→出力→人手確認』の流れや再現可能な業務フローが見えそうなものです。2はQA業務の具体的な使い方がありそうで、テスト設計・不具合文面の整形など再現性が高い候補です。0はツール比較寄りではあるものの、複数アプリをまたぐ自動化の実例や設計思想が本文にありそうです。7はアプリ連携や実務フローの具体例が含まれる可能性が高く、仕事での再現性が期待できます。5はガイド記事ですが、ビジネス業務のワークフロー設計や導入手順が整理されていそうで、実務応用のヒントが得られる可能性があります。1はSNS投稿で粒度に不安はあるものの、『ChatGPTで業務をどう回すか』の実例が含まれる可能性があり、少人数事業の再現例として確認価値があります。",
+    "adoption_score": 84,
+    "workflow_signature": "業務プロセス棚卸し→AIで優先度・価値・複雑性を評価し候補を選定→Pilot実施とROI計測",
+    "evaluation_reason": "本文から、単なる概論ではなく「どの業務をどう優先して自動化するか」を判断する実務ワークフローが確認できる。入力は業務プロセスの棚卸し情報や現状の工数・エラー率・事業インパクト、AIの主要処理は自動化候補の評価・優先順位付け・階層分け、出力はpilot対象の選定とROI計測という形で明確。メール処理や要約などの単発自動化ではなく、複数業種に横展開できる上位設計のワークフローなので応用可能性も高い。再現に必要な考え方も、一般的な表計算、業務棚卸し、AI分析、Zapier/n8n等で十分実装可能で、個人や中小企業にも適用しやすい。実例や手順の記述もあり、広告一辺倒ではないため信頼性は中程度以上。ただし、後半が途中で切れており、ROI算定や運用詳細の一部は未確認なので満点にはしない。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]
