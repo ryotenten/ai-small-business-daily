@@ -1408,5 +1408,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-10-24",
+    "date_display": "2026.10.24",
+    "company_name": "記事から確認できません（投稿者はJonathan Rhine, MBA）",
+    "headline": "ChatGPTのAgent Modeで、複数Excelファイルを扱う定型ワークフローを自動化した話",
+    "title": "How I automated a workflow with ChatGPT's Agent Mode",
+    "url": "https://www.linkedin.com/posts/jonathanrhine_ai-workflowautomation-transformation-activity-7365493796538654723-ZEq9",
+    "article_filename": "2026-10-24.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-24.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "1位は0。Zapier/Make等で営業フォロー・メール・日程調整を自動化するソロプレナー向け事例で、入力→AI処理→出力→人手確認の流れが想像しやすく再現性が高そうです。2位は1。ChatGPT Agent Modeで1本の業務フローを自動化した個人体験で、本文に具体的な手順やツール連携がある可能性が高いです。3位は4。コンテンツ戦略を丸ごとAI化した実例で、入力素材の収集→生成→配信までのワークフローが具体化されていそうです。4位は3。ChatGPTとZapierの組み合わせは再現性が高く、実務で使える定型自動化の具体例が本文にある可能性があります。5位は2。ブラウザ自動化＋AIエージェントでChatGPT操作自体を自動化する話はやや尖っていますが、一般業務への応用余地があり、具体ワークフローの確認価値があります。",
+    "adoption_score": 79,
+    "workflow_signature": "複数Excelファイルとルール→AIでコード生成・実行テスト・改善→安定した精密出力を生成",
+    "evaluation_reason": "本文から、標準LLMでは不安定だった複数Excelファイル処理を、Agent Modeの実行環境でコードを生成・テスト・ सुधारする反復ループに切り替えて、再現性のある出力を得たことが確認できる。入力・処理・出力の骨格が明確で、一般的なファイル処理、ルールベース変換、バッチ整形、検算付き自動化へ横展開しやすい。具体的な実装手順や対象業務の細部は少ないが、AIの使い方自体は本文で確認でき、単なる概念論ではないため採用可。",
+    "score_detail": {
+      "specificity": 19,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 11,
+      "reliability": 9
+    }
   }
 ]

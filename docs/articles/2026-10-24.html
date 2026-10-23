@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPTのAgent Modeで、複数Excelファイルを扱う定型ワークフローを自動化した話 | AI Small Business Daily</title>
+<meta name="description" content="この事例は、複数のExcelファイルをまたぎ、ルールに従って正確な出力を作る作業をAIで安定化しようとしたものです。通常のLLMでは結果がばらつき、詳細な指示を出しても再現性が低かったため、処理を実行・検証できる環境に移した点が転機でした。投稿では、その環境としてChatGPTのAgent Mode">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.24</div>
+    <h1>ChatGPTのAgent Modeで、複数Excelファイルを扱う定型ワークフローを自動化した話</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（投稿者はJonathan Rhine, MBA）<br>
+      <strong>業種：</strong>複数Excelファイルを扱う業務の自動化・AIワークフロー構築<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、複数のExcelファイルをまたぎ、ルールに従って正確な出力を作る作業をAIで安定化しようとしたものです。通常のLLMでは結果がばらつき、詳細な指示を出しても再現性が低かったため、処理を実行・検証できる環境に移した点が転機でした。投稿では、その環境としてChatGPTのAgent Modeを使い、コード生成とテスト、修正を繰り返して一貫した結果に近づけたと述べています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前の課題は、複数のExcelファイルを扱う定型作業において、標準的なLLMの出力が安定しなかったことです。詳細なプロンプトを与えても、結果が大きくぶれ、正しい場合もあれば明らかに誤っている場合もあり、再現性がなかったと確認できます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【元記事で確認できるワークフロー】</p><p>入力</p><p>- 複数のExcelファイル</p><p>- ルールがある、精密さが必要な業務データ</p><p>↓</p><p>AIによる処理</p><p>- ChatGPTのAgent Modeがコードを生成する</p><p>- 生成したコードを実行する</p><p>- 結果をテストする</p><p>- 必要に応じてコードを修正し、改善する</p><p>- ルールに沿った一致した出力を得るまで反復する</p><p>↓</p><p>次のシステム・処理</p><p>- 記事本文では具体的な外部システム連携先は確認できません</p><p>- 少なくとも、AIが“考えるだけ”ではなく“実行して検証する”環境に置かれていたことは確認できます</p><p>↓</p><p>出力</p><p>- 一貫性のある結果</p><p>- ルールに沿った、精密な出力</p><p>↓</p><p>人間による確認・最終作業</p><p>- 人間が最終的に確認したかどうか、どの段階で承認したかは記事からは確認できません</p><p>- ただし、投稿の文脈上、人間がワークフロー設計と検証結果を見ながら進めたと考えるのが自然です（これは推測ではなく一般的な運用上の解釈です）</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、金額ではなく品質と再現性の改善です。標準LLMではばらついていた出力が、Agent Modeではコードの生成・実行・テスト・修正を回すことで、一貫した結果に近づいたと述べています。時間削減や工数削減の具体的な数値は確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この方法が機能した理由は、AIの役割を“文章を返すだけ”から“実行して結果を確かめる”形に変えたことにあります。分析としては、ルールが厳密な処理では、生成だけのLLMよりも、テストと修正のループを持つ実行環境のほうが安定しやすいからです。とくにExcelのような構造化データでは、コード化して同じ手順を繰り返せることが再現性につながります。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・曖昧な文章生成だけではなく、AIにコード生成と検証を任せると定型作業は安定しやすい</p><p>・複数ファイル、厳密なルール、正確な出力が必要な仕事ほど、実行とテストのループが重要</p><p>・AIの強みは“答えを言う”ことより、“直していける作業手順を回す”ことにある</p><p>・再現性が必要な業務では、プロンプトの工夫だけでなく、実行環境そのものを変える発想が有効</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら】</p><p>1. データを取得</p><p>- Excel、Google Sheets、CSV、社内DB、フォーム回答を集める</p><p>2. AIへ渡す</p><p>- ChatGPTのAgent Mode、またはOpenAI API＋Pythonでデータとルールを渡す</p><p>- 例: &quot;未処理の行だけを抽出し、ルールA/B/Cに従って分類して&quot;</p><p>3. AIで処理</p><p>- 分類、抽出、整形、重複検出、ルール適合チェック、コード生成を担当させる</p><p>- 必要ならPythonで実行し、テストデータで検証する</p><p>4. Excel/Google Sheets/DBへ保存</p><p>- 処理結果を新しいシート、CSV、Notion、Airtable、PostgreSQLなどへ書き戻す</p><p>5. 通知</p><p>- Slack、メール、Pushover、GitHub Actionsで処理完了やエラーを通知する</p><p>6. 人間が確認</p><p>- 例外行だけ目視確認し、最終承認する</p><p>【仕事への応用例】</p><p>- 経理補助: 請求書CSVを読み込み、金額・日付・取引先を抽出して仕訳候補を作成し、Excelに出力して人が確認する</p><p>- 営業事務: 問い合わせ一覧を読み込み、内容をカテゴリ分けして担当者別シートに振り分け、Slackへ通知する</p><p>- 人事・総務: 応募者情報や社内申請をルールに沿って分類し、差分や不備だけを一覧化して人が承認する</p><p>- 品質管理: 検査記録を読み込み、規格外の値を抽出してレポート化し、再検査対象を自動でリスト化する</p><p>【プライベート応用例】</p><p>- 家計管理: 銀行明細CSVを読み込み、支出カテゴリを自動分類して家計簿に反映し、異常支出だけ通知する</p><p>- 旅行計画: 候補の宿・移動手段・予算を表にしてAIに比較させ、比較表を作って最終的に自分で選ぶ</p><p>- 収集メモ整理: 受信したメールやメモをテーマ別に分類し、NotionやGoogle Sheetsへ保存する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>・記事からは、具体的な入力ファイル形式、処理手順、出力先、使用したコードやテンプレートは確認できません</p><p>・数値成果、処理件数、削減時間、導入規模は不明です</p><p>・Agent Modeがどの程度自動で完結したか、どこで人が介入したかは不明です</p><p>・Excelファイルや業務データを扱うため、個人情報や機密情報の取り扱いには注意が必要です</p><p>・AIが生成したコードは誤りや想定外の変更を含む可能性があるため、検証環境と人間の最終確認が必要です</p><p>・ルールが厳密な業務では、例外データや境界条件を必ずテストしないと誤判定が残る可能性があります</p>
+
+    <h2>参考記事</h2>
+    <p>How I automated a workflow with ChatGPT&#x27;s Agent Mode</p>
+    <p class="source">
+      <a href="https://www.linkedin.com/posts/jonathanrhine_ai-workflowautomation-transformation-activity-7365493796538654723-ZEq9"
+         target="_blank" rel="noopener noreferrer">
+        https://www.linkedin.com/posts/jonathanrhine_ai-workflowautomation-transformation-activity-7365493796538654723-ZEq9
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
