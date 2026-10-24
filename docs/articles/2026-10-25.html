@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI研究・要約を自動化するYou.comのマルチエージェント活用 | AI Small Business Daily</title>
+<meta name="description" content="調べものや情報整理は、集める・比べる・まとめる・書く、の工程が多くて時間がかかります。この事例では、複数のAIエージェントを役割分担させることで、情報探索から要約、文脈に合った出力までを支援する流れを目指しています。記事では、You.comのAI Research Platformが研究系ワークフロ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.25</div>
+    <h1>AI研究・要約を自動化するYou.comのマルチエージェント活用</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>You.com<br>
+      <strong>業種：</strong>テクノロジー / 検索・リサーチ支援<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>調べものや情報整理は、集める・比べる・まとめる・書く、の工程が多くて時間がかかります。この事例では、複数のAIエージェントを役割分担させることで、情報探索から要約、文脈に合った出力までを支援する流れを目指しています。記事では、You.comのAI Research Platformが研究系ワークフローに使われている例として紹介されていますが、具体的な実装手順の詳細までは確認できません。</p><p>記事から確認できる範囲では、テクノロジー領域でAIエージェントを使い、広い知識ソースから情報を取り出し、整理して、利用者に返す方向性が示されています。単体のチャットボットではなく、検索・分析・要約のような役割を分けたマルチエージェント型の考え方がポイントです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、知識ソースが多く、複雑なテーマを短時間で把握しにくいことです。人手だけでは情報収集、比較、要約に手間がかかり、調査のたびに同じ作業が発生しやすい点が前提にあります。You.comの例では、そうした知識労働を効率化する必要があったと読めますが、具体的な導入前フローの詳細は確認できません。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- ユーザーの調査テーマ、質問、キーワード</p><p>- 社内外の複数の知識ソース</p><p>↓</p><p>AIによる処理</p><p>- 検索エージェントが関連情報を取得</p><p>- 分析エージェントが内容を比較・整理</p><p>- 要約エージェントが論点を短くまとめる</p><p>- 必要に応じて、ユーザー意図に合わせた文章生成を行う</p><p>↓</p><p>次のシステム・処理</p><p>- 取得結果を統合し、関連度の高い情報を優先表示</p><p>- 必要に応じて追加検索や再整理を行う</p><p>↓</p><p>出力</p><p>- 調査結果の要約</p><p>- 参考情報の整理</p><p>- ユーザー向けの回答やレポート下書き</p><p>↓</p><p>人間による確認・最終作業</p><p>- 情報の正確性を確認</p><p>- 重要な結論を選ぶ</p><p>- 最終的な意思決定や文章の仕上げを行う</p><p>記事で確認できるのは、こうしたマルチエージェント型の研究・要約支援であり、具体的なツール構成や運用手順は確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事には売上や削減時間などの数値はありません。確認できる効果としては、複数の情報源をまたぐ調査や要約を素早く進めやすくなること、複雑なテーマの理解を補助できること、個別の文脈に合った出力を返しやすくなることが挙げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だったと考えられる理由は、仕事を1つの大きなAI処理にまとめず、検索・分析・要約のように役割分担した点です。これは分析であり、記事の事実そのものではありません。また、広い知識ソースに接続し、利用者の意図に合わせて出力を調整することで、単なる一般論ではなく実務で使える結果に近づきやすいからです。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- 大きな作業を「検索」「抽出」「比較」「要約」「下書き」に分解すると、AIに任せやすい</p><p>- 1つのAIに全部やらせるより、役割を分けたほうが確認しやすい</p><p>- 最終判断は人間が持つ設計にすると、高リスクな誤りを抑えやすい</p><p>- 社内ナレッジや複数文書の横断検索は、AIの価値が出やすい領域</p><p>- 調査結果をそのまま返すだけでなく、次の行動に使える形に整えると実用性が上がる</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 社内調査メモの自動整理</p><p>- 入力: NotionやGoogle Drive内の議事録、仕様書、FAQ</p><p>- AI処理: ChatGPTやOpenAI APIで、質問ごとに関連箇所を抽出し、論点別に要約</p><p>- 出力: Google SheetsやNotionに「質問 / 根拠文 / 要約 / 未確認点」を保存</p><p>- 人間: 担当者が未確認点だけを確認して回答</p><p>2. 営業提案の事前リサーチ</p><p>- 入力: 顧客サイト、過去商談メモ、業界ニュース</p><p>- AI処理: 重要テーマ、競合、導入課題候補を抽出し、提案のたたき台を生成</p><p>- 出力: PowerPointの下書きやNotionの提案メモ</p><p>- 人間: 提案内容の優先順位と表現を最終調整</p><p>3. カスタマーサポートの一次分類</p><p>- 入力: 問い合わせメール、フォーム、チャットログ</p><p>- AI処理: 類型分類、緊急度判定、必要情報の不足チェック</p><p>- 出力: Slack通知、Zendeskチケット、スプレッドシート</p><p>- 人間: 高優先度案件だけ確認して対応</p><p>4. 研究・学習の個人利用</p><p>- 入力: 読みたいテーマのURL、PDF、メモ</p><p>- AI処理: 重要点抽出、用語説明、比較表作成</p><p>- 出力: 自分用の学習ノートや要点サマリー</p><p>- 人間: 理解できない部分だけ再質問</p><p>実装の形としては、Google SheetsやNotionに入力を集め、ZapierやMakeでAI APIを呼び、結果を同じ場所に戻してSlackやメールで通知する構成が作りやすいです。軽く始めるならChatGPTの手動運用でもよく、定着したらPythonやGitHub Actionsで定期実行に広げる方法が考えられます。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、You.comの具体的なワークフロー、使ったモデル、データ接続方法、評価方法、導入範囲、成果の数値は確認できません。したがって、実際に同じ運用が再現できるとは断定できません。また、検索や要約のAIは誤引用や取り違えを起こす可能性があるため、機密情報、個人情報、重要な意思決定は必ず人間が確認する必要があります。社内データを扱う場合は、権限管理とログ管理も前提になります。</p>
+
+    <h2>参考記事</h2>
+    <p>AI Agent Examples Shaping The Business Landscape</p>
+    <p class="source">
+      <a href="https://www.databricks.com/blog/ai-agent-examples-shaping-business-landscape"
+         target="_blank" rel="noopener noreferrer">
+        https://www.databricks.com/blog/ai-agent-examples-shaping-business-landscape
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

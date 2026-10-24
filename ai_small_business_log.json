@@ -1430,5 +1430,27 @@
       "applicability": 11,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-10-25",
+    "date_display": "2026.10.25",
+    "company_name": "You.com",
+    "headline": "AI研究・要約を自動化するYou.comのマルチエージェント活用",
+    "title": "AI Agent Examples Shaping The Business Landscape",
+    "url": "https://www.databricks.com/blog/ai-agent-examples-shaping-business-landscape",
+    "article_filename": "2026-10-25.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-25.html",
+    "search_query": "\"AI agent\" practical workflow business",
+    "selection_reason": "0はソロ起業家向けで、入力→AI処理→メール/日程調整などの実務フローが明確そう。1はn8n連携の具体例で、ツール間の入出力を伴う再現可能なワークフローが期待できる。2は総論寄りだが、本文に実例や構成要素別の具体ワークフローが含まれる可能性がある。4は企業事例ベースで、複数タイプのエージェント実装パターンが見込めるため、個人・小規模へ落とし込みやすい。8は業界別の実運用例が入りそうで、業務に応用できる具体ワークフローを拾える可能性が高い。",
+    "adoption_score": 80,
+    "workflow_signature": "業務データや文書→AIで分類・要約・抽出・生成→各業務ツールへ記録・通知・自動実行",
+    "evaluation_reason": "本文から、AIエージェントの種類、マルチエージェントの協調、業界別の実運用例、さらに production-ready にするための要件（企業データへの grounding、評価、監視、ガバナンス、人手確認、自律度やコスト管理）が確認できます。個別の業界例は広くて抽象度が高いものの、ワークフローの構造自体は十分に読み取れ、メール・文書・業務データ→AIで要約/分類/抽出/生成→各種システムへ連携という再現しやすい形に落とし込めます。過去事例と比べても、入力・処理・出力の三点が完全一致するものはなく、重複扱いにはしません。定量成果や実装手順の細部は限定的ですが、実運用の考え方と具体ユースケースがまとまっており、長期保存価値は十分あります。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 20,
+      "usefulness": 20,
+      "applicability": 14,
+      "reliability": 5
+    }
   }
 ]
