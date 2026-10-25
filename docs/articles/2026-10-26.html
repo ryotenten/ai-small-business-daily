@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excelの表や崩れた項目をAIで抽出し、分析用データに整えるワークフロー | AI Small Business Daily</title>
+<meta name="description" content="手作業でExcelを開き、必要な列や値をコピーして整形するのは、件数が増えるほど面倒です。この記事では、ParabolaのノーコードフローにExcelファイルを取り込み、AIで必要な値・テキスト・表を抽出して、分析や連携に使える形へ整える流れが紹介されています。公開されているのはテンプレート型のワー">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.26</div>
+    <h1>Excelの表や崩れた項目をAIで抽出し、分析用データに整えるワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Parabola Team（記事から確認できます）<br>
+      <strong>業種：</strong>ノーコードのデータ加工・自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>手作業でExcelを開き、必要な列や値をコピーして整形するのは、件数が増えるほど面倒です。この記事では、ParabolaのノーコードフローにExcelファイルを取り込み、AIで必要な値・テキスト・表を抽出して、分析や連携に使える形へ整える流れが紹介されています。公開されているのはテンプレート型のワークフローで、コード不要で設定できます。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で確認できる課題は、Excel内の情報を手で解析・コピーして整形する手間です。特に、複数シート、半構造化データ、列の形式が不揃いなファイル、結合セルやレイアウトの揺れがある場合に、手作業だと時間がかかりミスも起きやすい点が示されています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>ExcelファイルをParabolaのフローにアップロードし、抽出したいワークシートや範囲を選ぶ</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>「Extract with AI」ステップで、文脈とパターンを使って必要な値、テキスト、表、半構造化データを抽出する。列名やデータ型の自動認識、複数シートの処理、形式の不一致や結合セルへの対応も行う</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>必要に応じて、標準化、フィールドマッピング、追加の変換を行う。ParabolaにはAI主導の変換ステップが5種類あると記事で案内されている</p><p>↓</p><p>出力</p><p>↓</p><p>抽出結果をプレビューし、フローを実行する。出力形式はCSV、XLSX、または下流のツール・データベース・BI基盤への連携が可能と説明されている</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>テスト抽出の結果を確認し、必要なら設定を調整する。レイアウト変更がある場合は、シート選択やマッピングを見直す</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で数値による成果は確認できません。ただし、手作業のコピー＆ペーストを減らし、抽出ミスを抑え、分析やレポート作成に使えるデータを素早く作れることが効果として挙げられています。さらに、定期実行や新しいExcelファイル到着時の自動処理により、更新作業の手間を減らせます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、固定の列位置に依存せず、文脈ベースで抽出できる点です。さらに、抽出前後に標準化やマッピングを挟むことで、Excelのままでは使いにくいデータを下流システムに渡しやすい形へ変換できます。つまり、AIを「判断の代替」ではなく「面倒な整形の肩代わり」に使っているのが強みだと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>この事例の再利用ポイントは、AIに最初から全部を任せるのではなく、まず“取り込み→抽出→整形→出力→人間確認”の順に分けることです。もう一つは、レイアウトが多少変わっても動く余地を残していることです。固定列に依存する自動化よりも、実務では壊れにくい設計になりやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 営業日報のExcelを整える</p><p>- 入力: 担当者ごとの日報Excel</p><p>- AIにさせること: 商談先、案件名、次回アクション、金額候補を抽出</p><p>- 出力: Google SheetsやCRM用CSV</p><p>- 人間確認: 抽出漏れや案件名の表記ゆれを確認</p><p>2. 経費申請の補助</p><p>- 入力: 領収書情報を含むExcel一覧</p><p>- AIにさせること: 日付、店舗名、金額、勘定科目候補を抽出・分類</p><p>- 出力: Excel/スプレッドシートに整形し、会計システム取り込み用に保存</p><p>- 人間確認: 仕訳候補の最終判断</p><p>3. 在庫表の更新補助</p><p>- 入力: 複数シートの在庫Excel</p><p>- AIにさせること: SKU、在庫数、再発注点を抽出し、足りない品をフラグ付け</p><p>- 出力: Slack通知やメール、または管理用シート</p><p>- 人間確認: 再発注の最終判断</p><p>4. 個人利用: 家計簿の整理</p><p>- 入力: 銀行明細や家計簿のExcel</p><p>- AIにさせること: 支出カテゴリ、店舗名、定期支払い候補を抽出</p><p>- 出力: Google Sheetsに集計</p><p>- 人間確認: 例外支出の修正</p><p>実装案の例:</p><p>- Excel/CSVをGoogle Driveやメール添付から取得</p><p>- MakeやZapier、GitHub Actionsで起動</p><p>- OpenAI APIやChatGPTで抽出・分類・要約</p><p>- 結果をGoogle Sheets、Notion、Excel、DBへ保存</p><p>- 必要ならSlackやメールで通知</p><p>- 最後に人間がサンプル確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、実運用での処理速度、料金、精度の限界、対応可能なファイルサイズ上限の厳密な条件は不明です。レイアウト変更に強いとはいえ、シート選択やマッピングの調整が必要になる場合があります。また、機密情報や個人情報を含むExcelをAIに通す場合は、社内ルール、保存先、アクセス権限、誤抽出の確認が必要です。抽出結果は自動で正しいとみなさず、重要な項目は人間が最終確認する前提で使うべきです。</p>
+
+    <h2>参考記事</h2>
+    <p>Extract Excel Data Using AI – Free Template - Parabola.io</p>
+    <p class="source">
+      <a href="https://parabola.io/tool/how-to-use-ai-to-automatically-extract-your-excel-data"
+         target="_blank" rel="noopener noreferrer">
+        https://parabola.io/tool/how-to-use-ai-to-automatically-extract-your-excel-data
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
