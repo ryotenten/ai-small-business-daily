@@ -1474,5 +1474,27 @@
       "applicability": 13,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-10-27",
+    "date_display": "2026.10.27",
+    "company_name": "記事から確認できません",
+    "headline": "Google Workspace FlowsでGmail・カレンダー・Sheetsをつないで会議準備を自動化する",
+    "title": "Google Workspace Flows: Automate Gmail and Sheets",
+    "url": "https://www.aioperator.com/blog/google-workspace-flows-automate-gmail-calendar-and-sheets-with-gemini/",
+    "article_filename": "2026-10-27.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-27.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "0はメール処理・構造化抽出・自動化の具体ワークフローが本文にありそうで、個人でも再現しやすい。1は複数の実務自動化（コンテンツ作成、統計レポート等）をまとめた体験談で、具体例の掘り下げ価値が高い。4はYouTube制作の入力→処理→出力の流れが明確になりやすく、個人向け再現性が高い。5はUI/UX設計でAIをどこに使い、どこを人が担うかが具体化されやすく、応用範囲も広い。7はGmail/Calendar/Sheets/DocsをまたぐGoogle Workspace系の実務ワークフローで、再現性と汎用性が高い。",
+    "adoption_score": 82,
+    "workflow_signature": "会議予定・関連ファイル→AIで文脈抽出・要約→会議ブリーフを通知",
+    "evaluation_reason": "本文内で、Calendarをトリガーにした会議前の準備フローが具体的に示されており、入力（予定・参加者・Drive内資料）、AI処理（情報抽出、関連文書の要約・統合）、出力（Google Chatへのブリーフ配信）まで確認できる。Gmail/Calendar/Drive/Sheets中心の構成なので、個人やSMBが再現しやすく、同じ構造を営業前準備、顧客対応、役員会準備、プロジェクト進捗整理などへ横展開しやすい。定量効果はやや宣伝寄りだが、実装手順と制約・トラブルシュートも記載されており、信頼性は十分。過去事例には『メール→要約→記録/下書き』系は多いが、この候補は『会議予定→関連資料探索→会議ブリーフ生成』で入力・後続アクションが異なり、実質重複とは言いにくい。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 11,
+      "reliability": 10
+    }
   }
 ]

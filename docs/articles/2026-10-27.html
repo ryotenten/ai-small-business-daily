@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Workspace FlowsでGmail・カレンダー・Sheetsをつないで会議準備を自動化する | AI Small Business Daily</title>
+<meta name="description" content="会議前の資料探し、予定確認、要点整理のような“毎回やるけれど時間がかかる作業”を、Google Workspace FlowsとGeminiでまとめて自動化した事例です。記事では、カレンダーの予定を起点に関連ファイルを探し、内容を要約し、Google Chatへブリーフィングを送る流れが紹介されてい">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.27</div>
+    <h1>Google Workspace FlowsでGmail・カレンダー・Sheetsをつないで会議準備を自動化する</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Google Workspace内の業務自動化（Gmail、Calendar、Sheets、Docs、Drive、Chat）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>会議前の資料探し、予定確認、要点整理のような“毎回やるけれど時間がかかる作業”を、Google Workspace FlowsとGeminiでまとめて自動化した事例です。記事では、カレンダーの予定を起点に関連ファイルを探し、内容を要約し、Google Chatへブリーフィングを送る流れが紹介されています。狙いは、会議ごとに20〜35分かかっていた準備を減らし、日々の繰り返し作業を削ることです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事によると、多くのチームはGmail、Calendar、Sheets、Docs、Driveの中で仕事をしている一方で、会議前の準備や古い添付ファイル探し、必要情報の収集に時間を取られていました。知識労働者は“work about work”に1日1〜2時間失いやすく、チーム全体ではその負担が積み上がる、というのが導入前の課題です。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Google Calendarの会議予定（会議タイトル、日時、参加者など）</p><p>- Google Drive上の関連ドキュメント、スプレッドシート、スライド、PDF</p><p>↓</p><p>AIによる処理</p><p>- Geminiがカレンダー予定を読み取り、会議の文脈を抽出</p><p>- 予定から会議タイトル、日時、参加者、キーワードを構造化情報として整理</p><p>- Drive検索の結果として見つかった複数ファイルを読み、内容を要約</p><p>- 会議に必要なブリーフィング（要点、背景、関連ファイルの情報）を生成</p><p>- 必要に応じて情報の分類や優先度づけを行う</p><p>↓</p><p>次のシステム・処理</p><p>- Google Driveで関連ファイルを検索</p><p>- Google Chatへブリーフィングを送信</p><p>↓</p><p>出力</p><p>- 会議準備用の要約メモ</p><p>- 関連ファイルの候補</p><p>- チームや本人向けのGoogle Chatメッセージ</p><p>↓</p><p>人間による確認・最終作業</p><p>- 送られてきたブリーフィングを確認</p><p>- 必要なら検索条件やプロンプトを修正</p><p>- 高リスクな会議では最終判断を人が行う</p><p>記事で確認できる役割は、要約、抽出、分類、検索補助、文章生成、複数ファイルの読み取りです。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では、会議1回あたり20〜35分の手作業を削減できると説明されています。また、読み取り・スキャンに10〜20分かかる作業を減らせるとしており、時間換算では1人あたり週3〜6時間の削減が見込めるとしています。売上増加などの直接的な財務成果は記事からは確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>記事の内容から見ると、うまくいく理由は「すでに使っているGoogle Workspaceの中で完結すること」と「単純な条件分岐ではなく、Geminiが文脈を読めること」です。会議予定を起点に関連資料を探し、その内容を要約して次の行動につなぐため、単なる転記自動化よりも実務に近い形になっています。加えて、出力先がGoogle Chatなので、情報が仕事の流れの中にそのまま届く点も有効です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>この事例の再利用ポイントは、(1) 予定やフォーム送信など“発火点”を先に決める、(2) AIにはまず文脈抽出と要約を任せる、(3) 検索先を限定して関連情報の精度を上げる、(4) 最後は人が確認する、の4点です。いきなり高度な自動化を狙うより、まずは「会議前ブリーフィング」のように成果が見えやすい1本を作るほうが実装しやすいです。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような形が再現しやすいです。</p><p>1. 会議前ブリーフィング自動化</p><p>- データ取得: Google Calendarの予定、参加者、会議名</p><p>- AIに渡す: 会議名から関連キーワードを抽出し、Drive内の候補ファイルを要約</p><p>- 出力: Google Chatまたはメールで要点を送信</p><p>- 人間: 内容を見て、必要なら追加資料を手で確認</p><p>2. 営業向けの事前準備メモ</p><p>- データ取得: 外部参加者のある会議予定、過去のメール、顧客フォルダの資料</p><p>- AIに渡す: 相手企業名、過去のやり取り、案件の進捗を要約・整理</p><p>- 出力: SlackやChatの営業チャンネルに「前回の論点」「未解決事項」「確認すべき質問」を送る</p><p>- 人間: 提案内容を最終調整する</p><p>3. 週次プロジェクト進捗ダイジェスト</p><p>- データ取得: Sheetsの進捗表、Drive内の議事録、期限が近いタスク</p><p>- AIに渡す: 進捗、遅延、ブロッカーを分類して要約</p><p>- 出力: 週次レポートをGoogle Docsに作成し、Chatで通知</p><p>- 人間: マネージャーが優先順位を調整する</p><p>4. 個人利用: 予定前の準備メモ</p><p>- データ取得: 自分のカレンダー、関連メモ、保存済みファイル</p><p>- AIに渡す: 予定の目的に合わせて確認事項を短く整理</p><p>- 出力: メール下書きやメモアプリに保存</p><p>- 人間: 直前に確認して持ち物や論点をチェックする</p><p>実装の道具としては、Google Workspace Flowsが使えるならそのまま使い、難しければGoogle Apps Script、Zapier、Make、OpenAI API、ChatGPT、Google Sheets、Slack、メール送信を組み合わせる形が考えられます。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できる制約として、現時点では主にGoogle Workspace内での利用が中心で、外部ツール連携は限定的です。また、AIのプロンプトは英語のほうが結果がよいとされており、多言語対応は改善中と書かれています。さらに、レート制限があり、短時間に大量の予定が動くと一時停止する可能性があります。加えて、会議資料やメールには機密情報が含まれるため、検索範囲の絞り込み、権限設定、生成結果の人手確認は必須です。検索語が広すぎると誤った資料を拾う可能性もあるため、ファイル名ルールやフォルダ設計も重要です。</p>
+
+    <h2>参考記事</h2>
+    <p>Google Workspace Flows: Automate Gmail and Sheets</p>
+    <p class="source">
+      <a href="https://www.aioperator.com/blog/google-workspace-flows-automate-gmail-calendar-and-sheets-with-gemini/"
+         target="_blank" rel="noopener noreferrer">
+        https://www.aioperator.com/blog/google-workspace-flows-automate-gmail-calendar-and-sheets-with-gemini/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
