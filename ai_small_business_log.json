@@ -1496,5 +1496,27 @@
       "applicability": 11,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-10-28",
+    "date_display": "2026.10.28",
+    "company_name": "記事から確認できません",
+    "headline": "ChatGPT Workで散らかった業務を自動化する：スプレッドシート整理・契約レビュー・議事録・提案書まで",
+    "title": "ChatGPT Automation Turned 7 Messy Workflows Into Real Work",
+    "url": "https://www.aifire.co/p/chatgpt-automation-turned-7-messy-workflows-into-real-work",
+    "article_filename": "2026-10-28.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-28.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に見えそうで、Excel/メール/Notionなど再現しやすい道具立てが想像できる候補です。0と1はExcelを中心にした実務フローが明確そうで、0は金融データの扱いという具体性もあります。6は注文状況追跡やメール送信など、実運用の業務フローに落とし込みやすいです。9は個人生活の自動化例として応用範囲が広そうです。10は複数の実務フローを扱っており、契約確認・会議準備・提案書作成・苦情調査など、本文に具体ワークフローが複数ありそうなので候補にしました。",
+    "adoption_score": 83,
+    "workflow_signature": "ファイル・メール・会議記録→AIで要約・抽出・整形・レビュー→下書き/レポート/タスク/通知を生成",
+    "evaluation_reason": "本文から、ChatGPT Workを使って複数の実務ワークフローを実行する具体像が確認できる。特に、散らばったファイルやメール、会議記録、契約書、スプレッドシートなどを入力にして、要約・抽出・分類・整形・レビューを行い、下書き作成やレポート生成、タスク化、通知までつなぐ構成は再現しやすい。一般的なツールやAPIでも構築しやすく、営業、事務、採用、CS、会議運営、資料作成などへ横展開しやすい点も強い。本文には『コピーで扱う』『権限を絞る』『Plan modeで確認する』といった運用上の注意もあり、実務利用の具体性がある。一方で本文は途中までで、7件のうち個別の手順や出力例の詳細は十分に見えないため、信頼性は中程度に留めた。とはいえ、AIの使い方そのものは確認できるので採用対象としては十分価値がある。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]
