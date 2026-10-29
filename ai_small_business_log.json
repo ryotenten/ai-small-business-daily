@@ -1518,5 +1518,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-10-29",
+    "date_display": "2026.10.29",
+    "company_name": "ScaleLabs",
+    "headline": "200通のメールを1つのワークフローに統合：ScaleLabsの物流業務AI自動化",
+    "title": "AI Workflow Automation: From Spreadsheets to Smart Systems",
+    "url": "https://www.scalelabs.dev/blog/ai-workflow-automation",
+    "article_filename": "2026-10-29.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-29.html",
+    "search_query": "\"AI workflow\" Excel automation",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に見えやすく、Excel/スプレッドシートや業務フローに落とし込みやすい候補です。6は物流・業務ポータルの実装例がありそうで再現性が高そうです。5はExcel自動化でメール送信や在庫/受注管理まで広がる可能性があり、実務ワークフローとして具体性が高いです。0は概念寄りですが、ワークフローの基本パターン整理に役立つ本文の可能性があります。7はExcelファイル処理の具体的手順が期待でき、表データの抽出・整形・レポート化に応用しやすいです。3はROIやパターン、実装上の注意まで含む可能性があり、実務導入の参考として価値が高そうです。",
+    "adoption_score": 79,
+    "workflow_signature": "散在する業務依頼・更新情報→AIで要約・構造化・ルーティング→単一の業務ポータル/台帳に集約し、承認・通知・監視を行う",
+    "evaluation_reason": "本文から、スプレッドシート中心の散在した業務を前提に、AIで入力の構造化、ルーティング、異常検知、予測、承認分岐を組み込んだワークフロー設計が確認できる。特定業種に閉じず、問い合わせ・承認・報告・申請・進捗管理など多くの業務へ横展開しやすい。実装の粒度は高く、一般的なツールやAPIで再現可能。定量成果は少ないが、実際の導入例と運用上の注意点、手順が本文中で具体的に述べられており、情報信頼性も十分。既存保存事例と完全一致する入力/処理/出力ではなく、業務ポータル化とプロセス設計の比重が異なるため重複扱いにはしない。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 20,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
