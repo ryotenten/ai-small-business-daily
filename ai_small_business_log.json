@@ -1540,5 +1540,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-10-30",
+    "date_display": "2026.10.30",
+    "company_name": "記事から確認できません",
+    "headline": "Excelの手作業分析を自然言語で自動化するAIワークフロー（RowSpeak）",
+    "title": "How to Automate Your Entire Excel Data Analysis Workflow ...",
+    "url": "https://excelmatic.ai/blog/excel-ai-data-analysis-automation/",
+    "article_filename": "2026-10-30.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-30.html",
+    "search_query": "\"AI workflow\" Excel automation",
+    "selection_reason": "本文を読む価値が高いのは、具体的な入力→AI処理→出力→人手確認の流れが見えやすく、再現しやすいものです。2はExcel分析の自動化で実務再現性が高そうです。6はReddit由来ですが、注文状況に応じたメール送信や追跡など具体的な業務フローが見え、実装アイデアの宝庫になりそうです。10はSlack/Google Drive連携の業務自動化が示唆され、本文に実運用の詳細があれば有力です。11はダッシュボード系でやや動画ですが、AIデータ取込や運用設計の具体例が含まれていそうです。1はサービス紹介寄りですが、少人数チーム向けのエージェント/自動化の具体事例が本文にある可能性があり、比較記事群よりは確認価値があります。",
+    "adoption_score": 80,
+    "workflow_signature": "Excel/CSVデータ→AIで自然文指示に基づく集計・整形・可視化→表・ピボット・グラフ・レポートを出力",
+    "evaluation_reason": "本文から、Excel/CSVのデータをアップロードし、自然言語で『並べ替え・フィルタ・数式作成・ピボットテーブル・チャート生成』を指示して結果を得る具体的な流れが確認できる。個人や中小企業でも一般的な表計算データとAIツールで再現しやすく、日次/週次の分析工数削減やミス削減に直結するため実用性が高い。業種は限定されるが、データ分析レシピとしては営業、EC、マーケ、在庫、家計などへ横展開しやすい。一方で本文は製品訴求色が強く、定量的な導入実績や実運用の詳細は薄いため信頼性は中程度に留めた。過去事例には、同じく『表計算データ→AIで整形/集計→シート更新・レポート化』に近いものはあるが、本件は主軸がExcel内での対話型分析にあり、入力・処理・出力の組み合わせは十分に別物として扱える。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 19,
+      "applicability": 13,
+      "reliability": 5
+    }
   }
 ]

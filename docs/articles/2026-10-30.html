@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excelの手作業分析を自然言語で自動化するAIワークフロー（RowSpeak） | AI Small Business Daily</title>
+<meta name="description" content="この事例で面倒だったのは、Excelでの集計・並べ替え・抽出・ピボットテーブル作成・グラフ作成を毎回手作業で行うことです。記事では、Excel AIエージェントのRowSpeakに自然言語で指示することで、こうした作業をまとめて自動化できると説明しています。対象は、ウェブサイトのアクセスデータのよう">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.30</div>
+    <h1>Excelの手作業分析を自然言語で自動化するAIワークフロー（RowSpeak）</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Excel/CSVのデータ分析自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例で面倒だったのは、Excelでの集計・並べ替え・抽出・ピボットテーブル作成・グラフ作成を毎回手作業で行うことです。記事では、Excel AIエージェントのRowSpeakに自然言語で指示することで、こうした作業をまとめて自動化できると説明しています。対象は、ウェブサイトのアクセスデータのような行数の多い表です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で確認できるBeforeは、以下のような手作業の連鎖です。1) データを並べ替えて最高値・最低値を探す、2) 複数条件でフィルターをかける、3) IFやSUMIFSなどの数式を自分で書く、4) ピボットテーブルのフィールド設定を調整する、5) 新しい質問が出るたびに再設定する。これにより、時間がかかり、ミスが入りやすく、柔軟な深掘りがしづらい状態だったとされています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>ExcelまたはCSVファイルをRowSpeakにアップロード。記事の例では、日付・Views・Clicksを含むウェブサイトのパフォーマンス表を読み込ませています。</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>自然言語の指示を解釈して、並べ替え、フィルタリング、計算式の生成、ピボットテーブル作成、グラフ作成を行う。記事では、&quot;Clicksが高い順に並べる&quot;、&quot;Viewsが60超かつClicksが20未満の行だけ出す&quot;、&quot;Clicks/ViewsでEngagement Rate列を追加する&quot;、&quot;週次の集計ピボットを作る&quot;、&quot;折れ線グラフを作る&quot;といった処理が示されています。</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>生成された表・ピボット・グラフ・数式を画面に表示し、必要なら追加指示で再加工する。記事では、週次ピボットに対して&quot;平均エンゲージメント率が高い上位3週を強調して&quot;、&quot;Viewsにトレンドラインを追加して&quot;のような追加対話が可能とされています。</p><p>↓</p><p>出力</p><p>↓</p><p>並べ替え済みの表、条件抽出済みの表、新しい計算列、設定済みのピボットテーブル、グラフ、またはそれらを含む新しいExcelファイルとしてダウンロード可能。</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>記事では、ユーザーが結果を確認し、必要に応じて言い直したり、追加質問をしたりして修正します。最終的には、ダウンロードした成果物をレポートや既存のワークブックに使います。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では定量的な売上増加は示されていません。確認できる効果は、分析時間を&quot;hours to minutes&quot;へ短縮できること、手作業由来のミスを減らせること、会話のように追加質問しながら素早く深掘りできることです。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>これは推測を含む分析ですが、うまく働く理由は、Excel操作の&quot;手順&quot;ではなく&quot;やりたい結果&quot;をAIに渡せる点にあります。人間がメニュー操作や関数の書き方を覚えなくても、AIが形式的な作業を代行するため、分析の往復が速くなります。また、会話形式なので、最初の出力が完全でなくてもすぐ修正でき、試行錯誤のコストが下がります。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、1) まず入力ファイルを1つに絞る、2) AIには&quot;何を作るか&quot;を日本語で伝える、3) 出力は表・グラフ・計算列など明確な形にする、4) 1回で終わらせず追加質問で深掘りする、の4点です。つまり、分析作業を&quot;クリック操作&quot;ではなく&quot;指示→生成→確認&quot;の流れに変えると、他の表計算業務にも移植しやすくなります。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用案</p><p>1. 週次の営業実績表</p><p>- 入力: 売上、商談数、受注率、担当者名のCSV</p><p>- AIにさせること: 担当者別・週別の集計、受注率の計算列追加、上位/下位の抽出</p><p>- 出力: Excelの集計表とグラフ</p><p>- 人間: 数字の異常値と営業活動の文脈を確認</p><p>2. Webサイト/ECのアクセス分析</p><p>- 入力: 日付、PV、CV、流入元のログCSV</p><p>- AIにさせること: 日別・週別のトレンド集計、条件抽出、グラフ作成</p><p>- 出力: Google SheetsまたはExcelのレポート</p><p>- 人間: キャンペーンや障害の有無を照合</p><p>3. 問い合わせ対応の簡易集計</p><p>- 入力: 日付、カテゴリ、対応時間、解決有無の一覧</p><p>- AIにさせること: カテゴリ別件数、平均対応時間、未解決の抽出</p><p>- 出力: スプレッドシートと週報用の表</p><p>- 人間: 個別案件の重要度を判断</p><p>4. 個人利用: 家計・支出の見える化</p><p>- 入力: クレジットカード明細CSV</p><p>- AIにさせること: 食費・交通費などの分類、月別集計、増えた項目の抽出</p><p>- 出力: 家計簿シートと月次グラフ</p><p>- 人間: 例外的な支出の確認</p><p>実装の形</p><p>- 単発運用: Excel/CSVをChatGPTやRowSpeak系ツールにアップロードして、その場で集計</p><p>- 半自動運用: PythonでCSVを整形→AIで集計指示→Excel/Google Sheetsへ出力</p><p>- 定期運用: GitHub ActionsやZapier/Makeで毎週CSVを取得し、AIで要約してSlackやメールに送る</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、データの安全性の詳細な運用、どこまで複雑な式や例外条件に対応できるか、誤認識時の具体的な検証手順、既存Excelワークブックとの完全な互換性は明記されていません。導入時は、個人情報や機密情報を含むファイルの扱いに注意が必要です。また、AIが作った数式・集計・ピボットテーブルは、元データとの整合性を人間が確認したほうが安全です。記事でも、AIの出力が意図と違う場合は言い換えや追加説明で修正する前提になっています。</p>
+
+    <h2>参考記事</h2>
+    <p>How to Automate Your Entire Excel Data Analysis Workflow ...</p>
+    <p class="source">
+      <a href="https://excelmatic.ai/blog/excel-ai-data-analysis-automation/"
+         target="_blank" rel="noopener noreferrer">
+        https://excelmatic.ai/blog/excel-ai-data-analysis-automation/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
