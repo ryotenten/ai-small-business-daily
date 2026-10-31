@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>社内業務をAIで自動化する3つの方法：ナレッジ整理・定型報告・コードレビュー | AI Small Business Daily</title>
+<meta name="description" content="社内業務は、チャット、ドキュメント、スプレッドシートなどに情報が分散しやすく、毎週・毎月の定型作業も積み上がりがちです。この記事では、AIを外向けのデモではなく、社内の“見えない手間”を減らす用途に使う考え方を紹介しています。確認できる範囲では、ナレッジ整理、定型報告・バックオフィス業務、コードレビ">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.10.31</div>
+    <h1>社内業務をAIで自動化する3つの方法：ナレッジ整理・定型報告・コードレビュー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>SaaS開発・システム開発会社向けの社内業務自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>社内業務は、チャット、ドキュメント、スプレッドシートなどに情報が分散しやすく、毎週・毎月の定型作業も積み上がりがちです。この記事では、AIを外向けのデモではなく、社内の“見えない手間”を減らす用途に使う考え方を紹介しています。確認できる範囲では、ナレッジ整理、定型報告・バックオフィス業務、コードレビュー支援の3つが主な活用例です。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、情報がSlack・Google Drive・Notionなどに分散して『どこに何が書いてあるかわからない』状態になりやすいこと、毎週・毎月の報告や経理などの定型作業がエンジニアの時間を奪うこと、そして開発現場でレビュー待ちが発生しやすいことです。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【方法①：ナレッジ整理と情報共有の自動化】</p><p>入力：Slackの議事録、社内ドキュメント、Google Drive、Notionなどにある散在情報</p><p>↓</p><p>AIによる処理：内容の要約、分類、検索補助、必要情報の抽出</p><p>↓</p><p>次のシステム・処理：スケジュール実行で定期的に処理し、共有ノートへ転送</p><p>↓</p><p>出力：要約済みの議事録や整理された情報</p><p>↓</p><p>人間による確認・最終作業：要約の妥当性を確認し、必要なら追記して共有</p><p>【方法②：定型報告・バックオフィス業務の自動化】</p><p>入力：週報の材料、問い合わせ内容、GoogleスプレッドシートやCSVの業務データ</p><p>↓</p><p>AIによる処理：週報や報告文の文章生成、よくある質問への回答補助、データの自動整形・分析</p><p>↓</p><p>次のシステム・処理：ChatGPT API + Pythonで定型処理し、Google DocsやNotionへ投稿、Slack上で回答提示</p><p>↓</p><p>出力：週報、社内回答、整形済みの集計レポート</p><p>↓</p><p>人間による確認・最終作業：内容の正確性を確認し、必要に応じて修正して提出</p><p>【方法③：コードレビュー・品質チェックのAI支援】</p><p>入力：コミット内容、コード差分、命名規則やドキュメントのルール</p><p>↓</p><p>AIによる処理：改善点の指摘、潜在的な不具合の検出、命名・説明文のチェック</p><p>↓</p><p>次のシステム・処理：レビュー補助として開発フローに組み込む</p><p>↓</p><p>出力：レビュー観点の提案、品質チェック結果</p><p>↓</p><p>人間による確認・最終作業：最終的な採否判断を開発者が行う</p><p>※この記事では、ChatGPT APIとPythonの活用、Google Docs/Notionへの投稿、Slackでの回答提示が言及されていますが、具体的な実装手順の詳細は記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>数値的な成果は記事から確認できません。確認できる効果としては、情報共有のスピード向上、週報や定型報告の作成負担の軽減、問い合わせ対応の即時化、手作業の集計削減、レビュー待ち時間の短縮、品質向上が挙げられています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>分析すると、うまく働きやすい理由は、入力が比較的定型化されていること、出力の形式が決まりやすいこと、そして最終判断を人間が担えることです。特に社内業務は、文章の要約や分類、集計、定型文生成のような処理が多く、AIの得意分野と重なります。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、『AIに全部やらせる』のではなく、情報収集・要約・整形・下書きをAIに任せ、確認と最終判断は人間が行う形にすることです。また、情報が散らばっている業務ほど、AIの検索・分類・要約の価値が高くなります。さらに、出力先をGoogle Docs、Notion、Slack、スプレッドシートなど既存ツールに寄せると導入しやすくなります。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るならの実装案】</p><p>1. Slack、メール、Googleフォーム、CSVなどから入力を集める</p><p>2. OpenAI APIやChatGPTで要約・分類・文章生成・抽出を行う</p><p>3. Pythonで整形し、Google Sheets、Notion、Google Docs、Excelに保存する</p><p>4. Slack、メール、Pushoverで通知する</p><p>5. 人間が内容を確認して承認・修正する</p><p>【仕事への応用例】</p><p>1. 週報自動作成</p><p>- 入力：GitHubのコミットログ、Issue、Slackの進捗メモ</p><p>- 処理：AIが今週の作業内容を要約し、成果・課題・次週予定に分類</p><p>- 出力：Google DocsまたはNotionの週報下書き</p><p>- 最終確認：本人が事実関係を修正して提出</p><p>2. 社内問い合わせの一次回答</p><p>- 入力：Slackの質問文、社内FAQ、手順書</p><p>- 処理：AIが質問に近い文書を検索し、回答案を生成</p><p>- 出力：Slackの返信候補または専用ボットの返答</p><p>- 最終確認：担当者が誤回答を防ぐために確認</p><p>3. スプレッドシート集計の自動化</p><p>- 入力：勤怠、売上、案件進捗のCSVやGoogle Sheets</p><p>- 処理：AIが項目名の揺れを整え、集計用に分類</p><p>- 出力：集計済みシートと要点まとめ</p><p>- 最終確認：管理者が数値の整合性を確認</p><p>4. コードレビュー補助</p><p>- 入力：Pull Requestの差分</p><p>- 処理：AIが命名、コメント不足、潜在的なバグ候補を指摘</p><p>- 出力：レビューコメント案をGitHubに下書き</p><p>- 最終確認：開発者が採否を判断</p><p>【個人利用の応用例】</p><p>1. 家計メモの自動整形</p><p>- 入力：レシートのメモ、銀行CSV</p><p>- 処理：AIが費目分類と要約</p><p>- 出力：家計簿シート</p><p>2. 学習ログの要約</p><p>- 入力：読書メモ、講義ノート</p><p>- 処理：AIが重要ポイントを箇条書き化</p><p>- 出力：Notionやメモアプリ</p><p>3. 日々のタスク整理</p><p>- 入力：メモアプリの箇条書き</p><p>- 処理：AIが今日やること・保留・締切ありに分類</p><p>- 出力：チェックリスト</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>元記事からは、導入コスト、運用人数、対象業務の範囲、精度検証方法、実際の効果測定、セキュリティ対策の詳細は確認できません。機密情報や個人情報をAIに渡す場合は、取り扱いルールの確認が必要です。また、週報や問い合わせ回答、コードレビューは誤生成の可能性があるため、必ず人間の確認が必要です。コードレビューでは、AIの指摘が正しいとは限らない点にも注意が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>社内業務をAIで自動化する3つの方法｜人手不足時代に選ば ...</p>
+    <p class="source">
+      <a href="https://starscript.co.jp/all/python/ai-automation-for-business/"
+         target="_blank" rel="noopener noreferrer">
+        https://starscript.co.jp/all/python/ai-automation-for-business/
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

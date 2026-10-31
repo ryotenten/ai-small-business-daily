@@ -1562,5 +1562,27 @@
       "applicability": 13,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-10-31",
+    "date_display": "2026.10.31",
+    "company_name": "記事から確認できません",
+    "headline": "社内業務をAIで自動化する3つの方法：ナレッジ整理・定型報告・コードレビュー",
+    "title": "社内業務をAIで自動化する3つの方法｜人手不足時代に選ば ...",
+    "url": "https://starscript.co.jp/all/python/ai-automation-for-business/",
+    "article_filename": "2026-10-31.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-10-31.html",
+    "search_query": "site:zenn.dev AI OpenAI 自動化 業務",
+    "selection_reason": "0はDevOps/Jenkins/Kubernetes文脈で、コードやCI/CD内のどこにAIを差し込むかが見えやすく、本文で具体的な自動化手順が出る可能性が高いです。2は社内業務の自動化を3分類しており、ナレッジ整理や定型報告など再現しやすいワークフロー候補になりやすいです。1は企業向けAI研究の紹介ですが、検索結果だけでは具体性は弱いものの、本文で“問答からタスク実行へ”の実務ワークフロー例が出る可能性があるため押さえ候補として入れました。",
+    "adoption_score": 86,
+    "workflow_signature": "社内文書・報告・問い合わせ・表計算データ→AIで要約・分類・抽出・下書き生成→共有ノート/Docs/Sheets/Slackへ反映し通知・自動返信",
+    "evaluation_reason": "本文から、入力（Slack/Google Drive/Notion、週報や問い合わせ、GoogleスプレッドシートやCSV、コードレビュー対象）と、AIの処理（要約・検索・分類・報告書生成・質問応答補助・データ整形・分析・コードレビュー）が明確に確認できます。出力も共有ノートへの転送、Google Docs/Notionへの自動投稿、Slackでの回答提示、表計算の自動整形・レポート生成と具体的です。一般的なAPIとPython、あるいは既存の業務ツール連携で再現しやすく、社内ナレッジ整理、定型報告、問い合わせ対応、集計、品質チェックまで横展開しやすい実用ワークフローです。広告色はあるものの、実際に使える構成が本文中で確認できるため採用可と判断します。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 9
+    }
   }
 ]
