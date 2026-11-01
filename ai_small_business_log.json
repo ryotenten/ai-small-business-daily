@@ -1584,5 +1584,27 @@
       "applicability": 13,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-11-01",
+    "date_display": "2026.11.01",
+    "company_name": "記事から確認できません",
+    "headline": "Google SheetsにAIをつないで、商品説明や注文分類を自動化するMESAのワークフロー",
+    "title": "AI + Google Sheets Integration - MESA",
+    "url": "https://www.getmesa.com/apps/ai/integrate/google-sheets",
+    "article_filename": "2026-11-01.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-01.html",
+    "search_query": "\"AI automation\" Gmail spreadsheet workflow",
+    "selection_reason": "優先したのは、本文を読むと『入力→AI処理→出力→人手の最終確認』が具体的に追えそうで、個人〜小規模でも再現しやすい候補です。0はOpenAI×Google Sheetsの実装ワークフローで、具体例が出やすい。4はRedditだが、Excelオンラインでの実務自動化（受注ステータス、メール送信、在庫追跡など）の生々しい用途が書かれている可能性が高い。2はExcel自動化の実用記事で、清掃・整形・テンプレ・自動書式など再現性の高いワークフロー候補。1はShopify×Sheets系の業務自動化で、入力/処理/出力の形が想像しやすく、小規模ECに応用しやすい。3は比較記事寄りで優先度は下げたが、Sheetsアドオンを使った具体的な自動化の導線や実例が載る可能性があるため、次点として残しました。",
+    "adoption_score": 84,
+    "workflow_signature": "商品・注文・顧客メモ→AIで生成・分類・要約→Google Sheets記録/更新と業務連携",
+    "evaluation_reason": "本文から、Google Sheetsとの双方向連携を軸に、AIで商品説明生成、注文の分類・ルーティング、自由記述の要約・構造化、注文データのシート記録、シート更新を起点にした業務トリガーまで具体的に確認できる。特に「入力→AI処理→出力」の流れが明確で、ノーコード前提かつテンプレート利用・カスタマイズ・自動化実行まで説明されており再現性が高い。一般的なSheets運用、受注管理、問い合わせ整理、業務台帳、ダッシュボード更新などへ横展開しやすく、実務上の価値も高い。広告色はあるが、実際のワークフロー内容は本文で十分確認できるため採用可と判断する。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 12,
+      "reliability": 8
+    }
   }
 ]

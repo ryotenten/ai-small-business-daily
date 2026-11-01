@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google SheetsにAIをつないで、商品説明や注文分類を自動化するMESAのワークフロー | AI Small Business Daily</title>
+<meta name="description" content="MESAは、AIとGoogle Sheetsをつないで、手作業の転記や整理を減らすワークフローを案内しています。記事では、商品情報から説明文を生成したり、注文内容を分類して適切な処理先へ回したり、Google Sheetsへ自動記録したりする使い方が紹介されています。ポイントは、単にAIで文章を作る">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.01</div>
+    <h1>Google SheetsにAIをつないで、商品説明や注文分類を自動化するMESAのワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>Shopify運用とGoogle Sheets連携の自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>MESAは、AIとGoogle Sheetsをつないで、手作業の転記や整理を減らすワークフローを案内しています。記事では、商品情報から説明文を生成したり、注文内容を分類して適切な処理先へ回したり、Google Sheetsへ自動記録したりする使い方が紹介されています。ポイントは、単にAIで文章を作るのではなく、シートやShopifyのイベントを起点に、入力→AI処理→出力→人の確認までをひとつの流れにしていることです。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、Shopify管理画面や手作業のコピー・貼り付けに頼ると、注文や商品データの整理、記録、振り分けに時間がかかることです。また、商品説明の作成や注文の分類、自由記述テキストの整理が人手だと負担になっていたことが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>記事で確認できる使い方を、流れとして整理すると次の通りです。</p><p>1. 商品情報を入力</p><p>↓</p><p>2. AIが商品データをもとに説明文、タグライン、SEO向け文面を生成</p><p>↓</p><p>3. 生成結果をShopifyの商品情報に反映</p><p>↓</p><p>4. 人間が内容を確認して公開・更新</p><p>別の例では、</p><p>1. 注文の明細、メモ、メタデータを入力</p><p>↓</p><p>2. AIが内容を読み取り、カテゴリやタグを判定</p><p>↓</p><p>3. その結果に応じてMESAが出荷先、担当チーム、通知先へルーティング</p><p>↓</p><p>4. 人間が必要に応じて確認・対応</p><p>さらに、</p><p>1. 顧客メモ、サポートチケット、フォーム送信などの自由記述テキストを入力</p><p>↓</p><p>2. AIが要約・抽出して構造化されたデータに変換</p><p>↓</p><p>3. そのデータをGoogle Sheetsに保存したり、後続の処理に渡したりする</p><p>↓</p><p>4. 人間が最終確認し、必要なアクションを実施</p><p>また、Shopifyの注文が入ると、顧客情報、商品明細、注文金額、出荷状況などをGoogle Sheetsへ自動記録し、シート更新をきっかけにShopify側の処理を起動する使い方も紹介されています。AIが担当しているのは主に、文章生成、分類、抽出、要約、判断補助です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では、手作業のエクスポートやコピー作業をなくせること、最新の記録を共有できること、ワークフロー構築が短時間でできることが効果として示されています。また、MESA側の案内として、最初のワークフロー構築を支援し、5時間以上/週の作業削減につながる利用者が多いとされていますが、これは記事内のサービス説明として記載された内容です。個別企業の実績としては確認できません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>この仕組みが有効なのは、シートやShopifyのように「イベントが明確で、項目がある程度決まっている業務」にAIを差し込んでいるからだと考えられます。文章生成だけでなく、分類や構造化を先に自動化することで、人間は最後の確認に集中できます。また、Google Sheetsを共有の作業台にすることで、関係者が同じ最新データを見やすくなります。これは記事の事実というより、ワークフロー設計としての分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、AIを単発の文章生成ツールとして使うのではなく、トリガー→処理→保存→通知までを一連の業務にすることです。特に、自由記述テキストを構造化データに変える、分類して担当先へ振り分ける、更新をシートへ集約する、という3つは他の業務でも移植しやすい考え方です。人の仕事をゼロにするのではなく、確認・判断・例外処理に絞る設計が実用的です。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような流れが考えられます。</p><p>共通の実装イメージ</p><p>1. データを取得する（Shopify、Google Sheets、フォーム、メール、Slackなど）</p><p>2. ChatGPTやOpenAI APIで要約、分類、文章生成を行う</p><p>3. 結果をGoogle Sheets、Notion、Excel、CRMなどへ保存する</p><p>4. 必要ならSlackやメールで通知する</p><p>5. 人間が最終確認して公開、返信、出荷、修正を行う</p><p>仕事での応用例</p><p>1. 問い合わせメールの一次整理</p><p>- 入力: Gmailに届いた問い合わせ本文</p><p>- AI処理: 用件分類、重要度判定、返信草案作成</p><p>- 出力: Google Sheetsに案件一覧を保存し、Slackで担当者へ通知</p><p>- 人間: 返信内容を確認して送信</p><p>2. EC商品の説明文づくり</p><p>- 入力: 商品名、スペック、仕入れ先メモ</p><p>- AI処理: 特徴を要約し、商品説明文とSEO向け要約を生成</p><p>- 出力: Google Sheetsに下書きを保存し、ShopifyやCMSに反映</p><p>- 人間: 表現や誤記を確認して公開</p><p>3. 注文・依頼の振り分け</p><p>- 入力: 注文内容、備考欄、フォーム回答</p><p>- AI処理: 優先度や担当カテゴリを判定</p><p>- 出力: Sheetsにタグ付きで記録し、ZapierやMakeで担当チームへ通知</p><p>- 人間: 例外案件だけ手動確認</p><p>4. 会議メモの構造化</p><p>- 入力: 音声文字起こしや議事録テキスト</p><p>- AI処理: 決定事項、未決事項、担当者、期限を抽出</p><p>- 出力: NotionやSheetsに整理して保存</p><p>- 人間: タスクの確定と割り当て</p><p>個人利用の応用例</p><p>1. 家計の支出メモ整理</p><p>- 入力: レシートや手入力メモ</p><p>- AI処理: 支出カテゴリ推定</p><p>- 出力: Google Sheetsに記録</p><p>- 人間: 月末に確認して修正</p><p>2. メールや問い合わせの下書き管理</p><p>- 入力: 相手からの文章</p><p>- AI処理: 要点抽出と返信案作成</p><p>- 出力: 下書きフォルダやメモアプリに保存</p><p>- 人間: 文面を整えて送信</p><p>3. 買い物候補の比較表作成</p><p>- 入力: 商品ページのメモや仕様</p><p>- AI処理: 比較ポイントを抽出し表形式に整理</p><p>- 出力: SheetsやNotionに一覧化</p><p>- 人間: 最終判断をする</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、実際の利用企業名や導入規模、個別の成果指標は確認できません。AIの判定が誤る可能性があるため、分類、要約、文章生成、ルーティングは必ず人間が確認する前提が必要です。顧客情報や注文情報を扱う場合は、個人情報や機密情報の取り扱い、権限管理、保存先の設定に注意が必要です。また、記事ではテンプレートやサポート体制は示されていますが、どの業務にどの程度まで自動化を適用するかは業務ごとに設計が必要で、すべてを完全自動化できるとは限りません。</p>
+
+    <h2>参考記事</h2>
+    <p>AI + Google Sheets Integration - MESA</p>
+    <p class="source">
+      <a href="https://www.getmesa.com/apps/ai/integrate/google-sheets"
+         target="_blank" rel="noopener noreferrer">
+        https://www.getmesa.com/apps/ai/integrate/google-sheets
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
