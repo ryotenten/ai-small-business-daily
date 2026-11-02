@@ -1606,5 +1606,27 @@
       "applicability": 12,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-02",
+    "date_display": "2026.11.02",
+    "company_name": "1mind（Superhumans）、Zapier、Make、n8n、Outreach、Clay、HubSpot",
+    "headline": "フォーム送信後の顧客対応をAI化する仕組み：1mind SuperhumansとZapier／Make／n8n／HubSpotの役割分担",
+    "title": "7 best AI workflow automation tools for revenue teams in ...",
+    "url": "https://www.1mind.com/blog-articles/best-ai-workflow-automation-tools",
+    "article_filename": "2026-11-02.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-02.html",
+    "search_query": "site:news.ycombinator.com AI automation workflow",
+    "selection_reason": "優先したのは、検索結果の説明からでも『入力→AI処理→出力→人間の最終作業』の流れが比較的想像でき、本文に具体的な再現可能ワークフローがありそうなものです。1は複数プラットフォームをまたぐコンテンツ自動化で、具体的な連携例が出そうです。2はExcelオンラインでの注文状況管理・メール送信など実務フローが明示されており、本文確認の価値が高いです。0はExcel自動化の実践 टिप集で、個人・小規模でも再現しやすい具体例が期待できます。5は営業チーム向けのワークフロー自動化で、Zapier/Make/n8n等の組み合わせや運用フローが本文で具体化される可能性があります。3件より多く、かつSEO記事や抽象論よりは実務フロー寄りなので、最大5件の範囲で上位候補として選びました。",
+    "adoption_score": 83,
+    "workflow_signature": "リード/問い合わせ/業務シグナル→AIで分類・要約・抽出・返信案生成→CRM/台帳更新・通知・自動返信・営業/CS連携",
+    "evaluation_reason": "本文から、単なるAIツール一覧ではなく、実際のワークフロー構造が確認できる。中心は「外部から入るリードや問い合わせ、業務シグナルを受けて、AIで分類・要約・抽出・返信/次アクション案を生成し、CRMや台帳に反映して通知や自動返信につなぐ」流れで、個人事業から中小企業、営業、CS、採用、事務処理まで横展開しやすい。特にZapier/Make/n8n/HubSpot/Clayのような一般的な構成要素に加え、会話自体をAIが担うパターンまで含まれており、実装イメージが具体的。定量成果の記述はやや広告寄りだが、各ツールの役割と使いどころ、制約が明示されていて再現可能性は高い。過去事例との重複も、入力・処理・出力の観点では一致せず、別ワークフローとして扱える。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 8
+    }
   }
 ]
