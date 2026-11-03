@@ -1628,5 +1628,27 @@
       "applicability": 11,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-03",
+    "date_display": "2026.11.03",
+    "company_name": "記事から確認できません",
+    "headline": "ChatGPTで問い合わせ・メール・議事録・SNS投稿を半自動化するワークフロー集",
+    "title": "ChatGPT for Business: 15 Workflow Automations You Can ...",
+    "url": "https://wrexanodes.com/blog/chatgpt-for-business-workflow-automations",
+    "article_filename": "2026-11-03.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-03.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に追えそうで、個人・小規模でも再現しやすい候補です。2はメール/会議/サポートなど実務ワークフローの具体例が並びやすく、3はメール下書き・SNS返信・CSなど実装イメージが明確そうです。0は包括記事ですが、実際の業務フロー例や導入手順がまとまっている可能性があります。7はChatGPTを自動化する具体的な作り方に寄っている見込みがあり、1は動画だが実演ベースでワークフローの流れを把握しやすい候補です。SEO的な比較記事やニュース性の強いものは外しました。",
+    "adoption_score": 81,
+    "workflow_signature": "問い合わせ・メール・会議メモ・請求書などの業務入力→AIで分類・要約・抽出・下書き生成→各業務ツールへ記録/通知/自動返信",
+    "evaluation_reason": "本文から、複数の具体的ワークフロー（問い合わせ対応、メール仕分け、会議要約、リード評価、請求書抽出など）が実際に明示されており、入力・AI処理・出力の形が把握できます。特定業界に閉じた単発事例ではなく、メール/文書/業務イベントを起点に分類・要約・抽出・生成してツールへ流すという抽象度の高い構造で、営業、CS、総務、経理、採用、開発などへ横展開しやすいです。一般的なツール連携で再現可能な内容で、実務上の時短・ミス削減・一次対応の高速化に直結します。信頼性は広告色があり定量検証は弱めですが、本文内に実装イメージが十分あるため採用基準は満たします。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 19,
+      "applicability": 13,
+      "reliability": 6
+    }
   }
 ]
