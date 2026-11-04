@@ -1650,5 +1650,27 @@
       "applicability": 13,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-11-04",
+    "date_display": "2026.11.04",
+    "company_name": "記事から確認できません",
+    "headline": "会議メモを要約し、実行項目を抜き出し、メール文まで作るAIワークフローの作り方",
+    "title": "Building Your First AI Agent Workflow: A Practical Guide ...",
+    "url": "https://dev.to/anonimousdev_/building-your-first-ai-agent-workflow-a-practical-guide-no-framework-needed-59j5",
+    "article_filename": "2026-11-04.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-04.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "優先して本文確認したいのは、具体的なワークフローが本文に出てきそうで、個人・小規模でも再現しやすい候補です。0はn8n/Zapier/Makeを使う実務自動化の話に寄っており、実例が出やすい。3は小規模事業の業務フロー改善で、財務・在庫・運用など再現可能な具体例が期待できる。5はリード獲得→情報付与→スコアリングのように入力→AI→出力の流れが明確で、営業/集客に応用しやすい。9は『マルチステップAIワークフロー』を実装視点で説明していそうで、汎用的な再現性が高い。10は個人向け生産性ワークフローの可能性があり、仕事・日常への応用余地があるため候補にしました。",
+    "adoption_score": 78,
+    "workflow_signature": "原始メモ・箇条書き→AIで段階的に要約・項目抽出・文面生成→投稿/メール下書きや次工程へ連結",
+    "evaluation_reason": "本文から、入力（raw notes/bullet points）、AIの主要処理（要約→アクション項目抽出→メール/投稿文ドラフト作成のプロンプトチェーン）、出力（複数ステップの文章生成をつないだワークフロー）が具体的に確認できます。Python等の基本スクリプトと構造化プロンプトで再現でき、個人・中小企業でも導入しやすいです。内容はコンテンツ生成寄りですが、段階的な処理分解、出力形式の固定、リトライ/検証追加という構造は営業メモ、議事録、問い合わせ一次処理、社内メモ整形などへ横展開しやすく、実用性もあります。一方で、本文は自己申告ベースで定量成果や実運用の詳細は限定的で、広告的な要素もあるため信頼性は中程度です。過去保存事例の中では『メール/文書をAIで要約・抽出・生成して次工程につなぐ』系と構造は近いですが、入力が原始メモで、出力がコンテンツ変換パイプライン中心という点で完全重複ではないため採用可と判断します。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 12,
+      "reliability": 5
+    }
   }
 ]
