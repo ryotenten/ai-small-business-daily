@@ -1672,5 +1672,27 @@
       "applicability": 12,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-11-05",
+    "date_display": "2026.11.05",
+    "company_name": "Echelon AI Solutions",
+    "headline": "PDF請求書・メール・図面をAIで読み取り、下書きまで作るワークフロー",
+    "title": "AI Workflow Automation: Where AI Fits In A Workflow",
+    "url": "https://echelonai.au/resources/ai-workflow-automation",
+    "article_filename": "2026-11-05.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-05.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "優先したのは、検索結果だけでも入力→AI処理→出力→人間の最終作業が比較的想像しやすく、Gmail/Make/n8nなど再現性の高い構成が見えるものです。3はGmail取得からフィルタ・自動化の具体手順があり最も本文確認価値が高いです。1は実務別の実例を扱う総合ガイドで、具体ワークフローが複数見つかる可能性があります。0は『最初に自動化すべき5ワークフロー』で、個人・小規模向けの再現例が期待できます。7はMakeを使った入門で、記事要約やコンテンツ作成など実装イメージが明確です。8は『AIがどこに入るか』を定義する整理記事で、ワークフローの型を抽出するのに役立つ可能性があります。",
+    "adoption_score": 85,
+    "workflow_signature": "非構造化業務入力→AIで読取・分類・下書き生成→ルール処理と人手承認を経て業務実行",
+    "evaluation_reason": "本文から、AIをワークフロー内の特定ステップ（読取・抽出・分類・下書き・次工程判断）に限定し、固定ルールと人手承認で囲う実践的な設計方針が明確に確認できる。特に「請求書を読む→ルールで照合→人が承認」「メールを分類して振り分ける」「資料を読んで下書きを作る」など、入力・AI処理・出力の型が具体的で、一般的なツールやAPIで再現しやすい。業種固有の事例もあるが、抽象化するとメール処理、書類処理、問い合わせ対応、見積作成、社内事務などへ横展開しやすい。実装上の注意点や人手承認の位置づけも書かれており、信頼性も十分。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]

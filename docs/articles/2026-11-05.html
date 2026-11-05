@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PDF請求書・メール・図面をAIで読み取り、下書きまで作るワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この事例のポイントは、AIを「全部を自動化する道具」としてではなく、読み取りや下書きが必要な一部の工程にだけ差し込んでいることです。定型ルールで十分な部分はルールに任せ、判断が必要な部分だけAIを使うことで、速さと信頼性の両立を狙っています。記事では、請求書処理、商品登録、見積もり作成、提出書類作成">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.05</div>
+    <h1>PDF請求書・メール・図面をAIで読み取り、下書きまで作るワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>Echelon AI Solutions<br>
+      <strong>業種：</strong>業務フロー自動化・AI導入支援<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例のポイントは、AIを「全部を自動化する道具」としてではなく、読み取りや下書きが必要な一部の工程にだけ差し込んでいることです。定型ルールで十分な部分はルールに任せ、判断が必要な部分だけAIを使うことで、速さと信頼性の両立を狙っています。記事では、請求書処理、商品登録、見積もり作成、提出書類作成などの例が紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、入力データがPDFや長文メールのように非構造化で、固定ルールだけでは読み取れないことです。たとえば請求書のレイアウトが取引先ごとに変わると、項目の抜き出しや分類を人手で行う必要があり、時間と手間がかかります。また、見積もりや提出書類のように、内容の確認と下書き作成に人の作業が集中していたことが読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>【事例1: 仕入先請求書をXeroに入れる流れ】</p><p>入力: PDF請求書</p><p>↓</p><p>AIによる処理: 請求書を読み取り、仕入先名、金額、支払期日、明細などを抽出し、重複チェック用の下書きを作成</p><p>↓</p><p>次のシステム・処理: ルールで仕入先や勘定科目を確認し、Xeroに下書きとして入れる</p><p>↓</p><p>出力: 承認待ちの請求書データ</p><p>↓</p><p>人間による確認・最終作業: 人がサインオフする</p><p>【事例2: 請求書からShopifyの商品登録を作る流れ】</p><p>入力: 仕入先請求書</p><p>↓</p><p>AIによる処理: 画像やPDFから商品情報を読み取り、数量、サイズ、価格、SKUを整理</p><p>↓</p><p>次のシステム・処理: Shopifyの商品下書きを作成</p><p>↓</p><p>出力: 仕入れ情報をもとにした商品登録案</p><p>↓</p><p>人間による確認・最終作業: 内容を確認して公開する</p><p>【事例3: 見積もりの下書き作成】</p><p>入力: 図面セット</p><p>↓</p><p>AIによる処理: 部屋ごとの項目を読み取り、必要な項目をワークシート化し、不足している寸法を指摘</p><p>↓</p><p>次のシステム・処理: オーナーが承認済みの単価だけを当てはめる</p><p>↓</p><p>出力: 見積もり用の計算シートと下書き</p><p>↓</p><p>人間による確認・最終作業: オーナーが確認して提出する</p><p>【事例4: 提出書類の自動生成】</p><p>入力: 自社データとブランドテンプレート</p><p>↓</p><p>AIによる処理: council-gradeの提出書類をテンプレートに沿って生成</p><p>↓</p><p>次のシステム・処理: 変更があれば全体を再生成</p><p>↓</p><p>出力: 提出用パック</p><p>↓</p><p>人間による確認・最終作業: 提出前に確認する</p><p>記事全体から分かるのは、AIは「読む」「分類する」「下書きを作る」役を担い、確定処理はルールと人が担う設計です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事で確認できる効果は、作業時間の短縮と下書き作成の高速化です。たとえば、商業塗装の見積もりでは、オーナーの見積もりによれば、最大3週間かかっていたものが約6時間で回るようになったと紹介されています。ほかにも、請求書のキー入力削減、重複チェック、承認前の下書き化、提出書類の再生成ができるようになったことが読み取れます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、AIを最も苦手になりやすい“曖昧な入力の読み取り”に限定し、ミスの影響が大きい確定処理はルールと人に残したからだと考えられます。これは記事の設計思想として明示されています。さらに、モデル自体は交換可能な部品として扱い、ワークフロー全体の設計を中心に据えているため、特定モデルに依存しすぎない構成になっています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・AIはワークフロー全体に入れるのではなく、読み取り・分類・下書きの部分にだけ入れると扱いやすい。</p><p>・「毎回答えが違う入力」はAI向き、「毎回同じ処理」はルール向き。</p><p>・お金が動く、顧客に届く、公開される処理は、まず人の承認を挟むのが安全。</p><p>・AIの精度を見る前に、まず固定ルールの部分を完成させると設計が安定する。</p><p>・最初は1工程だけをAI化し、実データで検証してから広げるほうが再現しやすい。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>【自分で作るなら: 共通テンプレート】</p><p>1. メール、PDF、画像、フォーム回答などの入力を取得する</p><p>2. ChatGPT / OpenAI API / Claude / Gemini に渡して、抽出・分類・要約・下書きをさせる</p><p>3. 結果を Google Sheets、Excel、Notion、Airtable、DB に保存する</p><p>4. 必要なら Zapier、Make、n8n、GitHub Actions で次工程に流す</p><p>5. Slack、Gmail、Pushover で担当者に通知する</p><p>6. 人間が最終確認して承認する</p><p>【仕事への応用例1: 問い合わせメールの振り分け】</p><p>- 入力: Gmailに届く問い合わせ本文と件名</p><p>- AI処理: 内容を読んで「見積もり」「サポート」「請求」「営業」などに分類し、要点を3行で要約</p><p>- 出力: Slackの担当チャンネルに通知、またはGoogle Sheetsに記録</p><p>- 人間: 優先度を見て返信する</p><p>【仕事への応用例2: 見積依頼フォームの下書き化】</p><p>- 入力: Googleフォームの回答、添付ファイル、過去見積データ</p><p>- AI処理: 条件を整理して見積書の草案を作成し、抜けている項目を指摘</p><p>- 出力: Excel/Google Sheetsの下書き、またはNotionの案件ページ</p><p>- 人間: 単価と条件を確認して送信する</p><p>【仕事への応用例3: 請求書・領収書の記録補助】</p><p>- 入力: PDFや撮影画像</p><p>- AI処理: 金額、日付、相手先、用途候補を抽出</p><p>- 出力: 会計用スプレッドシートや経費管理DB</p><p>- 人間: 勘定科目を確認して確定する</p><p>【仕事への応用例4: 社内手順書の初稿作成】</p><p>- 入力: 過去の議事録、チャット履歴、既存マニュアル</p><p>- AI処理: 手順を整理して初稿を作成、抜け漏れを指摘</p><p>- 出力: NotionやGoogle Docsの下書き</p><p>- 人間: 実運用に合わせて修正する</p><p>【個人利用例1: 旅行の持ち物リスト作成】</p><p>- 入力: 旅程、天気予報、宿泊先情報</p><p>- AI処理: 必要な持ち物を分類して抜けを確認</p><p>- 出力: チェックリスト</p><p>- 人間: 必要なものだけ選んで使う</p><p>【個人利用例2: 長文メールの要点整理】</p><p>- 入力: 受信メール本文</p><p>- AI処理: 期限、依頼事項、返信が必要かを抽出</p><p>- 出力: ToDoリストやメモアプリ</p><p>- 人間: 返信の要否を判断する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事からは、各事例の詳細な運用手順、使用した具体的な自動化基盤、モデル設定、セキュリティ設計の全容は確認できません。数値として示されているのは見積もり時間の例のみで、他の事例の効果は定量化されていません。AIは誤読や誤分類をする可能性があるため、請求書、顧客対応、公開物、法務・契約判断のような重要工程は人間の確認が必要です。また、個人情報や機密情報を扱う場合は、どのプロバイダに何を送るかを事前に確認する必要があります。</p>
+
+    <h2>参考記事</h2>
+    <p>AI Workflow Automation: Where AI Fits In A Workflow</p>
+    <p class="source">
+      <a href="https://echelonai.au/resources/ai-workflow-automation"
+         target="_blank" rel="noopener noreferrer">
+        https://echelonai.au/resources/ai-workflow-automation
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
