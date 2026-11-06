@@ -1694,5 +1694,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-06",
+    "date_display": "2026.11.06",
+    "company_name": "記事から確認できません",
+    "headline": "AIエージェントで問い合わせ・営業・経理・社内文書を自動化する10の実務フロー",
+    "title": "10 Business Processes You Can Fully Automate with ...",
+    "url": "https://kogents.ai/blogs/automate-with-ai-agents/",
+    "article_filename": "2026-11-06.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-06.html",
+    "search_query": "\"AI agent\" practical workflow business",
+    "selection_reason": "優先したのは、検索結果の段階でも「何を入力し、AIがどう処理し、何が出力され、人がどこで仕上げるか」が比較的想像しやすく、個人・小規模チームに再現しやすそうなものです。1は業務プロセスを複数自動化する実践寄り、2はB2B業務の会話→業務処理連携が具体化しやすい、15は競合調査・価格収集・レビュー抽出など再現性の高い調査系ワークフローが期待できる、13は始め方として高頻度業務の切り分けが書かれていそうで実務設計の参考になりそう、6はAIワークフローの仕組みを整理しつつ具体例に繋がる可能性が高いと判断しました。比較記事や抽象論より、本文を読む価値が高い候補を優先しています。",
+    "adoption_score": 83,
+    "workflow_signature": "業務イベント・非構造化依頼→AIで分類・要約・ルーティング/下書き生成→各業務システムへ登録・通知・例外時は人手承認",
+    "evaluation_reason": "本文から、顧客対応、営業、経理、HR、IT、サプライチェーン、マーケ、コンプライアンス、DevOps、ナレッジ管理まで、入力→AI処理→出力の形でかなり具体的なワークフローが確認できる。特に「チケットを分類して下書き返信」「リードをスコアリングして追客案を作る」「請求書・領収書をOCR/分類し照合する」「新規入社/退職に応じて各システムを連携する」など、一般的なツールやAPIで再現しやすい構造が明瞭。業種は広くないが、抽象化すると“非構造化業務入力をAIで整理し、ルールに従って各システムへ流す”という横展開しやすい型になっている。定量主張には広告色もあるが、具体的な実装イメージと利用シーンが本文で確認できるため、採用基準は満たす。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 21,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 10
+    }
   }
 ]
