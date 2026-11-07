@@ -1716,5 +1716,27 @@
       "applicability": 11,
       "reliability": 10
     }
+  },
+  {
+    "date": "2026-11-07",
+    "date_display": "2026.11.07",
+    "company_name": "記事から確認できません",
+    "headline": "AIワークフロー自動化の実践設計：チャットではなく「下書き・分類・振り分け」をAIに任せる方法",
+    "title": "AI Workflow Automation: A Practical Guide - genpro labs",
+    "url": "https://genprolabs.com/guides/ai-workflow-automation",
+    "article_filename": "2026-11-07.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-07.html",
+    "search_query": "site:news.ycombinator.com AI automation workflow",
+    "selection_reason": "優先したのは、比較・ニュースではなく、本文を読めば『どの入力をどうAI処理し、何を出力して、人間がどこで最終確認するか』が具体化しそうな実践ガイド型の記事です。0はAIエージェント/API/業務ツール連携が明示され再現性が高そうです。2はトリガー、人手レビュー、エラー処理、削減時間の測定まで含むため、ワークフロー設計の本文価値が高い候補です。3は『何を最初に自動化するか』と実例があり、個人・小規模向けの具体フローが見つかりそうです。11は高頻度・反復業務に絞る実務的な導入指針があり、再現可能なワークフロー抽出に向いています。1はやや一般論寄りですが、業務プロセスへの組み込み方や具体ユースケースが本文で出る可能性があるため、補欠として入れました。",
+    "adoption_score": 90,
+    "workflow_signature": "業務トリガー（メール・フォーム・新規行など）→AIで分類・抽出・下書き生成、例外は人手レビュー→自動実行・記録・通知",
+    "evaluation_reason": "本文から、AIをどこに入れるか（非構造化入力の分類・抽出・下書き）、前後の制御（トリガー、オーケストレーション、人手レビュー、例外処理）、運用要件（idempotency、リトライ、ログ、測定）まで具体的に確認できます。特定業種の成功談ではなく、再現可能な設計原則としてまとまっており、メール・フォーム・スプレッドシート・CRM・サポート対応・社内申請などへ広く横展開できます。定量成果は少ないものの、実装の考え方と運用の注意点が明確で、長期保存に値する実用ワークフローです。過去事例とも、主入力・AI処理・出力が同一の重複には当たりません。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 23,
+      "usefulness": 22,
+      "applicability": 14,
+      "reliability": 8
+    }
   }
 ]

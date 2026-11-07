@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIワークフロー自動化の実践設計：チャットではなく「下書き・分類・振り分け」をAIに任せる方法 | AI Small Business Daily</title>
+<meta name="description" content="この記事が示しているのは、AIの価値はチャット画面よりも、繰り返しの社内業務の一部に組み込むと大きくなる、という考え方です。特に、判断が必要な一部分だけをモデルに任せ、残りは通常の自動化でつなぐ構成が中心です。元記事では、どのようなプロセスを選ぶか、どう起動するか、人の確認をどこに入れるか、失敗時ど">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.07</div>
+    <h1>AIワークフロー自動化の実践設計：チャットではなく「下書き・分類・振り分け」をAIに任せる方法</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>業務ワークフロー自動化の解説記事（業種横断）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事が示しているのは、AIの価値はチャット画面よりも、繰り返しの社内業務の一部に組み込むと大きくなる、という考え方です。特に、判断が必要な一部分だけをモデルに任せ、残りは通常の自動化でつなぐ構成が中心です。元記事では、どのようなプロセスを選ぶか、どう起動するか、人の確認をどこに入れるか、失敗時どう扱うか、そして効果をどう測るかが整理されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>元記事では、AI導入前の課題として「繰り返しの内部業務に手作業が多いこと」「テキストや非構造データの処理に時間がかかること」が読み取れます。具体例としては、一次トリアージ、データ入力、要約、振り分け、初稿作成のような業務です。逆に、件数が少ないもの、失敗コストが大きいもの、判断基準が明文化されていないものは不向きとされています。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>・メール、フォーム送信、新しい行の追加、Webhook、定期実行などで業務を開始</p><p>・本文やチケット内容、申請情報などの非構造テキスト</p><p>↓</p><p>AIによる処理</p><p>・分類：問い合わせや依頼を種類別に振り分ける</p><p>・抽出：必要項目を抜き出す</p><p>・要約：長文を短くまとめる</p><p>・下書き作成：返信文や一次案を生成する</p><p>・判断補助：自動承認するか、レビューに回すかの判定補助</p><p>・出力形式の整形：次工程が扱いやすいように構造化する</p><p>↓</p><p>次のシステム・処理</p><p>・オーケストレーターが各工程を順に実行し、失敗時は再試行</p><p>・n8nやZapierのような自動化基盤が想定されているが、複雑化すればカスタムコードに移ることがある</p><p>↓</p><p>出力</p><p>・JSONのような構造化データ</p><p>・処理済みチケット</p><p>・返信下書き</p><p>・担当者への振り分け結果</p><p>↓</p><p>人間による確認・最終作業</p><p>・自動承認できるものとレビューが必要なものを分ける</p><p>・レビュー担当者が承認または修正する</p><p>・レビュー結果を次の学習例として蓄積する</p><p>元記事の重要点は、AIそのものよりも、周辺の配線、再試行、状態管理、レビュー設計、監視のほうが重要だとされていることです。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>元記事で確認できる効果は、時間削減、初回応答時間の短縮、誤り率の低下、1件あたりコストの把握です。数値そのものは示されていませんが、導入前後で「週あたり何時間減ったか」「手作業と比べてミスが増えていないか」「処理速度が上がったか」を測る設計が推奨されています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由として元記事から言えるのは、AIを『全部やらせる』のではなく、ルール化しにくい部分だけに限定して使っていることです。これにより、機械処理が得意な部分は従来の自動化で安定稼働させ、判断が必要な部分だけをモデルに任せられます。さらに、最初から人の確認を入れ、信頼できるケースだけ徐々に自動化範囲を広げる設計なので、失敗時のリスクを抑えやすい構成です。これは分析であり、元記事の直接記述ではありません。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>・AI導入の前に、まず業務そのものを時間計測して把握する</p><p>・向いているのは『件数が多い』『ルールが多い』『テキスト中心』の仕事</p><p>・AIには分類、抽出、要約、下書きなど、判断しやすい部分を任せる</p><p>・出力は自由文ではなく構造化して、次工程を壊さない</p><p>・最初は人が承認し、実績がたまったら自動化率を上げる</p><p>・再試行、重複防止、ログ記録、監視がないと運用は崩れやすい</p><p>・効果測定を先に決めないと、改善したのか判断できない</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事での応用案</p><p>1. 問い合わせ一次振り分け</p><p>・入力：Gmailや問い合わせフォームの本文</p><p>・AI処理：内容分類、緊急度判定、必要項目抽出、返信下書き作成</p><p>・出力：Google SheetsまたはCRMに分類結果を保存</p><p>・通知：Slackで担当者に振り分け通知</p><p>・人間確認：緊急案件と例外案件だけ確認して送信</p><p>2. 社内申請のチェック補助</p><p>・入力：申請フォームの内容、添付ファイル名、申請理由</p><p>・AI処理：不備チェック、要点要約、申請種別の判定</p><p>・出力：NotionやExcelに記録</p><p>・通知：不備があるものだけメールで差し戻し案を通知</p><p>・人間確認：承認権限者が最終判断</p><p>3. 会議メモの要約とタスク化</p><p>・入力：会議録音の文字起こしや議事メモ</p><p>・AI処理：決定事項、担当者、期限を抽出</p><p>・出力：タスクをAsana、Trello、Notionに登録</p><p>・通知：Slackで未完了タスクを共有</p><p>・人間確認：担当者が内容を修正して確定</p><p>4. 受信メールからの定型返信ドラフト作成</p><p>・入力：特定ラベルのメール本文</p><p>・AI処理：要約と返信案生成</p><p>・出力：Gmailの下書きに保存</p><p>・人間確認：送信前に担当者が文面を確認</p><p>個人利用の応用案</p><p>1. 家計レシートの整理</p><p>・入力：レシート写真</p><p>・AI処理：品目と金額を抽出し、カテゴリ分け</p><p>・出力：Google Sheetsに記録</p><p>・人間確認：月末にカテゴリ修正</p><p>2. 購入候補の比較メモ作成</p><p>・入力：ECサイトの商品説明やレビュー</p><p>・AI処理：長所短所を要約し、比較表を作成</p><p>・出力：Notionやスプレッドシートに保存</p><p>・人間確認：最終購入判断は自分で行う</p><p>3. 旅行計画の下書き作成</p><p>・入力：行きたい場所、日程、移動条件</p><p>・AI処理：行程案を作成し、所要時間を整理</p><p>・出力：表形式で保存</p><p>・人間確認：予算や好みに合わせて修正</p><p>実装に使いやすい道具の例</p><p>・ChatGPT / OpenAI API：分類、要約、下書き生成</p><p>・Python：メール取得、ファイル処理、API連携</p><p>・Google Sheets / Excel：処理結果の台帳</p><p>・Zapier / Make / n8n：トリガーと処理の連携</p><p>・Slack / Gmail：通知と下書き共有</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>・元記事では、実際にどの企業が導入したかは確認できません</p><p>・業種、会社規模、導入コスト、具体的なROIは確認できません</p><p>・どのモデル名を使ったか、どのシステムに接続したかは確認できません</p><p>・自動化をそのまま本番に入れると、誤分類や誤送信のリスクがあります</p><p>・外部連携では再試行時の重複実行を防ぐ設計が必要です</p><p>・個人情報、機密情報、顧客情報を扱う場合は、入力内容の取り扱いと保存先の管理が必要です</p><p>・自由文のまま次工程に渡すと、ちょっとした文面変更でフロー全体が壊れる可能性があります</p><p>・効果測定をしないと、時短できているか判断できません</p>
+
+    <h2>参考記事</h2>
+    <p>AI Workflow Automation: A Practical Guide - genpro labs</p>
+    <p class="source">
+      <a href="https://genprolabs.com/guides/ai-workflow-automation"
+         target="_blank" rel="noopener noreferrer">
+        https://genprolabs.com/guides/ai-workflow-automation
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
