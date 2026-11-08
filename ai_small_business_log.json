@@ -1738,5 +1738,27 @@
       "applicability": 14,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-08",
+    "date_display": "2026.11.08",
+    "company_name": "記事から確認できません",
+    "headline": "Microsoft 365の各アプリをつなぎ、AIで判断まで任せる10の自動化ワークフロー",
+    "title": "AI Microsoft Automation: 10 Best Workflows (2026) (Tested)",
+    "url": "https://www.flozic.ai/blog/best-microsoft-automations",
+    "article_filename": "2026-11-08.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-08.html",
+    "search_query": "\"AI workflow\" Excel automation",
+    "selection_reason": "優先したのは、本文を読むと具体的な入力→AI処理→出力→人手仕上げの流れが見えそうで、Excel/Teams/Outlook/メールなど再現性の高い業務ツール連携が想像できるものです。1はMicrosoft系の実務ワークフロー集で、複数アプリ横断の具体例が期待できます。2はExcelを既存業務に組み込む分析・自動化系で、個人や小規模チームでも再現しやすいです。4は注文・送信メールなどの実務フローが見え、実装例に発展しそうです。3は小規模事業向けの営業・追客・日程調整など、真似しやすい実例や収益化の観点が期待できます。0は比較記事寄りですが、実際のワークフロー候補や評価軸が載っている可能性があり、本文確認の価値があります。",
+    "adoption_score": 78,
+    "workflow_signature": "Microsoftアプリの更新イベント→AIで分類・要約・異常検知→Teams/Excel/SharePointへ通知・記録",
+    "evaluation_reason": "本文から、Teams・Outlook・Excel・SharePoint・Dynamics 365・Azure DevOpsをまたぐ10本の具体的な自動化例が確認でき、各フローごとにトリガー、アクション、AI Agentの役割が明示されています。入力→AI処理→出力の形が明確で、一般的な自動化基盤でも再現しやすいです。特に「メール/ファイル/業務イベントを起点に、AIで分類・要約・優先付け・異常検知し、Teams通知やExcel/SharePoint/Dynamics更新へつなぐ」という構造は、営業、運用、管理、開発、サポートなどへ横展開しやすく実用性も高いです。一方で、本文はプロダクト紹介色が強く、実際の運用手順や検証条件の深さは限定的なので信頼性は満点ではありません。とはいえ、ワークフロー自体は具体的で、長期保存の価値は十分あると判断します。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 20,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 5
+    }
   }
 ]
