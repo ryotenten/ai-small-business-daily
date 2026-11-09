@@ -1760,5 +1760,27 @@
       "applicability": 11,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-11-09",
+    "date_display": "2026.11.09",
+    "company_name": "記事から確認できません",
+    "headline": "小規模ビジネスの定型業務をAIで回す7つの実践ワークフロー",
+    "title": "AI Workflow Automation for Small Business: 7 Practical ...",
+    "url": "https://blog.turtlesegg.com/ai-workflow-automation-for-small-businesses/",
+    "article_filename": "2026-11-09.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-09.html",
+    "search_query": "\"AI workflow\" small business operations",
+    "selection_reason": "優先したのは、検索結果の時点で『具体的な業務フロー』が見えやすく、本文を読めば再現可能な実装例や失敗しやすい論点まで拾えそうな候補です。0は小規模事業向けに複数ワークフローを比較し、Zapier/カスタム/30日パイロットまで触れていて実務向き。3はRedditで具体事例や小規模事業の生の悩みが出やすく、本文に実践例が埋まっている可能性がある。12は顧客対応・請求・SNSなど再現しやすい定型業務が明示されている。14は『7 practical examples』『one workflow』『measure results』があり、単なる概念記事より実装寄り。16はコンテンツ生成・メール返信など、入力→AI処理→出力の流れが想像しやすく、個人でも応用しやすい。",
+    "adoption_score": 82,
+    "workflow_signature": "反復する業務入力→AIで分類・要約・下書き生成→担当者へルーティングし記録・通知",
+    "evaluation_reason": "本文から、AIを既存の業務フローに組み込み、分類・要約・下書き生成・ルーティング・記録を行う実装方針が明確に確認できる。個別の7例は小規模事業で再現しやすく、メール/予約/請求/レビュー/在庫/社内連携などへ横展開もしやすい。特に「入力→AI処理→出力」の型がはっきりしており、読者が真似しやすい。定量成果や実運用の詳細は薄いが、方法論としては十分実用的で、長期保存価値は高い。過去事例とも主入力・AI処理・出力が完全一致するものではなく、重複度は低い。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 21,
+      "usefulness": 21,
+      "applicability": 13,
+      "reliability": 5
+    }
   }
 ]
