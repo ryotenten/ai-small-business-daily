@@ -1782,5 +1782,27 @@
       "applicability": 13,
       "reliability": 5
     }
+  },
+  {
+    "date": "2026-11-12",
+    "date_display": "2026.11.12",
+    "company_name": "記事から確認できません",
+    "headline": "メールや問い合わせをAIで仕分ける業務フローの作り方 — n8n / Zapier / Makeで実装する実践パターン",
+    "title": "How to Use AI in Your Workflow Automations",
+    "url": "https://automatewise-six.vercel.app/blog/ai-workflow-automation",
+    "article_filename": "2026-11-12.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-12.html",
+    "search_query": "site:news.ycombinator.com AI automation workflow",
+    "selection_reason": "1位と2位は、本文を読めば『読み取り→分類/抽出→下書き→人手確認』の実装例や、n8n/Make/Zapierなど再現しやすい組み合わせが出てきそうで、ワークフローの型として有用です。3位はn8n+Geminiの具体的な実践が見え、個人でも再現しやすい可能性が高いです。4位はYouTubeリサーチ系の実用ワークフローが想像でき、調査→要約→成果物化の応用が広いです。5位はExcel自動化の具体例が期待でき、仕事の定型業務に直結しやすいですが、他よりは汎用記事寄りなので後順位にしました。",
+    "adoption_score": 85,
+    "workflow_signature": "メール・フォーム・文書→AIで分類・抽出・生成→業務ツールへ記録・通知・自動実行",
+    "evaluation_reason": "本文から、n8n/Make/Zapierでの実装例、AIの役割（分類、要約、抽出、生成、感情分析、画像解析）、出力形式（JSON、分類ラベル、要約文など）、運用上の注意（温度設定、パース、レート制限、プロンプト注入対策）まで確認でき、実際に再現しやすいです。特定業種に閉じず、問い合わせ対応、リード評価、文書処理、レビュー返信、社内運用などへ横展開しやすい構造で、長期保存価値があります。過去事例には似た大分類は多いものの、入力・AI処理・後続アクションの組み合わせは広く一般化された設計論であり、重複として除外する必要はありません。",
+    "score_detail": {
+      "specificity": 22,
+      "reproducibility": 22,
+      "usefulness": 21,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]

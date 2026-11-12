@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>メールや問い合わせをAIで仕分ける業務フローの作り方 — n8n / Zapier / Makeで実装する実践パターン | AI Small Business Daily</title>
+<meta name="description" content="この記事は、従来の「条件分岐だけの自動化」では扱いづらかった、メール・問い合わせ・PDF・レビューのような非構造化データをAIで処理する方法をまとめています。AIに分類、要約、抽出、文章生成を担わせることで、人間が判断していた部分をワークフローに組み込めるのがポイントです。本文では、n8n、Zapi">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.12</div>
+    <h1>メールや問い合わせをAIで仕分ける業務フローの作り方 — n8n / Zapier / Makeで実装する実践パターン</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>ワークフロー自動化ツールの活用事例（サポート対応、文書処理、リード判定、レビュー返信など）<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、従来の「条件分岐だけの自動化」では扱いづらかった、メール・問い合わせ・PDF・レビューのような非構造化データをAIで処理する方法をまとめています。AIに分類、要約、抽出、文章生成を担わせることで、人間が判断していた部分をワークフローに組み込めるのがポイントです。本文では、n8n、Zapier、Make上での実装例として、サポートチケット分類、ブログ制作、リードスコアリング、レビュー返信、文書処理の流れが紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前は、問い合わせ内容をキーワードだけで判定するような固定ルールの自動化では、文脈をまたぐ内容や言い換えに弱かったことが課題です。たとえば、件名に特定の単語がなくても実際は請求トラブルであるケースを見落としやすく、メール本文全体を読んで判断する必要がありました。また、メール、文書、画像、レビューのような非構造化データは、従来の自動化だけでは扱いにくい状態でした。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- サポートメール、フォーム送信、レビュー本文、PDF添付、商品情報などの非構造化データ</p><p>↓</p><p>AIによる処理</p><p>- 内容分類（billing / technical / sales / complaint などのラベル付け）</p><p>- 優先度判定（緊急度の推定）</p><p>- 要約（長文の短縮）</p><p>- 情報抽出（名前、会社名、依頼種別、金額、日付などをJSON化）</p><p>- 文章生成（返信文、商品説明、ブログ下書き、SNS文面）</p><p>- 感情分析（positive / negative / neutral）</p><p>- 画像分析（レシート、請求書、商品画像などの分類や抽出）</p><p>↓</p><p>次のシステム・処理</p><p>- IFノードで分岐</p><p>- Slackやメールで通知</p><p>- CRM / Helpdesk / スプレッドシートへ登録</p><p>- Google Docsで下書き作成</p><p>- 会計ソフトや各種業務システムに連携</p><p>↓</p><p>出力</p><p>- 適切な担当チームへの振り分け</p><p>- 構造化されたチケットやリード情報</p><p>- レビュー返信案、ブログ下書き、抽出済みデータ</p><p>↓</p><p>人間による確認・最終作業</p><p>- 重要案件や外部公開文面は人間が確認</p><p>- 返信投稿前の承認</p><p>- 抽出結果の検証と修正</p><p>- ルーティング結果の監視とプロンプト調整</p><p>記事内の具体例としては、サポートチケット分類フローが挙げられています。メールトリガーで新着問い合わせを受け取り、OpenAIまたはAnthropicのノードで件名と本文を解析し、その結果をIFノードで分岐、Slackやメールで通知し、最後にCRMやHelpdeskへ記録する流れです。AIは単純な分類ではなく、文脈理解に基づく仕分け役として使われています。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事では売上増加などの数値成果は示されていません。確認できる効果としては、キーワードルールを大量に作る手間の削減、問い合わせの仕分け精度向上、レビューや文書の下書き作成の省力化、対応のスピード向上が挙げられます。特に、AIが初期判断を担うことで、人間は例外処理や最終確認に集中しやすくなります。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、非構造化データをまずAIで構造化し、その後の自動化ルールに渡せるからです。分析として言えば、従来の自動化は『条件が明確な処理』に強い一方で、AIは『意味の解釈』に強いため、両者をつなぐことで得意領域を補完できています。また、JSON形式の出力や低温度設定など、機械処理しやすい出力設計を前提にしている点も実運用に向いています。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIは自動化の置き換えではなく、判断が必要な1ステップを差し込むと効果が出やすい</p><p>- まずはメール分類、要約、情報抽出のような失敗しにくい用途から始めるとよい</p><p>- 出力形式をJSONなどに固定すると、後続のIF分岐やDB登録に接続しやすい</p><p>- ルールベースで無理に処理していた『曖昧な入力』をAIに任せると、保守が楽になる</p><p>- 重要業務では、AIの出力をそのまま確定させず、人間の確認を挟む設計が重要</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次の流れが現実的です。</p><p>1. Gmail、フォーム、Slack、PDFフォルダなどから入力を取得する</p><p>2. その本文や添付ファイルをChatGPT API、OpenAI API、Claude API、Gemini、またはZapier/Make/n8nのAIノードへ渡す</p><p>3. AIに『分類』『要約』『項目抽出』『返信草案作成』のいずれかをさせる</p><p>4. 結果をGoogle Sheets、Notion、Airtable、Excel、CRM、Helpdeskに保存する</p><p>5. 必要ならSlackやメールで担当者へ通知する</p><p>6. 人間が最終確認し、送信・登録・公開を確定する</p><p>仕事への応用例:</p><p>- 問い合わせ振り分け: Gmailの受信メール本文をAIで分類し、billing/technical/sales/クレームに分けてSlackまたはZendeskに送る</p><p>- 議事録整理: Zoomや会議メモの文字起こしをAIで要約し、ToDoと担当者を抽出してNotionやGoogle Sheetsへ保存する</p><p>- 見積もり依頼の初期処理: フォーム入力をAIで読み取り、会社名・希望納期・依頼内容を抽出して営業CRMへ登録する</p><p>- PDF処理: 請求書や契約書のPDFをOCRまたはPDFパーサーでテキスト化し、AIで項目抽出してスプレッドシートに転記する</p><p>個人利用の応用例:</p><p>- 受信メールの要約: 長文メールをAIで3行要約し、重要度をラベル付けして自分専用のメモに保存する</p><p>- レシート整理: スマホで撮ったレシート画像をAIで読み取り、日付・金額・店名を家計簿に記録する</p><p>- 読書メモ化: 記事やPDFをAIで要約し、Notionに『要点』『気づき』『次にやること』として保存する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、導入企業名、業種別の実績、処理件数、削減時間などの定量成果は確認できません</p><p>- どの業務でどのくらい精度が出るかは、実データとプロンプト設計に依存します</p><p>- AIは誤分類、誤抽出、もっともらしい誤情報を返すことがあるため、重要な金額・契約条件・顧客対応では人間確認が必要です</p><p>- ユーザー入力をそのままAIに渡す場合、プロンプトインジェクションや機密情報漏えいのリスクがあります</p><p>- rate limitやコスト上昇の可能性があるため、大量処理ではバッチ化、キャッシュ、トークン上限設定が必要です</p><p>- 記事内で紹介されている具体的な設定値、運用体制、承認フローの細部は確認できません</p>
+
+    <h2>参考記事</h2>
+    <p>How to Use AI in Your Workflow Automations</p>
+    <p class="source">
+      <a href="https://automatewise-six.vercel.app/blog/ai-workflow-automation"
+         target="_blank" rel="noopener noreferrer">
+        https://automatewise-six.vercel.app/blog/ai-workflow-automation
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
