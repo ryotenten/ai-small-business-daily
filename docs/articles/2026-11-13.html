@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>n8n×OpenAIで作る「受信→判定→配信→記録」のAI業務ワークフロー集 | AI Small Business Daily</title>
+<meta name="description" content="この事例は、単発のAIチャットではなく、業務の入口から出口までをつなぐ自動化ワークフロー集です。面倒だったのは、問い合わせや見込み客、予約依頼、サポート票のような“毎回同じように処理したいが、内容は毎回少し違う”業務でした。そこで、n8nとOpenAI、Google Workspace、Slack、">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.13</div>
+    <h1>n8n×OpenAIで作る「受信→判定→配信→記録」のAI業務ワークフロー集</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>AI自動化、CRM、営業、顧客対応、予約受付、社内ナレッジ運用<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この事例は、単発のAIチャットではなく、業務の入口から出口までをつなぐ自動化ワークフロー集です。面倒だったのは、問い合わせや見込み客、予約依頼、サポート票のような“毎回同じように処理したいが、内容は毎回少し違う”業務でした。そこで、n8nとOpenAI、Google Workspace、Slack、WhatsAppなどを組み合わせ、AIが分類・分析・文面作成を担当し、ルールベースの処理が検証・分岐・記録を担当する構成にしています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事から確認できる課題は、営業リード、CRM更新、予約依頼、サポート問い合わせ、WhatsAppメッセージなどが複数チャネルから入ってくることです。人手での一次判定や転記、返信文作成、優先度分け、記録作業が発生しやすく、しかもAIの出力をそのまま使うと誤った内容が下流の処理や顧客連絡に混ざるリスクがあります。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- Webhook、Google Sheetsの新規行、WhatsAppメッセージ、GHLフォーム送信、ナレッジ文書などを受け取る。</p><p>↓</p><p>AIによる処理</p><p>- リードのスコアリング、業種・会社規模・購買意向・異議などの分類。</p><p>- 問い合わせの意図判定（営業かサポートか、緊急度はどうか）。</p><p>- 予約依頼の優先度判定、所要時間の推定、返信文の下書き作成。</p><p>- 知識文書に基づく検索回答（RAG）や、文脈に沿った営業返信の生成。</p><p>↓</p><p>次のシステム・処理</p><p>- AIの出力をそのまま信じず、必ず検証・パース・許可リスト照合を行う。</p><p>- 条件分岐で、例えば高優先度のリードだけSlack通知、一定スコア以上だけ営業フォロー、サポートはRAG検索へ、などに振り分ける。</p><p>- Google Sheets、Gmail、Google Calendar、Slack、WhatsApp、GHLなどへ接続して実行する。</p><p>↓</p><p>出力</p><p>- スコア付きリード情報、優先度付きチケット、予約候補、確認済みの返信文、知識ベース回答、ログ記録。</p><p>↓</p><p>人間による確認・最終作業</p><p>- すべての分岐で人間が必ず確認しているとは記事からは確認できません。</p><p>- ただし、設計思想としては、AIの結果を検証し、曖昧・低信頼なケースは人間に送る前提です。</p><p>- 予約確定や顧客送信の前に、必要に応じて人が最終確認する運用が想定されますが、どこまで人手確認しているかはプロジェクトごとに異なり、記事からは一律には確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事からは売上やコスト削減の具体的な数値は確認できません。確認できる効果としては、一次判定や転記、返信文作成、記録作業を自動化し、営業・サポート・予約の初動を速くし、手作業のミスを減らすことが狙いです。また、問い合わせを適切な担当ルートへ振り分けることで、対応漏れや誤送信のリスクを下げる設計になっています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>分析として言うと、このワークフローが有効なのは、AIに“判断が必要な部分”だけを任せ、ルールで“壊れてはいけない部分”を守っているからです。入力検証、構造化出力、条件分岐、ログ保存を挟むことで、AIの曖昧さを業務に持ち込まない設計になっています。さらに、営業・予約・サポートのような実務フローに直結しているため、AIが単なる要約ではなく、次のアクションに変換されます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用できるポイントは、AIを“全部自動化する頭脳”ではなく、“分類・抽出・文章化の補助役”として使うことです。次の形にすると他業務へ移植しやすくなります。</p><p>- 入力を先に整える</p><p>- AIには構造化された項目だけを返させる</p><p>- 重要な判断はルールで二重チェックする</p><p>- 出力先をSlack、Sheets、Gmailなど既存ツールに寄せる</p><p>- 失敗時の逃げ道として人間確認ルートを残す</p><p>- どの分岐が動いたかを必ず記録する</p><p>この考え方は、営業、問い合わせ対応、予約受付、社内申請、ナレッジ検索など、日々の定型業務に広く使えます。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、次のような流れが実装しやすいです。</p><p>1. Googleフォーム、メール、Slack、Webhook、Excel/Google Sheetsから入力を集める</p><p>2. 入力内容をPython、n8n、Make、Zapier、ChatGPT/OpenAI APIに渡す</p><p>3. AIで分類、要約、優先度判定、返信文草案、必要情報の抽出を行う</p><p>4. 結果をGoogle Sheets、Notion、Airtable、データベースに保存する</p><p>5. 高優先度だけSlackやメールで通知する</p><p>6. 最終送信や承認は人間が確認する</p><p>仕事への応用例:</p><p>- 営業リード仕分け: 問い合わせ本文を取得→AIで業種、温度感、商談化可能性を判定→スコア順にSheetsへ保存→高スコアのみSlack通知→営業担当が確認して返信。</p><p>- 問い合わせ窓口の一次対応: 受信メールやフォーム内容を取得→AIで質問カテゴリと緊急度を判定→FAQ文案を生成→Zendesk、Notion、Sheetsに記録→緊急案件だけ担当者へ即通知。</p><p>- 予約調整アシスタント: 予約希望文を取得→AIで希望日時、所要時間、緊急度を抽出→Google Calendar候補を照合→候補をメール下書きにして人が承認→送信。</p><p>- 社内申請の下書き生成: 申請フォームの自由記述を取得→AIで要点整理と不足項目の抽出→Teams/Slackに確認依頼→承認後にシステム登録。</p><p>個人利用の応用例:</p><p>- メール整理: 受信メールを取得→AIで要返信、保留、保存を分類→重要件だけ通知→後でまとめて対応。</p><p>- 学習メモの整理: 読書メモや音声書き起こしを投入→AIで要点、ToDo、復習カードを抽出→NotionやAnkiに保存。</p><p>- 家族連絡の下書き: 予定や持ち物メモを入力→AIで読みやすい連絡文を作成→送信前に自分で確認。</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点が多くあります。各ワークフローの運用人数、実際の処理件数、導入コスト、保守体制、実運用での失敗率は不明です。また、AIの判定が誤る可能性、個人情報や顧客情報の取り扱い、外部API障害、重複登録、認証やレート制限への対応は、プロダクション利用では追加対策が必要だと記事内でも明記されています。さらに、WhatsApp経由の一部フローは全経路が完全に確認済みとは限らず、プロジェクトごとの成熟度に差があります。</p>
+
+    <h2>参考記事</h2>
+    <p>nextwave-ai/ai-automation-portfolio: Production- ...</p>
+    <p class="source">
+      <a href="https://github.com/nextwave-ai/ai-automation-portfolio"
+         target="_blank" rel="noopener noreferrer">
+        https://github.com/nextwave-ai/ai-automation-portfolio
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

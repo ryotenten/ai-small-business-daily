@@ -1804,5 +1804,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-11-13",
+    "date_display": "2026.11.13",
+    "company_name": "記事から確認できません",
+    "headline": "n8n×OpenAIで作る「受信→判定→配信→記録」のAI業務ワークフロー集",
+    "title": "nextwave-ai/ai-automation-portfolio: Production- ...",
+    "url": "https://github.com/nextwave-ai/ai-automation-portfolio",
+    "article_filename": "2026-11-13.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-13.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "優先したのは、本文を読めば具体的な入力→AI処理→出力→人手確認の流れが見えそうで、なおかつ個人・少人数でも再現しやすい候補です。1位の0は n8n＋Google Workspace＋OpenAI API と明記され、CRM/リード資格判定/日程調整など実務ワークフローが具体的です。4はメール・顧客対応・業務自動化とあり、PC操作まで含む可能性があって応用範囲が広いです。6は「ExcelでAIを使って受注状況に応じてメール送信」系の実例が想像しやすく、再現性が高いです。1はエージェント実装の土台として価値があり、本文で具体的なマルチエージェント運用例が見つかる可能性があります。3は視覚的に複雑なエージェントパイプラインを組める可能性があり、実運用のワークフロー設計例として確認する価値があります。",
+    "adoption_score": 88,
+    "workflow_signature": "新規リード/問い合わせ→AIで分類・評価・文章生成→CRM/シート登録、通知、返信・予約処理",
+    "evaluation_reason": "本文から、n8nを中心にした実装済みの業務自動化群であること、入力→AI処理→検証→分岐→通知/記録/送信までの流れがかなり具体的に確認できます。特に、リード評価、CRM更新、日程調整、RAG問い合わせ対応、WhatsApp応答など、実務でそのまま再現しやすい構成が明示されており、一般的なツールで横展開もしやすいです。プロジェクトごとの成熟度や未対応範囲も明記され、単なる紹介記事より信頼性があります。過去事例とも入力・AI処理・出力の粒度が異なり、重複度は低いです。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 23,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 7
+    }
   }
 ]
