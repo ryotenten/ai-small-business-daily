@@ -1826,5 +1826,27 @@
       "applicability": 13,
       "reliability": 7
     }
+  },
+  {
+    "date": "2026-11-17",
+    "date_display": "2026.11.17",
+    "company_name": "記事から確認できません",
+    "headline": "Telegramの問い合わせをAIで分類し、複数ルートに振り分けるMake.comのマルチブランチ自動化",
+    "title": "How I Built a Multi-Branch AI Automation System in ...",
+    "url": "https://community.make.com/t/how-i-built-a-multi-branch-ai-automation-system-in-make-using-routers-json-parsing-aggregation/104062",
+    "article_filename": "2026-11-17.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-17.html",
+    "search_query": "\"I built\" AI automation workflow",
+    "selection_reason": "優先したのは、検索結果の時点で入力→AI処理→出力→人間の最終作業の流れが比較的はっきり見え、しかも個人/少人数で再現しやすそうなものです。1) 2はn8n・Google Sheets・JSONテンプレートと明示され、実装寄りで再現性が高そうです。2) 1はPythonとLLMを使い、小さな案件を収益化する自動化で、実務応用の具体例が本文にありそうです。3) 0は「Input → AI Processing → Decision → Automated Action → Result」とワークフロー構造が明示され、本文で実装手順が読める可能性が高いです。4) 18はMakeのルーター/JSON解析/集約といった具体技術が出ており、分岐のある実務ワークフローとして有望です。5) 17は『Inboxを自動化』など業務ハブ化の流れが見え、複数の実務タスクに応用しやすそうです。比較記事や一般論寄りの候補は優先しませんでした。",
+    "adoption_score": 82,
+    "workflow_signature": "Telegramの受信メッセージ→AIで意図分類・JSON化して分岐→各処理 शाखへルーティングしログ記録と返信",
+    "evaluation_reason": "本文から、Telegram起点の受信メッセージをOpenAIで段階的に分類し、JSONパース、ルーター分岐、イテレーター/集約、Google Sheetsへのログ保存、最終返信まで行う具体的な流れが確認できる。入力・AI処理・出力が明確で、Make.comで一般的なモジュール構成で再現しやすい。用途はチャット応対や問い合わせ振り分け、社内受付、簡易エージェントなどへ横展開しやすく、実務上もミス削減や処理の自動振り分けに効く。定量成果はないが、実装上の工夫と運用意図が十分に読み取れるため採用可。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]

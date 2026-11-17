@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Telegramの問い合わせをAIで分類し、複数ルートに振り分けるMake.comのマルチブランチ自動化 | AI Small Business Daily</title>
+<meta name="description" content="この記事は、1本の直線的な自動化ではなく、受信したメッセージをAIで分類して複数の処理ルートに振り分ける仕組みをMake.comで組んだ事例です。面倒だったのは、動的に来るユーザー要求をそのまま単一フローで処理すると、条件分岐が増えて管理が崩れやすい点でした。そこで、Telegram botを起点に">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.17</div>
+    <h1>Telegramの問い合わせをAIで分類し、複数ルートに振り分けるMake.comのマルチブランチ自動化</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>AIメール/メッセージ分類・自動ルーティングのワークフロー構築<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、1本の直線的な自動化ではなく、受信したメッセージをAIで分類して複数の処理ルートに振り分ける仕組みをMake.comで組んだ事例です。面倒だったのは、動的に来るユーザー要求をそのまま単一フローで処理すると、条件分岐が増えて管理が崩れやすい点でした。そこで、Telegram botを起点にOpenAIモジュールを重ね、JSON化した結果をもとにRouterで分岐させる構成に変えています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>記事で確認できる課題は、Telegram経由で届くさまざまなメッセージを、1つの線形ワークフローで処理すると複雑化しやすいことです。分岐が増えるほど、データの流れが乱れたり、Makeのマッピングでエラーが起きやすくなったりするため、保守しやすい構造が必要だったと読めます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>Telegram botに届くユーザーメッセージ</p><p>↓</p><p>AIによる処理</p><p>- OpenAIモジュールを連続で使い、メッセージの意図を分類</p><p>- 返答をJSON形式に整えて、後続モジュールが扱いやすい構造にする</p><p>- 必要に応じて、どの処理ルートへ送るべきかの判断材料を作る</p><p>↓</p><p>次のシステム・処理</p><p>- Make.comのRouterで、JSON内の分類結果に応じて複数ブランチへ分岐</p><p>- JSON parsing、iterators、array aggregationでデータを整形・集約</p><p>- Google Sheetsに処理内容を構造化ログとして保存</p><p>↓</p><p>出力</p><p>- ユーザーごとに文脈に合った応答をTelegramへ返送</p><p>- それぞれの分岐で必要な処理を実行</p><p>↓</p><p>人間による確認・最終作業</p><p>- 記事からは、人間がどの段階で確認しているかの詳細は確認できません</p><p>- ただし、構造化ログを残すことで、あとから動作確認や運用監視をしやすくしていると読み取れます</p><p>この事例でAIが担っているのは、主に分類、構造化、処理ルート決定の補助です。単なる文章生成ではなく、後続の自動化が壊れにくい形に情報を整える役割が中心です。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事から数値的な成果は確認できません。ただし、分岐の多い問い合わせ処理を自動化することで、手作業の振り分け負担を減らし、返信の一貫性を保ち、複雑なワークフローを保守しやすくする効果が期待できる構成です。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効だった理由は、AIに自由作文をさせるのではなく、まず意図を分類してJSONという機械可読な形に落としている点にあります。さらに、Routerで処理を分けるため、1本の長いフローにすべてを詰め込むよりも見通しがよくなります。これは元記事の事実というより設計上の分析ですが、データの流れを予測しやすくしたことが安定運用につながったと考えられます。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- AIの出力は、そのまま次工程に流すより、JSONのような構造化データにすると自動化しやすい</p><p>- 分岐が増える仕事は、1本のフローよりRouter型の設計が扱いやすい</p><p>- ログを残すと、後から不具合検証や改善がしやすい</p><p>- AIに“全部やらせる”より、分類や整形だけ任せると運用が安定しやすい</p><p>- メッセージ対応のような業務は、返信文の自動生成だけでなく、ルート選択の自動化が本質的に効く場合がある</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 仕事の問い合わせ振り分け</p><p>- 受付フォーム、Gmail、Slackの投稿を取得</p><p>- ChatGPT/OpenAI APIで「営業」「サポート」「請求」「緊急」などに分類</p><p>- JSONで出力し、Make/Zapierで各担当チャンネルへ分岐</p><p>- Google SheetsやNotionにログ保存</p><p>- 最後に担当者が確認して返信</p><p>2. 社内申請の自動仕分け</p><p>- Googleフォームやメールで届く申請内容を取得</p><p>- AIで申請種別、緊急度、必要書類の有無を抽出</p><p>- 条件に応じて承認ルートを分岐</p><p>- Slackやメールで担当者に通知</p><p>- 人間が最終承認</p><p>3. ECの注文後サポート</p><p>- 注文情報、問い合わせ文、配送状況を取得</p><p>- AIで「配送遅延」「返品希望」「商品不良」などに分類</p><p>- 分類結果をもとにテンプレート返信を作成</p><p>- 必要ならカスタマーサポートへ引き継ぎ</p><p>- CRMやスプレッドシートに保存</p><p>4. 個人利用: メール整理アシスタント</p><p>- Gmailの新着メールを取得</p><p>- AIで重要度、要返信、保存だけでよい情報に分類</p><p>- Google Sheetsに記録し、Slackやメールで通知</p><p>- 重要なものだけ自分が確認して返信</p><p>5. 個人利用: 学習メモの整理</p><p>- Notionやメモアプリに入れた断片メモを取得</p><p>- AIで「読書」「仕事のネタ」「あとで調べる」に分類</p><p>- カテゴリ別にまとめて保存</p><p>- 毎週まとめを自動出力して見直す</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、具体的なプロンプト、使用したOpenAIモデル、ルーターの条件、処理件数、運用規模は確認できません</p><p>- 実際にどこまで人間が確認しているかは不明です</p><p>- AIの分類誤りがあると、誤ったルートに振り分けられるリスクがあります</p><p>- JSONの形式が崩れると後続処理が止まる可能性があるため、例外処理が必要です</p><p>- メッセージ内容には個人情報や機密情報が含まれる可能性があるため、保存先や権限設計に注意が必要です</p><p>- 受信内容の意図判定は100%ではないため、重要な問い合わせや例外ケースは人間が確認する前提が安全です</p>
+
+    <h2>参考記事</h2>
+    <p>How I Built a Multi-Branch AI Automation System in ...</p>
+    <p class="source">
+      <a href="https://community.make.com/t/how-i-built-a-multi-branch-ai-automation-system-in-make-using-routers-json-parsing-aggregation/104062"
+         target="_blank" rel="noopener noreferrer">
+        https://community.make.com/t/how-i-built-a-multi-branch-ai-automation-system-in-make-using-routers-json-parsing-aggregation/104062
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
