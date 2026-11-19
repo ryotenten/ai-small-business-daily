@@ -1848,5 +1848,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-19",
+    "date_display": "2026.11.19",
+    "company_name": "APIMartの記事内の複数企業事例（Fortune 500のコラボレーションSaaS企業、DreamzTech、BioRender、Vendasta、Coca-Cola ほか）",
+    "headline": "Supportチャットボット、請求書処理、データ抽出を1本のワークフローにするAI活用例",
+    "title": "Top AI API Use Cases for Business Automation",
+    "url": "https://apimart.ai/blog/top-use-cases-ai-apis-business-automation",
+    "article_filename": "2026-11-19.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-19.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "優先したのは、検索結果の説明だけでも「入力→AI処理→出力→人間の最終作業」の流れが比較的想像しやすく、かつ小規模運用に落とし込みやすい候補です。0はエージェント型ワークフロー全般で実務フローの具体例が本文に入りやすい。2は“real-world examples”とあり、実例ベースで個人/小規模向けの再現可能な自動化が見つかる可能性が高い。1はAI APIを使った業務自動化ユースケース集で、入力→処理→出力の構造が明確なはず。3と4はビジネス生産性/自動タスク実行の事例集で、本文に営業・調査・レポート・ルーティングなど再現性の高いワークフローが含まれる可能性が高い。7と8はニュース色が強く、今回の目的である具体的ワークフロー収集には優先度を下げました。",
+    "adoption_score": 88,
+    "workflow_signature": "メール/PDF/通話/業務データ→AIで分類・抽出・要約・生成→CRM/ERP/ヘルプデスク登録、ルーティング、人手レビュー",
+    "evaluation_reason": "本文から、支持対応・請求書処理・コンテンツ生成・データ抽出/補完・ルーティング・パーソナライズドマーケティングという6つの具体的ワークフローが確認できる。特に『入力→AI処理→出力/次アクション』が明確で、信頼度しきい値、人手レビュー、予算アラート、バッチ処理、PIIマスキングなど実装上の注意も書かれており、再現性が高い。個別の業界事例は混じるが、核となる構造はメール、PDF、音声、CRMデータを処理して業務システムへ流す汎用パターンで、他業種にも横展開しやすい。重複判定についても、既存のメール要約・Sheets記録系とは入力と後続処理が異なり、請求書/サポート/データ補完/マーケ自動化の統合レシピとして十分独立性がある。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 21,
+      "applicability": 13,
+      "reliability": 9
+    }
   }
 ]
