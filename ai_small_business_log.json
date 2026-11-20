@@ -1870,5 +1870,27 @@
       "applicability": 13,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-11-20",
+    "date_display": "2026.11.20",
+    "company_name": "記事から確認できません（GoDaddyの解説記事）",
+    "headline": "GoDaddyが示す、小規模事業でも真似しやすい15のAI業務フロー自動化",
+    "title": "15 AI workflow automation examples for small businesses",
+    "url": "https://www.godaddy.com/resources/skills/ai-workflows-for-small-businesses",
+    "article_filename": "2026-11-20.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-20.html",
+    "search_query": "\"AI workflow\" small business operations",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に追えそうで、個人や小規模チームでも再現しやすい候補です。0はMake.comでの自作自動化という点で実装詳細が期待でき、1と2は小規模ビジネス向けの実務ワークフロー例が複数載っていそうです。3はエージェント構築系で、具体的な業務フローや外部連携の記述が見つかる可能性があります。4はGitHubプロジェクト紹介ですが、AIワークフローを機械的に実装する観点の具体例が含まれる可能性があり、比較記事よりは本文確認の価値があります。",
+    "adoption_score": 86,
+    "workflow_signature": "新規問い合わせ・請求書・レビュー等の業務入力→AIで分類・要約・抽出・下書き生成→各業務ツールへ記録/通知/自動返信",
+    "evaluation_reason": "本文で15個の具体例が確認でき、入力（フォーム、メール、レシート写真、レビュー、会議メモなど）→AI処理（分類、要約、優先付け、下書き生成、抽出）→出力（CRM登録、通知、自動返信、提案書/求人票/レポート作成）まで明確です。特定業種に閉じず、営業・CS・経理・採用・マーケティングなどへ横展開しやすい構造です。実装はNo-code/既存APIで再現しやすく、実務上の時間削減やミス削減にも直結します。一方で、記事はGoDaddy製品訴求が強く、定量成果や実運用の裏付けは薄めなので信頼性は満点ではありません。とはいえ、採用基準を満たす実用的なワークフロー集として残す価値は高いです。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 13,
+      "reliability": 6
+    }
   }
 ]
