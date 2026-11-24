@@ -1892,5 +1892,27 @@
       "applicability": 13,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-11-24",
+    "date_display": "2026.11.24",
+    "company_name": "記事から確認できません",
+    "headline": "Paperless-AIで紙・PDF文書を自動整理し、内容検索までできる文書管理ワークフロー",
+    "title": "clusterzx/paperless-ai: AI companion ...",
+    "url": "https://github.com/clusterzx/paperless-ai",
+    "article_filename": "2026-11-24.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-24.html",
+    "search_query": "site:github.com AI automation workflow OpenAI",
+    "selection_reason": "優先したのは、検索結果だけでも入力→AI処理→出力→人間の最終作業が見えやすく、個人や少人数でも再現しやすい候補です。1はn8n+ChatGPTでフリーランス業務を自動化しており、実務フローの詳細が本文にある可能性が高いです。2はExcel業務をChatGPTでどう自動化したかが具体的で、シート作業の再現性が高いです。19は文書管理でOCR・自動タイトル付け・タグ付け・仕分けが見込め、PDF/書類系ワークフローの応用価値が高いです。0はブラウザ自動化とAIエージェントでChatGPT利用を回す話で、実装手順よりはやや粗いものの再現可能な自動化例として有望です。3はGitHubの多数プロジェクト集ですが、実例の索引として有用で、本文や各プロジェクトから具体ワークフローを拾える可能性があります。",
+    "adoption_score": 82,
+    "workflow_signature": "文書・画像・メール→AIでOCR/要約/メタデータ付与・検索→整理保存・質問応答・業務連携",
+    "evaluation_reason": "本文から、Paperless-ngx連携または単独利用の文書管理ワークフローが具体的に確認できる。入力はPDF/スキャン/写真/メール/WebDAV/フォルダ監視の文書、AIはOCR・タイトル/タグ/文書種別/日付/カスタムフィールド付与、検索質問への回答と出典提示を行い、出力は自動整理、検索可能なアーカイブ化、ワークフロー連携である。個人や中小企業でもOllama等のローカルモデルやOpenAI互換APIで再現しやすく、請求書・契約書・領収書・社内資料などへ横展開しやすい。実務上は文書整理、検索性向上、見落とし削減に直結するため実用性も高い。一方で、定量成果や導入事例の詳細は本文中に少なく、信頼性は中程度にとどめた。過去事例とは入力・処理・出力の中心が異なり、重複とは見なさない。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 20,
+      "applicability": 11,
+      "reliability": 6
+    }
   }
 ]

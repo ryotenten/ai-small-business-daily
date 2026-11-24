@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paperless-AIで紙・PDF文書を自動整理し、内容検索までできる文書管理ワークフロー | AI Small Business Daily</title>
+<meta name="description" content="Paperless-AIは、たまっていくPDFやスキャン画像の整理をAIに任せるための仕組みです。文書のタイトル付け、タグ付け、分類、日付やカスタム項目の補完を自動化し、さらに自然文の質問で保管済み文書を探せます。元記事では、Paperless-ngxの拡張としても単体のアーカイブとしても使えること">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.24</div>
+    <h1>Paperless-AIで紙・PDF文書を自動整理し、内容検索までできる文書管理ワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>文書管理ソフトの拡張・個人/組織向けアーカイブ運用<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>Paperless-AIは、たまっていくPDFやスキャン画像の整理をAIに任せるための仕組みです。文書のタイトル付け、タグ付け、分類、日付やカスタム項目の補完を自動化し、さらに自然文の質問で保管済み文書を探せます。元記事では、Paperless-ngxの拡張としても単体のアーカイブとしても使えることが示されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>文書が増えるほど、手でタイトルを付け、タグを選び、種類を分け、必要な情報を読み取って登録する作業が負担になります。特にスキャン画像や写真のような見づらい文書では、OCRだけでは内容把握が不十分で、あとから必要な書類を探すのも大変です。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>新規に追加された文書、スキャン画像、写真、メール添付、Watch folder、WebDAV、スマホから取り込んだ文書などを受け取る</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>Paperless-AIが文書内容を解析し、タイトル、タグ、correspondent、文書種別、日付、カスタム項目を補完する。スキャンや写真はPaddleOCRでローカルOCRしてから解析する。質問検索では、自然文に対してハイブリッド検索（キーワード＋ベクトル検索）を行い、出典付きで回答する</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>Paperless-ngxのワークフロー、またはPaperless-AI内蔵アーカイブに保存・更新される。条件に応じてタグ付け、フィールド更新、メール送信、Webhookなどのワークフローも実行できる</p><p>↓</p><p>出力</p><p>↓</p><p>整理済み文書、検索しやすいメタデータ、質問への回答、カレンダー用の予定・締切情報（iCal購読）</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>必要に応じて手動レビューし、誤分類や誤OCRを修正する。テスト実行やundo機能もあるため、運用前後に人が結果を確認できる</p><p>AIが担当しているのは、分類、抽出、要約、検索補助、回答生成です。人間は最終判断と例外処理を担当します。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事に売上や削減時間の数値はありません。ただし、文書の命名・分類・検索にかかる手作業を減らし、見つけたい書類を自然文で探せるようにすることで、整理と参照の手間を小さくできます。OCR込みで処理できるため、読み取りづらいスキャン文書の再確認負担も下げられます。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、文書整理の作業が「内容を読んで理解する」「メタデータに落とす」「あとで探す」という分解しやすい工程だからです。AIが向いているのは、文書内容から候補を出す部分と、自然文検索で探しやすくする部分です。一方、最終的な正誤判断は人間が担う前提なので、実務に載せやすい構造になっています。これは元記事の事実というより、構成から見た分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>1. まずは“保存”より“検索性”をAIで改善すると効果が出やすい。</p><p>2. OCR→メタデータ抽出→保存という順に分けると、処理の役割が明確になる。</p><p>3. AIの出力をそのまま確定せず、タグや種別は人が確認できる余地を残すと運用しやすい。</p><p>4. 「文書を読むAI」と「文書を探すAI」を分けず、同じ基盤でつなぐと、整理と問い合わせ対応をまとめて効率化できる。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>仕事への応用例</p><p>1. 経理・総務の書類整理</p><p>- 入力: 請求書、領収書、契約書のPDFやスキャン画像</p><p>- AI処理: OCR後にタイトル、取引先名、日付、書類種別、支払関連項目を抽出</p><p>- 出力: Google SheetsやDBに一覧化、元ファイルはフォルダ保存</p><p>- 人間確認: 仕訳前に担当者が抽出結果をチェック</p><p>2. 法務・営業の契約書検索</p><p>- 入力: 契約書、覚書、NDA</p><p>- AI処理: 契約先、更新日、解約条項、期限、関連案件名を抽出し、自然文検索できる形で保存</p><p>- 出力: NotionやSharePoint、検索用DB、期限通知をメールやSlackで送信</p><p>- 人間確認: 重要条項は法務が再確認</p><p>3. 研究・調査資料のアーカイブ</p><p>- 入力: 論文PDF、レポート、会議資料</p><p>- AI処理: 要約、キーワード付与、テーマ分類、質問応答用インデックス作成</p><p>- 出力: Obsidian、Notion、ローカル文書庫、質問結果に出典リンクを付与</p><p>- 人間確認: 参考文献として使う前に原文を確認</p><p>4. 顧客問い合わせ対応の履歴管理</p><p>- 入力: 問い合わせメール、添付ファイル、対応記録</p><p>- AI処理: 件名付け、カテゴリ分類、緊急度推定、関連履歴の検索</p><p>- 出力: CRMやチケットシステム、Slack通知</p><p>- 人間確認: 最終回答文は担当者が承認</p><p>プライベート応用</p><p>1. 重要書類の家庭内保管</p><p>- 入力: 保険証券、医療費領収書、学校関係書類、保証書</p><p>- AI処理: 種別分け、期限抽出、検索用タグ付け</p><p>- 出力: ローカル保管庫と期限リマインド</p><p>- 人間確認: 個人情報を含むため保存範囲を限定</p><p>2. 賃貸・引っ越し書類の整理</p><p>- 入力: 賃貸契約書、更新通知、ライフライン書類</p><p>- AI処理: 更新日、支払額、連絡先を抽出</p><p>- 出力: カレンダー通知、検索可能な文書庫</p><p>- 人間確認: 契約条件は原本で確認</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、導入企業の規模、具体的な業務フロー、実運用での削減時間や精度の数値は不明です。AIの抽出結果は誤る可能性があるため、契約条件、金額、日付、期限など重要情報は必ず人が確認する必要があります。文書には個人情報や機密情報が含まれ得るため、ローカル運用、VPN、認証付きリバースプロキシなどの保護が前提です。元記事でもインターネット直公開は避けるべきとされています。</p>
+
+    <h2>参考記事</h2>
+    <p>clusterzx/paperless-ai: AI companion ...</p>
+    <p class="source">
+      <a href="https://github.com/clusterzx/paperless-ai"
+         target="_blank" rel="noopener noreferrer">
+        https://github.com/clusterzx/paperless-ai
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
