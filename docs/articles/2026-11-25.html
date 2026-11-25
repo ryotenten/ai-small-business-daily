@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>生成AIの最新記事収集・要約をSlackへ定時自動投稿するワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事は、毎日手作業でやりがちな「最新情報の収集→要約→共有」を、AIのスキルとして定義し、定時に自動実行するワークフローを作った事例です。面倒な点は、複数の記事を探して読み、要点を整え、Slackに投稿するまでを毎回繰り返すことでした。著者はこれをAgent Skills化し、GitHub Ac">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.25</div>
+    <h1>生成AIの最新記事収集・要約をSlackへ定時自動投稿するワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません<br>
+      <strong>業種：</strong>情報収集・要約・社内共有の自動化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、毎日手作業でやりがちな「最新情報の収集→要約→共有」を、AIのスキルとして定義し、定時に自動実行するワークフローを作った事例です。面倒な点は、複数の記事を探して読み、要点を整え、Slackに投稿するまでを毎回繰り返すことでした。著者はこれをAgent Skills化し、GitHub Actionsで1日1回動かして、Slackとファイルに同じ内容を出力する形にしています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>導入前の課題は、生成AIの最新記事を毎日チェックして、重要そうなものを拾い、要約して共有する作業が定型業務になっていたことです。記事からは、これを手作業で行っていたかどうかの厳密な記述は確認できませんが、少なくとも「日々の定型業務」として繰り返し発生していたことは読み取れます。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>↓</p><p>Web上の生成AI関連記事を収集し、対象を絞る。収集対象は「技術的進展」「生成AIを用いた業務刷新や新規ビジネス」「生成AI業界の大きな動き」の3分野。</p><p>↓</p><p>AIによる処理</p><p>↓</p><p>OpenAI Codex CLIを使って、記事を要約・整形する。1件ごとに日本語で約100字の要約を含む形にまとめ、投稿用の3行ブロックへ整える。</p><p>↓</p><p>次のシステム・処理</p><p>↓</p><p>GitHub Actionsのworkflowで1日1回の定時実行を行う。成功時はSlack Incoming Webhookへ送信し、同じ内容をreports/latest.mdとreports/history配下の履歴ファイルにも書き出す。</p><p>↓</p><p>出力</p><p>↓</p><p>Slackチャンネルに、記事タイトル・日本語要約・出典URLの形式で5件投稿される。同時にローカル/リポジトリ内のファイルにも記録が残る。</p><p>↓</p><p>人間による確認・最終作業</p><p>↓</p><p>記事では、人間が毎回編集して確認する運用は明記されていません。少なくとも、Slack投稿失敗時は再試行せずエラーログを残すため、最終確認が必要な場面はありそうですが、その具体フローは記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>得られた効果として明確に確認できるのは、毎日の情報収集・要約・共有を自動化できたことです。記事内では、Slackに5件の要約が定時投稿されること、同じ内容がファイルにも残ることが示されています。一方で、売上増加や何分削減といった数値効果は記載されていません。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>このワークフローが有効なのは、情報収集・要約・定型投稿という作業が、ルール化しやすく、入力と出力の形が比較的固定されているからだと考えられます。さらに、AIに「何を収集するか」「どう整形するか」を自然言語で明示し、実行はGitHub Actionsに任せることで、判断の余地が少ない部分を自動化しやすくしています。これは記事内容に基づく分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>再利用しやすいポイントは、まず定型業務を“1件ずつの作業”に分解し、入力条件と出力形式を固定することです。次に、AIに任せる範囲を「収集」「抽出」「要約」「整形」のように限定すると、実装しやすくなります。最後に、Slackやファイル保存のように、結果を複数の場所へ残すと、共有と監査の両方に使えます。</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>自分で作るなら、たとえば次の流れが考えられます。</p><p>1. RSS、Web検索結果、社内更新情報、CSVなどのデータを取得</p><p>2. ChatGPTやOpenAI APIに渡して、重要度判定、要約、カテゴリ分けを実施</p><p>3. PythonやGoogle Apps Scriptで整形</p><p>4. Google Sheets、Notion、Excel、DBに保存</p><p>5. Slack、メール、Pushoverで通知</p><p>6. 人間が最終確認して、必要なら修正・再配信</p><p>仕事への応用例:</p><p>- 営業: 問い合わせフォームやメール内容を要約してSlack通知し、担当者が優先順位を確認する</p><p>- 情報シェア: 業界ニュースを毎朝集め、部署別に要点を分けて配信する</p><p>- 開発運用: 障害報告やGitHubの更新を集約して、対応要否をAIに下書きさせる</p><p>- 人事・総務: 社内申請や規程更新の通知文を要約して、対象者別に配信する</p><p>プライベート応用例:</p><p>- 興味分野のニュースを毎朝まとめて、スマホ通知で受け取る</p><p>- 購入候補商品のレビューを集めて要点だけ一覧化する</p><p>- 読んだ記事のURLと要約をNotionに自動蓄積する</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>記事から確認できない点として、収集元の具体的なWebサイト、要約精度の評価方法、誤要約時の修正運用、人手での最終承認フローは明記されていません。また、Slack投稿失敗時は再試行せずログを残す設計のため、重要情報の取りこぼし対策は別途必要です。Web収集を行う以上、元記事の内容変化、著作権、引用範囲、誤情報の混入にも注意が必要です。</p>
+
+    <h2>参考記事</h2>
+    <p>【Agent Skills】とにかく動かす実践編：定型業務を定時に自動実行</p>
+    <p class="source">
+      <a href="https://qiita.com/wing_man/items/ebf229395347c7b4dccf"
+         target="_blank" rel="noopener noreferrer">
+        https://qiita.com/wing_man/items/ebf229395347c7b4dccf
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>

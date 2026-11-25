@@ -1914,5 +1914,27 @@
       "applicability": 11,
       "reliability": 6
     }
+  },
+  {
+    "date": "2026-11-25",
+    "date_display": "2026.11.25",
+    "company_name": "記事から確認できません",
+    "headline": "生成AIの最新記事収集・要約をSlackへ定時自動投稿するワークフロー",
+    "title": "【Agent Skills】とにかく動かす実践編：定型業務を定時に自動実行",
+    "url": "https://qiita.com/wing_man/items/ebf229395347c7b4dccf",
+    "article_filename": "2026-11-25.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-25.html",
+    "search_query": "site:qiita.com AI OpenAI 自動化 業務",
+    "selection_reason": "優先したのは、本文を読めば『入力→AI処理→出力→人間の最終作業』が具体的に見えそうで、個人・少人数でも再現しやすい候補です。7はn8n＋ChatGPTでサイドハッスル業務を自動化した実践例、10は定型収集→要約→Slack/ファイル出力の明確なワークフロー、11は日次計画という生活/仕事両用の個人ワークフローが見込めます。0はZapier連携のGPT Actionsで小規模実装に展開しやすく、5はYouTube制作の工程分解とAI活用が具体化していそうです。",
+    "adoption_score": 82,
+    "workflow_signature": "定期的にWeb記事を収集→AIで選別・要約・整形→Slack投稿と履歴保存",
+    "evaluation_reason": "入力（Web上の生成AI関連記事）、AI処理（記事収集対象の選別、要約、3行ブロックへの整形）、出力（Slack投稿とMarkdown履歴保存）が本文から具体的に確認でき、GitHub Actions・Slack Webhook・OpenAI APIという一般的な構成で再現もしやすいです。日次の情報収集・社内ブリーフ配信・競合/業界ウォッチなどへ横展開しやすく、実務上の時短効果も明確です。記事本文に手順と実装例があり、単なる紹介記事ではなく実運用の流れが確認できるため信頼性も十分です。",
+    "score_detail": {
+      "specificity": 21,
+      "reproducibility": 22,
+      "usefulness": 18,
+      "applicability": 13,
+      "reliability": 8
+    }
   }
 ]
