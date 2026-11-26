@@ -1936,5 +1936,27 @@
       "applicability": 13,
       "reliability": 8
     }
+  },
+  {
+    "date": "2026-11-26",
+    "date_display": "2026.11.26",
+    "company_name": "記事から確認できません（個人の発信記事）",
+    "headline": "ChatGPTでExcelの数式作成・不具合修正・要約を自動化したワークフロー",
+    "title": "How I Automated My Excel Workflow Using ChatGPT (And Wrote ...",
+    "url": "https://dev.to/jaideepparashar/how-i-automated-my-excel-workflow-using-chatgpt-and-wrote-a-bestselling-book-about-it-cmm",
+    "article_filename": "2026-11-26.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-26.html",
+    "search_query": "\"I automated\" ChatGPT workflow",
+    "selection_reason": "1はGmailの請求書PDF→Sheets→数値チェックという、入力→AI処理→出力→人手確認が明確で再現性が高いです。2はn8n+ChatGPTでフリーランス業務全体を自動化した実体験で、本文に具体的なワークフローが複数出てきそうです。3はExcel作業をChatGPTで自動化する題材で、数式作成・修正・翻訳など小規模でも真似しやすい実務フローが期待できます。5はWhatsApp/Telegram/Gmail/Sheetsをまたぐ実装寄りの話で、少人数運用に応用しやすい具体例が見つかる可能性が高いです。7はn8nのワークフロー付きで、Gmail/Docs/Sheets連携の実務自動化例が本文で詳しく確認できそうです。",
+    "adoption_score": 79,
+    "workflow_signature": "Excelファイル・表データ→AIで数式生成/エラー修正/要約→シート整形・VBA作成・レポート化",
+    "evaluation_reason": "本文から、Excel作業に対してChatGPTを使い、数式作成、壊れたシートの修正、複雑な式の説明、データ要約、VBA生成まで行う具体例が確認できる。入力→AI処理→出力の流れが明確で、一般的なExcel利用者が再現しやすい。個人・小規模事業でもそのまま導入しやすく、会計、営業集計、在庫、レポート、事務処理などへ横展開しやすい。本文はややプロモーション色が強いが、実際の使い方は複数のプロンプト例として確認できるため、信頼性は十分。過去事例の中には『Excelのデータ整形・集計・レポート作成をAIに任せるワークフロー』があるが、こちらはChatGPTによる数式・修正・説明・VBA生成中心で、入力と後続アクションの焦点がやや異なるため、重複としては扱わない。",
+    "score_detail": {
+      "specificity": 20,
+      "reproducibility": 21,
+      "usefulness": 18,
+      "applicability": 11,
+      "reliability": 9
+    }
   }
 ]

@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChatGPTでExcelの数式作成・不具合修正・要約を自動化したワークフロー | AI Small Business Daily</title>
+<meta name="description" content="この記事は、Excel作業の中でも特に手間がかかる「数式づくり」「壊れたシートの修正」「説明文の作成」をChatGPTで置き換えた事例です。投稿者は、スプレッドシートの反復作業にかなりの時間を使っていたが、AIに指示を与えることで処理を短縮できたと述べています。結果として、その経験をもとにExcel">
+<style>
+:root {
+  --bg: #f5f5f2;
+  --card: #ffffff;
+  --text: #202124;
+  --sub: #666a70;
+  --line: #dedfd9;
+  --accent: #1f5d50;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  line-height: 1.9;
+}
+a { color: var(--accent); }
+.wrap {
+  width: min(880px, calc(100% - 32px));
+  margin: 0 auto;
+}
+.site-header {
+  padding: 40px 0 24px;
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  margin: 0;
+  font-size: 14px;
+  letter-spacing: .16em;
+  font-weight: 700;
+}
+.tagline {
+  margin: 7px 0 0;
+  color: var(--sub);
+  font-size: 14px;
+}
+main { padding: 34px 0 64px; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(22px, 5vw, 46px);
+  margin-bottom: 24px;
+}
+.date {
+  color: var(--sub);
+  font-size: 13px;
+  letter-spacing: .05em;
+}
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.35;
+  margin: 12px 0 20px;
+}
+h2 {
+  font-size: 20px;
+  margin: 38px 0 12px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+p { margin: 0 0 16px; }
+.meta {
+  padding: 16px 18px;
+  background: #f8f8f5;
+  border-radius: 10px;
+  margin: 22px 0;
+  font-size: 14px;
+}
+.note {
+  color: var(--sub);
+  font-size: 14px;
+}
+.source {
+  word-break: break-all;
+}
+.article-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-list li {
+  padding: 20px 0;
+  border-top: 1px solid var(--line);
+}
+.article-list li:first-child { border-top: 0; }
+.article-list a {
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.article-list a:hover { text-decoration: underline; }
+footer {
+  padding: 30px 0 50px;
+  color: var(--sub);
+  font-size: 12px;
+}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <p class="brand"><a href="../index.html" style="text-decoration:none;color:inherit;">AI SMALL BUSINESS DAILY</a></p>
+    <p class="tagline">仕事や暮らしで真似できる、実践的なAIワークフロー集。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <article class="card">
+    <div class="date">2026.11.26</div>
+    <h1>ChatGPTでExcelの数式作成・不具合修正・要約を自動化したワークフロー</h1>
+
+    <div class="meta">
+      <strong>事業者：</strong>記事から確認できません（個人の発信記事）<br>
+      <strong>業種：</strong>Excel業務の自動化・業務効率化<br>
+      <strong>規模：</strong>記事から確認できません
+    </div>
+
+    <h2>今回の事例</h2>
+    <p>この記事は、Excel作業の中でも特に手間がかかる「数式づくり」「壊れたシートの修正」「説明文の作成」をChatGPTで置き換えた事例です。投稿者は、スプレッドシートの反復作業にかなりの時間を使っていたが、AIに指示を与えることで処理を短縮できたと述べています。結果として、その経験をもとにExcel向けのプロンプト集を書き、書籍化した流れまで紹介されています。</p>
+
+    <h2>どんな課題があったのか</h2>
+    <p>AI導入前は、複雑な数式を自分で考えたり、壊れたシートの原因を探したり、VBAを自力で書いたりする必要がありました。記事では、こうした反復作業は専門知識や試行錯誤が必要で、手作業では時間がかかることが課題だったと分かります。</p>
+
+    <h2>AIをどう活用したのか</h2>
+    <p>入力</p><p>- 「North地域かつ2024年1月以降の日付だけを合計する数式を作って」といった自然文の要件</p><p>- 罫線や結合セル、日付形式の不統一、空行があるExcelファイルの状態説明</p><p>- 既存数式の文字列</p><p>- Excel表の内容と「トップ3の傾向を要約して」といった分析指示</p><p>- 重複値を検出して警告するVBAの要件</p><p>↓</p><p>AIによる処理</p><p>- 条件に合うExcel数式の生成</p><p>- シートの不具合に対する手順の整理</p><p>- 既存数式の平易な説明</p><p>- 表データの要点抽出と要約</p><p>- VBAコードの生成</p><p>↓</p><p>次のシステム・処理</p><p>- ユーザーが生成された数式やVBAをExcelに貼り付けて実行</p><p>- 必要に応じてシートを手作業で修正</p><p>↓</p><p>出力</p><p>- 使える数式</p><p>- シートのクリーンアップ手順</p><p>- 平易な説明文</p><p>- レポート用の要約</p><p>- VBAスクリプト</p><p>↓</p><p>人間による確認・最終作業</p><p>- 数式が意図どおりに動くか確認</p><p>- VBAを実行する前に安全性を確認</p><p>- 要約内容がデータの実態に合っているか確認</p><p>- 必要なら修正して再依頼</p><p>補足</p><p>- 記事で確認できるのは、ChatGPTが数式作成、修正案提示、説明、要約、VBA生成を担っていることです。Excelのどの機能と直接連携していたかは記事からは確認できません。</p>
+
+    <h2>どんな効果があったのか</h2>
+    <p>記事内で確認できる効果は、数百時間の節約、反復作業の削減、複雑な数式やVBAへの心理的ハードル低下です。投稿者は、これらの作業をAIで短時間に処理できたため、その経験をもとに書籍化し、Amazonベストセラーになったと述べています。</p>
+
+    <h2>なぜこのAI活用が有効だったのか</h2>
+    <p>有効だった理由は、Excel作業のうち「ルールが明確で、入力条件があれば出力を作りやすい作業」をAIに向けているからだと考えられます。数式生成やVBA作成は、ゼロから考えるよりも、条件を自然文で渡して候補を出させた方が速い場面が多いです。また、説明や要約のように文章化が必要な作業とも相性が良く、1つのツールで複数の面倒をまとめて処理できています。これは記事の事実に基づくというより、ワークフローとしての分析です。</p>
+
+    <h2>この事例から学べること</h2>
+    <p>- Excel業務は「計算」「修正」「説明」「要約」に分けると、AIに渡しやすい</p><p>- まずはコード生成より、数式や説明文の作成から始めると導入しやすい</p><p>- AIの役割は“完成品を丸投げする”より、“たたき台を一瞬で作る”ほうが現実的</p><p>- 人間は最終確認と業務ルールへの適合確認に集中できる</p><p>- 既存ファイルの整理やレポート文の下書きにも横展開しやすい</p>
+
+    <h2>自分で作るなら？・どう応用できる？</h2>
+    <p>1. 月次集計Excelの自動下書き</p><p>- 入力: 売上表、地域、日付、商品カテゴリ</p><p>- AI: 条件に合うSUMIFS/COUNTIFS/IF関数を生成、集計観点の候補を提案</p><p>- 出力: Excelに貼り付ける数式案、集計表の見出し案</p><p>- 人間: 数式を検証し、確定版を保存</p><p>2. 壊れたスプレッドシートの修復支援</p><p>- 入力: 問題のあるシートの構造説明、エラー箇所、日付や空白の扱い</p><p>- AI: 原因候補の整理、修復手順の提案、必要なら修正用VBAの下書き生成</p><p>- 出力: 手順書、VBAコード、修正チェックリスト</p><p>- 人間: 実行前にバックアップを取り、段階的に適用</p><p>3. 週次レポートの要約作成</p><p>- 入力: Excelの集計表、KPI一覧、前週比較データ</p><p>- AI: 変化の大きい項目を抽出し、要点を3点程度に要約</p><p>- 出力: メール本文、報告資料の箇条書き、Slack投稿文</p><p>- 人間: 数値の整合性を確認して送信</p><p>4. 重複検出や品質チェックの自動化</p><p>- 入力: 顧客名簿、商品マスタ、注文一覧</p><p>- AI: 重複判定ロジック案を作成し、VBAまたはExcel関数を生成</p><p>- 出力: 重複一覧、アラート文、チェック用シート</p><p>- 人間: 誤検出がないか確認して運用</p><p>5. 個人利用: 家計簿や購入履歴の整理</p><p>- 入力: CSV化した支出データ、店舗名、カテゴリ</p><p>- AI: 分類ルール案を作成し、月別・カテゴリ別の集計式を提案</p><p>- 出力: 家計簿シートのテンプレート、支出要約</p><p>- 人間: 分類のズレを修正して記録を更新</p>
+
+    <h2>確認できない点・注意点</h2>
+    <p>- 記事からは、実際にどのバージョンのExcelを使ったか、どの環境で動かしたかは確認できません</p><p>- ChatGPTが出す数式やVBAは誤りを含む可能性があるため、実行前の確認が必要です</p><p>- 機密データや個人情報を含むシートをそのまま渡す運用は注意が必要です</p><p>- 複雑なブック構成、外部参照、マクロ制限などがある場合、AIの提案だけでは完結しないことがあります</p><p>- 要約や分析は、元データの偏りや欠損に引っ張られるため、人間のレビューが必須です</p>
+
+    <h2>参考記事</h2>
+    <p>How I Automated My Excel Workflow Using ChatGPT (And Wrote ...</p>
+    <p class="source">
+      <a href="https://dev.to/jaideepparashar/how-i-automated-my-excel-workflow-using-chatgpt-and-wrote-a-bestselling-book-about-it-cmm"
+         target="_blank" rel="noopener noreferrer">
+        https://dev.to/jaideepparashar/how-i-automated-my-excel-workflow-using-chatgpt-and-wrote-a-bestselling-book-about-it-cmm
+      </a>
+    </p>
+
+    <p class="note">
+      ※この記事は公開されている参考記事をAIで整理・分析したものです。
+      確認できない情報は推測せず、応用アイデアは考察として記載しています。
+    </p>
+  </article>
+</main>
+
+<footer>
+  <div class="wrap">AI Small Business Daily</div>
+</footer>
+</body>
+</html>
