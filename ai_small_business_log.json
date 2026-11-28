@@ -1958,5 +1958,27 @@
       "applicability": 11,
       "reliability": 9
     }
+  },
+  {
+    "date": "2026-11-28",
+    "date_display": "2026.11.28",
+    "company_name": "記事から確認できません",
+    "headline": "OpenAI APIで問い合わせ分類・営業文面・電話対応・社内検索を自動化するワークフロー",
+    "title": "How to automate ops with the OpenAI API",
+    "url": "https://moonira.com/insights/openai-api-ops-automation-plays",
+    "article_filename": "2026-11-28.html",
+    "article_url": "https://ryotenten.github.io/ai-small-business-daily/articles/2026-11-28.html",
+    "search_query": "\"OpenAI API\" workflow automation case study",
+    "selection_reason": "1はZapierを使ったCRM自動化やGitベースのAIワークフローが見え、入力→処理→出力の具体像を本文で確認する価値が高いです。7はAIメール自動化・文書処理・知識アシスタントなど再現しやすい実務ワークフローを体系的に扱っていそうです。15はinbox triageや契約レビューなど、実務で真似しやすいOpenAI API活用例が具体的に出てきそうです。17は「今週コピーできる」形式で、トリガー/AI処理/人手確認が明示される可能性が高く、再現性重視の候補です。13は経費精算の処理時間短縮という業務価値が明確で、入力→AI→出力→人の承認の流れを本文で追える可能性が高いです。",
+    "adoption_score": 89,
+    "workflow_signature": "問い合わせ・リード・通話・社内質問→AIで分類・要約・抽出・生成→CRM/Slack/ナレッジ/予約システムへ登録・通知・自動応答",
+    "evaluation_reason": "本文で、実際にAPIを使った具体的な4つの業務ワークフロー（受信分類・ルーティング、個別化アウトバウンド、音声エージェント、社内ナレッジ検索）が明確に示されており、入力・AI処理・出力の流れが再現可能です。n8n/Zapier、HubSpot/Salesforce、Twilio、Slack、ベクターストア、Batch API、structured output、evals など実装要素も具体的で、個人や中小企業が同様の構成を組みやすいです。用途は主に中堅B2Bですが、構造としては問い合わせ対応、営業支援、社内FAQ、電話受付などへ横展開しやすく、実用性も高いです。広告色はあるものの、本文中にワークフローの具体手順と運用上の注意点があり、AIの使い方が確認できるため採用します。",
+    "score_detail": {
+      "specificity": 23,
+      "reproducibility": 22,
+      "usefulness": 22,
+      "applicability": 12,
+      "reliability": 10
+    }
   }
 ]
